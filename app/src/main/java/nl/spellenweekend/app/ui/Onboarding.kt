@@ -68,11 +68,7 @@ fun OnboardingScreen(vm: AppViewModel) {
                 .padding(24.dp),
         ) {
             Spacer(Modifier.height(24.dp))
-            Icon(
-                Icons.Filled.Casino, null,
-                tint = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.size(64.dp),
-            )
+            SlimboLogo(Modifier.fillMaxWidth(0.85f))
             Text(
                 "Spellenweekend",
                 style = MaterialTheme.typography.headlineMedium,
@@ -134,6 +130,10 @@ fun OnboardingScreen(vm: AppViewModel) {
                 )
             }
             if (busy) CircularProgressIndicator()
+            val context = androidx.compose.ui.platform.LocalContext.current
+            androidx.compose.material3.TextButton(onClick = { openUrl(context, SLIMBO_URL) }) {
+                Text("www.slimbo.nl")
+            }
         }
     }
 }

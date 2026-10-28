@@ -22,6 +22,7 @@ import androidx.compose.material.icons.filled.Bed
 import androidx.compose.material.icons.filled.CleaningServices
 import androidx.compose.material.icons.filled.CloudDownload
 import androidx.compose.material.icons.filled.Map
+import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.Button
@@ -200,6 +201,7 @@ fun WeekendInfoTab(event: WeekendEvent?, vm: AppViewModel) {
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
+        item { SlimboLogo(Modifier.fillMaxWidth()) }
         item {
             Card(Modifier.fillMaxWidth()) {
                 Column(Modifier.padding(16.dp)) {
@@ -225,6 +227,9 @@ fun WeekendInfoTab(event: WeekendEvent?, vm: AppViewModel) {
                                 val uri = Uri.parse("geo:0,0?q=" + Uri.encode(event!!.address))
                                 runCatching { context.startActivity(Intent(Intent.ACTION_VIEW, uri)) }
                             }) { Icon(Icons.Filled.Map, null); Spacer(Modifier.width(6.dp)); Text("Route") }
+                        }
+                        OutlinedButton(onClick = { openUrl(context, SLIMBO_URL) }) {
+                            Icon(Icons.Filled.Language, null); Spacer(Modifier.width(6.dp)); Text("slimbo.nl")
                         }
                         if (!event?.phone.isNullOrBlank()) {
                             OutlinedButton(onClick = {

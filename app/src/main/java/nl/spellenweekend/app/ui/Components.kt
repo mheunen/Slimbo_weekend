@@ -242,3 +242,32 @@ fun NumberField(
         ) { Icon(Icons.Filled.Add, "Meer") }
     }
 }
+
+
+const val SLIMBO_URL = "https://www.slimbo.nl/"
+
+/** Slimbo-logo op een witte kaart (zwart logo blijft zo ook in donkere modus leesbaar). */
+@Composable
+fun SlimboLogo(modifier: Modifier = Modifier) {
+    Surface(
+        color = androidx.compose.ui.graphics.Color.White,
+        shape = MaterialTheme.shapes.medium,
+        modifier = modifier,
+    ) {
+        androidx.compose.foundation.Image(
+            painter = androidx.compose.ui.res.painterResource(nl.spellenweekend.app.R.drawable.slimbo_logo),
+            contentDescription = "Slimbo",
+            modifier = Modifier
+                .padding(horizontal = 16.dp, vertical = 10.dp)
+                .fillMaxWidth(),
+        )
+    }
+}
+
+fun openUrl(context: android.content.Context, url: String) {
+    runCatching {
+        context.startActivity(
+            android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse(url))
+        )
+    }
+}
