@@ -8,6 +8,7 @@ BGG-link worden op id opgehaald; de rest op naam gezocht (exacte match eerst).
 Optioneel: secret BGG_TOKEN (BGG vraagt sinds 2025 een geregistreerde app-token).
 """
 import json
+import urllib.error
 import os
 import re
 import sys
@@ -128,4 +129,14 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:  # noqa: BLE001
+        detail = f"{type(e).__name__}: {e}"
+        if isinstance(e, urllib.error.HTTPError):
+            try:
+                detail += " | " + e.read()[:500].decode("utf-8", "replace")
+            except Exception:  # noqa: BLE001
+                pass
+        OUT.write_text(json.dumps({"error": detail, "tokenSet": bool(TOKEN)}, indent=1), encoding="utf-8")
+        print(detail, file=sys.stderr)
