@@ -1,0 +1,35 @@
+name: BGG-gegevens ophalen
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "tools/fetch_bgg.py"
+      - ".github/workflows/bgg.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Gegevens ophalen bij BoardGameGeek
+        env:
+          BGG_TOKEN: ${{ secrets.BGG_TOKEN }}
+        run: python3 tools/fetch_bgg.py
+
+      - name: Resultaat committen
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tools/bgg_data.json
+          git diff --cached --quiet || git commit -m "BGG-gegevens bijgewerkt"
+          git push
