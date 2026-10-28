@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - "tools/fetch_bgg.py"
+      - "tools/bgg_ids.json"
       - ".github/workflows/bgg.yml"
 
 permissions:

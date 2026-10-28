@@ -119,7 +119,27 @@ def cell_text(v) -> str:
     return "" if v is None else str(v).strip()
 
 
+def load_bgg() -> dict:
+    """Gegevens van BoardGameGeek (tools/bgg_data.json, gemaakt door fetch_bgg.py in GitHub Actions).
+    Alleen spellen met een BGG-link uit het document of een gecontroleerd nummer uit bgg_ids.json."""
+    data_file = Path(__file__).resolve().parent / "bgg_data.json"
+    ids_file = Path(__file__).resolve().parent / "bgg_ids.json"
+    if not data_file.exists():
+        return {}
+    data = json.loads(data_file.read_text(encoding="utf-8")).get("games", {})
+    ok_ids = set()
+    if ids_file.exists():
+        ok_ids = {k for k in json.loads(ids_file.read_text(encoding="utf-8")) if not k.startswith("_")}
+    return {gid: v for gid, v in data.items()
+            if v.get("source", "link") == "link" or v.get("name") in ok_ids}
+
+
+BGG: dict = {}
+
+
 def main(xlsx: str):
+    global BGG
+    BGG = load_bgg()
     wb = openpyxl.load_workbook(xlsx, data_only=True)
 
     # ---------------- Locaties & tafels (Molen van Medael) ----------------
@@ -191,6 +211,15 @@ def main(xlsx: str):
         video = cell_text(r[4]) if cell_text(r[4]).startswith("http") else ""
         interested = split_names(r[2])
         known = KNOWN.get(slug(name))
+        b = BGG.get(gid)
+        if b:
+            fb = known or (2, 4, 60, "MIDDEL")
+            mn = b["minPlayers"] or fb[0]
+            mx = b["maxPlayers"] or fb[1]
+            dur = b["durationMin"] or (known[2] if known else 0)
+            known = (mn, max(mn, mx), dur or 60, b["weight"] or fb[3]) if dur else None if not known else known
+            if b.get("source") == "id" and "/boardgame/" not in link:
+                link = f"https://boardgamegeek.com/boardgame/{b['bggId']}"
         g = {
             "id": gid,
             "name": name,

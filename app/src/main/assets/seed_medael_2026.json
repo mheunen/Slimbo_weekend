@@ -902,7 +902,7 @@
    ],
    "minPlayers": 1,
    "maxPlayers": 4,
-   "durationMin": 75,
+   "durationMin": 90,
    "weight": "MIDDEL",
    "infoChecked": true,
    "notes": ""
@@ -948,11 +948,11 @@
    "link": "https://boardgamegeek.com/boardgame/390606/printing-press",
    "video": "https://boardgamegeek.com/video/494578/printing-press/printing-press-board-game-review",
    "interested": [],
-   "minPlayers": 2,
+   "minPlayers": 1,
    "maxPlayers": 4,
    "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
+   "weight": "LICHT",
+   "infoChecked": true,
    "notes": ""
   },
   {
@@ -963,11 +963,11 @@
    "link": "https://boardgamegeek.com/boardgame/387276/reforest",
    "video": "https://boardgamegeek.com/video/604628/reforest/how-to-play-reforest",
    "interested": [],
-   "minPlayers": 2,
+   "minPlayers": 1,
    "maxPlayers": 4,
    "durationMin": 60,
    "weight": "MIDDEL",
-   "infoChecked": false,
+   "infoChecked": true,
    "notes": ""
   },
   {
@@ -978,11 +978,11 @@
    "link": "https://boardgamegeek.com/boardgame/94389/urbion",
    "video": "https://boardgamegeek.com/video/31264/urbion/urbion-review-this-board-game-life",
    "interested": [],
-   "minPlayers": 2,
-   "maxPlayers": 4,
-   "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
+   "minPlayers": 1,
+   "maxPlayers": 2,
+   "durationMin": 15,
+   "weight": "LICHT",
+   "infoChecked": true,
    "notes": ""
   },
   {
@@ -990,12 +990,12 @@
    "name": "Cat in a Box",
    "owner": "Amra",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Cat+in+a+Box",
+   "link": "https://boardgamegeek.com/boardgame/345972",
    "video": "",
    "interested": [],
    "minPlayers": 2,
    "maxPlayers": 5,
-   "durationMin": 30,
+   "durationMin": 40,
    "weight": "LICHT",
    "infoChecked": true,
    "notes": ""
@@ -1005,12 +1005,12 @@
    "name": "Curious Cargo",
    "owner": "Amra",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Curious+Cargo",
+   "link": "https://boardgamegeek.com/boardgame/312251",
    "video": "",
    "interested": [],
    "minPlayers": 2,
    "maxPlayers": 2,
-   "durationMin": 45,
+   "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": true,
    "notes": ""
@@ -1020,14 +1020,14 @@
    "name": "High Rise Penguins",
    "owner": "Amra",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=High+Rise+Penguins",
+   "link": "https://boardgamegeek.com/boardgame/296164",
    "video": "",
    "interested": [],
    "minPlayers": 2,
-   "maxPlayers": 4,
-   "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
+   "maxPlayers": 6,
+   "durationMin": 20,
+   "weight": "LICHT",
+   "infoChecked": true,
    "notes": ""
   },
   {
@@ -1080,14 +1080,14 @@
    "name": "Pray another Day",
    "owner": "Amra",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Pray+another+Day",
+   "link": "https://boardgamegeek.com/boardgame/234260",
    "video": "",
    "interested": [],
    "minPlayers": 2,
-   "maxPlayers": 4,
-   "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
+   "maxPlayers": 5,
+   "durationMin": 20,
+   "weight": "LICHT",
+   "infoChecked": true,
    "notes": ""
   },
   {
@@ -1105,7 +1105,7 @@
    ],
    "minPlayers": 1,
    "maxPlayers": 4,
-   "durationMin": 120,
+   "durationMin": 180,
    "weight": "ZWAAR",
    "infoChecked": true,
    "notes": ""
@@ -1172,11 +1172,11 @@
     "Mélanie",
     "Amela"
    ],
-   "minPlayers": 2,
-   "maxPlayers": 4,
-   "durationMin": 60,
+   "minPlayers": 1,
+   "maxPlayers": 6,
+   "durationMin": 90,
    "weight": "MIDDEL",
-   "infoChecked": false,
+   "infoChecked": true,
    "notes": ""
   },
   {
@@ -1226,11 +1226,11 @@
     "Wilma",
     "Mélanie"
    ],
-   "minPlayers": 2,
+   "minPlayers": 1,
    "maxPlayers": 4,
-   "durationMin": 60,
+   "durationMin": 90,
    "weight": "MIDDEL",
-   "infoChecked": false,
+   "infoChecked": true,
    "notes": ""
   },
   {
@@ -1255,7 +1255,7 @@
    "name": "Bitoku",
    "owner": "Desiree",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Bitoku",
+   "link": "https://boardgamegeek.com/boardgame/323612",
    "video": "https://www.youtube.com/watch?v=rcM0qn3HyH0",
    "interested": [
     "Mandy",
@@ -1282,7 +1282,7 @@
    ],
    "minPlayers": 1,
    "maxPlayers": 4,
-   "durationMin": 120,
+   "durationMin": 150,
    "weight": "ZWAAR",
    "infoChecked": true,
    "notes": ""
@@ -1292,7 +1292,7 @@
    "name": "The castles of Burgundy",
    "owner": "Desiree",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=The+castles+of+Burgundy",
+   "link": "https://boardgamegeek.com/boardgame/84876",
    "video": "",
    "interested": [
     "Melissa"
@@ -1318,8 +1318,8 @@
    ],
    "minPlayers": 1,
    "maxPlayers": 4,
-   "durationMin": 90,
-   "weight": "MIDDEL",
+   "durationMin": 120,
+   "weight": "ZWAAR",
    "infoChecked": true,
    "notes": ""
   },
@@ -1335,7 +1335,7 @@
    ],
    "minPlayers": 1,
    "maxPlayers": 1,
-   "durationMin": 20,
+   "durationMin": 15,
    "weight": "LICHT",
    "infoChecked": true,
    "notes": ""
@@ -1348,11 +1348,11 @@
    "link": "https://boardgamegeek.com/boardgame/82955",
    "video": "",
    "interested": [],
-   "minPlayers": 2,
+   "minPlayers": 3,
    "maxPlayers": 4,
-   "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
+   "durationMin": 30,
+   "weight": "LICHT",
+   "infoChecked": true,
    "notes": ""
   },
   {
@@ -1386,9 +1386,9 @@
    ],
    "minPlayers": 2,
    "maxPlayers": 4,
-   "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
+   "durationMin": 30,
+   "weight": "LICHT",
+   "infoChecked": true,
    "notes": ""
   },
   {
@@ -1401,9 +1401,9 @@
    "interested": [],
    "minPlayers": 2,
    "maxPlayers": 4,
-   "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
+   "durationMin": 15,
+   "weight": "LICHT",
+   "infoChecked": true,
    "notes": ""
   },
   {
@@ -1419,8 +1419,8 @@
    "minPlayers": 2,
    "maxPlayers": 4,
    "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
+   "weight": "LICHT",
+   "infoChecked": true,
    "notes": ""
   },
   {
@@ -1455,7 +1455,7 @@
    "minPlayers": 1,
    "maxPlayers": 6,
    "durationMin": 60,
-   "weight": "MIDDEL",
+   "weight": "LICHT",
    "infoChecked": true,
    "notes": ""
   },
@@ -1471,10 +1471,10 @@
     "Wilma"
    ],
    "minPlayers": 2,
-   "maxPlayers": 4,
-   "durationMin": 60,
+   "maxPlayers": 5,
+   "durationMin": 40,
    "weight": "MIDDEL",
-   "infoChecked": false,
+   "infoChecked": true,
    "notes": ""
   },
   {
@@ -1488,10 +1488,10 @@
     "Wilma"
    ],
    "minPlayers": 2,
-   "maxPlayers": 4,
-   "durationMin": 60,
+   "maxPlayers": 2,
+   "durationMin": 75,
    "weight": "MIDDEL",
-   "infoChecked": false,
+   "infoChecked": true,
    "notes": ""
   },
   {
@@ -1517,7 +1517,7 @@
    "name": "Maracaibo (en uitbreiding the uprising)",
    "owner": "Mandy",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Maracaibo",
+   "link": "https://boardgamegeek.com/boardgame/276025",
    "video": "https://www.youtube.com/watch?v=PMCCyLW2NjU",
    "interested": [
     "Wilma",
@@ -1544,11 +1544,11 @@
     "Dinna",
     "Guillaume"
    ],
-   "minPlayers": 2,
+   "minPlayers": 1,
    "maxPlayers": 4,
-   "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
+   "durationMin": 30,
+   "weight": "LICHT",
+   "infoChecked": true,
    "notes": ""
   },
   {
@@ -1598,7 +1598,7 @@
    "minPlayers": 2,
    "maxPlayers": 4,
    "durationMin": 120,
-   "weight": "ZWAAR",
+   "weight": "MIDDEL",
    "infoChecked": true,
    "notes": ""
   },
@@ -1630,11 +1630,11 @@
    "interested": [
     "Wilma"
    ],
-   "minPlayers": 2,
+   "minPlayers": 1,
    "maxPlayers": 4,
-   "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
+   "durationMin": 150,
+   "weight": "ZWAAR",
+   "infoChecked": true,
    "notes": ""
   },
   {
@@ -1649,9 +1649,9 @@
    ],
    "minPlayers": 2,
    "maxPlayers": 4,
-   "durationMin": 60,
+   "durationMin": 90,
    "weight": "MIDDEL",
-   "infoChecked": false,
+   "infoChecked": true,
    "notes": ""
   },
   {
@@ -1668,7 +1668,7 @@
    "maxPlayers": 4,
    "durationMin": 60,
    "weight": "MIDDEL",
-   "infoChecked": false,
+   "infoChecked": true,
    "notes": ""
   },
   {
@@ -1703,7 +1703,7 @@
    ],
    "minPlayers": 1,
    "maxPlayers": 4,
-   "durationMin": 120,
+   "durationMin": 150,
    "weight": "ZWAAR",
    "infoChecked": true,
    "notes": ""
@@ -1731,11 +1731,11 @@
    "link": "https://boardgamegeek.com/boardgame/447746/tianxia",
    "video": "https://boardgamegeek.com/video/591063/tianxia/tianxia-board-game-review",
    "interested": [],
-   "minPlayers": 2,
+   "minPlayers": 1,
    "maxPlayers": 4,
-   "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
+   "durationMin": 120,
+   "weight": "ZWAAR",
+   "infoChecked": true,
    "notes": ""
   },
   {
@@ -1768,11 +1768,11 @@
     "Cindy",
     "Godelief"
    ],
-   "minPlayers": 2,
-   "maxPlayers": 4,
-   "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
+   "minPlayers": 1,
+   "maxPlayers": 5,
+   "durationMin": 35,
+   "weight": "LICHT",
+   "infoChecked": true,
    "notes": ""
   },
   {
@@ -1780,7 +1780,7 @@
    "name": "Alchemists",
    "owner": "Mélanie",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Alchemists",
+   "link": "https://boardgamegeek.com/boardgame/161970",
    "video": "",
    "interested": [
     "Guillaume"
@@ -1797,7 +1797,7 @@
    "name": "Cryptid",
    "owner": "Mélanie",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Cryptid",
+   "link": "https://boardgamegeek.com/boardgame/246784",
    "video": "",
    "interested": [
     "Dagmar"
@@ -1814,7 +1814,7 @@
    "name": "Decrypto",
    "owner": "Mélanie",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Decrypto",
+   "link": "https://boardgamegeek.com/boardgame/225694",
    "video": "",
    "interested": [],
    "minPlayers": 3,
@@ -1852,11 +1852,11 @@
    "interested": [
     "Cindy"
    ],
-   "minPlayers": 2,
+   "minPlayers": 1,
    "maxPlayers": 4,
-   "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
+   "durationMin": 40,
+   "weight": "LICHT",
+   "infoChecked": true,
    "notes": ""
   },
   {
@@ -1891,11 +1891,11 @@
     "Kelly",
     "Guillaume"
    ],
-   "minPlayers": 2,
+   "minPlayers": 1,
    "maxPlayers": 4,
-   "durationMin": 60,
+   "durationMin": 100,
    "weight": "MIDDEL",
-   "infoChecked": false,
+   "infoChecked": true,
    "notes": ""
   },
   {
@@ -1910,11 +1910,11 @@
     "Manuela",
     "Mandy"
    ],
-   "minPlayers": 2,
+   "minPlayers": 1,
    "maxPlayers": 4,
-   "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
+   "durationMin": 40,
+   "weight": "LICHT",
+   "infoChecked": true,
    "notes": ""
   },
   {
@@ -1922,7 +1922,7 @@
    "name": "Arcs",
    "owner": "Moris",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Arcs",
+   "link": "https://boardgamegeek.com/boardgame/359871",
    "video": "",
    "interested": [],
    "minPlayers": 2,
@@ -2023,7 +2023,7 @@
    "name": "The Gang",
    "owner": "Moris",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=The+Gang",
+   "link": "https://boardgamegeek.com/boardgame/411567",
    "video": "",
    "interested": [
     "Wesley",
@@ -2071,10 +2071,10 @@
     "Dagmar"
    ],
    "minPlayers": 2,
-   "maxPlayers": 4,
+   "maxPlayers": 2,
    "durationMin": 60,
    "weight": "MIDDEL",
-   "infoChecked": false,
+   "infoChecked": true,
    "notes": ""
   },
   {
@@ -2085,11 +2085,11 @@
    "link": "https://boardgamegeek.com/boardgame/423787/behind",
    "video": "https://boardgamegeek.com/video/525343/behind/ludochrono-behind",
    "interested": [],
-   "minPlayers": 2,
-   "maxPlayers": 4,
-   "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
+   "minPlayers": 1,
+   "maxPlayers": 99,
+   "durationMin": 90,
+   "weight": "LICHT",
+   "infoChecked": true,
    "notes": ""
   },
   {
@@ -2111,11 +2111,11 @@
     "Dagmar",
     "Guillaume"
    ],
-   "minPlayers": 2,
+   "minPlayers": 1,
    "maxPlayers": 4,
-   "durationMin": 60,
+   "durationMin": 90,
    "weight": "MIDDEL",
-   "infoChecked": false,
+   "infoChecked": true,
    "notes": ""
   },
   {
@@ -2187,11 +2187,11 @@
     "Amra",
     "Godelief"
    ],
-   "minPlayers": 2,
+   "minPlayers": 1,
    "maxPlayers": 4,
-   "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
+   "durationMin": 150,
+   "weight": "ZWAAR",
+   "infoChecked": true,
    "notes": ""
   },
   {
@@ -2205,11 +2205,11 @@
     "Wilma",
     "Kelly"
    ],
-   "minPlayers": 2,
+   "minPlayers": 1,
    "maxPlayers": 4,
-   "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
+   "durationMin": 150,
+   "weight": "ZWAAR",
+   "infoChecked": true,
    "notes": ""
   },
   {
@@ -2224,11 +2224,11 @@
     "Wesley",
     "Dinna"
    ],
-   "minPlayers": 2,
+   "minPlayers": 3,
    "maxPlayers": 4,
-   "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
+   "durationMin": 25,
+   "weight": "LICHT",
+   "infoChecked": true,
    "notes": ""
   },
   {
@@ -2281,11 +2281,11 @@
    "interested": [
     "Wilma"
    ],
-   "minPlayers": 2,
-   "maxPlayers": 4,
+   "minPlayers": 3,
+   "maxPlayers": 8,
    "durationMin": 60,
    "weight": "MIDDEL",
-   "infoChecked": false,
+   "infoChecked": true,
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2352,9 +2352,9 @@
     "Wilma",
     "Wesley"
    ],
-   "minPlayers": 1,
+   "minPlayers": 2,
    "maxPlayers": 5,
-   "durationMin": 90,
+   "durationMin": 75,
    "weight": "MIDDEL",
    "infoChecked": true,
    "notes": "Wens: nog niemand neemt dit mee"
@@ -2370,10 +2370,10 @@
     "Wilma"
    ],
    "minPlayers": 2,
-   "maxPlayers": 4,
-   "durationMin": 60,
+   "maxPlayers": 6,
+   "durationMin": 180,
    "weight": "MIDDEL",
-   "infoChecked": false,
+   "infoChecked": true,
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2424,7 +2424,7 @@
    "maxPlayers": 4,
    "durationMin": 60,
    "weight": "MIDDEL",
-   "infoChecked": false,
+   "infoChecked": true,
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2439,9 +2439,9 @@
    ],
    "minPlayers": 2,
    "maxPlayers": 4,
-   "durationMin": 60,
+   "durationMin": 90,
    "weight": "MIDDEL",
-   "infoChecked": false,
+   "infoChecked": true,
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2455,11 +2455,11 @@
     "Wilma",
     "Mélanie"
    ],
-   "minPlayers": 2,
+   "minPlayers": 1,
    "maxPlayers": 4,
-   "durationMin": 60,
+   "durationMin": 120,
    "weight": "MIDDEL",
-   "infoChecked": false,
+   "infoChecked": true,
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2473,10 +2473,10 @@
     "Wilma"
    ],
    "minPlayers": 2,
-   "maxPlayers": 4,
+   "maxPlayers": 10,
    "durationMin": 60,
    "weight": "MIDDEL",
-   "infoChecked": false,
+   "infoChecked": true,
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2490,10 +2490,10 @@
     "Wilma"
    ],
    "minPlayers": 2,
-   "maxPlayers": 4,
-   "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
+   "maxPlayers": 2,
+   "durationMin": 75,
+   "weight": "LICHT",
+   "infoChecked": true,
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2544,7 +2544,7 @@
    ],
    "minPlayers": 2,
    "maxPlayers": 2,
-   "durationMin": 30,
+   "durationMin": 40,
    "weight": "MIDDEL",
    "infoChecked": true,
    "notes": "Wens: nog niemand neemt dit mee"
@@ -2582,11 +2582,11 @@
     "Igor",
     "Dinna"
    ],
-   "minPlayers": 2,
+   "minPlayers": 1,
    "maxPlayers": 4,
    "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
+   "weight": "LICHT",
+   "infoChecked": true,
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2599,11 +2599,11 @@
    "interested": [
     "Wilma"
    ],
-   "minPlayers": 2,
+   "minPlayers": 1,
    "maxPlayers": 4,
-   "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
+   "durationMin": 120,
+   "weight": "ZWAAR",
+   "infoChecked": true,
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2618,7 +2618,7 @@
    ],
    "minPlayers": 2,
    "maxPlayers": 4,
-   "durationMin": 90,
+   "durationMin": 75,
    "weight": "MIDDEL",
    "infoChecked": true,
    "notes": "Wens: nog niemand neemt dit mee"
@@ -2670,11 +2670,11 @@
    "interested": [
     "Wilma"
    ],
-   "minPlayers": 2,
-   "maxPlayers": 4,
-   "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
+   "minPlayers": 1,
+   "maxPlayers": 5,
+   "durationMin": 30,
+   "weight": "LICHT",
+   "infoChecked": true,
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2688,11 +2688,11 @@
     "Wilma",
     "Guillaume"
    ],
-   "minPlayers": 2,
+   "minPlayers": 1,
    "maxPlayers": 4,
-   "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
+   "durationMin": 120,
+   "weight": "ZWAAR",
+   "infoChecked": true,
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2710,8 +2710,8 @@
    "minPlayers": 2,
    "maxPlayers": 4,
    "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
+   "weight": "LICHT",
+   "infoChecked": true,
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2726,9 +2726,9 @@
    ],
    "minPlayers": 2,
    "maxPlayers": 4,
-   "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
+   "durationMin": 45,
+   "weight": "LICHT",
+   "infoChecked": true,
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2741,11 +2741,11 @@
    "interested": [
     "Wilma"
    ],
-   "minPlayers": 2,
-   "maxPlayers": 4,
-   "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
+   "minPlayers": 1,
+   "maxPlayers": 6,
+   "durationMin": 25,
+   "weight": "LICHT",
+   "infoChecked": true,
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2758,9 +2758,9 @@
    "interested": [
     "Wilma"
    ],
-   "minPlayers": 2,
+   "minPlayers": 1,
    "maxPlayers": 4,
-   "durationMin": 90,
+   "durationMin": 120,
    "weight": "ZWAAR",
    "infoChecked": true,
    "notes": "Wens: nog niemand neemt dit mee"
@@ -2777,7 +2777,7 @@
    ],
    "minPlayers": 1,
    "maxPlayers": 4,
-   "durationMin": 120,
+   "durationMin": 90,
    "weight": "ZWAAR",
    "infoChecked": true,
    "notes": "Wens: nog niemand neemt dit mee"
@@ -2812,7 +2812,7 @@
    "minPlayers": 1,
    "maxPlayers": 4,
    "durationMin": 75,
-   "weight": "MIDDEL",
+   "weight": "LICHT",
    "infoChecked": true,
    "notes": "Wens: nog niemand neemt dit mee"
   },
@@ -2827,11 +2827,11 @@
     "Wilma",
     "Melissa"
    ],
-   "minPlayers": 2,
-   "maxPlayers": 4,
-   "durationMin": 60,
+   "minPlayers": 1,
+   "maxPlayers": 6,
+   "durationMin": 90,
    "weight": "MIDDEL",
-   "infoChecked": false,
+   "infoChecked": true,
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2846,7 +2846,7 @@
    ],
    "minPlayers": 1,
    "maxPlayers": 4,
-   "durationMin": 150,
+   "durationMin": 180,
    "weight": "ZWAAR",
    "infoChecked": true,
    "notes": "Wens: nog niemand neemt dit mee"
@@ -2863,9 +2863,9 @@
    ],
    "minPlayers": 2,
    "maxPlayers": 4,
-   "durationMin": 60,
+   "durationMin": 160,
    "weight": "MIDDEL",
-   "infoChecked": false,
+   "infoChecked": true,
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2878,11 +2878,11 @@
    "interested": [
     "Wilma"
    ],
-   "minPlayers": 2,
+   "minPlayers": 1,
    "maxPlayers": 4,
-   "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
+   "durationMin": 180,
+   "weight": "ZWAAR",
+   "infoChecked": true,
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2895,11 +2895,11 @@
    "interested": [
     "Wilma"
    ],
-   "minPlayers": 2,
+   "minPlayers": 1,
    "maxPlayers": 4,
-   "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
+   "durationMin": 120,
+   "weight": "ZWAAR",
+   "infoChecked": true,
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2932,9 +2932,9 @@
    ],
    "minPlayers": 2,
    "maxPlayers": 4,
-   "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
+   "durationMin": 48,
+   "weight": "LICHT",
+   "infoChecked": true,
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2949,9 +2949,9 @@
    ],
    "minPlayers": 2,
    "maxPlayers": 4,
-   "durationMin": 60,
+   "durationMin": 90,
    "weight": "MIDDEL",
-   "infoChecked": false,
+   "infoChecked": true,
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2965,10 +2965,10 @@
     "Wilma"
    ],
    "minPlayers": 2,
-   "maxPlayers": 4,
+   "maxPlayers": 5,
    "durationMin": 60,
    "weight": "MIDDEL",
-   "infoChecked": false,
+   "infoChecked": true,
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -3124,7 +3124,7 @@
    "maxPlayers": 4,
    "durationMin": 60,
    "weight": "MIDDEL",
-   "infoChecked": false,
+   "infoChecked": true,
    "notes": ""
   },
   {

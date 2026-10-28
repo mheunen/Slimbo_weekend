@@ -242,6 +242,9 @@ class Repository(context: Context) {
         // zwaarte en notities die in de app zijn aangepast blijven staan.
         val seedGames = root.optJSONArray("games")
         val seedGameIds = mutableSetOf<String>()
+        // Spellen waarvan spelers/duur nog niet in de app zijn gecontroleerd of aangepast
+        val uncheckedGames = col(eventId, "games").get().await().documents
+            .filter { it.getBoolean("infoChecked") == false }.map { it.id }.toSet()
         if (seedGames != null) {
             for (i in 0 until seedGames.length()) {
                 val obj = seedGames.getJSONObject(i)
@@ -251,7 +254,12 @@ class Repository(context: Context) {
                 val data = (toValue(obj) as Map<String, Any>) - "id"
                 val ref = col(eventId, "games").document(id)
                 if (id in existing["games"].orEmpty()) {
-                    ops += ref to data.filterKeys { it in setOf("name", "owner", "wishlist", "interested", "link", "video") }
+                    val fields = mutableSetOf("name", "owner", "wishlist", "interested", "link", "video")
+                    // BGG-gegevens alleen overnemen als niemand ze in de app heeft aangepast
+                    if (id in uncheckedGames && obj.optBoolean("infoChecked", false)) {
+                        fields += setOf("minPlayers", "maxPlayers", "durationMin", "weight", "infoChecked")
+                    }
+                    ops += ref to data.filterKeys { it in fields }
                     updatedGames++
                 } else {
                     ops += ref to data
