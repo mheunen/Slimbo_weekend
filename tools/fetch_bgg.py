@@ -155,14 +155,35 @@ def thing_web(bid: str) -> dict:
     }
 
 
+def _norm(s: str) -> str:
+    s = re.sub(r"\(.*?\)", "", s.lower())
+    s = re.sub(r"(second edition|deluxe edition|en uitbreiding.*|en uitbreidingen)", "", s)
+    return re.sub(r"[^a-z0-9]", "", s)
+
+
+def names_match(ours: str, theirs: str) -> bool:
+    a, b = _norm(ours), _norm(theirs)
+    if not a or not b:
+        return False
+    return a == b or a in b or b in a
+
+
 def main():
     seed = json.loads(SEED.read_text(encoding="utf-8"))
     games = seed["games"]
     result, unresolved, errors = {}, [], []
     cache: dict[str, dict] = {}
+    manual = {}
+    ids_file = ROOT / "tools/bgg_ids.json"
+    if ids_file.exists():
+        manual = {k: v for k, v in json.loads(ids_file.read_text(encoding="utf-8")).items() if not k.startswith("_")}
+    rejected = []
     for g in games:
         m = re.search(r"/boardgame/(\d+)", g.get("link", ""))
         bid = m.group(1) if m else None
+        from_manual = False
+        if not bid and g["name"] in manual:
+            bid, from_manual = manual[g["name"]], True
         try:
             if not bid:
                 bid = search_web(g["name"])
@@ -173,11 +194,16 @@ def main():
             if bid not in cache:
                 cache[bid] = thing_web(bid)
                 time.sleep(1)
-            result[g["id"]] = {"name": g["name"], **cache[bid]}
+            info = cache[bid]
+            mismatch = from_manual and not names_match(g["name"], info.get("bggName", ""))
+            if mismatch:
+                rejected.append(f"{g['name']} -> {bid} = {info.get('bggName')}")
+            result[g["id"]] = {"name": g["name"], "source": "id" if from_manual else "link",
+                               "nameMismatch": mismatch, **info}
         except Exception as e:  # noqa: BLE001
             errors.append(f"{g['name']}: {type(e).__name__}: {e}")
 
-    OUT.write_text(json.dumps({"games": result, "unresolved": unresolved, "errors": errors,
+    OUT.write_text(json.dumps({"games": result, "unresolved": unresolved, "rejected": rejected, "errors": errors,
                                "searchLog": SEARCH_LOG[:60]},
                               ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"{len(result)} van {len(games)} spellen gevonden")
