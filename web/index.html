@@ -380,6 +380,7 @@ function usersView() {
   const webUsers = S.members.filter((m) => m.web);
   const guestOf = (m) => S.guests.find((g) => g.claimedBy === m.id);
   const verCell = (m) => {
+    if (m.platform === "webapp") return `<span class="pill ok">${esc(m.appVersion || "web-app")}</span>`;
     if (!m.appVersionCode) return `<span class="pill warn">onbekend (oud)</span>`;
     if (!LATEST) return esc(m.appVersion);
     return m.appVersionCode >= LATEST.code
@@ -387,7 +388,7 @@ function usersView() {
       : `<span class="pill warn">${esc(m.appVersion)} – update</span>`;
   };
   const sorted = [...appUsers].sort((a, b) => (b.lastSeenAt || 0) - (a.lastSeenAt || 0));
-  const upToDate = LATEST ? appUsers.filter((m) => (m.appVersionCode || 0) >= LATEST.code).length : null;
+  const upToDate = LATEST ? appUsers.filter((m) => m.platform === "webapp" || (m.appVersionCode || 0) >= LATEST.code).length : null;
   const noNotif = appUsers.filter((m) => m.notifications === false).length;
   const notYet = S.guests.filter((g) => !g.claimedBy).map((g) => g.name).sort((a, b) => a.localeCompare(b, "nl"));
   const unlinked = appUsers.filter((m) => !guestOf(m)).length;
