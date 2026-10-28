@@ -132,6 +132,18 @@
    "weight": "ZWAAR",
    "averageWeight": 4.27
   },
+  "g-kittin": {
+   "name": "Kittin",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "302477",
+   "bggName": "Kittin",
+   "minPlayers": 2,
+   "maxPlayers": 8,
+   "durationMin": 15,
+   "weight": "LICHT",
+   "averageWeight": 1.0
+  },
   "g-raas": {
    "name": "Raas",
    "source": "link",
@@ -252,6 +264,18 @@
    "weight": "LICHT",
    "averageWeight": 2.15
   },
+  "g-drillers": {
+   "name": "Drillers",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "465669",
+   "bggName": "Drillers",
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 120,
+   "weight": "MIDDEL",
+   "averageWeight": 2.64
+  },
   "g-last-lantern": {
    "name": "Last lantern",
    "source": "link",
@@ -324,6 +348,18 @@
    "weight": "MIDDEL",
    "averageWeight": 3.11
   },
+  "g-la-fleur-en-uitbreidingen": {
+   "name": "La Fleur (en uitbreidingen)",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "402817",
+   "bggName": "La Fleur",
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "averageWeight": 2.56
+  },
   "g-maracaibo-en-uitbreiding-the-uprising": {
    "name": "Maracaibo (en uitbreiding the uprising)",
    "source": "link",
@@ -371,6 +407,18 @@
    "durationMin": 120,
    "weight": "MIDDEL",
    "averageWeight": 3.19
+  },
+  "g-puzzle-strike-2": {
+   "name": "Puzzle Strike 2",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "368942",
+   "bggName": "Puzzle Strike 2: Bold Adventures!",
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "",
+   "averageWeight": 0.0
   },
   "g-resafa": {
    "name": "Resafa",
@@ -564,6 +612,30 @@
    "weight": "ZWAAR",
    "averageWeight": 3.45
   },
+  "g-elementica": {
+   "name": "Elementica",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "469261",
+   "bggName": "Elementica",
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 100,
+   "weight": "MIDDEL",
+   "averageWeight": 3.0
+  },
+  "g-greenwood": {
+   "name": "Greenwood",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "469383",
+   "bggName": "Greenwood",
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 160,
+   "weight": "MIDDEL",
+   "averageWeight": 3.16
+  },
   "g-seti-evt-met-space-agencies": {
    "name": "Seti (evt met space agencies)",
    "source": "link",
@@ -587,6 +659,18 @@
    "durationMin": 20,
    "weight": "LICHT",
    "averageWeight": 1.57
+  },
+  "g-timespan": {
+   "name": "Timespan",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "462479",
+   "bggName": "Timespan",
+   "minPlayers": 1,
+   "maxPlayers": 5,
+   "durationMin": 90,
+   "weight": "MIDDEL",
+   "averageWeight": 2.78
   },
   "g-a-wild-venture": {
    "name": "A wild venture",
@@ -623,6 +707,18 @@
    "durationMin": 90,
    "weight": "MIDDEL",
    "averageWeight": 3.0
+  },
+  "g-forage": {
+   "name": "Forage",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "458390",
+   "bggName": "Forage",
+   "minPlayers": 1,
+   "maxPlayers": 6,
+   "durationMin": 30,
+   "weight": "LICHT",
+   "averageWeight": 2.0
   },
   "g-chronocritters": {
    "name": "Chronocritters",
@@ -683,6 +779,18 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "averageWeight": 2.3
+  },
+  "g-bullet-3": {
+   "name": "Bullet <3",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "307305",
+   "bggName": "Bullet♥︎",
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 20,
+   "weight": "LICHT",
+   "averageWeight": 2.15
   },
   "g-calimala": {
    "name": "Calimala",
@@ -792,6 +900,30 @@
    "weight": "LICHT",
    "averageWeight": 2.0
   },
+  "g-for-the-gods": {
+   "name": "For the Gods",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "444234",
+   "bggName": "For the Gods!",
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "averageWeight": 2.25
+  },
+  "g-hell-of-a-deal": {
+   "name": "Hell of a Deal",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "463605",
+   "bggName": "Hell of a Deal",
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 120,
+   "weight": "MIDDEL",
+   "averageWeight": 2.39
+  },
   "g-het-witte-kasteel-het-duel": {
    "name": "Het Witte Kasteel - Het Duel",
    "source": "link",
@@ -851,6 +983,18 @@
    "durationMin": 75,
    "weight": "MIDDEL",
    "averageWeight": 3.11
+  },
+  "g-navoria": {
+   "name": "Navoria",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "371932",
+   "bggName": "Explorers of Navoria",
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 80,
+   "weight": "MIDDEL",
+   "averageWeight": 2.28
   },
   "g-parks": {
    "name": "Parks",
@@ -948,6 +1092,18 @@
    "weight": "ZWAAR",
    "averageWeight": 4.13
   },
+  "g-tenby": {
+   "name": "Tenby",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "407233",
+   "bggName": "Tenby",
+   "minPlayers": 1,
+   "maxPlayers": 5,
+   "durationMin": 60,
+   "weight": "LICHT",
+   "averageWeight": 2.08
+  },
   "g-tenpenny-parks": {
    "name": "Tenpenny Parks",
    "source": "link",
@@ -1020,6 +1176,18 @@
    "weight": "ZWAAR",
    "averageWeight": 3.3
   },
+  "g-thrones-of-valeria": {
+   "name": "Thrones of Valeria",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "345894",
+   "bggName": "Thrones of Valeria",
+   "minPlayers": 2,
+   "maxPlayers": 6,
+   "durationMin": 45,
+   "weight": "LICHT",
+   "averageWeight": 1.83
+  },
   "g-tolleno": {
    "name": "Tolleno",
    "source": "link",
@@ -1056,6 +1224,54 @@
    "weight": "MIDDEL",
    "averageWeight": 2.21
   },
+  "g-inside-job": {
+   "name": "Inside Job",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "324914",
+   "bggName": "Inside Job",
+   "minPlayers": 2,
+   "maxPlayers": 5,
+   "durationMin": 30,
+   "weight": "LICHT",
+   "averageWeight": 1.69
+  },
+  "g-jisogi": {
+   "name": "JiSoGi",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "429845",
+   "bggName": "Jisogi: Anime Studio Tycoon",
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 120,
+   "weight": "MIDDEL",
+   "averageWeight": 2.9
+  },
+  "g-melodies": {
+   "name": "Melodies",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "475188",
+   "bggName": "Melodies",
+   "minPlayers": 2,
+   "maxPlayers": 5,
+   "durationMin": 30,
+   "weight": "LICHT",
+   "averageWeight": 2.0
+  },
+  "g-night-soil": {
+   "name": "Night Soil",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "421530",
+   "bggName": "Night Soil",
+   "minPlayers": 2,
+   "maxPlayers": 5,
+   "durationMin": 90,
+   "weight": "MIDDEL",
+   "averageWeight": 3.07
+  },
   "g-opera-magna": {
    "name": "Opera Magna",
    "source": "link",
@@ -1067,6 +1283,30 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "averageWeight": 2.88
+  },
+  "g-power-vacuum": {
+   "name": "Power Vacuum",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "402106",
+   "bggName": "Power Vacuum",
+   "minPlayers": 1,
+   "maxPlayers": 5,
+   "durationMin": 45,
+   "weight": "LICHT",
+   "averageWeight": 2.03
+  },
+  "g-queen-alice": {
+   "name": "Queen Alice",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "456236",
+   "bggName": "Queen Alice",
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 120,
+   "weight": "ZWAAR",
+   "averageWeight": 3.81
   }
  },
  "unresolved": [
@@ -1075,44 +1315,24 @@
   "Meow Tiles",
   "Similo Slimbo",
   "Trio",
-  "Kittin",
   "Shipwreck Arcana",
-  "Drillers",
   "Arborea",
-  "La Fleur (en uitbreidingen)",
   "Ohanami",
-  "Puzzle Strike 2",
   "Pili Pili",
   "Paint the Roses",
-  "Elementica",
   "Endeavor deep sea",
   "Fishing",
-  "Greenwood",
-  "Timespan",
   "Gibberesh",
   "detective spelletje",
-  "Forage",
   "-60°",
   "Abroad",
   "Automania Second Edition",
-  "Bullet <3",
-  "For the Gods",
-  "Hell of a Deal",
-  "Navoria",
-  "Tenby",
-  "Thrones of Valeria",
   "Pokespan",
   "Container",
-  "Inside Job",
-  "JiSoGi",
   "March of the Ants",
-  "Melodies",
   "Moon Colony Bloodbath",
-  "Night Soil",
   "Panda Spin + XP",
-  "Pax Porfiriana (Second Edition)",
-  "Power Vacuum",
-  "Queen Alice"
+  "Pax Porfiriana (Second Edition)"
  ],
  "rejected": [],
  "errors": [],
