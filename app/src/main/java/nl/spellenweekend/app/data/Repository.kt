@@ -114,7 +114,7 @@ class Repository(context: Context) {
         suspend fun get(name: String) = col(eventId, name).get(src).await().documents
         return Snapshot(
             activities = get("activities").map { it.toActivity() },
-            members = get("members").map { it.toMember() },
+            members = get("members").filter { it.getBoolean("web") != true }.map { it.toMember() },
             places = get("places").map { it.toPlace() },
             tables = get("tables").map { it.toTable() },
         )
@@ -137,7 +137,16 @@ class Repository(context: Context) {
         awaitClose { reg.remove() }
     }
 
-    fun members(eventId: String) = col(eventId, "members").observe { it.toMember() }
+    /** Leden van de beheerwebsite (web = true) tellen niet mee in de app. */
+    fun members(eventId: String): Flow<List<Member>> = callbackFlow {
+        val reg = col(eventId, "members").addSnapshotListener { snap, err ->
+            if (err != null) {
+                Log.w(TAG, "members", err); return@addSnapshotListener
+            }
+            if (snap != null) trySend(snap.documents.filter { it.getBoolean("web") != true }.map { it.toMember() })
+        }
+        awaitClose { reg.remove() }
+    }
     fun games(eventId: String) = col(eventId, "games").orderBy("name").observe { it.toGame() }
     fun places(eventId: String) = col(eventId, "places").orderBy("name").observe { it.toPlace() }
     fun tables(eventId: String) = col(eventId, "tables").orderBy("name").observe { it.toTable() }

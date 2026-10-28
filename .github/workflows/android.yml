@@ -6,6 +6,10 @@ on:
     paths-ignore:
       - "firestore.rules"
       - "**.md"
+      - "web/**"
+      - "tools/**"
+      - ".github/workflows/pages.yml"
+      - ".github/workflows/bgg.yml"
   workflow_dispatch:
 
 permissions:

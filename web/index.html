@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slimbo Beheer</title>
+<link rel="icon" href="icon.png">
+<style>
+  :root {
+    --bg: #f8f6f0; --surface: #ffffff; --surface2: #eeede5; --text: #1b1d1a; --muted: #5d625b;
+    --line: #dcdcd2; --brand: #2e6b4f; --brand-ink: #ffffff; --brand-soft: #cbe9d7; --warn: #b3261e;
+    --accent: #a86f12; --radius: 12px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #121512; --surface: #1c201c; --surface2: #262a26; --text: #e6e8e3; --muted: #a3a9a1;
+      --line: #343a35; --brand: #8fd3ae; --brand-ink: #003822; --brand-soft: #175239; --warn: #ffb4ab; --accent: #f2be5e;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  header { background: var(--surface); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 5; }
+  .bar { max-width: 1100px; margin: 0 auto; padding: 10px 16px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .logo { background: #fff; border-radius: 8px; padding: 4px 10px; display: inline-flex; }
+  .logo img { height: 30px; display: block; }
+  .bar h1 { font-size: 16px; margin: 0; font-weight: 600; flex: 1; min-width: 140px; }
+  .bar .who { color: var(--muted); font-size: 13px; }
+  nav { max-width: 1100px; margin: 0 auto; padding: 0 12px; display: flex; gap: 4px; overflow-x: auto; }
+  nav button { background: none; border: 0; border-bottom: 3px solid transparent; padding: 10px 12px; color: var(--muted); font: inherit; cursor: pointer; white-space: nowrap; }
+  nav button.on { color: var(--brand); border-bottom-color: var(--brand); font-weight: 600; }
+  main { max-width: 1100px; margin: 0 auto; padding: 16px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; margin-bottom: 14px; }
+  .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .grow { flex: 1; }
+  .muted { color: var(--muted); font-size: 13px; }
+  button.btn { background: var(--brand); color: var(--brand-ink); border: 0; border-radius: 999px; padding: 8px 16px; font: inherit; font-weight: 600; cursor: pointer; }
+  button.btn.ghost { background: transparent; color: var(--brand); border: 1px solid var(--line); }
+  button.btn.danger { background: transparent; color: var(--warn); border: 1px solid var(--line); }
+  button.btn:disabled { opacity: .5; cursor: default; }
+  input, select, textarea { font: inherit; color: var(--text); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; width: 100%; }
+  textarea { min-height: 80px; resize: vertical; }
+  label.f { display: block; margin-bottom: 10px; }
+  label.f span { display: block; font-size: 12px; color: var(--muted); margin-bottom: 3px; }
+  label.chk { display: flex; gap: 8px; align-items: center; margin-bottom: 10px; }
+  label.chk input { width: auto; }
+  .tablewrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: 12px; color: var(--muted); font-weight: 600; position: sticky; top: 0; background: var(--surface); }
+  tbody tr { cursor: pointer; }
+  tbody tr:hover { background: var(--surface2); }
+  .pill { display: inline-block; padding: 1px 8px; border-radius: 999px; background: var(--surface2); font-size: 12px; }
+  .pill.warn { color: var(--warn); }
+  .pill.ok { background: var(--brand-soft); }
+  dialog { border: 0; border-radius: var(--radius); padding: 0; width: min(560px, calc(100vw - 32px)); background: var(--surface); color: var(--text); }
+  dialog::backdrop { background: rgba(0,0,0,.4); }
+  dialog form { padding: 18px; max-height: 85vh; overflow: auto; }
+  dialog h2 { margin: 0 0 12px; font-size: 18px; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; }
+  @media (max-width: 560px) { .grid2 { grid-template-columns: 1fr; } }
+  #toast { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); background: var(--text); color: var(--bg); padding: 10px 16px; border-radius: 10px; opacity: 0; transition: opacity .2s; pointer-events: none; max-width: calc(100vw - 32px); }
+  #toast.show { opacity: 1; }
+  .login { max-width: 420px; margin: 40px auto; }
+  .login .logo { margin: 0 auto 16px; display: flex; justify-content: center; }
+  .login .logo img { height: 56px; }
+  h3 { margin: 0 0 8px; font-size: 15px; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<dialog id="dlg"><form method="dialog" id="dlgForm"></form></dialog>
+<div id="toast"></div>
+
+<script src="config.js"></script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {
+  getFirestore, collection, doc, getDoc, getDocs, setDoc, addDoc, deleteDoc, query, where, limit,
+  onSnapshot, writeBatch, arrayUnion
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const $ = (s, el = document) => el.querySelector(s);
+const esc = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const store = {
+  get(k) { try { return localStorage.getItem(k); } catch { return null; } },
+  set(k, v) { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch {} },
+};
+function toast(msg) { const t = $("#toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove("show"), 3000); }
+
+if (!window.FIREBASE_CONFIG || !window.FIREBASE_CONFIG.apiKey) {
+  $("#app").innerHTML = `<main><div class="card">Configuratie ontbreekt (config.js). De site wordt gebouwd door de GitHub-workflow "Website".</div></main>`;
+  throw new Error("geen config");
+}
+const fb = initializeApp(window.FIREBASE_CONFIG);
+const auth = getAuth(fb);
+const db = getFirestore(fb);
+
+// ------------------------------------------------------------------ state
+const S = {
+  uid: null, eventId: store.get("eventId"), event: null, tab: store.get("tab") || "weekend",
+  games: [], places: [], tables: [], rooms: [], guests: [], chores: [], activities: [], members: [],
+  unsub: [],
+};
+const col = (name) => collection(db, "events", S.eventId, name);
+const ref = (name, id) => doc(db, "events", S.eventId, name, id);
+const now = () => Date.now();
+
+const TYPES = [["SPEL", "Spel"], ["ETEN", "Eten"], ["WANDELEN", "Wandelen"], ["ANDERS", "Anders"]];
+const STATUS = [["GEPLAND", "Gepland"], ["GESTART", "Bezig"], ["AFGEROND", "Afgerond"], ["GEANNULEERD", "Geannuleerd"]];
+const WEIGHTS = [["LICHT", "Licht"], ["MIDDEL", "Middel"], ["ZWAAR", "Zwaar"]];
+const DAYS = ["Vrijdag", "Zaterdag", "Zondag", "Maandag"].map((d) => [d, d]);
+const SLOTS = [["ochtend", "Ochtend"], ["middag", "Middag"], ["avond", "Avond"]];
+const label = (opts, v) => (opts.find((o) => o[0] === v) || [, v])[1];
+const placeName = (id) => S.places.find((p) => p.id === id)?.name || "";
+const tableName = (id) => S.tables.find((t) => t.id === id)?.name || "";
+const memberName = (id) => S.members.find((m) => m.id === id)?.name || "?";
+
+const fmtDT = (ms) => ms ? new Date(ms).toLocaleString("nl-NL", { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }) : "";
+const toLocalInput = (ms) => { if (!ms) return ""; const d = new Date(ms); d.setMinutes(d.getMinutes() - d.getTimezoneOffset()); return d.toISOString().slice(0, 16); };
+const fromLocalInput = (s) => s ? new Date(s).getTime() : 0;
+const slug = (s) => s.normalize("NFKD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+// ------------------------------------------------------------------ schemas
+const SCHEMAS = {
+  games: {
+    title: "Spel", order: (a, b) => a.name.localeCompare(b.name, "nl"),
+    fields: [
+      { k: "name", l: "Naam", t: "text", req: true },
+      { k: "owner", l: "Wie neemt het mee", t: "text" },
+      { k: "wishlist", l: "Wenslijst (niemand neemt het mee)", t: "bool" },
+      { k: "minPlayers", l: "Min. spelers", t: "int", def: 2, half: true },
+      { k: "maxPlayers", l: "Max. spelers", t: "int", def: 4, half: true },
+      { k: "durationMin", l: "Speelduur (min)", t: "int", def: 60, half: true },
+      { k: "weight", l: "Zwaarte", t: "select", opts: () => WEIGHTS, def: "MIDDEL", half: true },
+      { k: "link", l: "Link (BoardGameGeek)", t: "text" },
+      { k: "interested", l: "Interesse (namen, komma-gescheiden)", t: "list" },
+      { k: "notes", l: "Notitie", t: "text" },
+    ],
+    beforeSave: (d) => ({ ...d, infoChecked: true, wishlist: d.wishlist && !d.owner }),
+    cols: [
+      ["Spel", (g) => esc(g.name)],
+      ["Neemt mee", (g) => g.wishlist ? `<span class="pill">wens</span>` : esc(g.owner)],
+      ["Spelers", (g) => `${g.minPlayers ?? ""}–${g.maxPlayers ?? ""}`],
+      ["Duur", (g) => `${g.durationMin ?? ""} min`],
+      ["Zwaarte", (g) => label(WEIGHTS, g.weight)],
+      ["Info", (g) => g.infoChecked === false ? `<span class="pill warn">controleren</span>` : `<span class="pill ok">ok</span>`],
+      ["Interesse", (g) => (g.interested || []).length || ""],
+    ],
+  },
+  activities: {
+    title: "Activiteit", order: (a, b) => (a.startAt || 0) - (b.startAt || 0),
+    fields: [
+      { k: "type", l: "Soort", t: "select", opts: () => TYPES, def: "SPEL", half: true },
+      { k: "status", l: "Status", t: "select", opts: () => STATUS, def: "GEPLAND", half: true },
+      { k: "title", l: "Titel", t: "text", req: true },
+      { k: "gameId", l: "Spel (optioneel)", t: "select", opts: () => [["", "—"], ...S.games.map((g) => [g.id, g.name]).sort((a, b) => a[1].localeCompare(b[1], "nl"))] },
+      { k: "startAt", l: "Start", t: "datetime", half: true },
+      { k: "durationMin", l: "Duur (min)", t: "int", def: 60, half: true },
+      { k: "placeId", l: "Locatie", t: "select", opts: () => [["", "—"], ...S.places.map((p) => [p.id, p.name])], half: true },
+      { k: "tableId", l: "Tafel", t: "select", opts: () => [["", "—"], ...S.tables.map((t) => [t.id, `${t.name} (${placeName(t.placeId)})`])], half: true },
+      { k: "maxParticipants", l: "Max. deelnemers (0 = geen)", t: "int", def: 0 },
+      { k: "notes", l: "Notities", t: "textarea" },
+    ],
+    beforeSave: (d, isNew) => ({
+      ...d, updatedBy: S.uid, updatedAt: now(),
+      ...(isNew ? { createdBy: S.uid, participants: [], invited: [], declined: [], reminderSent: false } : {}),
+    }),
+    info: (a) => a.participants?.length ? `Deelnemers: ${a.participants.map(memberName).join(", ")}` : "",
+    cols: [
+      ["Wanneer", (a) => esc(fmtDT(a.startAt))],
+      ["Soort", (a) => label(TYPES, a.type)],
+      ["Titel", (a) => esc(a.title)],
+      ["Waar", (a) => esc([tableName(a.tableId), placeName(a.placeId)].filter(Boolean).join(" · "))],
+      ["Mee", (a) => (a.participants || []).length],
+      ["Status", (a) => label(STATUS, a.status)],
+    ],
+  },
+  places: {
+    title: "Locatie", order: (a, b) => a.name.localeCompare(b.name, "nl"),
+    fields: [{ k: "name", l: "Naam", t: "text", req: true }, { k: "description", l: "Omschrijving", t: "textarea" }],
+    cols: [["Locatie", (p) => esc(p.name)], ["Omschrijving", (p) => esc(p.description)], ["Tafels", (p) => S.tables.filter((t) => t.placeId === p.id).length]],
+  },
+  tables: {
+    title: "Tafel", order: (a, b) => (placeName(a.placeId) + a.name).localeCompare(placeName(b.placeId) + b.name, "nl"),
+    fields: [
+      { k: "name", l: "Naam", t: "text", req: true },
+      { k: "placeId", l: "Locatie", t: "select", opts: () => [["", "—"], ...S.places.map((p) => [p.id, p.name])] },
+      { k: "seats", l: "Plaatsen", t: "int", def: 4 },
+    ],
+    cols: [["Tafel", (t) => esc(t.name)], ["Locatie", (t) => esc(placeName(t.placeId))], ["Plaatsen", (t) => t.seats]],
+  },
+  rooms: {
+    title: "Kamer", order: (a, b) => (placeName(a.placeId) + a.floor + a.name).localeCompare(placeName(b.placeId) + b.floor + b.name, "nl"),
+    fields: [
+      { k: "placeId", l: "Residentie", t: "select", opts: () => S.places.map((p) => [p.id, p.name]) },
+      { k: "floor", l: "Verdieping", t: "int", def: 1, half: true },
+      { k: "beds", l: "Bedden", t: "int", def: 3, half: true },
+      { k: "name", l: "Naam", t: "text", req: true },
+      { k: "occupants", l: "Bewoners (komma-gescheiden)", t: "list" },
+      { k: "bedInfo", l: "Bedinfo", t: "text" },
+    ],
+    afterSave: syncGuestsForRoom,
+    cols: [
+      ["Residentie", (r) => esc(placeName(r.placeId))], ["Kamer", (r) => esc(r.name)], ["Verd.", (r) => r.floor],
+      ["Bewoners", (r) => esc((r.occupants || []).join(", "))], ["Bezetting", (r) => `${(r.occupants || []).length}/${r.beds}`],
+    ],
+  },
+  chores: {
+    title: "Corveeblok", order: (a, b) => (placeName(a.placeId)).localeCompare(placeName(b.placeId), "nl") || (a.startAt || 0) - (b.startAt || 0),
+    fields: [
+      { k: "placeId", l: "Residentie", t: "select", opts: () => S.places.map((p) => [p.id, p.name]) },
+      { k: "day", l: "Dag", t: "select", opts: () => DAYS, half: true },
+      { k: "slot", l: "Dagdeel", t: "select", opts: () => SLOTS, half: true },
+      { k: "startAt", l: "Van", t: "datetime", half: true },
+      { k: "endAt", l: "Tot", t: "datetime", half: true },
+      { k: "names", l: "Wie (komma-gescheiden)", t: "list" },
+    ],
+    cols: [["Residentie", (c) => esc(placeName(c.placeId))], ["Dag", (c) => esc(c.day)], ["Dagdeel", (c) => label(SLOTS, c.slot)], ["Wie", (c) => esc((c.names || []).join(", "))]],
+  },
+};
+
+async function syncGuestsForRoom(room) {
+  const b = writeBatch(db);
+  const names = room.occupants || [];
+  for (const n of names) {
+    const g = S.guests.find((x) => x.name.toLowerCase() === n.toLowerCase());
+    if (g) b.set(ref("guests", g.id), { roomId: room.id }, { merge: true });
+    else b.set(ref("guests", "gst-" + slug(n)), { name: n, roomId: room.id, wants: [] }, { merge: true });
+  }
+  for (const g of S.guests) {
+    if (g.roomId === room.id && !names.some((n) => n.toLowerCase() === g.name.toLowerCase())) b.set(ref("guests", g.id), { roomId: "" }, { merge: true });
+  }
+  await b.commit();
+}
+
+// ------------------------------------------------------------------ edit dialog
+function openEditor(colName, item) {
+  const sc = SCHEMAS[colName];
+  const isNew = !item;
+  const v = item || {};
+  const field = (f) => {
+    const val = v[f.k] ?? f.def ?? "";
+    const id = "f_" + f.k;
+    if (f.t === "bool") return `<label class="chk"><input type="checkbox" id="${id}" ${val ? "checked" : ""}> ${esc(f.l)}</label>`;
+    let input;
+    if (f.t === "select") input = `<select id="${id}">${f.opts().map(([k, l]) => `<option value="${esc(k)}" ${k === val ? "selected" : ""}>${esc(l)}</option>`).join("")}</select>`;
+    else if (f.t === "textarea") input = `<textarea id="${id}">${esc(val)}</textarea>`;
+    else if (f.t === "int") input = `<input id="${id}" type="number" min="0" value="${esc(val)}">`;
+    else if (f.t === "datetime") input = `<input id="${id}" type="datetime-local" value="${toLocalInput(val)}">`;
+    else if (f.t === "list") input = `<input id="${id}" value="${esc((val || []).join(", "))}">`;
+    else input = `<input id="${id}" value="${esc(val)}" ${f.req ? "required" : ""}>`;
+    return `<label class="f"><span>${esc(f.l)}</span>${input}</label>`;
+  };
+  const halves = [], html = [];
+  for (const f of sc.fields) {
+    if (f.half) { halves.push(field(f)); if (halves.length === 2) { html.push(`<div class="grid2">${halves.join("")}</div>`); halves.length = 0; } }
+    else { if (halves.length) { html.push(`<div class="grid2">${halves.join("")}</div>`); halves.length = 0; } html.push(field(f)); }
+  }
+  if (halves.length) html.push(`<div class="grid2">${halves.join("")}</div>`);
+  const extra = !isNew && sc.info ? `<p class="muted">${esc(sc.info(v))}</p>` : "";
+  $("#dlgForm").innerHTML = `<h2>${isNew ? "Nieuw" : "Bewerken"}: ${esc(sc.title)}</h2>${html.join("")}${extra}
+    <div class="row" style="margin-top:8px">
+      ${isNew ? "" : `<button type="button" class="btn danger" id="dDel">Verwijderen</button>`}
+      <span class="grow"></span>
+      <button type="button" class="btn ghost" id="dCancel">Annuleren</button>
+      <button type="submit" class="btn" id="dSave">Opslaan</button>
+    </div>`;
+  const dlg = $("#dlg");
+  $("#dCancel").onclick = () => dlg.close();
+  if (!isNew) $("#dDel").onclick = async () => {
+    if (!confirm(`"${v.name || v.title}" voor iedereen verwijderen?`)) return;
+    await deleteDoc(ref(colName, v.id)); dlg.close(); toast("Verwijderd");
+  };
+  $("#dlgForm").onsubmit = async (e) => {
+    e.preventDefault();
+    let data = {};
+    for (const f of sc.fields) {
+      const el = $("#f_" + f.k);
+      if (f.t === "bool") data[f.k] = el.checked;
+      else if (f.t === "int") data[f.k] = parseInt(el.value || "0", 10);
+      else if (f.t === "datetime") data[f.k] = fromLocalInput(el.value);
+      else if (f.t === "list") data[f.k] = el.value.split(",").map((s) => s.trim()).filter(Boolean);
+      else data[f.k] = el.value.trim();
+    }
+    if (sc.beforeSave) data = sc.beforeSave(data, isNew);
+    $("#dSave").disabled = true;
+    try {
+      let id = v.id;
+      if (isNew) id = (await addDoc(col(colName), data)).id;
+      else await setDoc(ref(colName, id), data, { merge: true });
+      if (sc.afterSave) await sc.afterSave({ ...v, ...data, id });
+      dlg.close(); toast("Opgeslagen");
+    } catch (err) { toast("Opslaan mislukt: " + err.message); $("#dSave").disabled = false; }
+  };
+  dlg.showModal();
+}
+
+// ------------------------------------------------------------------ views
+function listView(colName, intro = "", filterHtml = "") {
+  const sc = SCHEMAS[colName];
+  const items = [...S[colName]].sort(sc.order);
+  const q = (S.q?.[colName] || "").toLowerCase();
+  const shown = q ? items.filter((it) => JSON.stringify(it).toLowerCase().includes(q)) : items;
+  return `<div class="card">
+    <div class="row" style="margin-bottom:10px">
+      <input class="grow" style="max-width:320px" placeholder="Zoeken…" data-search="${colName}" value="${esc(S.q?.[colName] || "")}">
+      ${filterHtml}<span class="grow muted">${shown.length} van ${items.length}</span>
+      <button class="btn" data-new="${colName}">+ ${esc(sc.title)}</button>
+    </div>
+    ${intro ? `<p class="muted">${intro}</p>` : ""}
+    <div class="tablewrap"><table><thead><tr>${sc.cols.map((c) => `<th>${c[0]}</th>`).join("")}</tr></thead>
+    <tbody>${shown.map((it) => `<tr data-edit="${colName}" data-id="${esc(it.id)}">${sc.cols.map((c) => `<td>${c[1](it)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>
+  </div>`;
+}
+
+function infoToText(info) { return (info || []).map((s) => `## ${s.title}\n` + (s.items || []).map((i) => `- ${i}`).join("\n")).join("\n\n"); }
+function textToInfo(txt) {
+  const out = []; let cur = null;
+  for (const raw of txt.split("\n")) {
+    const line = raw.trim();
+    if (line.startsWith("## ")) { cur = { title: line.slice(3).trim(), items: [] }; out.push(cur); }
+    else if (line.startsWith("- ") && cur) cur.items.push(line.slice(2).trim());
+    else if (line && cur) cur.items.push(line);
+  }
+  return out;
+}
+
+function weekendView() {
+  const e = S.event || {};
+  return `<div class="card">
+    <h3>Weekend</h3>
+    <div class="grid2">
+      <label class="f"><span>Naam</span><input id="eName" value="${esc(e.name)}"></label>
+      <label class="f"><span>Weekendcode</span><input value="${esc(e.joinCode)}" readonly></label>
+      <label class="f"><span>Accommodatie</span><input id="eVenue" value="${esc(e.venue)}"></label>
+      <label class="f"><span>Telefoon</span><input id="ePhone" value="${esc(e.phone)}"></label>
+    </div>
+    <label class="f"><span>Adres</span><input id="eAddress" value="${esc(e.address)}"></label>
+    <div class="grid2">
+      <label class="f"><span>Inchecken</span><input id="eIn" type="datetime-local" value="${toLocalInput(e.checkInAt)}"></label>
+      <label class="f"><span>Uitchecken</span><input id="eOut" type="datetime-local" value="${toLocalInput(e.checkOutAt)}"></label>
+    </div>
+    <label class="f"><span>Weekendinfo — kopjes met "## ", regels met "- "</span><textarea id="eInfo" style="min-height:320px">${esc(infoToText(e.info))}</textarea></label>
+    <div class="row"><span class="grow"></span><button class="btn" id="eSave">Opslaan</button></div>
+  </div>
+  <div class="card"><h3>Deelnemers in de app (${S.members.filter((m) => !m.web).length})</h3>
+    <div class="tablewrap"><table><thead><tr><th>Naam</th><th>Status</th><th>Toelichting</th><th>♥</th></tr></thead><tbody>
+    ${S.members.filter((m) => !m.web).sort((a, b) => (a.name || "").localeCompare(b.name || "", "nl")).map((m) => `<tr><td>${esc(m.name)}</td><td>${esc(m.status)}</td><td>${esc(m.statusNote)}</td><td>${(m.wants || []).length}</td></tr>`).join("")}
+    </tbody></table></div></div>`;
+}
+
+function importView() {
+  return `<div class="card">
+    <h3>Slimbo-gegevens laden</h3>
+    <p>Laadt het importbestand dat bij de laatste versie van de app hoort: spellen (met BGG-gegevens), kamers, gastenlijst, corvee, weekendinfo en vaste activiteiten.</p>
+    <ul class="muted">
+      <li>Nieuwe spellen en activiteiten worden toegevoegd.</li>
+      <li>Bij bestaande spellen worden eigenaar, interesse en links bijgewerkt; spelers/duur alleen als die nog niet zijn gecontroleerd.</li>
+      <li>Kamers, gastenlijst, corvee en weekendinfo worden volledig bijgewerkt.</li>
+      <li>Spellen uit een eerdere import die niet meer in het document staan, worden verwijderd.</li>
+    </ul>
+    <button class="btn" id="doImport">Laden</button> <span class="muted" id="impMsg"></span>
+  </div>`;
+}
+
+const TABS = [
+  ["weekend", "Weekend"], ["activities", "Planning"], ["games", "Spellen"],
+  ["places", "Locaties"], ["tables", "Tafels"], ["rooms", "Kamers"], ["chores", "Corvee"], ["import", "Laden"],
+];
+
+function render() {
+  if (!S.uid) { $("#app").innerHTML = `<main><p class="muted">Verbinden…</p></main>`; return; }
+  if (!S.eventId || !S.event) return renderLogin();
+  const me = S.members.find((m) => m.id === S.uid);
+  let body = "";
+  if (S.tab === "weekend") body = weekendView();
+  else if (S.tab === "import") body = importView();
+  else if (S.tab === "games") body = listView("games", "Klik op een rij om te bewerken. Wijzigingen zijn direct zichtbaar in de app.");
+  else body = listView(S.tab);
+  $("#app").innerHTML = `<header>
+      <div class="bar"><span class="logo"><img src="slimbo_logo.png" alt="Slimbo"></span>
+        <h1>${esc(S.event.name)} · beheer</h1>
+        <span class="who">${esc(me?.name || "")}</span>
+        <a class="muted" href="https://www.slimbo.nl/" target="_blank" rel="noopener">slimbo.nl</a>
+        <button class="btn ghost" id="logout">Ander weekend</button></div>
+      <nav>${TABS.map(([k, l]) => `<button data-tab="${k}" class="${S.tab === k ? "on" : ""}">${l}</button>`).join("")}</nav>
+    </header><main>${body}</main>`;
+  bind();
+}
+
+function renderLogin() {
+  $("#app").innerHTML = `<main><div class="login card">
+    <div class="logo"><img src="slimbo_logo.png" alt="Slimbo"></div>
+    <h3>Beheer spellenweekend</h3>
+    <p class="muted">Log in met de weekendcode uit de app (Meer → Weekend).</p>
+    <label class="f"><span>Weekendcode</span><input id="lCode" maxlength="6" style="text-transform:uppercase" value=""></label>
+    <label class="f"><span>Jouw naam</span><input id="lName" value="${esc(store.get("name") || "")}"></label>
+    <button class="btn" id="lGo">Inloggen</button> <span class="muted" id="lMsg"></span>
+    <p class="muted" style="margin-top:14px"><a href="https://www.slimbo.nl/" target="_blank" rel="noopener">www.slimbo.nl</a></p>
+  </div></main>`;
+  $("#lGo").onclick = login;
+}
+
+async function login() {
+  const code = $("#lCode").value.trim().toUpperCase(), name = $("#lName").value.trim();
+  if (code.length !== 6 || !name) { $("#lMsg").textContent = "Vul de code (6 tekens) en je naam in."; return; }
+  $("#lMsg").textContent = "Bezig…";
+  try {
+    const snap = await getDocs(query(collection(db, "events"), where("joinCode", "==", code), limit(1)));
+    if (snap.empty) { $("#lMsg").textContent = "Geen weekend met deze code."; return; }
+    const id = snap.docs[0].id;
+    await setDoc(doc(db, "events", id, "members", S.uid), { name: name + " (web)", web: true, status: "BEZET", updatedAt: now() }, { merge: true });
+    store.set("eventId", id); store.set("name", name);
+    S.eventId = id; subscribe();
+  } catch (e) { $("#lMsg").textContent = "Mislukt: " + e.message; }
+}
+
+function bind() {
+  document.querySelectorAll("[data-tab]").forEach((b) => b.onclick = () => { S.tab = b.dataset.tab; store.set("tab", S.tab); render(); });
+  document.querySelectorAll("[data-new]").forEach((b) => b.onclick = () => openEditor(b.dataset.new, null));
+  document.querySelectorAll("[data-edit]").forEach((tr) => tr.onclick = () => openEditor(tr.dataset.edit, S[tr.dataset.edit].find((x) => x.id === tr.dataset.id)));
+  document.querySelectorAll("[data-search]").forEach((inp) => inp.oninput = () => {
+    S.q = S.q || {}; S.q[inp.dataset.search] = inp.value; const pos = inp.selectionStart; render();
+    const again = document.querySelector(`[data-search="${inp.dataset.search}"]`); again.focus(); again.setSelectionRange(pos, pos);
+  });
+  $("#logout").onclick = () => { if (!confirm("Ander weekend kiezen?")) return; unsubscribe(); store.set("eventId", null); S.eventId = null; S.event = null; render(); };
+  if ($("#eSave")) $("#eSave").onclick = async () => {
+    try {
+      await setDoc(doc(db, "events", S.eventId), {
+        name: $("#eName").value.trim(), venue: $("#eVenue").value.trim(), phone: $("#ePhone").value.trim(),
+        address: $("#eAddress").value.trim(), checkInAt: fromLocalInput($("#eIn").value), checkOutAt: fromLocalInput($("#eOut").value),
+        info: textToInfo($("#eInfo").value),
+      }, { merge: true });
+      toast("Weekend opgeslagen");
+    } catch (e) { toast("Opslaan mislukt: " + e.message); }
+  };
+  if ($("#doImport")) $("#doImport").onclick = runImport;
+}
+
+// Niet opnieuw tekenen terwijl iemand in een formulierveld typt (anders gaat invoer verloren)
+const typing = () => { const a = document.activeElement; return a && (a.tagName === "TEXTAREA" || a.tagName === "SELECT" || (a.tagName === "INPUT" && !a.dataset.search && a.id !== "lCode" && a.id !== "lName")); };
+let pending = false;
+function softRender() { if ($("#dlg").open || typing()) { pending = true; return; } pending = false; render(); }
+document.addEventListener("focusout", () => setTimeout(() => { if (pending) softRender(); }, 50));
+$("#dlg").addEventListener("close", () => { if (pending) softRender(); });
+
+// ------------------------------------------------------------------ live data
+function unsubscribe() { S.unsub.forEach((u) => u()); S.unsub = []; }
+function subscribe() {
+  unsubscribe();
+  S.unsub.push(onSnapshot(doc(db, "events", S.eventId), (d) => {
+    if (!d.exists()) { store.set("eventId", null); S.eventId = null; S.event = null; render(); return; }
+    S.event = { id: d.id, ...d.data() }; softRender();
+  }, (e) => { toast("Geen toegang: " + e.message); store.set("eventId", null); S.eventId = null; S.event = null; render(); }));
+  for (const c of ["games", "places", "tables", "rooms", "guests", "chores", "activities", "members"]) {
+    S.unsub.push(onSnapshot(col(c), (snap) => {
+      S[c] = snap.docs.map((d) => ({ id: d.id, ...d.data(), name: d.data().name ?? "" }));
+      softRender();
+    }));
+  }
+}
+
+// ------------------------------------------------------------------ import (zelfde regels als de app)
+async function runImport() {
+  const btn = $("#doImport"); btn.disabled = true; $("#impMsg").textContent = "Bezig…";
+  try {
+    const seed = await (await fetch("seed.json", { cache: "no-store" })).json();
+    const existing = {};
+    for (const c of ["games", "places", "tables", "activities", "guests"]) existing[c] = new Map((await getDocs(col(c))).docs.map((d) => [d.id, d.data()]));
+    const ops = [];
+    const ev = seed.event;
+    ops.push([doc(db, "events", S.eventId), { venue: ev.venue, address: ev.address, phone: ev.phone, checkInAt: ev.checkInAt, checkOutAt: ev.checkOutAt, info: ev.info, seedVersion: seed.version || 1 }]);
+    let newGames = 0, updGames = 0;
+    const seedIds = new Set();
+    for (const g of seed.games) {
+      const { id, ...data } = g; seedIds.add(id);
+      const cur = existing.games.get(id);
+      if (cur) {
+        const keys = ["name", "owner", "wishlist", "interested", "link", "video"];
+        if (cur.infoChecked === false && data.infoChecked) keys.push("minPlayers", "maxPlayers", "durationMin", "weight", "infoChecked");
+        ops.push([ref("games", id), Object.fromEntries(keys.map((k) => [k, data[k]]))]); updGames++;
+      } else { ops.push([ref("games", id), data]); newGames++; }
+    }
+    const stale = [...existing.games.keys()].filter((id) => id.startsWith("g-") && !seedIds.has(id));
+    for (const c of ["places", "tables"]) for (const it of seed[c] || []) { const { id, ...d } = it; if (!existing[c].has(id)) ops.push([ref(c, id), d]); }
+    for (const c of ["rooms", "chores", "guests"]) for (const it of seed[c] || []) { const { id, ...d } = it; ops.push([ref(c, id), d]); }
+    for (const a of seed.activities || []) {
+      const { id, ...d } = a;
+      if (existing.activities.has(id)) ops.push([ref("activities", id), { title: d.title, type: d.type, startAt: d.startAt, durationMin: d.durationMin, notes: d.notes, updatedBy: S.uid, updatedAt: now() }]);
+      else ops.push([ref("activities", id), { ...d, createdBy: S.uid, participants: [], invited: [], declined: [], status: "GEPLAND", maxParticipants: 0, tableId: "", gameId: "", reminderSent: false, updatedBy: S.uid, updatedAt: now() }]);
+    }
+    for (const g of seed.guests || []) {
+      const cur = existing.guests.get(g.id);
+      if (cur?.claimedBy && g.wants?.length) ops.push([ref("members", cur.claimedBy), { wants: arrayUnion(...g.wants) }]);
+    }
+    for (let i = 0; i < ops.length; i += 400) {
+      const b = writeBatch(db); ops.slice(i, i + 400).forEach(([r, d]) => b.set(r, d, { merge: true })); await b.commit();
+    }
+    if (stale.length) { const b = writeBatch(db); stale.forEach((id) => b.delete(ref("games", id))); await b.commit(); }
+    $("#impMsg").textContent = `Klaar: ${newGames} nieuwe en ${updGames} bijgewerkte spellen, ${seed.rooms.length} kamers, ${seed.guests.length} gasten.`;
+  } catch (e) { $("#impMsg").textContent = "Mislukt: " + e.message; }
+  btn.disabled = false;
+}
+
+// ------------------------------------------------------------------ start
+onAuthStateChanged(auth, (u) => {
+  if (!u) { signInAnonymously(auth).catch((e) => { $("#app").innerHTML = `<main><div class="card">Inloggen bij Firebase mislukt: ${esc(e.message)}</div></main>`; }); return; }
+  S.uid = u.uid;
+  if (S.eventId) subscribe(); else render();
+});
+render();
+</script>
+</body>
+</html>
