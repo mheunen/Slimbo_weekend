@@ -56,15 +56,16 @@ import nl.spellenweekend.app.data.WeekendEvent
 
 private val DAY_ORDER = listOf("Vrijdag", "Zaterdag", "Zondag", "Maandag")
 
-fun choreLabel(c: Chore): String {
-    val slot = when (c.slot) {
-        "ochtend" -> "ochtend (tot 13:00)"
-        "middag" -> "middag (13–18:00)"
-        "avond" -> "avond (vanaf 18:00)"
-        else -> c.slot
+fun choreTimes(c: Chore): String =
+    if (c.startAt > 0 && c.endAt > c.startAt) fmtRange(c.startAt, c.endAt)
+    else when (c.slot) {
+        "ochtend" -> "tot 13:00"
+        "middag" -> "13:00–18:00"
+        "avond" -> "vanaf 18:00"
+        else -> ""
     }
-    return "${c.day.lowercase()} $slot"
-}
+
+fun choreLabel(c: Chore): String = "${c.day.lowercase()} ${c.slot} ${choreTimes(c)}".trim()
 
 fun floorLabel(floor: Int): String = when (floor) {
     0 -> "Begane grond"
@@ -466,11 +467,14 @@ fun ChoresTab(look: Lookup, myself: Member?, chores: List<Chore>, vm: AppViewMod
                             dayChores.sortedBy { it.startAt }.forEach { c ->
                                 val mine = me != null && me in c.names
                                 Row(Modifier.padding(top = 4.dp)) {
-                                    Text(
-                                        c.slot.replaceFirstChar { it.uppercase() },
-                                        style = MaterialTheme.typography.labelLarge,
-                                        modifier = Modifier.width(76.dp),
-                                    )
+                                    Column(Modifier.width(104.dp)) {
+                                        Text(c.slot.replaceFirstChar { it.uppercase() }, style = MaterialTheme.typography.labelLarge)
+                                        Text(
+                                            choreTimes(c),
+                                            style = MaterialTheme.typography.labelSmall,
+                                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                        )
+                                    }
                                     Text(
                                         c.names.joinToString(", "),
                                         style = MaterialTheme.typography.bodyMedium,

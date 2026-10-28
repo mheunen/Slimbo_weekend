@@ -162,6 +162,8 @@ function whereText(a) {
   return [t?.name, p?.name].filter(Boolean).join(" · ");
 }
 const placeName = (id) => S.places.find((p) => p.id === id)?.name || "";
+const choreTimes = (c) => c.startAt && c.endAt > c.startAt ? `${fmtTime(c.startAt)}–${fmtTime(c.endAt)}`
+  : ({ ochtend: "tot 13:00", middag: "13:00–18:00", avond: "vanaf 18:00" }[c.slot] || "");
 
 // ================================================================== schrijfacties (zelfde als de Android-app)
 async function act(fn, ok) { try { await fn(); if (ok) toast(ok); } catch (e) { toast("Mislukt: " + e.message); } }
@@ -386,7 +388,6 @@ function stayView() {
   if (!me()?.guestId) return claimView();
   const g = myGuest(); const room = S.rooms.find((r) => r.id === g?.roomId);
   const chores = S.chores.filter((c) => (c.names || []).includes(g?.name)).sort((a, b) => a.startAt - b.startAt);
-  const slot = { ochtend: "ochtend (tot 13:00)", middag: "middag (13–18:00)", avond: "avond (vanaf 18:00)" };
   return `<div class="card">
     <div class="row"><span style="font-size:22px">🛏️</span><div class="grow">
       ${room ? `<div class="title">${esc(placeName(room.placeId))} · ${esc(room.name)}</div>
@@ -394,7 +395,7 @@ function stayView() {
       : `<div>Geen kamer gevonden voor ${esc(g?.name)}</div>`}
     </div></div>
     ${chores.length ? `<div class="row" style="margin-top:10px;align-items:flex-start"><span style="font-size:22px">🧽</span><div class="grow"><div class="small" style="font-weight:600">Jouw corvee</div>
-      ${chores.map((c) => `<div class="small">${esc(c.day)} ${esc(slot[c.slot] || c.slot)}${(c.names || []).filter((n) => n !== g.name).length ? " · met " + esc(c.names.filter((n) => n !== g.name).join(", ")) : ""}</div>`).join("")}</div></div>` : ""}
+      ${chores.map((c) => `<div class="small">${esc(c.day)} ${esc(c.slot)} ${esc(choreTimes(c))}${(c.names || []).filter((n) => n !== g.name).length ? " · met " + esc(c.names.filter((n) => n !== g.name).join(", ")) : ""}</div>`).join("")}</div></div>` : ""}
     <button class="btn text small" id="reclaim">Ben je iemand anders? Wijzig</button>
   </div>`;
 }
@@ -541,7 +542,7 @@ function meerView() {
     ${Object.keys(roomsBy).length ? `<h2>Kamers</h2>${Object.entries(roomsBy).map(([pid, rs]) => `<div class="card"><div class="title" style="font-size:16px">${esc(placeName(pid))}</div>
       ${rs.sort((a, b) => a.floor - b.floor || a.name.localeCompare(b.name)).map((r) => `<div class="small" style="margin-top:6px;${(r.occupants || []).includes(mine) ? "font-weight:700;color:var(--brand)" : ""}">${esc(r.name)} · ${esc((r.occupants || []).join(", ") || "—")} <span class="muted">(${(r.occupants || []).length}/${r.beds})</span></div>`).join("")}</div>`).join("")}` : ""}
     ${Object.keys(choresBy).length ? `<h2>Corvee</h2>${Object.entries(choresBy).map(([pid, cs]) => `<div class="card"><div class="title" style="font-size:16px">${esc(placeName(pid))}</div>
-      ${DAYS.filter((d) => cs.some((c) => c.day === d)).map((d) => `<div class="small" style="margin-top:8px;font-weight:600">${d}</div>${cs.filter((c) => c.day === d).sort((a, b) => a.startAt - b.startAt).map((c) => `<div class="small" style="${(c.names || []).includes(mine) ? "font-weight:700;color:var(--brand)" : ""}">${slot[c.slot] || c.slot}: ${esc((c.names || []).join(", "))}</div>`).join("")}`).join("")}</div>`).join("")}` : ""}
+      ${DAYS.filter((d) => cs.some((c) => c.day === d)).map((d) => `<div class="small" style="margin-top:8px;font-weight:600">${d}</div>${cs.filter((c) => c.day === d).sort((a, b) => a.startAt - b.startAt).map((c) => `<div class="small" style="${(c.names || []).includes(mine) ? "font-weight:700;color:var(--brand)" : ""}">${slot[c.slot] || c.slot} <span class="muted">${esc(choreTimes(c))}</span>: ${esc((c.names || []).join(", "))}</div>`).join("")}`).join("")}</div>`).join("")}` : ""}
     <div class="card"><label class="f"><span>Jouw naam</span><div class="row"><input id="myName" value="${esc(me()?.name || "")}" style="flex:1"><button class="btn tonal" id="nameSave">Opslaan</button></div></label></div>
     <button class="btn ghost" id="leave" style="margin:10px 0 30px">Ander weekend kiezen</button>`;
 }

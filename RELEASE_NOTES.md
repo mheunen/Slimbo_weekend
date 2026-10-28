@@ -1,5 +1,5 @@
 **Nieuw in deze versie** 🎲
 
-- **Laden haalt altijd de nieuwste gegevens op**, rechtstreeks van de Slimbo-website. Voor nieuwe spellen, categorieën of planning is voortaan geen app-update meer nodig. Zonder internet gebruikt de app de ingebouwde gegevens.
+- **Corvee met tijden**: bij elk dagdeel staat nu van hoe laat tot hoe laat (bijv. 13:00–18:00), ook bij "Jouw corvee".
 
 Download `Spellenweekend.apk` hieronder en installeer die over de oude heen; je gegevens blijven bewaard.

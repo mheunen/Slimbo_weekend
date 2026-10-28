@@ -219,7 +219,7 @@ const SCHEMAS = {
       { k: "endAt", l: "Tot", t: "datetime", half: true },
       { k: "names", l: "Wie (komma-gescheiden)", t: "list" },
     ],
-    cols: [["Residentie", (c) => esc(placeName(c.placeId))], ["Dag", (c) => esc(c.day)], ["Dagdeel", (c) => label(SLOTS, c.slot)], ["Wie", (c) => esc((c.names || []).join(", "))]],
+    cols: [["Residentie", (c) => esc(placeName(c.placeId))], ["Dag", (c) => esc(c.day)], ["Dagdeel", (c) => label(SLOTS, c.slot)], ["Tijd", (c) => c.startAt ? esc(new Date(c.startAt).toLocaleTimeString("nl-NL", { hour: "2-digit", minute: "2-digit" }) + "–" + new Date(c.endAt).toLocaleTimeString("nl-NL", { hour: "2-digit", minute: "2-digit" })) : ""], ["Wie", (c) => esc((c.names || []).join(", "))]],
   },
 };
 
