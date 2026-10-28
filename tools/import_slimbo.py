@@ -41,7 +41,7 @@ def slug(s: str) -> str:
 ALIASES = {
     "melisss": "Melissa", "melissa": "Melissa", "moris": "Moris", "desiree": "Desiree",
     "melanie": "Mélanie", "mélanie": "Mélanie", "dennis l": "Dennis", "dennis": "Dennis",
-    "vriendin": "Vriendin van Wesley", "vriendin wesley": "Vriendin van Wesley",
+    "vriendin": "Dinna", "vriendin wesley": "Dinna", "dinna": "Dinna", "baukje": "Baukje",
     "curro": "Curro", "amra": "Amra",
 }
 
@@ -104,6 +104,13 @@ KNOWN = {
     "scholars-of-the-south-tigris": (1, 4, 120, "ZWAAR"),
     "tenpenny-parks": (1, 4, 75, "MIDDEL"),
     "the-castles-of-burgundy": (2, 4, 90, "MIDDEL"),
+    "alchemists": (2, 4, 120, "ZWAAR"),
+    "cryptid": (3, 5, 50, "MIDDEL"),
+    "decrypto": (3, 8, 45, "LICHT"),
+    "paint-the-roses": (2, 5, 45, "MIDDEL"),
+    "shipwreck-arcana": (2, 5, 30, "LICHT"),
+    "pax-porfiriana-second-edition": (1, 6, 120, "ZWAAR"),
+    "march-of-the-ants": (1, 5, 90, "MIDDEL"),
     "the-great-library": (1, 4, 150, "ZWAAR"),
 }
 
@@ -312,8 +319,8 @@ def main(xlsx: str):
          "startAt": at(0, 18, 30), "durationMin": 90, "placeId": "",
          "notes": "Verzorgd door Desirée. Tijd is een schatting; pas aan indien nodig."},
         {"id": "a-diner-zaterdag", "type": "ETEN", "title": "Avondeten: Limburgs buffet",
-         "startAt": at(1, 18, 30), "durationMin": 90, "placeId": "",
-         "notes": "Tijd is een schatting; pas aan indien nodig."},
+         "startAt": at(1, 17, 0), "durationMin": 120, "placeId": "",
+         "notes": "Buffet vanaf 17:00."},
     ]
 
     seed = {

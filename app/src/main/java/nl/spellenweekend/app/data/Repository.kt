@@ -198,9 +198,10 @@ class Repository(context: Context) {
 
     /**
      * Laadt het importbestand (assets/seed_*.json) in het weekend.
-     * Spellen, locaties, tafels en activiteiten die al bestaan blijven ongemoeid
-     * (zodat aanpassingen in de app niet overschreven worden); kamers, gastenlijst,
-     * corvee en weekendinfo worden bijgewerkt.
+     * Locaties en tafels die al bestaan blijven ongemoeid. Bij spellen worden alleen
+     * eigenaar, wenslijst, interesse en links bijgewerkt; spellen die uit het document
+     * verdwenen zijn worden verwijderd. Kamers, gastenlijst, corvee en weekendinfo
+     * worden volledig bijgewerkt.
      */
     suspend fun importSeed(eventId: String, json: String): String {
         val root = JSONObject(json)
@@ -222,6 +223,7 @@ class Repository(context: Context) {
         )
 
         var newGames = 0
+        var updatedGames = 0
         fun addAll(collection: String, onlyNew: Boolean, transform: (Map<String, Any>) -> Map<String, Any> = { it }) {
             val arr = root.optJSONArray(collection) ?: return
             for (i in 0 until arr.length()) {
@@ -234,26 +236,82 @@ class Repository(context: Context) {
                 if (collection == "games") newGames++
             }
         }
+
+        // Spellen: nieuwe toevoegen; bij bestaande alleen de velden uit het document
+        // bijwerken (eigenaar, wenslijst, interesse, links). Spelersaantal, duur,
+        // zwaarte en notities die in de app zijn aangepast blijven staan.
+        val seedGames = root.optJSONArray("games")
+        val seedGameIds = mutableSetOf<String>()
+        if (seedGames != null) {
+            for (i in 0 until seedGames.length()) {
+                val obj = seedGames.getJSONObject(i)
+                val id = obj.getString("id")
+                seedGameIds += id
+                @Suppress("UNCHECKED_CAST")
+                val data = (toValue(obj) as Map<String, Any>) - "id"
+                val ref = col(eventId, "games").document(id)
+                if (id in existing["games"].orEmpty()) {
+                    ops += ref to data.filterKeys { it in setOf("name", "owner", "wishlist", "interested", "link", "video") }
+                    updatedGames++
+                } else {
+                    ops += ref to data
+                    newGames++
+                }
+            }
+        }
+        // Spellen uit een eerdere import die niet meer in het document staan (bv. hernoemd).
+        // Zelf in de app toegevoegde spellen hebben een willekeurige id zonder "g-" en blijven staan.
+        val staleGames = existing["games"].orEmpty().filter { it.startsWith("g-") && it !in seedGameIds }
+
         addAll("places", onlyNew = true)
         addAll("tables", onlyNew = true)
-        addAll("games", onlyNew = true)
         addAll("rooms", onlyNew = false)
         addAll("chores", onlyNew = false)
         addAll("guests", onlyNew = false)
-        addAll("activities", onlyNew = true) { data ->
-            data + mapOf(
-                "createdBy" to me,
-                "participants" to emptyList<String>(),
-                "invited" to emptyList<String>(),
-                "declined" to emptyList<String>(),
-                "status" to ActivityStatus.GEPLAND.name,
-                "maxParticipants" to 0,
-                "tableId" to "",
-                "gameId" to "",
-                "reminderSent" to false,
-                "updatedBy" to me,
-                "updatedAt" to now(),
-            )
+
+        // Activiteiten uit het document: nieuwe toevoegen, bestaande krijgen titel/tijd/notitie bij
+        val seedActs = root.optJSONArray("activities")
+        if (seedActs != null) {
+            for (i in 0 until seedActs.length()) {
+                val obj = seedActs.getJSONObject(i)
+                val id = obj.getString("id")
+                @Suppress("UNCHECKED_CAST")
+                val data = (toValue(obj) as Map<String, Any>) - "id"
+                val ref = col(eventId, "activities").document(id)
+                ops += ref to if (id in existing["activities"].orEmpty()) {
+                    data.filterKeys { it in setOf("title", "type", "startAt", "durationMin", "notes") } +
+                        mapOf("updatedBy" to me, "updatedAt" to now())
+                } else {
+                    data + mapOf(
+                        "createdBy" to me,
+                        "participants" to emptyList<String>(),
+                        "invited" to emptyList<String>(),
+                        "declined" to emptyList<String>(),
+                        "status" to ActivityStatus.GEPLAND.name,
+                        "maxParticipants" to 0,
+                        "tableId" to "",
+                        "gameId" to "",
+                        "reminderSent" to false,
+                        "updatedBy" to me,
+                        "updatedAt" to now(),
+                    )
+                }
+            }
+        }
+
+        // Leden die al aan een naam gekoppeld zijn krijgen nieuwe interesse op hun ♥-lijst
+        val claimed = col(eventId, "guests").get().await().documents
+            .map { it.toGuest() }.filter { it.claimedBy.isNotBlank() }.associateBy { it.id }
+        val seedGuests = root.optJSONArray("guests")
+        if (seedGuests != null) {
+            for (i in 0 until seedGuests.length()) {
+                val obj = seedGuests.getJSONObject(i)
+                val g = claimed[obj.getString("id")] ?: continue
+                val wants = obj.optJSONArray("wants")?.let { a -> (0 until a.length()).map { a.getString(it) } }.orEmpty()
+                if (wants.isEmpty()) continue
+                ops += col(eventId, "members").document(g.claimedBy) to
+                    mapOf("wants" to FieldValue.arrayUnion(*wants.toTypedArray()))
+            }
         }
 
         // Firestore: max. 500 schrijfacties per batch
@@ -262,9 +320,14 @@ class Repository(context: Context) {
             chunk.forEach { (ref, data) -> batch.set(ref, data, SetOptions.merge()) }
             batch.commit().await()
         }
+        staleGames.chunked(400).forEach { chunk ->
+            val batch = db.batch()
+            chunk.forEach { batch.delete(col(eventId, "games").document(it)) }
+            batch.commit().await()
+        }
         val rooms = root.optJSONArray("rooms")?.length() ?: 0
         val guests = root.optJSONArray("guests")?.length() ?: 0
-        return "Geladen: $newGames spellen, $rooms kamers, $guests gasten, corvee en weekendinfo"
+        return "Geladen: $newGames nieuwe en $updatedGames bijgewerkte spellen, $rooms kamers, $guests gasten, corvee en weekendinfo"
     }
 
     private fun toValue(v: Any?): Any = when (v) {
