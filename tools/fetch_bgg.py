@@ -92,17 +92,43 @@ def get_json(url: str):
     raise RuntimeError(f"geen antwoord: {url}")
 
 
+SEARCH_LOG: list[str] = []
+
+
+def _html(url: str) -> str:
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36",
+               "Accept": "text/html,application/json"}
+    with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=30) as r:
+        return r.read().decode("utf-8", "replace")
+
+
 def search_web(name: str) -> str | None:
     q = clean(name)
-    url = "https://boardgamegeek.com/search/boardgame?nosession=1&showcount=10&q=" + urllib.parse.quote(q)
-    data = get_json(url)
-    items = data.get("items", [])
-    if not items:
-        return None
-    ql = q.lower()
-    items.sort(key=lambda it: (0 if it.get("name", "").lower() == ql else
-                               1 if it.get("name", "").lower().startswith(ql) else 2))
-    return str(items[0].get("objectid"))
+    qq = urllib.parse.quote(q)
+    attempts = [
+        ("geekdo-search", f"https://api.geekdo.com/api/search?nosession=1&objecttype=thing&subtype=boardgame&q={qq}",
+         lambda t: [(str(i.get("objectid")), i.get("name", "")) for i in json.loads(t).get("items", [])]),
+        ("bgg-json", f"https://boardgamegeek.com/search/boardgame?q={qq}&showcount=10",
+         lambda t: [(str(i.get("objectid")), i.get("name", "")) for i in json.loads(t).get("items", [])]),
+        ("geeksearch-html", f"https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q={qq}",
+         lambda t: [(m.group(1), m.group(2)) for m in re.finditer(r'href="/boardgame/(\d+)/[^"]*"[^>]*>([^<]+)</a>', t)]),
+        ("geekdo-xmlapi", f"https://api.geekdo.com/xmlapi/search?search={qq}",
+         lambda t: [(b.get("objectid"), (b.findtext("name") or "")) for b in ET.fromstring(t).findall("boardgame")]),
+    ]
+    for label, url, parse in attempts:
+        try:
+            items = parse(_html(url))
+        except Exception as e:  # noqa: BLE001
+            SEARCH_LOG.append(f"{label}: {type(e).__name__} {getattr(e, 'code', '')}")
+            continue
+        if not items:
+            SEARCH_LOG.append(f"{label}: 0 resultaten voor {q}")
+            continue
+        ql = q.lower()
+        items.sort(key=lambda it: (0 if it[1].strip().lower() == ql else 1 if it[1].strip().lower().startswith(ql) else 2))
+        SEARCH_LOG.append(f"{label}: ok {q} -> {items[0]}")
+        return items[0][0]
+    return None
 
 
 def thing_web(bid: str) -> dict:
@@ -150,9 +176,9 @@ def main():
             result[g["id"]] = {"name": g["name"], **cache[bid]}
         except Exception as e:  # noqa: BLE001
             errors.append(f"{g['name']}: {type(e).__name__}: {e}")
-            if len(errors) >= 5 and not result:
-                raise RuntimeError(" ; ".join(errors))
-    OUT.write_text(json.dumps({"games": result, "unresolved": unresolved, "errors": errors},
+
+    OUT.write_text(json.dumps({"games": result, "unresolved": unresolved, "errors": errors,
+                               "searchLog": SEARCH_LOG[:60]},
                               ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"{len(result)} van {len(games)} spellen gevonden")
 
