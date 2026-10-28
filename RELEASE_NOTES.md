@@ -1,5 +1,5 @@
 **Nieuw in deze versie** 🎲
 
-- **Alle spellen hebben nu een categorie**, ook de spellen die BoardGameGeek niet indeelt. De nieuwe categorie **Coöperatief** is erbij gekomen.
+- **Laden haalt altijd de nieuwste gegevens op**, rechtstreeks van de Slimbo-website. Voor nieuwe spellen, categorieën of planning is voortaan geen app-update meer nodig. Zonder internet gebruikt de app de ingebouwde gegevens.
 
-Tik na het installeren één keer op **Meer → Beheer → Slimbo-gegevens laden** (of *Laden* op de website), zodat de categorieën in de database komen. Download `Spellenweekend.apk` hieronder en installeer die over de oude heen; je gegevens blijven bewaard.
+Download `Spellenweekend.apk` hieronder en installeer die over de oude heen; je gegevens blijven bewaard.

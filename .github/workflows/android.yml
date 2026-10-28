@@ -8,6 +8,7 @@ on:
       - "**.md"
       - "web/**"
       - "tools/**"
+      - "app/src/main/assets/seed_*.json"
       - ".github/workflows/pages.yml"
       - ".github/workflows/bgg.yml"
   workflow_dispatch:
