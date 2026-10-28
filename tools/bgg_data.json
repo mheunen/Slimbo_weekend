@@ -10,7 +10,15 @@
    "maxPlayers": 4,
    "durationMin": 90,
    "weight": "MIDDEL",
-   "averageWeight": 2.34
+   "averageWeight": 2.34,
+   "subdomains": [
+    "Family Games",
+    "Strategy Games"
+   ],
+   "categories": [
+    "Dice",
+    "Medical"
+   ]
   },
   "g-jaipur": {
    "name": "Jaipur",
@@ -22,7 +30,14 @@
    "maxPlayers": 2,
    "durationMin": 30,
    "weight": "LICHT",
-   "averageWeight": 1.46
+   "averageWeight": 1.46,
+   "subdomains": [
+    "Family Games"
+   ],
+   "categories": [
+    "Card Game",
+    "Economic"
+   ]
   },
   "g-letter-jam": {
    "name": "Letter Jam",
@@ -34,7 +49,16 @@
    "maxPlayers": 6,
    "durationMin": 45,
    "weight": "LICHT",
-   "averageWeight": 1.97
+   "averageWeight": 1.97,
+   "subdomains": [
+    "Family Games"
+   ],
+   "categories": [
+    "Card Game",
+    "Deduction",
+    "Party Game",
+    "Word Game"
+   ]
   },
   "g-printing-press": {
    "name": "Printing Press",
@@ -46,7 +70,11 @@
    "maxPlayers": 4,
    "durationMin": 60,
    "weight": "LICHT",
-   "averageWeight": 2.0
+   "averageWeight": 2.0,
+   "subdomains": [],
+   "categories": [
+    "Industry / Manufacturing"
+   ]
   },
   "g-reforest": {
    "name": "Reforest",
@@ -58,7 +86,16 @@
    "maxPlayers": 4,
    "durationMin": 60,
    "weight": "MIDDEL",
-   "averageWeight": 2.56
+   "averageWeight": 2.56,
+   "subdomains": [
+    "Family Games",
+    "Strategy Games"
+   ],
+   "categories": [
+    "Card Game",
+    "Environmental",
+    "Print & Play"
+   ]
   },
   "g-urbion": {
    "name": "Urbion",
@@ -70,23 +107,39 @@
    "maxPlayers": 2,
    "durationMin": 15,
    "weight": "LICHT",
-   "averageWeight": 1.83
+   "averageWeight": 1.83,
+   "subdomains": [
+    "Family Games"
+   ],
+   "categories": [
+    "Card Game",
+    "Fantasy",
+    "Math",
+    "Number"
+   ]
   },
   "g-cat-in-a-box": {
    "name": "Cat in a Box",
-   "source": "link",
-   "nameMismatch": false,
+   "source": "id",
+   "nameMismatch": true,
    "bggId": "345972",
    "bggName": "Cat in the Box: Deluxe Edition",
    "minPlayers": 2,
    "maxPlayers": 5,
    "durationMin": 40,
    "weight": "LICHT",
-   "averageWeight": 2.05
+   "averageWeight": 2.05,
+   "subdomains": [
+    "Family Games"
+   ],
+   "categories": [
+    "Animals",
+    "Card Game"
+   ]
   },
   "g-curious-cargo": {
    "name": "Curious Cargo",
-   "source": "link",
+   "source": "id",
    "nameMismatch": false,
    "bggId": "312251",
    "bggName": "Curious Cargo",
@@ -94,31 +147,55 @@
    "maxPlayers": 2,
    "durationMin": 60,
    "weight": "MIDDEL",
-   "averageWeight": 3.19
+   "averageWeight": 3.19,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Industry / Manufacturing",
+    "Puzzle",
+    "Transportation"
+   ]
   },
   "g-high-rise-penguins": {
    "name": "High Rise Penguins",
-   "source": "link",
-   "nameMismatch": false,
+   "source": "id",
+   "nameMismatch": true,
    "bggId": "296164",
    "bggName": "Yura Yura Penguin",
    "minPlayers": 2,
    "maxPlayers": 6,
    "durationMin": 20,
    "weight": "LICHT",
-   "averageWeight": 1.0
+   "averageWeight": 1.0,
+   "subdomains": [
+    "Party Games"
+   ],
+   "categories": [
+    "Action / Dexterity"
+   ]
   },
   "g-pray-another-day": {
    "name": "Pray another Day",
-   "source": "link",
-   "nameMismatch": false,
+   "source": "id",
+   "nameMismatch": true,
    "bggId": "234260",
    "bggName": "Prey Another Day",
    "minPlayers": 2,
    "maxPlayers": 5,
    "durationMin": 20,
    "weight": "LICHT",
-   "averageWeight": 1.1
+   "averageWeight": 1.1,
+   "subdomains": [
+    "Family Games",
+    "Party Games"
+   ],
+   "categories": [
+    "Animals",
+    "Bluffing",
+    "Card Game",
+    "Print & Play"
+   ]
   },
   "g-sankore": {
    "name": "Sankoré",
@@ -130,11 +207,21 @@
    "maxPlayers": 4,
    "durationMin": 180,
    "weight": "ZWAAR",
-   "averageWeight": 4.27
+   "averageWeight": 4.27,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "City Building",
+    "Civilization",
+    "Economic",
+    "Educational",
+    "Medieval"
+   ]
   },
   "g-kittin": {
    "name": "Kittin",
-   "source": "id",
+   "source": "link",
    "nameMismatch": false,
    "bggId": "302477",
    "bggName": "Kittin",
@@ -142,7 +229,15 @@
    "maxPlayers": 8,
    "durationMin": 15,
    "weight": "LICHT",
-   "averageWeight": 1.0
+   "averageWeight": 1.0,
+   "subdomains": [
+    "Family Games"
+   ],
+   "categories": [
+    "Action / Dexterity",
+    "Animals",
+    "Real-time"
+   ]
   },
   "g-raas": {
    "name": "Raas",
@@ -154,7 +249,13 @@
    "maxPlayers": 6,
    "durationMin": 90,
    "weight": "MIDDEL",
-   "averageWeight": 2.53
+   "averageWeight": 2.53,
+   "subdomains": [],
+   "categories": [
+    "Dice",
+    "Music",
+    "Puzzle"
+   ]
   },
   "g-century-spice-road": {
    "name": "Century Spice Road",
@@ -166,7 +267,15 @@
    "maxPlayers": 5,
    "durationMin": 45,
    "weight": "LICHT",
-   "averageWeight": 1.8
+   "averageWeight": 1.8,
+   "subdomains": [
+    "Family Games"
+   ],
+   "categories": [
+    "Card Game",
+    "Economic",
+    "Medieval"
+   ]
   },
   "g-harmoni-cresendo": {
    "name": "Harmoni Cresendo",
@@ -178,7 +287,11 @@
    "maxPlayers": 4,
    "durationMin": 0,
    "weight": "MIDDEL",
-   "averageWeight": 2.5
+   "averageWeight": 2.5,
+   "subdomains": [],
+   "categories": [
+    "Expansion for Base-game"
+   ]
   },
   "g-kingdom-crossing": {
    "name": "Kingdom crossing",
@@ -190,11 +303,17 @@
    "maxPlayers": 4,
    "durationMin": 90,
    "weight": "MIDDEL",
-   "averageWeight": 2.99
+   "averageWeight": 2.99,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Animals"
+   ]
   },
   "g-bitoku": {
    "name": "Bitoku",
-   "source": "link",
+   "source": "id",
    "nameMismatch": false,
    "bggId": "323612",
    "bggName": "Bitoku",
@@ -202,7 +321,14 @@
    "maxPlayers": 4,
    "durationMin": 120,
    "weight": "ZWAAR",
-   "averageWeight": 3.77
+   "averageWeight": 3.77,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Fantasy",
+    "Mythology"
+   ]
   },
   "g-galactic-cruise": {
    "name": "Galactic Cruise",
@@ -214,11 +340,21 @@
    "maxPlayers": 4,
    "durationMin": 150,
    "weight": "ZWAAR",
-   "averageWeight": 3.98
+   "averageWeight": 3.98,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Aviation / Flight",
+    "Economic",
+    "Industry / Manufacturing",
+    "Science Fiction",
+    "Space Exploration"
+   ]
   },
   "g-the-castles-of-burgundy": {
    "name": "The castles of Burgundy",
-   "source": "link",
+   "source": "id",
    "nameMismatch": false,
    "bggId": "84876",
    "bggName": "The Castles of Burgundy",
@@ -226,7 +362,15 @@
    "maxPlayers": 4,
    "durationMin": 90,
    "weight": "MIDDEL",
-   "averageWeight": 2.97
+   "averageWeight": 2.97,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Animals",
+    "Medieval",
+    "Territory Building"
+   ]
   },
   "g-woodcraft": {
    "name": "Woodcraft",
@@ -238,7 +382,15 @@
    "maxPlayers": 4,
    "durationMin": 120,
    "weight": "ZWAAR",
-   "averageWeight": 3.83
+   "averageWeight": 3.83,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Economic",
+    "Fantasy",
+    "Industry / Manufacturing"
+   ]
   },
   "g-a-gentle-rain": {
    "name": "A gentle rain",
@@ -250,7 +402,13 @@
    "maxPlayers": 1,
    "durationMin": 15,
    "weight": "LICHT",
-   "averageWeight": 1.11
+   "averageWeight": 1.11,
+   "subdomains": [
+    "Abstract Games"
+   ],
+   "categories": [
+    "Puzzle"
+   ]
   },
   "g-1655-habemus-papam": {
    "name": "1655: Habemus papam",
@@ -262,11 +420,19 @@
    "maxPlayers": 4,
    "durationMin": 30,
    "weight": "LICHT",
-   "averageWeight": 2.15
+   "averageWeight": 2.15,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Card Game",
+    "Pike and Shot",
+    "Religious"
+   ]
   },
   "g-drillers": {
    "name": "Drillers",
-   "source": "id",
+   "source": "link",
    "nameMismatch": false,
    "bggId": "465669",
    "bggName": "Drillers",
@@ -274,7 +440,16 @@
    "maxPlayers": 4,
    "durationMin": 120,
    "weight": "MIDDEL",
-   "averageWeight": 2.64
+   "averageWeight": 2.64,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Card Game",
+    "Exploration",
+    "Industry / Manufacturing",
+    "Science Fiction"
+   ]
   },
   "g-last-lantern": {
    "name": "Last lantern",
@@ -286,7 +461,12 @@
    "maxPlayers": 4,
    "durationMin": 30,
    "weight": "LICHT",
-   "averageWeight": 2.0
+   "averageWeight": 2.0,
+   "subdomains": [],
+   "categories": [
+    "Abstract Strategy",
+    "Puzzle"
+   ]
   },
   "g-paper-world": {
    "name": "Paper world",
@@ -298,7 +478,13 @@
    "maxPlayers": 4,
    "durationMin": 15,
    "weight": "LICHT",
-   "averageWeight": 1.62
+   "averageWeight": 1.62,
+   "subdomains": [],
+   "categories": [
+    "Abstract Strategy",
+    "Number",
+    "Puzzle"
+   ]
   },
   "g-splentia": {
    "name": "Splentia",
@@ -310,7 +496,13 @@
    "maxPlayers": 4,
    "durationMin": 60,
    "weight": "LICHT",
-   "averageWeight": 2.0
+   "averageWeight": 2.0,
+   "subdomains": [],
+   "categories": [
+    "Animals",
+    "Industry / Manufacturing",
+    "Puzzle"
+   ]
   },
   "g-libertalia-winds-of-galecrest": {
    "name": "Libertalia: Winds of Galecrest",
@@ -322,7 +514,15 @@
    "maxPlayers": 6,
    "durationMin": 60,
    "weight": "LICHT",
-   "averageWeight": 2.18
+   "averageWeight": 2.18,
+   "subdomains": [
+    "Family Games",
+    "Strategy Games"
+   ],
+   "categories": [
+    "Fantasy",
+    "Pirates"
+   ]
   },
   "g-ruins": {
    "name": "Ruins",
@@ -334,7 +534,13 @@
    "maxPlayers": 5,
    "durationMin": 40,
    "weight": "MIDDEL",
-   "averageWeight": 2.24
+   "averageWeight": 2.24,
+   "subdomains": [],
+   "categories": [
+    "Ancient",
+    "Card Game",
+    "Exploration"
+   ]
   },
   "g-kaas-en-wijn": {
    "name": "Kaas en Wijn",
@@ -346,11 +552,15 @@
    "maxPlayers": 2,
    "durationMin": 75,
    "weight": "MIDDEL",
-   "averageWeight": 3.11
+   "averageWeight": 3.11,
+   "subdomains": [],
+   "categories": [
+    "Farming"
+   ]
   },
   "g-la-fleur-en-uitbreidingen": {
    "name": "La Fleur (en uitbreidingen)",
-   "source": "id",
+   "source": "link",
    "nameMismatch": false,
    "bggId": "402817",
    "bggName": "La Fleur",
@@ -358,11 +568,16 @@
    "maxPlayers": 4,
    "durationMin": 60,
    "weight": "MIDDEL",
-   "averageWeight": 2.56
+   "averageWeight": 2.56,
+   "subdomains": [],
+   "categories": [
+    "Educational",
+    "Humor"
+   ]
   },
   "g-maracaibo-en-uitbreiding-the-uprising": {
    "name": "Maracaibo (en uitbreiding the uprising)",
-   "source": "link",
+   "source": "id",
    "nameMismatch": false,
    "bggId": "276025",
    "bggName": "Maracaibo",
@@ -370,7 +585,16 @@
    "maxPlayers": 4,
    "durationMin": 120,
    "weight": "ZWAAR",
-   "averageWeight": 3.92
+   "averageWeight": 3.92,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Economic",
+    "Exploration",
+    "Nautical",
+    "Pirates"
+   ]
   },
   "g-night-at-the-zoo": {
    "name": "Night at the Zoo",
@@ -382,7 +606,11 @@
    "maxPlayers": 4,
    "durationMin": 30,
    "weight": "LICHT",
-   "averageWeight": 2.12
+   "averageWeight": 2.12,
+   "subdomains": [],
+   "categories": [
+    "Animals"
+   ]
   },
   "g-nippon": {
    "name": "Nippon",
@@ -394,7 +622,14 @@
    "maxPlayers": 4,
    "durationMin": 120,
    "weight": "ZWAAR",
-   "averageWeight": 3.76
+   "averageWeight": 3.76,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Economic",
+    "Industry / Manufacturing"
+   ]
   },
   "g-grand-austria-hotel": {
    "name": "Grand Austria Hotel",
@@ -406,11 +641,17 @@
    "maxPlayers": 4,
    "durationMin": 120,
    "weight": "MIDDEL",
-   "averageWeight": 3.19
+   "averageWeight": 3.19,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Economic"
+   ]
   },
   "g-puzzle-strike-2": {
    "name": "Puzzle Strike 2",
-   "source": "id",
+   "source": "link",
    "nameMismatch": false,
    "bggId": "368942",
    "bggName": "Puzzle Strike 2: Bold Adventures!",
@@ -418,7 +659,14 @@
    "maxPlayers": 4,
    "durationMin": 60,
    "weight": "",
-   "averageWeight": 0.0
+   "averageWeight": 0.0,
+   "subdomains": [],
+   "categories": [
+    "Expansion for Base-game",
+    "Card Game",
+    "Fantasy",
+    "Video Game Theme"
+   ]
   },
   "g-resafa": {
    "name": "Resafa",
@@ -430,7 +678,15 @@
    "maxPlayers": 4,
    "durationMin": 150,
    "weight": "ZWAAR",
-   "averageWeight": 3.62
+   "averageWeight": 3.62,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Ancient",
+    "Transportation",
+    "Travel"
+   ]
   },
   "g-river-of-gold-legend-of-the-five-rings": {
    "name": "River of Gold - Legend of the Five Rings",
@@ -442,7 +698,15 @@
    "maxPlayers": 4,
    "durationMin": 90,
    "weight": "MIDDEL",
-   "averageWeight": 2.48
+   "averageWeight": 2.48,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Economic",
+    "Fantasy",
+    "Travel"
+   ]
   },
   "g-the-lost-code": {
    "name": "The Lost Code",
@@ -454,7 +718,13 @@
    "maxPlayers": 4,
    "durationMin": 60,
    "weight": "MIDDEL",
-   "averageWeight": 2.38
+   "averageWeight": 2.38,
+   "subdomains": [
+    "Family Games"
+   ],
+   "categories": [
+    "Deduction"
+   ]
   },
   "g-civolution": {
    "name": "Civolution",
@@ -466,7 +736,17 @@
    "maxPlayers": 4,
    "durationMin": 180,
    "weight": "ZWAAR",
-   "averageWeight": 4.27
+   "averageWeight": 4.27,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Civilization",
+    "Dice",
+    "Economic",
+    "Exploration",
+    "Science Fiction"
+   ]
   },
   "g-inventions": {
    "name": "Inventions",
@@ -478,7 +758,14 @@
    "maxPlayers": 4,
    "durationMin": 150,
    "weight": "ZWAAR",
-   "averageWeight": 4.6
+   "averageWeight": 4.6,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Civilization",
+    "Industry / Manufacturing"
+   ]
   },
   "g-tianxia": {
    "name": "Tianxia",
@@ -490,7 +777,12 @@
    "maxPlayers": 4,
    "durationMin": 120,
    "weight": "ZWAAR",
-   "averageWeight": 3.44
+   "averageWeight": 3.44,
+   "subdomains": [],
+   "categories": [
+    "Ancient",
+    "Economic"
+   ]
   },
   "g-honey-buzz": {
    "name": "Honey Buzz",
@@ -502,7 +794,15 @@
    "maxPlayers": 4,
    "durationMin": 90,
    "weight": "MIDDEL",
-   "averageWeight": 2.74
+   "averageWeight": 2.74,
+   "subdomains": [
+    "Family Games",
+    "Strategy Games"
+   ],
+   "categories": [
+    "Animals",
+    "Economic"
+   ]
   },
   "g-river-market": {
    "name": "River Market",
@@ -514,11 +814,17 @@
    "maxPlayers": 5,
    "durationMin": 35,
    "weight": "LICHT",
-   "averageWeight": 2.0
+   "averageWeight": 2.0,
+   "subdomains": [],
+   "categories": [
+    "Adventure",
+    "Animals",
+    "City Building"
+   ]
   },
   "g-alchemists": {
    "name": "Alchemists",
-   "source": "link",
+   "source": "id",
    "nameMismatch": false,
    "bggId": "161970",
    "bggName": "Alchemists",
@@ -526,11 +832,19 @@
    "maxPlayers": 4,
    "durationMin": 120,
    "weight": "ZWAAR",
-   "averageWeight": 3.92
+   "averageWeight": 3.92,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Deduction",
+    "Fantasy",
+    "Puzzle"
+   ]
   },
   "g-cryptid": {
    "name": "Cryptid",
-   "source": "link",
+   "source": "id",
    "nameMismatch": false,
    "bggId": "246784",
    "bggName": "Cryptid",
@@ -538,11 +852,18 @@
    "maxPlayers": 5,
    "durationMin": 50,
    "weight": "MIDDEL",
-   "averageWeight": 2.26
+   "averageWeight": 2.26,
+   "subdomains": [
+    "Family Games",
+    "Strategy Games"
+   ],
+   "categories": [
+    "Deduction"
+   ]
   },
   "g-decrypto": {
    "name": "Decrypto",
-   "source": "link",
+   "source": "id",
    "nameMismatch": false,
    "bggId": "225694",
    "bggName": "Decrypto",
@@ -550,7 +871,16 @@
    "maxPlayers": 8,
    "durationMin": 45,
    "weight": "LICHT",
-   "averageWeight": 1.82
+   "averageWeight": 1.82,
+   "subdomains": [
+    "Party Games"
+   ],
+   "categories": [
+    "Deduction",
+    "Party Game",
+    "Spies / Secret Agents",
+    "Word Game"
+   ]
   },
   "g-frosted-blooms": {
    "name": "Frosted Blooms",
@@ -562,7 +892,11 @@
    "maxPlayers": 4,
    "durationMin": 40,
    "weight": "LICHT",
-   "averageWeight": 1.95
+   "averageWeight": 1.95,
+   "subdomains": [
+    "Family Games"
+   ],
+   "categories": []
   },
   "g-dice-forge": {
    "name": "Dice Forge",
@@ -574,7 +908,16 @@
    "maxPlayers": 4,
    "durationMin": 45,
    "weight": "LICHT",
-   "averageWeight": 1.97
+   "averageWeight": 1.97,
+   "subdomains": [
+    "Family Games"
+   ],
+   "categories": [
+    "Ancient",
+    "Dice",
+    "Fantasy",
+    "Mythology"
+   ]
   },
   "g-gaudi": {
    "name": "Gaudi",
@@ -586,7 +929,9 @@
    "maxPlayers": 4,
    "durationMin": 100,
    "weight": "MIDDEL",
-   "averageWeight": 2.9
+   "averageWeight": 2.9,
+   "subdomains": [],
+   "categories": []
   },
   "g-kano": {
    "name": "Kano",
@@ -598,11 +943,13 @@
    "maxPlayers": 4,
    "durationMin": 40,
    "weight": "LICHT",
-   "averageWeight": 1.73
+   "averageWeight": 1.73,
+   "subdomains": [],
+   "categories": []
   },
   "g-arcs": {
    "name": "Arcs",
-   "source": "link",
+   "source": "id",
    "nameMismatch": false,
    "bggId": "359871",
    "bggName": "Arcs",
@@ -610,11 +957,18 @@
    "maxPlayers": 4,
    "durationMin": 120,
    "weight": "ZWAAR",
-   "averageWeight": 3.45
+   "averageWeight": 3.45,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Science Fiction",
+    "Space Exploration"
+   ]
   },
   "g-elementica": {
    "name": "Elementica",
-   "source": "id",
+   "source": "link",
    "nameMismatch": false,
    "bggId": "469261",
    "bggName": "Elementica",
@@ -622,11 +976,13 @@
    "maxPlayers": 4,
    "durationMin": 100,
    "weight": "MIDDEL",
-   "averageWeight": 3.0
+   "averageWeight": 3.0,
+   "subdomains": [],
+   "categories": []
   },
   "g-greenwood": {
    "name": "Greenwood",
-   "source": "id",
+   "source": "link",
    "nameMismatch": false,
    "bggId": "469383",
    "bggName": "Greenwood",
@@ -634,7 +990,11 @@
    "maxPlayers": 4,
    "durationMin": 160,
    "weight": "MIDDEL",
-   "averageWeight": 3.16
+   "averageWeight": 3.16,
+   "subdomains": [],
+   "categories": [
+    "Fantasy"
+   ]
   },
   "g-seti-evt-met-space-agencies": {
    "name": "Seti (evt met space agencies)",
@@ -646,11 +1006,18 @@
    "maxPlayers": 4,
    "durationMin": 160,
    "weight": "ZWAAR",
-   "averageWeight": 3.84
+   "averageWeight": 3.84,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Science Fiction",
+    "Space Exploration"
+   ]
   },
   "g-the-gang": {
    "name": "The Gang",
-   "source": "link",
+   "source": "id",
    "nameMismatch": false,
    "bggId": "411567",
    "bggName": "The Gang",
@@ -658,11 +1025,18 @@
    "maxPlayers": 6,
    "durationMin": 20,
    "weight": "LICHT",
-   "averageWeight": 1.57
+   "averageWeight": 1.57,
+   "subdomains": [
+    "Family Games"
+   ],
+   "categories": [
+    "Card Game",
+    "Party Game"
+   ]
   },
   "g-timespan": {
    "name": "Timespan",
-   "source": "id",
+   "source": "link",
    "nameMismatch": false,
    "bggId": "462479",
    "bggName": "Timespan",
@@ -670,7 +1044,11 @@
    "maxPlayers": 5,
    "durationMin": 90,
    "weight": "MIDDEL",
-   "averageWeight": 2.78
+   "averageWeight": 2.78,
+   "subdomains": [],
+   "categories": [
+    "Civilization"
+   ]
   },
   "g-a-wild-venture": {
    "name": "A wild venture",
@@ -682,7 +1060,17 @@
    "maxPlayers": 2,
    "durationMin": 60,
    "weight": "MIDDEL",
-   "averageWeight": 2.61
+   "averageWeight": 2.61,
+   "subdomains": [
+    "Family Games",
+    "Strategy Games"
+   ],
+   "categories": [
+    "Adventure",
+    "Animals",
+    "Card Game",
+    "Fantasy"
+   ]
   },
   "g-behind": {
    "name": "Behind",
@@ -694,7 +1082,15 @@
    "maxPlayers": 99,
    "durationMin": 90,
    "weight": "LICHT",
-   "averageWeight": 1.7
+   "averageWeight": 1.7,
+   "subdomains": [
+    "Family Games",
+    "Thematic Games"
+   ],
+   "categories": [
+    "Deduction",
+    "Puzzle"
+   ]
   },
   "g-class-of-89": {
    "name": "Class of '89",
@@ -706,11 +1102,13 @@
    "maxPlayers": 4,
    "durationMin": 90,
    "weight": "MIDDEL",
-   "averageWeight": 3.0
+   "averageWeight": 3.0,
+   "subdomains": [],
+   "categories": []
   },
   "g-forage": {
    "name": "Forage",
-   "source": "id",
+   "source": "link",
    "nameMismatch": false,
    "bggId": "458390",
    "bggName": "Forage",
@@ -718,7 +1116,15 @@
    "maxPlayers": 6,
    "durationMin": 30,
    "weight": "LICHT",
-   "averageWeight": 2.0
+   "averageWeight": 2.0,
+   "subdomains": [],
+   "categories": [
+    "Card Game",
+    "Dice",
+    "Environmental",
+    "Exploration",
+    "Puzzle"
+   ]
   },
   "g-chronocritters": {
    "name": "Chronocritters",
@@ -730,7 +1136,12 @@
    "maxPlayers": 4,
    "durationMin": 150,
    "weight": "ZWAAR",
-   "averageWeight": 3.75
+   "averageWeight": 3.75,
+   "subdomains": [],
+   "categories": [
+    "Dice",
+    "Science Fiction"
+   ]
   },
   "g-entropy": {
    "name": "Entropy",
@@ -742,7 +1153,14 @@
    "maxPlayers": 4,
    "durationMin": 150,
    "weight": "ZWAAR",
-   "averageWeight": 3.62
+   "averageWeight": 3.62,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Economic",
+    "Science Fiction"
+   ]
   },
   "g-oshaka-trick": {
    "name": "Oshaka Trick",
@@ -754,7 +1172,11 @@
    "maxPlayers": 4,
    "durationMin": 25,
    "weight": "LICHT",
-   "averageWeight": 2.0
+   "averageWeight": 2.0,
+   "subdomains": [],
+   "categories": [
+    "Card Game"
+   ]
   },
   "g-shackleton-base": {
    "name": "Shackleton Base",
@@ -766,7 +1188,14 @@
    "maxPlayers": 4,
    "durationMin": 120,
    "weight": "ZWAAR",
-   "averageWeight": 3.95
+   "averageWeight": 3.95,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Science Fiction",
+    "Space Exploration"
+   ]
   },
   "g-23-knives": {
    "name": "23 Knives",
@@ -778,11 +1207,20 @@
    "maxPlayers": 8,
    "durationMin": 60,
    "weight": "MIDDEL",
-   "averageWeight": 2.3
+   "averageWeight": 2.3,
+   "subdomains": [
+    "Party Games",
+    "Thematic Games"
+   ],
+   "categories": [
+    "Ancient",
+    "Party Game",
+    "Political"
+   ]
   },
   "g-bullet-3": {
    "name": "Bullet <3",
-   "source": "id",
+   "source": "link",
    "nameMismatch": false,
    "bggId": "307305",
    "bggName": "Bullet♥︎",
@@ -790,7 +1228,16 @@
    "maxPlayers": 4,
    "durationMin": 20,
    "weight": "LICHT",
-   "averageWeight": 2.15
+   "averageWeight": 2.15,
+   "subdomains": [
+    "Family Games"
+   ],
+   "categories": [
+    "Fighting",
+    "Puzzle",
+    "Real-time",
+    "Science Fiction"
+   ]
   },
   "g-calimala": {
    "name": "Calimala",
@@ -802,7 +1249,18 @@
    "maxPlayers": 5,
    "durationMin": 75,
    "weight": "MIDDEL",
-   "averageWeight": 2.82
+   "averageWeight": 2.82,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Economic",
+    "Industry / Manufacturing",
+    "Medieval",
+    "Renaissance",
+    "Transportation",
+    "Travel"
+   ]
   },
   "g-catvale": {
    "name": "Catvale",
@@ -814,7 +1272,14 @@
    "maxPlayers": 6,
    "durationMin": 180,
    "weight": "MIDDEL",
-   "averageWeight": 2.83
+   "averageWeight": 2.83,
+   "subdomains": [],
+   "categories": [
+    "Adventure",
+    "Animals",
+    "Dice",
+    "Exploration"
+   ]
   },
   "g-daitoshi": {
    "name": "Daitoshi",
@@ -826,7 +1291,13 @@
    "maxPlayers": 4,
    "durationMin": 120,
    "weight": "ZWAAR",
-   "averageWeight": 3.96
+   "averageWeight": 3.96,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "City Building"
+   ]
   },
   "g-dinosaur-island": {
    "name": "Dinosaur Island",
@@ -838,7 +1309,15 @@
    "maxPlayers": 4,
    "durationMin": 120,
    "weight": "MIDDEL",
-   "averageWeight": 3.05
+   "averageWeight": 3.05,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Animals",
+    "Economic",
+    "Science Fiction"
+   ]
   },
   "g-echoes-of-time": {
    "name": "Echoes of Time",
@@ -850,7 +1329,15 @@
    "maxPlayers": 4,
    "durationMin": 60,
    "weight": "MIDDEL",
-   "averageWeight": 2.45
+   "averageWeight": 2.45,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Animals",
+    "Card Game",
+    "Fantasy"
+   ]
   },
   "g-emberheart": {
    "name": "Emberheart",
@@ -862,7 +1349,11 @@
    "maxPlayers": 4,
    "durationMin": 90,
    "weight": "MIDDEL",
-   "averageWeight": 2.72
+   "averageWeight": 2.72,
+   "subdomains": [],
+   "categories": [
+    "Fantasy"
+   ]
   },
   "g-everdell-emerland": {
    "name": "Everdell Emerland",
@@ -874,7 +1365,14 @@
    "maxPlayers": 4,
    "durationMin": 120,
    "weight": "MIDDEL",
-   "averageWeight": 3.13
+   "averageWeight": 3.13,
+   "subdomains": [],
+   "categories": [
+    "Animals",
+    "Card Game",
+    "City Building",
+    "Fantasy"
+   ]
   },
   "g-everdell-journeys": {
    "name": "Everdell Journeys",
@@ -886,7 +1384,13 @@
    "maxPlayers": 10,
    "durationMin": 60,
    "weight": "",
-   "averageWeight": 0.0
+   "averageWeight": 0.0,
+   "subdomains": [],
+   "categories": [
+    "Animals",
+    "Card Game",
+    "Fantasy"
+   ]
   },
   "g-fireflies": {
    "name": "Fireflies",
@@ -898,11 +1402,19 @@
    "maxPlayers": 2,
    "durationMin": 75,
    "weight": "LICHT",
-   "averageWeight": 2.0
+   "averageWeight": 2.0,
+   "subdomains": [],
+   "categories": [
+    "Adventure",
+    "Comic Book / Strip",
+    "Exploration",
+    "Fantasy",
+    "Maze"
+   ]
   },
   "g-for-the-gods": {
    "name": "For the Gods",
-   "source": "id",
+   "source": "link",
    "nameMismatch": false,
    "bggId": "444234",
    "bggName": "For the Gods!",
@@ -910,11 +1422,15 @@
    "maxPlayers": 4,
    "durationMin": 60,
    "weight": "MIDDEL",
-   "averageWeight": 2.25
+   "averageWeight": 2.25,
+   "subdomains": [],
+   "categories": [
+    "Mythology"
+   ]
   },
   "g-hell-of-a-deal": {
    "name": "Hell of a Deal",
-   "source": "id",
+   "source": "link",
    "nameMismatch": false,
    "bggId": "463605",
    "bggName": "Hell of a Deal",
@@ -922,7 +1438,11 @@
    "maxPlayers": 4,
    "durationMin": 120,
    "weight": "MIDDEL",
-   "averageWeight": 2.39
+   "averageWeight": 2.39,
+   "subdomains": [],
+   "categories": [
+    "Card Game"
+   ]
   },
   "g-het-witte-kasteel-het-duel": {
    "name": "Het Witte Kasteel - Het Duel",
@@ -934,7 +1454,14 @@
    "maxPlayers": 2,
    "durationMin": 40,
    "weight": "MIDDEL",
-   "averageWeight": 2.98
+   "averageWeight": 2.98,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Economic",
+    "Medieval"
+   ]
   },
   "g-hitster-alle-versies": {
    "name": "Hitster (alle versies)",
@@ -946,7 +1473,17 @@
    "maxPlayers": 10,
    "durationMin": 30,
    "weight": "LICHT",
-   "averageWeight": 1.02
+   "averageWeight": 1.02,
+   "subdomains": [
+    "Party Games"
+   ],
+   "categories": [
+    "Card Game",
+    "Music",
+    "Party Game",
+    "Print & Play",
+    "Trivia"
+   ]
   },
   "g-marajoara": {
    "name": "Marajoara",
@@ -958,7 +1495,13 @@
    "maxPlayers": 4,
    "durationMin": 60,
    "weight": "LICHT",
-   "averageWeight": 2.0
+   "averageWeight": 2.0,
+   "subdomains": [],
+   "categories": [
+    "Abstract Strategy",
+    "Ancient",
+    "Dice"
+   ]
   },
   "g-men-nefer": {
    "name": "Men Nefer",
@@ -970,7 +1513,15 @@
    "maxPlayers": 4,
    "durationMin": 120,
    "weight": "ZWAAR",
-   "averageWeight": 3.69
+   "averageWeight": 3.69,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Ancient",
+    "Civilization",
+    "Industry / Manufacturing"
+   ]
   },
   "g-merlin-evt-met-uitbreiding-morgana": {
    "name": "Merlin (evt met uitbreiding Morgana)",
@@ -982,11 +1533,17 @@
    "maxPlayers": 4,
    "durationMin": 75,
    "weight": "MIDDEL",
-   "averageWeight": 3.11
+   "averageWeight": 3.11,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Medieval"
+   ]
   },
   "g-navoria": {
    "name": "Navoria",
-   "source": "id",
+   "source": "link",
    "nameMismatch": false,
    "bggId": "371932",
    "bggName": "Explorers of Navoria",
@@ -994,7 +1551,15 @@
    "maxPlayers": 4,
    "durationMin": 80,
    "weight": "MIDDEL",
-   "averageWeight": 2.28
+   "averageWeight": 2.28,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Adventure",
+    "Exploration",
+    "Fantasy"
+   ]
   },
   "g-parks": {
    "name": "Parks",
@@ -1006,7 +1571,16 @@
    "maxPlayers": 5,
    "durationMin": 60,
    "weight": "LICHT",
-   "averageWeight": 2.13
+   "averageWeight": 2.13,
+   "subdomains": [
+    "Family Games"
+   ],
+   "categories": [
+    "Animals",
+    "Economic",
+    "Environmental",
+    "Travel"
+   ]
   },
   "g-parks-potions-uitbreiding": {
    "name": "Parks & potions + uitbreiding",
@@ -1018,7 +1592,12 @@
    "maxPlayers": 5,
    "durationMin": 30,
    "weight": "LICHT",
-   "averageWeight": 1.56
+   "averageWeight": 1.56,
+   "subdomains": [],
+   "categories": [
+    "Card Game",
+    "Dice"
+   ]
   },
   "g-phoenix-new-horizon": {
    "name": "Phoenix New Horizon",
@@ -1030,7 +1609,15 @@
    "maxPlayers": 4,
    "durationMin": 120,
    "weight": "ZWAAR",
-   "averageWeight": 3.23
+   "averageWeight": 3.23,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Civilization",
+    "Industry / Manufacturing",
+    "Science Fiction"
+   ]
   },
   "g-rebirth": {
    "name": "Rebirth",
@@ -1042,7 +1629,18 @@
    "maxPlayers": 4,
    "durationMin": 60,
    "weight": "LICHT",
-   "averageWeight": 1.98
+   "averageWeight": 1.98,
+   "subdomains": [
+    "Family Games",
+    "Strategy Games"
+   ],
+   "categories": [
+    "Environmental",
+    "Fantasy",
+    "Farming",
+    "Science Fiction",
+    "Territory Building"
+   ]
   },
   "g-red-north": {
    "name": "Red North",
@@ -1054,7 +1652,11 @@
    "maxPlayers": 4,
    "durationMin": 45,
    "weight": "LICHT",
-   "averageWeight": 2.0
+   "averageWeight": 2.0,
+   "subdomains": [],
+   "categories": [
+    "Card Game"
+   ]
   },
   "g-riverside": {
    "name": "Riverside",
@@ -1066,7 +1668,14 @@
    "maxPlayers": 6,
    "durationMin": 25,
    "weight": "LICHT",
-   "averageWeight": 1.89
+   "averageWeight": 1.89,
+   "subdomains": [
+    "Family Games"
+   ],
+   "categories": [
+    "Dice",
+    "Economic"
+   ]
   },
   "g-sabika": {
    "name": "Sabika",
@@ -1078,7 +1687,13 @@
    "maxPlayers": 4,
    "durationMin": 120,
    "weight": "ZWAAR",
-   "averageWeight": 3.85
+   "averageWeight": 3.85,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Medieval"
+   ]
   },
   "g-scholars-of-the-south-tigris": {
    "name": "Scholars of the South Tigris",
@@ -1090,11 +1705,18 @@
    "maxPlayers": 4,
    "durationMin": 90,
    "weight": "ZWAAR",
-   "averageWeight": 4.13
+   "averageWeight": 4.13,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Arabian",
+    "Medieval"
+   ]
   },
   "g-tenby": {
    "name": "Tenby",
-   "source": "id",
+   "source": "link",
    "nameMismatch": false,
    "bggId": "407233",
    "bggName": "Tenby",
@@ -1102,7 +1724,15 @@
    "maxPlayers": 5,
    "durationMin": 60,
    "weight": "LICHT",
-   "averageWeight": 2.08
+   "averageWeight": 2.08,
+   "subdomains": [
+    "Family Games",
+    "Strategy Games"
+   ],
+   "categories": [
+    "Card Game",
+    "City Building"
+   ]
   },
   "g-tenpenny-parks": {
    "name": "Tenpenny Parks",
@@ -1114,7 +1744,13 @@
    "maxPlayers": 4,
    "durationMin": 75,
    "weight": "LICHT",
-   "averageWeight": 2.19
+   "averageWeight": 2.19,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "City Building"
+   ]
   },
   "g-the-game-makers": {
    "name": "the Game Makers",
@@ -1126,7 +1762,14 @@
    "maxPlayers": 6,
    "durationMin": 90,
    "weight": "MIDDEL",
-   "averageWeight": 2.97
+   "averageWeight": 2.97,
+   "subdomains": [],
+   "categories": [
+    "Card Game",
+    "Dice",
+    "Economic",
+    "Industry / Manufacturing"
+   ]
   },
   "g-the-great-library": {
    "name": "The Great Library",
@@ -1138,7 +1781,11 @@
    "maxPlayers": 4,
    "durationMin": 180,
    "weight": "ZWAAR",
-   "averageWeight": 4.39
+   "averageWeight": 4.39,
+   "subdomains": [],
+   "categories": [
+    "Ancient"
+   ]
   },
   "g-the-sheep-don-t-let-them-catch-you-sleeping": {
    "name": "The Sheep - don't let them catch you sleeping",
@@ -1150,7 +1797,13 @@
    "maxPlayers": 4,
    "durationMin": 160,
    "weight": "MIDDEL",
-   "averageWeight": 3.0
+   "averageWeight": 3.0,
+   "subdomains": [],
+   "categories": [
+    "Animals",
+    "Horror",
+    "Humor"
+   ]
   },
   "g-thesauros": {
    "name": "Thesauros",
@@ -1162,7 +1815,12 @@
    "maxPlayers": 4,
    "durationMin": 180,
    "weight": "ZWAAR",
-   "averageWeight": 3.75
+   "averageWeight": 3.75,
+   "subdomains": [],
+   "categories": [
+    "Exploration",
+    "Nautical"
+   ]
   },
   "g-thessaloniki": {
    "name": "Thessaloniki",
@@ -1174,11 +1832,16 @@
    "maxPlayers": 4,
    "durationMin": 120,
    "weight": "ZWAAR",
-   "averageWeight": 3.3
+   "averageWeight": 3.3,
+   "subdomains": [],
+   "categories": [
+    "Ancient",
+    "Economic"
+   ]
   },
   "g-thrones-of-valeria": {
    "name": "Thrones of Valeria",
-   "source": "id",
+   "source": "link",
    "nameMismatch": false,
    "bggId": "345894",
    "bggName": "Thrones of Valeria",
@@ -1186,7 +1849,12 @@
    "maxPlayers": 6,
    "durationMin": 45,
    "weight": "LICHT",
-   "averageWeight": 1.83
+   "averageWeight": 1.83,
+   "subdomains": [],
+   "categories": [
+    "Card Game",
+    "Fantasy"
+   ]
   },
   "g-tolleno": {
    "name": "Tolleno",
@@ -1198,7 +1866,11 @@
    "maxPlayers": 4,
    "durationMin": 48,
    "weight": "LICHT",
-   "averageWeight": 2.0
+   "averageWeight": 2.0,
+   "subdomains": [],
+   "categories": [
+    "City Building"
+   ]
   },
   "g-urban-sketchers": {
    "name": "Urban Sketchers",
@@ -1210,7 +1882,13 @@
    "maxPlayers": 4,
    "durationMin": 90,
    "weight": "MIDDEL",
-   "averageWeight": 2.75
+   "averageWeight": 2.75,
+   "subdomains": [],
+   "categories": [
+    "Card Game",
+    "Dice",
+    "Economic"
+   ]
   },
   "g-vogelvrij": {
    "name": "Vogelvrij",
@@ -1222,11 +1900,15 @@
    "maxPlayers": 5,
    "durationMin": 60,
    "weight": "MIDDEL",
-   "averageWeight": 2.21
+   "averageWeight": 2.21,
+   "subdomains": [],
+   "categories": [
+    "Animals"
+   ]
   },
   "g-inside-job": {
    "name": "Inside Job",
-   "source": "id",
+   "source": "link",
    "nameMismatch": false,
    "bggId": "324914",
    "bggName": "Inside Job",
@@ -1234,11 +1916,19 @@
    "maxPlayers": 5,
    "durationMin": 30,
    "weight": "LICHT",
-   "averageWeight": 1.69
+   "averageWeight": 1.69,
+   "subdomains": [
+    "Family Games",
+    "Strategy Games"
+   ],
+   "categories": [
+    "Card Game",
+    "Spies / Secret Agents"
+   ]
   },
   "g-jisogi": {
    "name": "JiSoGi",
-   "source": "id",
+   "source": "link",
    "nameMismatch": false,
    "bggId": "429845",
    "bggName": "Jisogi: Anime Studio Tycoon",
@@ -1246,11 +1936,20 @@
    "maxPlayers": 4,
    "durationMin": 120,
    "weight": "MIDDEL",
-   "averageWeight": 2.9
+   "averageWeight": 2.9,
+   "subdomains": [
+    "Strategy Games",
+    "Thematic Games"
+   ],
+   "categories": [
+    "Comic Book / Strip",
+    "Fantasy",
+    "Movies / TV / Radio theme"
+   ]
   },
   "g-melodies": {
    "name": "Melodies",
-   "source": "id",
+   "source": "link",
    "nameMismatch": false,
    "bggId": "475188",
    "bggName": "Melodies",
@@ -1258,11 +1957,16 @@
    "maxPlayers": 5,
    "durationMin": 30,
    "weight": "LICHT",
-   "averageWeight": 2.0
+   "averageWeight": 2.0,
+   "subdomains": [],
+   "categories": [
+    "Card Game",
+    "Music"
+   ]
   },
   "g-night-soil": {
    "name": "Night Soil",
-   "source": "id",
+   "source": "link",
    "nameMismatch": false,
    "bggId": "421530",
    "bggName": "Night Soil",
@@ -1270,7 +1974,11 @@
    "maxPlayers": 5,
    "durationMin": 90,
    "weight": "MIDDEL",
-   "averageWeight": 3.07
+   "averageWeight": 3.07,
+   "subdomains": [],
+   "categories": [
+    "Renaissance"
+   ]
   },
   "g-opera-magna": {
    "name": "Opera Magna",
@@ -1282,11 +1990,18 @@
    "maxPlayers": 4,
    "durationMin": 60,
    "weight": "MIDDEL",
-   "averageWeight": 2.88
+   "averageWeight": 2.88,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "City Building",
+    "Renaissance"
+   ]
   },
   "g-power-vacuum": {
    "name": "Power Vacuum",
-   "source": "id",
+   "source": "link",
    "nameMismatch": false,
    "bggId": "402106",
    "bggName": "Power Vacuum",
@@ -1294,11 +2009,20 @@
    "maxPlayers": 5,
    "durationMin": 45,
    "weight": "LICHT",
-   "averageWeight": 2.03
+   "averageWeight": 2.03,
+   "subdomains": [
+    "Family Games"
+   ],
+   "categories": [
+    "Card Game",
+    "Humor",
+    "Political",
+    "Spies / Secret Agents"
+   ]
   },
   "g-queen-alice": {
    "name": "Queen Alice",
-   "source": "id",
+   "source": "link",
    "nameMismatch": false,
    "bggId": "456236",
    "bggName": "Queen Alice",
@@ -1306,7 +2030,13 @@
    "maxPlayers": 4,
    "durationMin": 120,
    "weight": "ZWAAR",
-   "averageWeight": 3.81
+   "averageWeight": 3.81,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Novel-based"
+   ]
   }
  },
  "unresolved": [
@@ -1334,7 +2064,11 @@
   "Panda Spin + XP",
   "Pax Porfiriana (Second Edition)"
  ],
- "rejected": [],
+ "rejected": [
+  "Cat in a Box -> 345972 = Cat in the Box: Deluxe Edition",
+  "High Rise Penguins -> 296164 = Yura Yura Penguin",
+  "Pray another Day -> 234260 = Prey Another Day"
+ ],
  "errors": [],
  "searchLog": [
   "geekdo-search: HTTPError 404",
