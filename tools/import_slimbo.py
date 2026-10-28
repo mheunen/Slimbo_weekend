@@ -119,6 +119,35 @@ def cell_text(v) -> str:
     return "" if v is None else str(v).strip()
 
 
+SUBDOMAIN_NL = {
+    "Party Games": "Party", "Children's Games": "Kinderen", "Wargames": "Oorlog", "Thematic Games": "Thematisch",
+    "Strategy Games": "Strategie", "Abstract Games": "Abstract", "Customizable Games": "Kaartspel", "Family Games": "Familie",
+}
+CATEGORY_NL = [  # volgorde = voorrang, voor spellen zonder BGG-"subdomain"
+    ("Party Game", "Party"), ("Children's Game", "Kinderen"), ("Wargame", "Oorlog"), ("Abstract Strategy", "Abstract"),
+    ("Deduction", "Party"), ("Card Game", "Kaartspel"), ("Economic", "Strategie"), ("Civilization", "Strategie"),
+    ("Science Fiction", "Thematisch"), ("Fantasy", "Thematisch"), ("Horror", "Thematisch"), ("Adventure", "Thematisch"),
+    ("Animals", "Familie"), ("Puzzle", "Familie"), ("Dice", "Familie"),
+]
+
+
+def category_of(b: dict) -> str:
+    subs = b.get("subdomains") or []
+    # Party/Kinderen/Oorlog gaan voor; anders de eerste (BGG zet de belangrijkste vooraan)
+    for prio in ("Party Games", "Children's Games", "Wargames"):
+        if prio in subs:
+            return SUBDOMAIN_NL[prio]
+    if subs:
+        if "Family Games" in subs and "Card Game" in (b.get("categories") or []):
+            return "Kaartspel"
+        return SUBDOMAIN_NL.get(subs[0], "Overig")
+    cats = b.get("categories") or []
+    for en, nl in CATEGORY_NL:
+        if en in cats:
+            return nl
+    return ""
+
+
 def load_bgg() -> dict:
     """Gegevens van BoardGameGeek (tools/bgg_data.json, gemaakt door fetch_bgg.py in GitHub Actions).
     Alleen spellen met een BGG-link uit het document of een gecontroleerd nummer uit bgg_ids.json."""
@@ -211,6 +240,7 @@ def main(xlsx: str):
         video = cell_text(r[4]) if cell_text(r[4]).startswith("http") else ""
         interested = split_names(r[2])
         known = KNOWN.get(slug(name))
+        category, categories = "", []
         b = BGG.get(gid)
         if b:
             fb = known or (2, 4, 60, "MIDDEL")
@@ -218,6 +248,8 @@ def main(xlsx: str):
             mx = b["maxPlayers"] or fb[1]
             dur = b["durationMin"] or (known[2] if known else 0)
             known = (mn, max(mn, mx), dur or 60, b["weight"] or fb[3]) if dur else None if not known else known
+            category = category_of(b)
+            categories = b.get("categories") or []
             if b.get("source") == "id" and "/boardgame/" not in link:
                 link = f"https://boardgamegeek.com/boardgame/{b['bggId']}"
         g = {
@@ -233,6 +265,8 @@ def main(xlsx: str):
             "durationMin": known[2] if known else 60,
             "weight": known[3] if known else "MIDDEL",
             "infoChecked": bool(known),
+            "category": category,
+            "categories": categories,
             "notes": "Wens: nog niemand neemt dit mee" if wish else "",
         }
         games.append(g)
@@ -347,6 +381,9 @@ def main(xlsx: str):
         {"id": "a-diner-vrijdag", "type": "ETEN", "title": "Avondeten: saté van Desirée",
          "startAt": at(0, 18, 30), "durationMin": 90, "placeId": "",
          "notes": "Verzorgd door Desirée. Tijd is een schatting; pas aan indien nodig."},
+        {"id": "a-groepsfoto", "type": "ANDERS", "title": "Groepsfoto",
+         "startAt": at(1, 12, 0), "durationMin": 15, "placeId": "",
+         "notes": "Iedereen erbij!"},
         {"id": "a-diner-zaterdag", "type": "ETEN", "title": "Avondeten: Limburgs buffet",
          "startAt": at(1, 17, 0), "durationMin": 120, "placeId": "",
          "notes": "Buffet vanaf 17:00."},

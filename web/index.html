@@ -109,6 +109,7 @@ const now = () => Date.now();
 const TYPES = [["SPEL", "Spel"], ["ETEN", "Eten"], ["WANDELEN", "Wandelen"], ["ANDERS", "Anders"]];
 const STATUS = [["GEPLAND", "Gepland"], ["GESTART", "Bezig"], ["AFGEROND", "Afgerond"], ["GEANNULEERD", "Geannuleerd"]];
 const WEIGHTS = [["LICHT", "Licht"], ["MIDDEL", "Middel"], ["ZWAAR", "Zwaar"]];
+const CATEGORIES = ["Strategie", "Familie", "Party", "Thematisch", "Kaartspel", "Abstract", "Coöperatief", "Kinderen", "Oorlog", "Overig"];
 const DAYS = ["Vrijdag", "Zaterdag", "Zondag", "Maandag"].map((d) => [d, d]);
 const SLOTS = [["ochtend", "Ochtend"], ["middag", "Middag"], ["avond", "Avond"]];
 const label = (opts, v) => (opts.find((o) => o[0] === v) || [, v])[1];
@@ -133,6 +134,7 @@ const SCHEMAS = {
       { k: "maxPlayers", l: "Max. spelers", t: "int", def: 4, half: true },
       { k: "durationMin", l: "Speelduur (min)", t: "int", def: 60, half: true },
       { k: "weight", l: "Zwaarte", t: "select", opts: () => WEIGHTS, def: "MIDDEL", half: true },
+      { k: "category", l: "Categorie", t: "select", opts: () => [["", "—"], ...CATEGORIES.map((c) => [c, c])] },
       { k: "link", l: "Link (BoardGameGeek)", t: "text" },
       { k: "interested", l: "Interesse (namen, komma-gescheiden)", t: "list" },
       { k: "notes", l: "Notitie", t: "text" },
@@ -144,6 +146,7 @@ const SCHEMAS = {
       ["Spelers", (g) => `${g.minPlayers ?? ""}–${g.maxPlayers ?? ""}`],
       ["Duur", (g) => `${g.durationMin ?? ""} min`],
       ["Zwaarte", (g) => label(WEIGHTS, g.weight)],
+      ["Categorie", (g) => esc(g.category || "")],
       ["Info", (g) => g.infoChecked === false ? `<span class="pill warn">controleren</span>` : `<span class="pill ok">ok</span>`],
       ["Interesse", (g) => (g.interested || []).length || ""],
     ],
@@ -566,7 +569,8 @@ async function runImport() {
       const { id, ...data } = g; seedIds.add(id);
       const cur = existing.games.get(id);
       if (cur) {
-        const keys = ["name", "owner", "wishlist", "interested", "link", "video"];
+        const keys = ["name", "owner", "wishlist", "interested", "link", "video", "categories"];
+        if (!cur.category) keys.push("category");
         if (cur.infoChecked === false && data.infoChecked) keys.push("minPlayers", "maxPlayers", "durationMin", "weight", "infoChecked");
         ops.push([ref("games", id), Object.fromEntries(keys.map((k) => [k, data[k]]))]); updGames++;
       } else { ops.push([ref("games", id), data]); newGames++; }

@@ -91,7 +91,19 @@ data class Game(
     val interested: List<String> = emptyList(),
     /** false = spelersaantal/duur nog niet gecontroleerd (standaardwaarden) */
     val infoChecked: Boolean = true,
+    /** Hoofdcategorie (Strategie, Familie, Party, …) */
+    val category: String = "",
+    /** Categorieën van BoardGameGeek (Engels), ter informatie */
+    val categories: List<String> = emptyList(),
+) {
+    fun supports(players: Int) = players in minPlayers..maxPlayers
+}
+
+/** Vaste lijst hoofdcategorieën (afgeleid van de BGG-"subdomains"). */
+val GAME_CATEGORIES = listOf(
+    "Strategie", "Familie", "Party", "Thematisch", "Kaartspel", "Abstract", "Coöperatief", "Kinderen", "Oorlog", "Overig",
 )
+
 
 /** Slaapkamer met bewoners volgens de kamerindeling. */
 data class Room(
@@ -244,6 +256,8 @@ fun DocumentSnapshot.toGame() = Game(
     video = str("video"),
     interested = strList("interested"),
     infoChecked = getBoolean("infoChecked") ?: true,
+    category = str("category"),
+    categories = strList("categories"),
 )
 
 fun DocumentSnapshot.toPlace() = Place(
@@ -292,6 +306,7 @@ fun Game.toMap(): Map<String, Any> = mapOf(
     "video" to video,
     "interested" to interested,
     "infoChecked" to infoChecked,
+    "category" to category,
 )
 
 fun Place.toMap(): Map<String, Any> = mapOf(

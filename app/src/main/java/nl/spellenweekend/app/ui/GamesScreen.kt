@@ -51,6 +51,8 @@ import androidx.compose.material3.Checkbox
 import androidx.compose.material3.IconButton
 import androidx.compose.ui.platform.LocalContext
 import nl.spellenweekend.app.data.Game
+import nl.spellenweekend.app.data.GAME_CATEGORIES
+import androidx.compose.material.icons.filled.FilterList
 import nl.spellenweekend.app.data.Guest
 import nl.spellenweekend.app.data.Member
 import nl.spellenweekend.app.data.Weight
@@ -67,6 +69,24 @@ fun GamesScreen(
     var query by rememberSaveable { mutableStateOf("") }
     var onlyWanted by rememberSaveable { mutableStateOf(false) }
     var filter by rememberSaveable { mutableIntStateOf(0) } // 0 alles, 1 meegebracht, 2 wenslijst
+    var players by rememberSaveable { mutableIntStateOf(0) } // 0 = alle
+    var weights by rememberSaveable { mutableStateOf(setOf<String>()) }
+    var category by rememberSaveable { mutableStateOf("") }
+    var owner by rememberSaveable { mutableStateOf("") } // "" = iedereen
+    var showFilters by rememberSaveable { mutableStateOf(false) }
+    val myName = remember(members, guests) {
+        val m = members.firstOrNull { it.id == me }
+        guests.firstOrNull { it.id == m?.guestId }?.name ?: m?.name ?: ""
+    }
+    val owners = remember(games) {
+        games.filter { !it.wishlist && it.owner.isNotBlank() }.map { it.owner.trim() }
+            .distinctBy { it.lowercase() }.sortedBy { it.lowercase() }
+    }
+    val categories = remember(games) {
+        games.map { it.category.ifBlank { "Overig" } }.distinct()
+            .sortedBy { GAME_CATEGORIES.indexOf(it).let { i -> if (i < 0) 99 else i } }
+    }
+    val activeFilters = listOf(players != 0, weights.isNotEmpty(), category.isNotBlank(), owner.isNotBlank()).count { it }
     // Namen die al via de app meedoen: hun ♥ komt uit de app, niet meer uit de spreadsheet
     val claimedNames = remember(guests) { guests.filter { it.claimedBy.isNotBlank() }.map { it.name }.toSet() }
     var editing by remember { mutableStateOf<Game?>(null) }
@@ -80,6 +100,10 @@ fun GamesScreen(
         .filter { query.isBlank() || it.name.contains(query.trim(), ignoreCase = true) }
         .filter { !onlyWanted || it.id in myWants }
         .filter { filter == 0 || (filter == 1 && !it.wishlist) || (filter == 2 && it.wishlist) }
+        .filter { players == 0 || (if (players >= 7) it.maxPlayers >= 7 else it.supports(players)) }
+        .filter { weights.isEmpty() || it.weight.name in weights }
+        .filter { category.isBlank() || it.category.ifBlank { "Overig" } == category }
+        .filter { owner.isBlank() || it.owner.trim().equals(owner, ignoreCase = true) }
         .sortedBy { it.name.lowercase() }
 
     Box(Modifier.fillMaxSize()) {
@@ -99,6 +123,19 @@ fun GamesScreen(
             }
             item {
                 FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    if (myName.isNotBlank()) {
+                        FilterChip(
+                            selected = owner.equals(myName, ignoreCase = true),
+                            onClick = { owner = if (owner.equals(myName, ignoreCase = true)) "" else myName },
+                            label = { Text("Neem ik mee (${games.count { it.owner.trim().equals(myName, ignoreCase = true) }})") },
+                        )
+                    }
+                    FilterChip(
+                        selected = showFilters || activeFilters > 0,
+                        onClick = { showFilters = !showFilters },
+                        label = { Text(if (activeFilters > 0) "Filters ($activeFilters)" else "Filters") },
+                        leadingIcon = { Icon(Icons.Filled.FilterList, null) },
+                    )
                     FilterChip(
                         selected = onlyWanted,
                         onClick = { onlyWanted = !onlyWanted },
@@ -115,11 +152,58 @@ fun GamesScreen(
                         label = { Text("Wenslijst (${games.count { it.wishlist }})") },
                     )
                 }
+                if (showFilters) {
+                    Card(Modifier.fillMaxWidth().padding(top = 6.dp)) {
+                        Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                            Text("Aantal spelers", style = MaterialTheme.typography.labelLarge)
+                            FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                                listOf(0, 1, 2, 3, 4, 5, 6, 7).forEach { n ->
+                                    FilterChip(
+                                        selected = players == n,
+                                        onClick = { players = n },
+                                        label = { Text(when (n) { 0 -> "Alle"; 7 -> "7+"; else -> "$n" }) },
+                                    )
+                                }
+                            }
+                            Text("Moeilijkheid", style = MaterialTheme.typography.labelLarge)
+                            FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                                Weight.entries.forEach { w ->
+                                    FilterChip(
+                                        selected = w.name in weights,
+                                        onClick = { weights = if (w.name in weights) weights - w.name else weights + w.name },
+                                        label = { Text(w.label) },
+                                    )
+                                }
+                            }
+                            SelectField(
+                                label = "Categorie",
+                                value = category,
+                                options = listOf("" to "Alle categorieën") + categories.map { c ->
+                                    c to "$c (${games.count { it.category.ifBlank { "Overig" } == c }})"
+                                },
+                                onSelect = { category = it },
+                            )
+                            SelectField(
+                                label = "Wie neemt het mee",
+                                value = owner,
+                                options = listOf("" to "Iedereen") + owners.map { o ->
+                                    o to "$o (${games.count { it.owner.trim().equals(o, ignoreCase = true) }})"
+                                },
+                                onSelect = { owner = it },
+                            )
+                            if (activeFilters > 0) {
+                                TextButton(onClick = {
+                                    players = 0; weights = emptySet(); category = ""; owner = ""
+                                }) { Text("Filters wissen") }
+                            }
+                        }
+                    }
+                }
                 Text(
-                    "Tik op ♥ voor spellen die je wilt spelen — Match gebruikt dat. " +
-                        "Wenslijst = nog niemand neemt het mee.",
+                    "${visible.size} van ${games.size} spellen · tik op ♥ voor spellen die je wilt spelen — Match gebruikt dat.",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(top = 4.dp),
                 )
             }
             if (visible.isEmpty()) {
@@ -151,7 +235,10 @@ fun GamesScreen(
                                 else MaterialTheme.colorScheme.onSurfaceVariant,
                             )
                             Text(
-                                if (g.infoChecked) "${g.minPlayers}–${g.maxPlayers} spelers · ${g.durationMin} min · ${g.weight.label}"
+                                if (g.infoChecked) listOfNotNull(
+                                    "${g.minPlayers}–${g.maxPlayers} spelers", "${g.durationMin} min", g.weight.label,
+                                    g.category.ifBlank { null },
+                                ).joinToString(" · ")
                                 else "⚠ spelers/duur nog invullen (tik om te bewerken)",
                                 style = MaterialTheme.typography.bodySmall,
                                 color = if (g.infoChecked) MaterialTheme.colorScheme.onSurfaceVariant
@@ -222,6 +309,7 @@ private fun GameEditor(
     var notes by remember { mutableStateOf(initial.notes) }
     var link by remember { mutableStateOf(initial.link) }
     var wishlist by remember { mutableStateOf(initial.wishlist) }
+    var category by remember { mutableStateOf(initial.category) }
 
     AlertDialog(
         onDismissRequest = onDismiss,
@@ -248,6 +336,19 @@ private fun GameEditor(
                     Weight.entries.forEach { w ->
                         FilterChip(selected = weight == w, onClick = { weight = w }, label = { Text(w.label) })
                     }
+                }
+                SelectField(
+                    label = "Categorie",
+                    value = category,
+                    options = listOf("" to "Geen") + GAME_CATEGORIES.map { it to it },
+                    onSelect = { category = it },
+                )
+                if (initial.categories.isNotEmpty()) {
+                    Text(
+                        "BGG: " + initial.categories.joinToString(", "),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
                 }
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Checkbox(checked = wishlist, onCheckedChange = { wishlist = it })
@@ -299,6 +400,7 @@ private fun GameEditor(
                             link = link.trim(),
                             wishlist = wishlist && owner.isBlank(),
                             infoChecked = true,
+                            category = category,
                         )
                     )
                 },

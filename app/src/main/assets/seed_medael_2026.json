@@ -905,6 +905,11 @@
    "durationMin": 90,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Familie",
+   "categories": [
+    "Dice",
+    "Medical"
+   ],
    "notes": ""
   },
   {
@@ -920,6 +925,11 @@
    "durationMin": 30,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Kaartspel",
+   "categories": [
+    "Card Game",
+    "Economic"
+   ],
    "notes": ""
   },
   {
@@ -938,6 +948,13 @@
    "durationMin": 45,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Kaartspel",
+   "categories": [
+    "Card Game",
+    "Deduction",
+    "Party Game",
+    "Word Game"
+   ],
    "notes": ""
   },
   {
@@ -953,6 +970,10 @@
    "durationMin": 60,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "",
+   "categories": [
+    "Industry / Manufacturing"
+   ],
    "notes": ""
   },
   {
@@ -968,6 +989,12 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Kaartspel",
+   "categories": [
+    "Card Game",
+    "Environmental",
+    "Print & Play"
+   ],
    "notes": ""
   },
   {
@@ -983,6 +1010,13 @@
    "durationMin": 15,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Kaartspel",
+   "categories": [
+    "Card Game",
+    "Fantasy",
+    "Math",
+    "Number"
+   ],
    "notes": ""
   },
   {
@@ -990,7 +1024,7 @@
    "name": "Cat in a Box",
    "owner": "Amra",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Cat+in+a+Box",
+   "link": "https://boardgamegeek.com/boardgame/345972",
    "video": "",
    "interested": [],
    "minPlayers": 2,
@@ -998,6 +1032,11 @@
    "durationMin": 40,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Kaartspel",
+   "categories": [
+    "Animals",
+    "Card Game"
+   ],
    "notes": ""
   },
   {
@@ -1005,7 +1044,7 @@
    "name": "Curious Cargo",
    "owner": "Amra",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Curious+Cargo",
+   "link": "https://boardgamegeek.com/boardgame/312251",
    "video": "",
    "interested": [],
    "minPlayers": 2,
@@ -1013,6 +1052,12 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Industry / Manufacturing",
+    "Puzzle",
+    "Transportation"
+   ],
    "notes": ""
   },
   {
@@ -1020,7 +1065,7 @@
    "name": "High Rise Penguins",
    "owner": "Amra",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=High+Rise+Penguins",
+   "link": "https://boardgamegeek.com/boardgame/296164",
    "video": "",
    "interested": [],
    "minPlayers": 2,
@@ -1028,6 +1073,10 @@
    "durationMin": 20,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Party",
+   "categories": [
+    "Action / Dexterity"
+   ],
    "notes": ""
   },
   {
@@ -1043,6 +1092,8 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": false,
+   "category": "",
+   "categories": [],
    "notes": ""
   },
   {
@@ -1058,6 +1109,8 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": false,
+   "category": "",
+   "categories": [],
    "notes": ""
   },
   {
@@ -1073,6 +1126,8 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": false,
+   "category": "",
+   "categories": [],
    "notes": ""
   },
   {
@@ -1080,7 +1135,7 @@
    "name": "Pray another Day",
    "owner": "Amra",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Pray+another+Day",
+   "link": "https://boardgamegeek.com/boardgame/234260",
    "video": "",
    "interested": [],
    "minPlayers": 2,
@@ -1088,6 +1143,13 @@
    "durationMin": 20,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Party",
+   "categories": [
+    "Animals",
+    "Bluffing",
+    "Card Game",
+    "Print & Play"
+   ],
    "notes": ""
   },
   {
@@ -1108,6 +1170,14 @@
    "durationMin": 180,
    "weight": "ZWAAR",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "City Building",
+    "Civilization",
+    "Economic",
+    "Educational",
+    "Medieval"
+   ],
    "notes": ""
   },
   {
@@ -1123,6 +1193,8 @@
    "durationMin": 15,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "",
+   "categories": [],
    "notes": ""
   },
   {
@@ -1138,6 +1210,8 @@
    "durationMin": 15,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "",
+   "categories": [],
    "notes": ""
   },
   {
@@ -1145,7 +1219,7 @@
    "name": "Kittin",
    "owner": "Amra",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/boardgame/302477",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Kittin",
    "video": "",
    "interested": [],
    "minPlayers": 2,
@@ -1153,6 +1227,12 @@
    "durationMin": 15,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Familie",
+   "categories": [
+    "Action / Dexterity",
+    "Animals",
+    "Real-time"
+   ],
    "notes": ""
   },
   {
@@ -1177,6 +1257,12 @@
    "durationMin": 90,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Familie",
+   "categories": [
+    "Dice",
+    "Music",
+    "Puzzle"
+   ],
    "notes": ""
   },
   {
@@ -1194,6 +1280,12 @@
    "durationMin": 45,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Kaartspel",
+   "categories": [
+    "Card Game",
+    "Economic",
+    "Medieval"
+   ],
    "notes": ""
   },
   {
@@ -1213,6 +1305,10 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": false,
+   "category": "",
+   "categories": [
+    "Expansion for Base-game"
+   ],
    "notes": ""
   },
   {
@@ -1231,6 +1327,10 @@
    "durationMin": 90,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Animals"
+   ],
    "notes": ""
   },
   {
@@ -1248,6 +1348,8 @@
    "durationMin": 30,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "",
+   "categories": [],
    "notes": ""
   },
   {
@@ -1255,7 +1357,7 @@
    "name": "Bitoku",
    "owner": "Desiree",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Bitoku",
+   "link": "https://boardgamegeek.com/boardgame/323612",
    "video": "https://www.youtube.com/watch?v=rcM0qn3HyH0",
    "interested": [
     "Mandy",
@@ -1266,6 +1368,11 @@
    "durationMin": 120,
    "weight": "ZWAAR",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Fantasy",
+    "Mythology"
+   ],
    "notes": ""
   },
   {
@@ -1285,6 +1392,14 @@
    "durationMin": 150,
    "weight": "ZWAAR",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Aviation / Flight",
+    "Economic",
+    "Industry / Manufacturing",
+    "Science Fiction",
+    "Space Exploration"
+   ],
    "notes": ""
   },
   {
@@ -1292,7 +1407,7 @@
    "name": "The castles of Burgundy",
    "owner": "Desiree",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=The+castles+of+Burgundy",
+   "link": "https://boardgamegeek.com/boardgame/84876",
    "video": "",
    "interested": [
     "Melissa"
@@ -1302,6 +1417,12 @@
    "durationMin": 90,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Animals",
+    "Medieval",
+    "Territory Building"
+   ],
    "notes": ""
   },
   {
@@ -1321,6 +1442,12 @@
    "durationMin": 120,
    "weight": "ZWAAR",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Economic",
+    "Fantasy",
+    "Industry / Manufacturing"
+   ],
    "notes": ""
   },
   {
@@ -1338,6 +1465,10 @@
    "durationMin": 15,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Abstract",
+   "categories": [
+    "Puzzle"
+   ],
    "notes": ""
   },
   {
@@ -1353,6 +1484,12 @@
    "durationMin": 30,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Card Game",
+    "Pike and Shot",
+    "Religious"
+   ],
    "notes": ""
   },
   {
@@ -1360,7 +1497,7 @@
    "name": "Drillers",
    "owner": "Godelief",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/boardgame/465669",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Drillers",
    "video": "https://www.youtube.com/watch?v=6JDFdUDKu1I",
    "interested": [
     "Mandy",
@@ -1372,6 +1509,13 @@
    "durationMin": 120,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Card Game",
+    "Exploration",
+    "Industry / Manufacturing",
+    "Science Fiction"
+   ],
    "notes": ""
   },
   {
@@ -1389,6 +1533,11 @@
    "durationMin": 30,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Abstract",
+   "categories": [
+    "Abstract Strategy",
+    "Puzzle"
+   ],
    "notes": ""
   },
   {
@@ -1404,6 +1553,12 @@
    "durationMin": 15,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Abstract",
+   "categories": [
+    "Abstract Strategy",
+    "Number",
+    "Puzzle"
+   ],
    "notes": ""
   },
   {
@@ -1421,6 +1576,12 @@
    "durationMin": 60,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Familie",
+   "categories": [
+    "Animals",
+    "Industry / Manufacturing",
+    "Puzzle"
+   ],
    "notes": ""
   },
   {
@@ -1440,6 +1601,8 @@
    "durationMin": 120,
    "weight": "ZWAAR",
    "infoChecked": true,
+   "category": "",
+   "categories": [],
    "notes": ""
   },
   {
@@ -1457,6 +1620,11 @@
    "durationMin": 60,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Familie",
+   "categories": [
+    "Fantasy",
+    "Pirates"
+   ],
    "notes": ""
   },
   {
@@ -1475,6 +1643,12 @@
    "durationMin": 40,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Kaartspel",
+   "categories": [
+    "Ancient",
+    "Card Game",
+    "Exploration"
+   ],
    "notes": ""
   },
   {
@@ -1492,6 +1666,10 @@
    "durationMin": 75,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "",
+   "categories": [
+    "Farming"
+   ],
    "notes": ""
   },
   {
@@ -1499,7 +1677,7 @@
    "name": "La Fleur (en uitbreidingen)",
    "owner": "Mandy",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/boardgame/402817",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=La+Fleur",
    "video": "https://www.youtube.com/watch?v=NxyLLNHABAk",
    "interested": [
     "Mélanie",
@@ -1510,6 +1688,11 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "",
+   "categories": [
+    "Educational",
+    "Humor"
+   ],
    "notes": ""
   },
   {
@@ -1517,7 +1700,7 @@
    "name": "Maracaibo (en uitbreiding the uprising)",
    "owner": "Mandy",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Maracaibo",
+   "link": "https://boardgamegeek.com/boardgame/276025",
    "video": "https://www.youtube.com/watch?v=PMCCyLW2NjU",
    "interested": [
     "Wilma",
@@ -1528,6 +1711,13 @@
    "durationMin": 120,
    "weight": "ZWAAR",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Economic",
+    "Exploration",
+    "Nautical",
+    "Pirates"
+   ],
    "notes": ""
   },
   {
@@ -1549,6 +1739,10 @@
    "durationMin": 30,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Familie",
+   "categories": [
+    "Animals"
+   ],
    "notes": ""
   },
   {
@@ -1567,6 +1761,11 @@
    "durationMin": 120,
    "weight": "ZWAAR",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Economic",
+    "Industry / Manufacturing"
+   ],
    "notes": ""
   },
   {
@@ -1582,6 +1781,8 @@
    "durationMin": 20,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "",
+   "categories": [],
    "notes": ""
   },
   {
@@ -1600,6 +1801,10 @@
    "durationMin": 120,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Economic"
+   ],
    "notes": ""
   },
   {
@@ -1607,7 +1812,7 @@
    "name": "Puzzle Strike 2",
    "owner": "Manolis",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/boardgame/368942",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Puzzle+Strike+2",
    "video": "",
    "interested": [
     "Wesley",
@@ -1618,6 +1823,13 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Kaartspel",
+   "categories": [
+    "Expansion for Base-game",
+    "Card Game",
+    "Fantasy",
+    "Video Game Theme"
+   ],
    "notes": ""
   },
   {
@@ -1635,6 +1847,12 @@
    "durationMin": 150,
    "weight": "ZWAAR",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Ancient",
+    "Transportation",
+    "Travel"
+   ],
    "notes": ""
   },
   {
@@ -1652,6 +1870,12 @@
    "durationMin": 90,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Economic",
+    "Fantasy",
+    "Travel"
+   ],
    "notes": ""
   },
   {
@@ -1669,6 +1893,10 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Familie",
+   "categories": [
+    "Deduction"
+   ],
    "notes": ""
   },
   {
@@ -1688,6 +1916,14 @@
    "durationMin": 180,
    "weight": "ZWAAR",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Civilization",
+    "Dice",
+    "Economic",
+    "Exploration",
+    "Science Fiction"
+   ],
    "notes": ""
   },
   {
@@ -1706,6 +1942,11 @@
    "durationMin": 150,
    "weight": "ZWAAR",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Civilization",
+    "Industry / Manufacturing"
+   ],
    "notes": ""
   },
   {
@@ -1721,6 +1962,8 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": false,
+   "category": "",
+   "categories": [],
    "notes": ""
   },
   {
@@ -1736,6 +1979,11 @@
    "durationMin": 120,
    "weight": "ZWAAR",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Ancient",
+    "Economic"
+   ],
    "notes": ""
   },
   {
@@ -1753,6 +2001,11 @@
    "durationMin": 90,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Familie",
+   "categories": [
+    "Animals",
+    "Economic"
+   ],
    "notes": ""
   },
   {
@@ -1773,6 +2026,12 @@
    "durationMin": 35,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Thematisch",
+   "categories": [
+    "Adventure",
+    "Animals",
+    "City Building"
+   ],
    "notes": ""
   },
   {
@@ -1780,7 +2039,7 @@
    "name": "Alchemists",
    "owner": "Mélanie",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Alchemists",
+   "link": "https://boardgamegeek.com/boardgame/161970",
    "video": "",
    "interested": [
     "Guillaume"
@@ -1790,6 +2049,12 @@
    "durationMin": 120,
    "weight": "ZWAAR",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Deduction",
+    "Fantasy",
+    "Puzzle"
+   ],
    "notes": ""
   },
   {
@@ -1797,7 +2062,7 @@
    "name": "Cryptid",
    "owner": "Mélanie",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Cryptid",
+   "link": "https://boardgamegeek.com/boardgame/246784",
    "video": "",
    "interested": [
     "Dagmar"
@@ -1807,6 +2072,10 @@
    "durationMin": 50,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Familie",
+   "categories": [
+    "Deduction"
+   ],
    "notes": ""
   },
   {
@@ -1814,7 +2083,7 @@
    "name": "Decrypto",
    "owner": "Mélanie",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Decrypto",
+   "link": "https://boardgamegeek.com/boardgame/225694",
    "video": "",
    "interested": [],
    "minPlayers": 3,
@@ -1822,6 +2091,13 @@
    "durationMin": 45,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Party",
+   "categories": [
+    "Deduction",
+    "Party Game",
+    "Spies / Secret Agents",
+    "Word Game"
+   ],
    "notes": ""
   },
   {
@@ -1840,6 +2116,8 @@
    "durationMin": 45,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "",
+   "categories": [],
    "notes": ""
   },
   {
@@ -1857,6 +2135,8 @@
    "durationMin": 40,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Familie",
+   "categories": [],
    "notes": ""
   },
   {
@@ -1874,6 +2154,13 @@
    "durationMin": 45,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Familie",
+   "categories": [
+    "Ancient",
+    "Dice",
+    "Fantasy",
+    "Mythology"
+   ],
    "notes": ""
   },
   {
@@ -1896,6 +2183,8 @@
    "durationMin": 100,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "",
+   "categories": [],
    "notes": ""
   },
   {
@@ -1915,6 +2204,8 @@
    "durationMin": 40,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "",
+   "categories": [],
    "notes": ""
   },
   {
@@ -1922,7 +2213,7 @@
    "name": "Arcs",
    "owner": "Moris",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Arcs",
+   "link": "https://boardgamegeek.com/boardgame/359871",
    "video": "",
    "interested": [],
    "minPlayers": 2,
@@ -1930,6 +2221,11 @@
    "durationMin": 120,
    "weight": "ZWAAR",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Science Fiction",
+    "Space Exploration"
+   ],
    "notes": ""
   },
   {
@@ -1937,7 +2233,7 @@
    "name": "Elementica",
    "owner": "Moris",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/boardgame/469261",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Elementica",
    "video": "",
    "interested": [],
    "minPlayers": 1,
@@ -1945,6 +2241,8 @@
    "durationMin": 100,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "",
+   "categories": [],
    "notes": ""
   },
   {
@@ -1963,6 +2261,8 @@
    "durationMin": 90,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "",
+   "categories": [],
    "notes": ""
   },
   {
@@ -1978,6 +2278,8 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": false,
+   "category": "",
+   "categories": [],
    "notes": ""
   },
   {
@@ -1985,7 +2287,7 @@
    "name": "Greenwood",
    "owner": "Moris",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/boardgame/469383",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Greenwood",
    "video": "",
    "interested": [
     "Wesley",
@@ -1997,6 +2299,10 @@
    "durationMin": 160,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Thematisch",
+   "categories": [
+    "Fantasy"
+   ],
    "notes": ""
   },
   {
@@ -2016,6 +2322,11 @@
    "durationMin": 160,
    "weight": "ZWAAR",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Science Fiction",
+    "Space Exploration"
+   ],
    "notes": ""
   },
   {
@@ -2023,7 +2334,7 @@
    "name": "The Gang",
    "owner": "Moris",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=The+Gang",
+   "link": "https://boardgamegeek.com/boardgame/411567",
    "video": "",
    "interested": [
     "Wesley",
@@ -2035,6 +2346,11 @@
    "durationMin": 20,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Kaartspel",
+   "categories": [
+    "Card Game",
+    "Party Game"
+   ],
    "notes": ""
   },
   {
@@ -2042,7 +2358,7 @@
    "name": "Timespan",
    "owner": "Moris",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/boardgame/462479",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Timespan",
    "video": "",
    "interested": [
     "Mandy",
@@ -2056,6 +2372,10 @@
    "durationMin": 90,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Civilization"
+   ],
    "notes": ""
   },
   {
@@ -2075,6 +2395,13 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Kaartspel",
+   "categories": [
+    "Adventure",
+    "Animals",
+    "Card Game",
+    "Fantasy"
+   ],
    "notes": ""
   },
   {
@@ -2090,6 +2417,11 @@
    "durationMin": 90,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Familie",
+   "categories": [
+    "Deduction",
+    "Puzzle"
+   ],
    "notes": ""
   },
   {
@@ -2116,6 +2448,8 @@
    "durationMin": 90,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "",
+   "categories": [],
    "notes": ""
   },
   {
@@ -2134,6 +2468,8 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": false,
+   "category": "",
+   "categories": [],
    "notes": ""
   },
   {
@@ -2153,6 +2489,8 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": false,
+   "category": "",
+   "categories": [],
    "notes": ""
   },
   {
@@ -2160,7 +2498,7 @@
    "name": "Forage",
    "owner": "Rebecca",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/boardgame/458390",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Forage",
    "video": "",
    "interested": [
     "Femke",
@@ -2173,6 +2511,14 @@
    "durationMin": 30,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Kaartspel",
+   "categories": [
+    "Card Game",
+    "Dice",
+    "Environmental",
+    "Exploration",
+    "Puzzle"
+   ],
    "notes": ""
   },
   {
@@ -2192,6 +2538,11 @@
    "durationMin": 150,
    "weight": "ZWAAR",
    "infoChecked": true,
+   "category": "Thematisch",
+   "categories": [
+    "Dice",
+    "Science Fiction"
+   ],
    "notes": ""
   },
   {
@@ -2210,6 +2561,11 @@
    "durationMin": 150,
    "weight": "ZWAAR",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Economic",
+    "Science Fiction"
+   ],
    "notes": ""
   },
   {
@@ -2229,6 +2585,10 @@
    "durationMin": 25,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Kaartspel",
+   "categories": [
+    "Card Game"
+   ],
    "notes": ""
   },
   {
@@ -2248,6 +2608,11 @@
    "durationMin": 120,
    "weight": "ZWAAR",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Science Fiction",
+    "Space Exploration"
+   ],
    "notes": ""
   },
   {
@@ -2269,6 +2634,8 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": false,
+   "category": "",
+   "categories": [],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2286,6 +2653,12 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Party",
+   "categories": [
+    "Ancient",
+    "Party Game",
+    "Political"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2303,6 +2676,8 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": false,
+   "category": "",
+   "categories": [],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2321,6 +2696,8 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": false,
+   "category": "",
+   "categories": [],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2328,7 +2705,7 @@
    "name": "Bullet <3",
    "owner": "",
    "wishlist": true,
-   "link": "https://boardgamegeek.com/boardgame/307305",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Bullet+<3",
    "video": "",
    "interested": [
     "Wesley",
@@ -2339,6 +2716,13 @@
    "durationMin": 20,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Familie",
+   "categories": [
+    "Fighting",
+    "Puzzle",
+    "Real-time",
+    "Science Fiction"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2357,6 +2741,15 @@
    "durationMin": 75,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Economic",
+    "Industry / Manufacturing",
+    "Medieval",
+    "Renaissance",
+    "Transportation",
+    "Travel"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2374,6 +2767,13 @@
    "durationMin": 180,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Thematisch",
+   "categories": [
+    "Adventure",
+    "Animals",
+    "Dice",
+    "Exploration"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2391,6 +2791,10 @@
    "durationMin": 120,
    "weight": "ZWAAR",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "City Building"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2408,6 +2812,12 @@
    "durationMin": 120,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Animals",
+    "Economic",
+    "Science Fiction"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2425,6 +2835,12 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Animals",
+    "Card Game",
+    "Fantasy"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2442,6 +2858,10 @@
    "durationMin": 90,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Thematisch",
+   "categories": [
+    "Fantasy"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2460,6 +2880,13 @@
    "durationMin": 120,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Kaartspel",
+   "categories": [
+    "Animals",
+    "Card Game",
+    "City Building",
+    "Fantasy"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2477,6 +2904,12 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Kaartspel",
+   "categories": [
+    "Animals",
+    "Card Game",
+    "Fantasy"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2494,6 +2927,14 @@
    "durationMin": 75,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Thematisch",
+   "categories": [
+    "Adventure",
+    "Comic Book / Strip",
+    "Exploration",
+    "Fantasy",
+    "Maze"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2501,7 +2942,7 @@
    "name": "For the Gods",
    "owner": "",
    "wishlist": true,
-   "link": "https://boardgamegeek.com/boardgame/444234",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=For+the+Gods",
    "video": "",
    "interested": [
     "Wesley",
@@ -2512,6 +2953,10 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "",
+   "categories": [
+    "Mythology"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2519,7 +2964,7 @@
    "name": "Hell of a Deal",
    "owner": "",
    "wishlist": true,
-   "link": "https://boardgamegeek.com/boardgame/463605",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Hell+of+a+Deal",
    "video": "",
    "interested": [
     "Wesley",
@@ -2530,6 +2975,10 @@
    "durationMin": 120,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Kaartspel",
+   "categories": [
+    "Card Game"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2547,6 +2996,11 @@
    "durationMin": 40,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Economic",
+    "Medieval"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2564,6 +3018,14 @@
    "durationMin": 30,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Party",
+   "categories": [
+    "Card Game",
+    "Music",
+    "Party Game",
+    "Print & Play",
+    "Trivia"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2587,6 +3049,12 @@
    "durationMin": 60,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Abstract",
+   "categories": [
+    "Abstract Strategy",
+    "Ancient",
+    "Dice"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2604,6 +3072,12 @@
    "durationMin": 120,
    "weight": "ZWAAR",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Ancient",
+    "Civilization",
+    "Industry / Manufacturing"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2621,6 +3095,10 @@
    "durationMin": 75,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Medieval"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2628,7 +3106,7 @@
    "name": "Navoria",
    "owner": "",
    "wishlist": true,
-   "link": "https://boardgamegeek.com/boardgame/371932",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Navoria",
    "video": "",
    "interested": [
     "Cindy"
@@ -2638,6 +3116,12 @@
    "durationMin": 80,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Adventure",
+    "Exploration",
+    "Fantasy"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2658,6 +3142,13 @@
    "durationMin": 60,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Familie",
+   "categories": [
+    "Animals",
+    "Economic",
+    "Environmental",
+    "Travel"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2675,6 +3166,11 @@
    "durationMin": 30,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Kaartspel",
+   "categories": [
+    "Card Game",
+    "Dice"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2693,6 +3189,12 @@
    "durationMin": 120,
    "weight": "ZWAAR",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Civilization",
+    "Industry / Manufacturing",
+    "Science Fiction"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2712,6 +3214,14 @@
    "durationMin": 60,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Familie",
+   "categories": [
+    "Environmental",
+    "Fantasy",
+    "Farming",
+    "Science Fiction",
+    "Territory Building"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2729,6 +3239,10 @@
    "durationMin": 45,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Kaartspel",
+   "categories": [
+    "Card Game"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2746,6 +3260,11 @@
    "durationMin": 25,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Familie",
+   "categories": [
+    "Dice",
+    "Economic"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2763,6 +3282,10 @@
    "durationMin": 120,
    "weight": "ZWAAR",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Medieval"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2780,6 +3303,11 @@
    "durationMin": 90,
    "weight": "ZWAAR",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Arabian",
+    "Medieval"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2787,7 +3315,7 @@
    "name": "Tenby",
    "owner": "",
    "wishlist": true,
-   "link": "https://boardgamegeek.com/boardgame/407233",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Tenby",
    "video": "",
    "interested": [
     "Cindy"
@@ -2797,6 +3325,11 @@
    "durationMin": 60,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Kaartspel",
+   "categories": [
+    "Card Game",
+    "City Building"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2814,6 +3347,10 @@
    "durationMin": 75,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "City Building"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2832,6 +3369,13 @@
    "durationMin": 90,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Kaartspel",
+   "categories": [
+    "Card Game",
+    "Dice",
+    "Economic",
+    "Industry / Manufacturing"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2849,6 +3393,10 @@
    "durationMin": 180,
    "weight": "ZWAAR",
    "infoChecked": true,
+   "category": "",
+   "categories": [
+    "Ancient"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2866,6 +3414,12 @@
    "durationMin": 160,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Thematisch",
+   "categories": [
+    "Animals",
+    "Horror",
+    "Humor"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2883,6 +3437,11 @@
    "durationMin": 180,
    "weight": "ZWAAR",
    "infoChecked": true,
+   "category": "",
+   "categories": [
+    "Exploration",
+    "Nautical"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2900,6 +3459,11 @@
    "durationMin": 120,
    "weight": "ZWAAR",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Ancient",
+    "Economic"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2907,7 +3471,7 @@
    "name": "Thrones of Valeria",
    "owner": "",
    "wishlist": true,
-   "link": "https://boardgamegeek.com/boardgame/345894",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Thrones+of+Valeria",
    "video": "",
    "interested": [
     "Wesley",
@@ -2918,6 +3482,11 @@
    "durationMin": 45,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Kaartspel",
+   "categories": [
+    "Card Game",
+    "Fantasy"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2935,6 +3504,10 @@
    "durationMin": 48,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "",
+   "categories": [
+    "City Building"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2952,6 +3525,12 @@
    "durationMin": 90,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Kaartspel",
+   "categories": [
+    "Card Game",
+    "Dice",
+    "Economic"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2969,6 +3548,10 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Familie",
+   "categories": [
+    "Animals"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2986,6 +3569,8 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": false,
+   "category": "",
+   "categories": [],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -3003,6 +3588,8 @@
    "durationMin": 90,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "",
+   "categories": [],
    "notes": ""
   },
   {
@@ -3010,7 +3597,7 @@
    "name": "Inside Job",
    "owner": "Wesley",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/boardgame/324914",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Inside+Job",
    "video": "",
    "interested": [
     "Dinna"
@@ -3020,6 +3607,11 @@
    "durationMin": 30,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Kaartspel",
+   "categories": [
+    "Card Game",
+    "Spies / Secret Agents"
+   ],
    "notes": ""
   },
   {
@@ -3027,7 +3619,7 @@
    "name": "JiSoGi",
    "owner": "Wesley",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/boardgame/429845",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=JiSoGi",
    "video": "",
    "interested": [
     "Dinna"
@@ -3037,6 +3629,12 @@
    "durationMin": 120,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Comic Book / Strip",
+    "Fantasy",
+    "Movies / TV / Radio theme"
+   ],
    "notes": ""
   },
   {
@@ -3054,6 +3652,8 @@
    "durationMin": 90,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "",
+   "categories": [],
    "notes": ""
   },
   {
@@ -3061,7 +3661,7 @@
    "name": "Melodies",
    "owner": "Wesley",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/boardgame/475188",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Melodies",
    "video": "",
    "interested": [
     "Dinna"
@@ -3071,6 +3671,11 @@
    "durationMin": 30,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Kaartspel",
+   "categories": [
+    "Card Game",
+    "Music"
+   ],
    "notes": ""
   },
   {
@@ -3091,6 +3696,8 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": false,
+   "category": "",
+   "categories": [],
    "notes": ""
   },
   {
@@ -3098,7 +3705,7 @@
    "name": "Night Soil",
    "owner": "Wesley",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/boardgame/421530",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Night+Soil",
    "video": "",
    "interested": [
     "Dinna"
@@ -3108,6 +3715,10 @@
    "durationMin": 90,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "",
+   "categories": [
+    "Renaissance"
+   ],
    "notes": ""
   },
   {
@@ -3125,6 +3736,11 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "City Building",
+    "Renaissance"
+   ],
    "notes": ""
   },
   {
@@ -3142,6 +3758,8 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": false,
+   "category": "",
+   "categories": [],
    "notes": ""
   },
   {
@@ -3160,6 +3778,8 @@
    "durationMin": 120,
    "weight": "ZWAAR",
    "infoChecked": true,
+   "category": "",
+   "categories": [],
    "notes": ""
   },
   {
@@ -3167,7 +3787,7 @@
    "name": "Power Vacuum",
    "owner": "Wesley",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/boardgame/402106",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Power+Vacuum",
    "video": "",
    "interested": [
     "Dinna"
@@ -3177,6 +3797,13 @@
    "durationMin": 45,
    "weight": "LICHT",
    "infoChecked": true,
+   "category": "Kaartspel",
+   "categories": [
+    "Card Game",
+    "Humor",
+    "Political",
+    "Spies / Secret Agents"
+   ],
    "notes": ""
   },
   {
@@ -3184,7 +3811,7 @@
    "name": "Queen Alice",
    "owner": "Wesley",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/boardgame/456236",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Queen+Alice",
    "video": "",
    "interested": [
     "Amra",
@@ -3197,6 +3824,10 @@
    "durationMin": 120,
    "weight": "ZWAAR",
    "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Novel-based"
+   ],
    "notes": ""
   }
  ],
@@ -3430,6 +4061,15 @@
    "durationMin": 90,
    "placeId": "",
    "notes": "Verzorgd door Desirée. Tijd is een schatting; pas aan indien nodig."
+  },
+  {
+   "id": "a-groepsfoto",
+   "type": "ANDERS",
+   "title": "Groepsfoto",
+   "startAt": 1794049200000,
+   "durationMin": 15,
+   "placeId": "",
+   "notes": "Iedereen erbij!"
   },
   {
    "id": "a-diner-zaterdag",
