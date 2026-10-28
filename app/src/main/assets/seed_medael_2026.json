@@ -2767,6 +2767,24 @@
    "durationMin": 30,
    "placeId": "",
    "notes": "Corvee maandag ochtend: zie rooster"
+  },
+  {
+   "id": "a-diner-vrijdag",
+   "type": "ETEN",
+   "title": "Avondeten: saté van Desirée",
+   "startAt": 1793986200000,
+   "durationMin": 90,
+   "placeId": "",
+   "notes": "Verzorgd door Desirée. Tijd is een schatting; pas aan indien nodig."
+  },
+  {
+   "id": "a-diner-zaterdag",
+   "type": "ETEN",
+   "title": "Avondeten: Limburgs buffet",
+   "startAt": 1794072600000,
+   "durationMin": 90,
+   "placeId": "",
+   "notes": "Tijd is een schatting; pas aan indien nodig."
   }
  ]
 }

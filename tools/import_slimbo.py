@@ -308,6 +308,12 @@ def main(xlsx: str):
          "startAt": at(0, 16), "durationMin": 60, "placeId": "", "notes": "Vanaf 16:00"},
         {"id": "a-uitchecken", "type": "ANDERS", "title": "Uitchecken (uiterlijk 10:00)",
          "startAt": at(3, 9, 30), "durationMin": 30, "placeId": "", "notes": "Corvee maandag ochtend: zie rooster"},
+        {"id": "a-diner-vrijdag", "type": "ETEN", "title": "Avondeten: saté van Desirée",
+         "startAt": at(0, 18, 30), "durationMin": 90, "placeId": "",
+         "notes": "Verzorgd door Desirée. Tijd is een schatting; pas aan indien nodig."},
+        {"id": "a-diner-zaterdag", "type": "ETEN", "title": "Avondeten: Limburgs buffet",
+         "startAt": at(1, 18, 30), "durationMin": 90, "placeId": "",
+         "notes": "Tijd is een schatting; pas aan indien nodig."},
     ]
 
     seed = {
