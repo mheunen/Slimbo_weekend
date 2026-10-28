@@ -55,7 +55,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: build-${{ github.run_number }}
-          name: Spellenweekend build ${{ github.run_number }}
-          body: Automatisch gebouwd vanaf ${{ github.sha }}
+          name: Spellenweekend 1.0.${{ github.run_number }}
+          body_path: RELEASE_NOTES.md
           files: Spellenweekend.apk
           make_latest: true
