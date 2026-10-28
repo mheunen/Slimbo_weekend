@@ -1,0 +1,2772 @@
+{
+ "version": 1,
+ "event": {
+  "venue": "Landgoed Molen van Medael",
+  "address": "Rue de Rémersdael 98, 4852 Hombourg (België)",
+  "phone": "+32 87 78 43 50",
+  "checkInAt": 1793977200000,
+  "checkOutAt": 1794214800000,
+  "info": [
+   {
+    "title": "Aankomst en vertrek",
+    "items": [
+     "Inchecken vrijdag vanaf 16:00",
+     "Uitchecken maandag uiterlijk 10:00 (maandag ochtend is er extra corvee)",
+     "Parkeren bij de accommodatie, maar weinig plekken: carpool!",
+     "Elektrisch laden kan niet bij de accommodatie zelf (volgens het landgoed wel een laadpunt aan de overkant)"
+    ]
+   },
+   {
+    "title": "Zelf meenemen",
+    "items": [
+     "Dekbedovertrek en kussensloop (dekbed ligt er)",
+     "Hoeslaken 90×200 (eenpersoons boxsprings)",
+     "2 theedoeken per persoon — zonder theedoek geen entree",
+     "Handdoeken en douchespullen",
+     "Eigen eten en drinken, met naamsticker",
+     "Identiteitsbewijs"
+    ]
+   },
+   {
+    "title": "Gezamenlijk ingekocht (€1–2 p.p., verrekend met de borg)",
+    "items": [
+     "Wc-papier, keukenrol, vuilniszakken + PMD- en GFT-zakken",
+     "Zonnebloemolie, vloeibare boter, peper en zout",
+     "Afwasmiddel, borstel, spons, vaatwastabletten",
+     "Zeep en handdoekjes voor de gezamenlijke wc's",
+     "Curry, ketchup, mayo (ook vegan), zoetjes, bakpapier",
+     "Douchegordijn + stang voor de kamers zonder deur"
+    ]
+   },
+   {
+    "title": "Afspraken",
+    "items": [
+     "Alles wat je meebrengt, gaat ook weer mee naar huis",
+     "Koelkast: één eruit, één erin — niet alles tegelijk koud zetten (2 koelkasten per residentie)",
+     "Ruim je eigen vaat op en laat de keuken netjes achter; pannen was je zelf af",
+     "Vaatwasser vol? Aanzetten of uitruimen",
+     "Corvee is een extra taak voor de gezamenlijke ruimtes",
+     "Lichte slaper? Neem oordopjes mee, het kan gehorig zijn",
+     "Kamers ruilen mag, geef het door aan Wilma"
+    ]
+   },
+   {
+    "title": "Murder Mystery",
+    "items": [
+     "Er kan weer een Murder Mystery georganiseerd worden: max. 20 personen, bijdrage €2–3. Aanmelden via het document."
+    ]
+   },
+   {
+    "title": "Carpool",
+    "items": [
+     "Amela (Sittard) · heen Vrijdag 15:00 ( of eerder bij vervroegde checkin) · terug Zondag 22:00 · 1 plek · rijdt mee: Amra",
+     "Wilma (Kerkrade (Gracht)) · heen Vrijdag 15:00 ( of eerder bij vervroegde checkin) · terug Maandag na uitchecken · 1 plek"
+    ]
+   },
+   {
+    "title": "Te koop aangeboden",
+    "items": [
+     "Twilight Inscription · Loode · €15 — paar keer gespeeld",
+     "Hadrians Wall · Loode · €30 — paar keer gespeeld",
+     "Gaia Project · Loode · €35 — paar keer gespeeld",
+     "City of Horror · Loode · €20 — paar keer gespeeld",
+     "Escape the cursed Temple BigBox · Loode · €40 — paar keer gespeeld",
+     "Mechs vs Minions · Loode · €90 — paar keer gespeeld",
+     "Trial by Trolley · Loode · €15 — paar keer gespeeld",
+     "Dinosaur Island + Totally Liquid Expansion · Loode · €50 — paar keer gespeeld",
+     "Human Punishment + Project Hellgate · Loode · €15 — paar keer gespeeld",
+     "20 strong: Tanglewoods alle 3,5 + Solar Sentinels & Too Many Bones · Loode · €50 — sommige gespeeld, andere ongespeeld",
+     "Alhambra Roll&Write · Wilma · €8 — 1x gespeeld",
+     "New Found Land · Wilma · €12 — 1x gespeeld",
+     "Festo! · Wilma · €7",
+     "Horus · Wilma · €7",
+     "Mercado · Wilma · €7 — 1x gespeeld",
+     "Hacienda · Wilma · €10 — 1x gespeeld",
+     "Pilgrimage · Wilma · €10 — Niet gespeeld",
+     "Hawaii · Wilma · €10 — 1x gespeeld",
+     "Daxu · Wilma · €10 — 1x gespeeld",
+     "Nosferatu · Wilma · €5 — 1x gespeeld",
+     "Fantasy Warriors · Wilma · €9 — met uitbreiding De Draken Komen",
+     "Lord of the Rings · Wilma · €3 — Het Kaartspel - the Fellowship of the Ring",
+     "de Mol: de Code opdracht · Wilma · €5",
+     "Machiavelli · Wilma · €7",
+     "Passengers · Wilma · €15 — 1x gespeeld",
+     "Escape Room the Game: Funland · Wilma · €5 — Gespeeld, maar weer speelklaar gemaakt",
+     "Escape Room the Game: Duo pack · Wilma · €10 — Wild West Express & the Switch. Inclu Chrono decoder etc. Gespeeld, maar weer speelklaar gemaakt",
+     "Ascalons Fury · Wilma · €5 — Nog nieuw in plastic",
+     "Scrabble · Wilma · €5",
+     "Pyramid · Wilma · €3 — Dr. Wood Mind Challenge vol 1",
+     "Pictionary · Wilma · €3",
+     "Drunter & Drüber · Wilma · €5 — (Duitse doos, spel is taalonafhankelijk. Nederlandse spelregels erbij)",
+     "Verflixxt · Wilma · €5 — (Duitse doos, spel is taalonafhankelijk)",
+     "Aqua · Cindy · €15 — of doe een bod",
+     "Tokyo travelers · Cindy · €20 — of doe een bod",
+     "Terra · Cindy · €5",
+     "Triominos deluxe · Cindy · ? — gouwe ouwe 😉",
+     "Monumenta · Cindy · €20 — of doe een bod",
+     "Perfect shot · Cindy · €7"
+    ]
+   }
+  ]
+ },
+ "places": [
+  {
+   "id": "res17",
+   "name": "Residentie 17",
+   "description": "Begane grond: woon/eetkamer met open keuken, terras. 1e en 2e verdieping: elk 4 slaapkamers en 4 badkamers."
+  },
+  {
+   "id": "res18",
+   "name": "Residentie 18",
+   "description": "Begane grond: woon/eetkamer met open keuken, terras. 1e en 2e verdieping: elk 4 slaapkamers en 4 badkamers."
+  }
+ ],
+ "tables": [
+  {
+   "id": "t17-eet-a",
+   "name": "Eettafel A",
+   "placeId": "res17",
+   "seats": 11
+  },
+  {
+   "id": "t17-eet-b",
+   "name": "Eettafel B",
+   "placeId": "res17",
+   "seats": 11
+  },
+  {
+   "id": "t17-lounge",
+   "name": "Loungehoek (salontafels)",
+   "placeId": "res17",
+   "seats": 4
+  },
+  {
+   "id": "t17-terras-1",
+   "name": "Terras picknicktafel 1",
+   "placeId": "res17",
+   "seats": 6
+  },
+  {
+   "id": "t17-terras-2",
+   "name": "Terras picknicktafel 2",
+   "placeId": "res17",
+   "seats": 6
+  },
+  {
+   "id": "t18-eet-a",
+   "name": "Eettafel A",
+   "placeId": "res18",
+   "seats": 11
+  },
+  {
+   "id": "t18-eet-b",
+   "name": "Eettafel B",
+   "placeId": "res18",
+   "seats": 11
+  },
+  {
+   "id": "t18-lounge",
+   "name": "Loungehoek (salontafels)",
+   "placeId": "res18",
+   "seats": 4
+  },
+  {
+   "id": "t18-terras-1",
+   "name": "Terras picknicktafel 1",
+   "placeId": "res18",
+   "seats": 6
+  },
+  {
+   "id": "t18-terras-2",
+   "name": "Terras picknicktafel 2",
+   "placeId": "res18",
+   "seats": 6
+  }
+ ],
+ "rooms": [
+  {
+   "id": "r17-1-1",
+   "placeId": "res17",
+   "floor": 1,
+   "name": "Kamer 1.1",
+   "beds": 2,
+   "bedInfo": "2× eenpersoons boxspring 90×200 (hoeslaken 90×200)",
+   "occupants": [
+    "Bjorn",
+    "Cindy"
+   ]
+  },
+  {
+   "id": "r17-1-2",
+   "placeId": "res17",
+   "floor": 1,
+   "name": "Kamer 1.2",
+   "beds": 3,
+   "bedInfo": "3× eenpersoons boxspring 90×200 (hoeslaken 90×200)",
+   "occupants": [
+    "Roel",
+    "Dagmar"
+   ]
+  },
+  {
+   "id": "r17-1-3",
+   "placeId": "res17",
+   "floor": 1,
+   "name": "Kamer 1.3",
+   "beds": 3,
+   "bedInfo": "3× eenpersoons boxspring 90×200 (hoeslaken 90×200)",
+   "occupants": [
+    "Mandy",
+    "Marc",
+    "Scott"
+   ]
+  },
+  {
+   "id": "r17-1-4",
+   "placeId": "res17",
+   "floor": 1,
+   "name": "Kamer 1.4",
+   "beds": 3,
+   "bedInfo": "3× eenpersoons boxspring 90×200 (hoeslaken 90×200)",
+   "occupants": [
+    "Desiree",
+    "Mélanie",
+    "Laura"
+   ]
+  },
+  {
+   "id": "r17-2-1",
+   "placeId": "res17",
+   "floor": 2,
+   "name": "Kamer 2.1",
+   "beds": 2,
+   "bedInfo": "2× eenpersoons boxspring 90×200 (hoeslaken 90×200)",
+   "occupants": [
+    "Wesley",
+    "Vriendin van Wesley"
+   ]
+  },
+  {
+   "id": "r17-2-2",
+   "placeId": "res17",
+   "floor": 2,
+   "name": "Kamer 2.2",
+   "beds": 3,
+   "bedInfo": "3× eenpersoons boxspring 90×200 (hoeslaken 90×200)",
+   "occupants": [
+    "Guillaume",
+    "Rebecca"
+   ]
+  },
+  {
+   "id": "r17-2-3",
+   "placeId": "res17",
+   "floor": 2,
+   "name": "Kamer 2.3",
+   "beds": 3,
+   "bedInfo": "3× eenpersoons boxspring 90×200 (hoeslaken 90×200)",
+   "occupants": [
+    "Wilma",
+    "Femke",
+    "Melissa"
+   ]
+  },
+  {
+   "id": "r17-2-4",
+   "placeId": "res17",
+   "floor": 2,
+   "name": "Kamer 2.4",
+   "beds": 3,
+   "bedInfo": "3× eenpersoons boxspring 90×200 (hoeslaken 90×200)",
+   "occupants": [
+    "Godelief",
+    "Sandra",
+    "Edith"
+   ]
+  },
+  {
+   "id": "r18-1-1",
+   "placeId": "res18",
+   "floor": 1,
+   "name": "Kamer 1.1",
+   "beds": 2,
+   "bedInfo": "2× eenpersoons boxspring 90×200 (hoeslaken 90×200)",
+   "occupants": [
+    "Manuela",
+    "Patrick"
+   ]
+  },
+  {
+   "id": "r18-1-2",
+   "placeId": "res18",
+   "floor": 1,
+   "name": "Kamer 1.2",
+   "beds": 3,
+   "bedInfo": "3× eenpersoons boxspring 90×200 (hoeslaken 90×200)",
+   "occupants": [
+    "Maikel",
+    "Petra",
+    "Juul"
+   ]
+  },
+  {
+   "id": "r18-1-3",
+   "placeId": "res18",
+   "floor": 1,
+   "name": "Kamer 1.3",
+   "beds": 3,
+   "bedInfo": "3× eenpersoons boxspring 90×200 (hoeslaken 90×200)",
+   "occupants": [
+    "Kelly",
+    "Amra",
+    "Amela"
+   ]
+  },
+  {
+   "id": "r18-1-4",
+   "placeId": "res18",
+   "floor": 1,
+   "name": "Kamer 1.4",
+   "beds": 3,
+   "bedInfo": "3× eenpersoons boxspring 90×200 (hoeslaken 90×200)",
+   "occupants": [
+    "Jerry",
+    "Dennis",
+    "Robbert"
+   ]
+  },
+  {
+   "id": "r18-2-1",
+   "placeId": "res18",
+   "floor": 2,
+   "name": "Kamer 2.1",
+   "beds": 2,
+   "bedInfo": "2× eenpersoons boxspring 90×200 (hoeslaken 90×200)",
+   "occupants": [
+    "Moris",
+    "Baukje"
+   ]
+  },
+  {
+   "id": "r18-2-2",
+   "placeId": "res18",
+   "floor": 2,
+   "name": "Kamer 2.2",
+   "beds": 3,
+   "bedInfo": "3× eenpersoons boxspring 90×200 (hoeslaken 90×200)",
+   "occupants": [
+    "Branco",
+    "Danny",
+    "Job"
+   ]
+  },
+  {
+   "id": "r18-2-3",
+   "placeId": "res18",
+   "floor": 2,
+   "name": "Kamer 2.3",
+   "beds": 3,
+   "bedInfo": "3× eenpersoons boxspring 90×200 (hoeslaken 90×200)",
+   "occupants": [
+    "Curro",
+    "Raymond",
+    "Vincent"
+   ]
+  },
+  {
+   "id": "r18-2-4",
+   "placeId": "res18",
+   "floor": 2,
+   "name": "Kamer 2.4",
+   "beds": 3,
+   "bedInfo": "3× eenpersoons boxspring 90×200 (hoeslaken 90×200)",
+   "occupants": [
+    "Igor",
+    "Manolis",
+    "Mark"
+   ]
+  }
+ ],
+ "guests": [
+  {
+   "id": "gst-amela",
+   "name": "Amela",
+   "roomId": "r18-1-3",
+   "wants": [
+    "g-sankore",
+    "g-ruins",
+    "g-nippon",
+    "g-class-of-89",
+    "g-rebirth",
+    "g-moon-colony-bloodbath"
+   ]
+  },
+  {
+   "id": "gst-amra",
+   "name": "Amra",
+   "roomId": "r18-1-3",
+   "wants": [
+    "g-raas",
+    "g-nippon",
+    "g-class-of-89",
+    "g-chronocritters",
+    "g-shackleton-base",
+    "g-60",
+    "g-container",
+    "g-queen-alice",
+    "g-moon-colony-bloodbath"
+   ]
+  },
+  {
+   "id": "gst-baukje",
+   "name": "Baukje",
+   "roomId": "r18-2-1",
+   "wants": []
+  },
+  {
+   "id": "gst-bjorn",
+   "name": "Bjorn",
+   "roomId": "r17-1-1",
+   "wants": []
+  },
+  {
+   "id": "gst-branco",
+   "name": "Branco",
+   "roomId": "r18-2-2",
+   "wants": []
+  },
+  {
+   "id": "gst-cindy",
+   "name": "Cindy",
+   "roomId": "r17-1-1",
+   "wants": [
+    "g-frosted-blooms",
+    "g-gaudi",
+    "g-a-wild-venture",
+    "g-class-of-89",
+    "g-abroad",
+    "g-grand-austria-hotel",
+    "g-kano",
+    "g-navoria",
+    "g-night-at-the-zoo",
+    "g-parks",
+    "g-rebirth",
+    "g-tenby"
+   ]
+  },
+  {
+   "id": "gst-curro",
+   "name": "Curro",
+   "roomId": "r18-2-3",
+   "wants": []
+  },
+  {
+   "id": "gst-dagmar",
+   "name": "Dagmar",
+   "roomId": "r17-1-2",
+   "wants": [
+    "g-river-market"
+   ]
+  },
+  {
+   "id": "gst-danny",
+   "name": "Danny",
+   "roomId": "r18-2-2",
+   "wants": []
+  },
+  {
+   "id": "gst-dennis",
+   "name": "Dennis",
+   "roomId": "r18-1-4",
+   "wants": []
+  },
+  {
+   "id": "gst-desiree",
+   "name": "Desiree",
+   "roomId": "r17-1-4",
+   "wants": []
+  },
+  {
+   "id": "gst-edith",
+   "name": "Edith",
+   "roomId": "r17-2-4",
+   "wants": []
+  },
+  {
+   "id": "gst-femke",
+   "name": "Femke",
+   "roomId": "r17-2-3",
+   "wants": []
+  },
+  {
+   "id": "gst-godelief",
+   "name": "Godelief",
+   "roomId": "r17-2-4",
+   "wants": []
+  },
+  {
+   "id": "gst-guillaume",
+   "name": "Guillaume",
+   "roomId": "r17-2-2",
+   "wants": []
+  },
+  {
+   "id": "gst-igor",
+   "name": "Igor",
+   "roomId": "r18-2-4",
+   "wants": [
+    "g-moon-colony-bloodbath"
+   ]
+  },
+  {
+   "id": "gst-jerry",
+   "name": "Jerry",
+   "roomId": "r18-1-4",
+   "wants": []
+  },
+  {
+   "id": "gst-job",
+   "name": "Job",
+   "roomId": "r18-2-2",
+   "wants": []
+  },
+  {
+   "id": "gst-juul",
+   "name": "Juul",
+   "roomId": "r18-1-2",
+   "wants": []
+  },
+  {
+   "id": "gst-kelly",
+   "name": "Kelly",
+   "roomId": "r18-1-3",
+   "wants": [
+    "g-raas",
+    "g-gaudi",
+    "g-class-of-89",
+    "g-entropy",
+    "g-urban-sketchers"
+   ]
+  },
+  {
+   "id": "gst-laura",
+   "name": "Laura",
+   "roomId": "r17-1-4",
+   "wants": []
+  },
+  {
+   "id": "gst-maikel",
+   "name": "Maikel",
+   "roomId": "r18-1-2",
+   "wants": []
+  },
+  {
+   "id": "gst-mandy",
+   "name": "Mandy",
+   "roomId": "r17-1-3",
+   "wants": [
+    "g-dice-hospital",
+    "g-raas",
+    "g-bitoku",
+    "g-inventions",
+    "g-class-of-89",
+    "g-arborea",
+    "g-drillers"
+   ]
+  },
+  {
+   "id": "gst-manolis",
+   "name": "Manolis",
+   "roomId": "r18-2-4",
+   "wants": []
+  },
+  {
+   "id": "gst-manuela",
+   "name": "Manuela",
+   "roomId": "r18-1-1",
+   "wants": [
+    "g-woodcraft",
+    "g-civolution",
+    "g-kano"
+   ]
+  },
+  {
+   "id": "gst-marc",
+   "name": "Marc",
+   "roomId": "r17-1-3",
+   "wants": [
+    "g-dice-hospital",
+    "g-sankore",
+    "g-raas",
+    "g-gaudi",
+    "g-chronocritters"
+   ]
+  },
+  {
+   "id": "gst-mark",
+   "name": "Mark",
+   "roomId": "r18-2-4",
+   "wants": []
+  },
+  {
+   "id": "gst-melissa",
+   "name": "Melissa",
+   "roomId": "r17-2-3",
+   "wants": [
+    "g-woodcraft",
+    "g-night-at-the-zoo",
+    "g-parks",
+    "g-rebirth",
+    "g-the-castles-of-burgundy",
+    "g-the-game-makers"
+   ]
+  },
+  {
+   "id": "gst-moris",
+   "name": "Moris",
+   "roomId": "r18-2-1",
+   "wants": [
+    "g-60",
+    "g-queen-alice"
+   ]
+  },
+  {
+   "id": "gst-melanie",
+   "name": "Mélanie",
+   "roomId": "r17-1-4",
+   "wants": []
+  },
+  {
+   "id": "gst-patrick",
+   "name": "Patrick",
+   "roomId": "r18-1-1",
+   "wants": []
+  },
+  {
+   "id": "gst-petra",
+   "name": "Petra",
+   "roomId": "r18-1-2",
+   "wants": []
+  },
+  {
+   "id": "gst-raymond",
+   "name": "Raymond",
+   "roomId": "r18-2-3",
+   "wants": []
+  },
+  {
+   "id": "gst-rebecca",
+   "name": "Rebecca",
+   "roomId": "r17-2-2",
+   "wants": [
+    "g-gaudi"
+   ]
+  },
+  {
+   "id": "gst-robbert",
+   "name": "Robbert",
+   "roomId": "r18-1-4",
+   "wants": [
+    "g-sankore",
+    "g-civolution"
+   ]
+  },
+  {
+   "id": "gst-roel",
+   "name": "Roel",
+   "roomId": "r17-1-2",
+   "wants": []
+  },
+  {
+   "id": "gst-sandra",
+   "name": "Sandra",
+   "roomId": "r17-2-4",
+   "wants": []
+  },
+  {
+   "id": "gst-scott",
+   "name": "Scott",
+   "roomId": "r17-1-3",
+   "wants": []
+  },
+  {
+   "id": "gst-vincent",
+   "name": "Vincent",
+   "roomId": "r18-2-3",
+   "wants": []
+  },
+  {
+   "id": "gst-vriendin-van-wesley",
+   "name": "Vriendin van Wesley",
+   "roomId": "r17-2-1",
+   "wants": []
+  },
+  {
+   "id": "gst-wesley",
+   "name": "Wesley",
+   "roomId": "r17-2-1",
+   "wants": []
+  },
+  {
+   "id": "gst-wilma",
+   "name": "Wilma",
+   "roomId": "r17-2-3",
+   "wants": [
+    "g-letter-jam",
+    "g-raas",
+    "g-bitoku",
+    "g-galactic-cruise",
+    "g-woodcraft",
+    "g-a-gentle-rain",
+    "g-ruins",
+    "g-kaas-en-wijn",
+    "g-maracaibo-en-uitbreiding-the-uprising",
+    "g-river-of-gold-legend-of-the-five-rings",
+    "g-the-lost-code",
+    "g-inventions",
+    "g-honey-buzz",
+    "g-river-market",
+    "g-dice-forge",
+    "g-gaudi",
+    "g-seti-evt-met-space-agencies",
+    "g-entropy",
+    "g-23-knives",
+    "g-arborea",
+    "g-calimala",
+    "g-catvale",
+    "g-century-spice-road",
+    "g-daitoshi",
+    "g-dinosaur-island",
+    "g-drillers",
+    "g-echoes-of-time",
+    "g-emberheart",
+    "g-everdell-emerland",
+    "g-everdell-journeys",
+    "g-fireflies",
+    "g-grand-austria-hotel",
+    "g-harmoni-kresendo",
+    "g-het-witte-kasteel-het-duel",
+    "g-hitster-alle-versies",
+    "g-kingdom-crossing",
+    "g-libertalia-winds-of-galecrest",
+    "g-marajoara",
+    "g-men-nefer",
+    "g-merlin-evt-met-uitbreiding-morgana",
+    "g-night-at-the-zoo",
+    "g-opera-magna",
+    "g-parks",
+    "g-parks-potions-uitbreiding",
+    "g-phoenix-new-horizon",
+    "g-red-north",
+    "g-resafa",
+    "g-riverside",
+    "g-sabika",
+    "g-scholars-of-the-south-tigris",
+    "g-tenpenny-parks",
+    "g-the-game-makers",
+    "g-the-great-library",
+    "g-the-sheep-don-t-let-them-catch-you-sleeping",
+    "g-thesauros",
+    "g-thessaloniki",
+    "g-tolleno",
+    "g-vogelvrij"
+   ]
+  }
+ ],
+ "games": [
+  {
+   "id": "g-dice-hospital",
+   "name": "Dice Hospital",
+   "owner": "Amela",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/218121/dice-hospital",
+   "video": "https://boardgamegeek.com/video/195733/dice-hospital/how-to-play-dice-hospital-rules-school-with-the-ga",
+   "interested": [
+    "Marc",
+    "Mandy"
+   ],
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 75,
+   "weight": "MIDDEL",
+   "infoChecked": true,
+   "notes": ""
+  },
+  {
+   "id": "g-jaipur",
+   "name": "Jaipur",
+   "owner": "Amela",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/54043/jaipur",
+   "video": "https://boardgamegeek.com/video/583072/jaipur/how-to-play-jaipur",
+   "interested": [],
+   "minPlayers": 2,
+   "maxPlayers": 2,
+   "durationMin": 30,
+   "weight": "LICHT",
+   "infoChecked": true,
+   "notes": ""
+  },
+  {
+   "id": "g-letter-jam",
+   "name": "Letter Jam",
+   "owner": "Amela",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/275467/letter-jam",
+   "video": "https://boardgamegeek.com/video/232032/letter-jam/letter-jam-how-play-tutorial-video-gaming-rules",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 6,
+   "durationMin": 45,
+   "weight": "LICHT",
+   "infoChecked": true,
+   "notes": ""
+  },
+  {
+   "id": "g-printing-press",
+   "name": "Printing Press",
+   "owner": "Amela",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/390606/printing-press",
+   "video": "https://boardgamegeek.com/video/494578/printing-press/printing-press-board-game-review",
+   "interested": [],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": ""
+  },
+  {
+   "id": "g-reforest",
+   "name": "Reforest",
+   "owner": "Amela",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/387276/reforest",
+   "video": "https://boardgamegeek.com/video/604628/reforest/how-to-play-reforest",
+   "interested": [],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": ""
+  },
+  {
+   "id": "g-urbion",
+   "name": "Urbion",
+   "owner": "Amela",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/94389/urbion",
+   "video": "https://boardgamegeek.com/video/31264/urbion/urbion-review-this-board-game-life",
+   "interested": [],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": ""
+  },
+  {
+   "id": "g-cat-in-a-box",
+   "name": "Cat in a Box",
+   "owner": "Amra",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Cat+in+a+Box",
+   "video": "",
+   "interested": [],
+   "minPlayers": 2,
+   "maxPlayers": 5,
+   "durationMin": 30,
+   "weight": "LICHT",
+   "infoChecked": true,
+   "notes": ""
+  },
+  {
+   "id": "g-curious-cargo",
+   "name": "Curious Cargo",
+   "owner": "Amra",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Curious+Cargo",
+   "video": "",
+   "interested": [],
+   "minPlayers": 2,
+   "maxPlayers": 2,
+   "durationMin": 45,
+   "weight": "MIDDEL",
+   "infoChecked": true,
+   "notes": ""
+  },
+  {
+   "id": "g-high-rise-penguins",
+   "name": "High Rise Penguins",
+   "owner": "Amra",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=High+Rise+Penguins",
+   "video": "",
+   "interested": [],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": ""
+  },
+  {
+   "id": "g-kronologic-groene-doos",
+   "name": "Kronologic Groene Doos",
+   "owner": "Amra",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Kronologic+Groene+Doos",
+   "video": "",
+   "interested": [],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": ""
+  },
+  {
+   "id": "g-lost-in-the-woods",
+   "name": "Lost in the Woods",
+   "owner": "Amra",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Lost+in+the+Woods",
+   "video": "",
+   "interested": [],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": ""
+  },
+  {
+   "id": "g-meow-tiles",
+   "name": "Meow Tiles",
+   "owner": "Amra",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Meow+Tiles",
+   "video": "",
+   "interested": [],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": ""
+  },
+  {
+   "id": "g-pray-another-day",
+   "name": "Pray another Day",
+   "owner": "Amra",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Pray+another+Day",
+   "video": "",
+   "interested": [],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": ""
+  },
+  {
+   "id": "g-sankore",
+   "name": "Sankoré",
+   "owner": "Amra",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/382518/sankore-the-pride-of-mansa-musa",
+   "video": "https://boardgamegeek.com/video/472178/sankore-the-pride-of-mansa-musa/sankore-learn-while-playing",
+   "interested": [
+    "Marc",
+    "Amela",
+    "Robbert"
+   ],
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 120,
+   "weight": "ZWAAR",
+   "infoChecked": true,
+   "notes": ""
+  },
+  {
+   "id": "g-similo-slimbo",
+   "name": "Similo Slimbo",
+   "owner": "Amra",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Similo+Slimbo",
+   "video": "",
+   "interested": [],
+   "minPlayers": 2,
+   "maxPlayers": 8,
+   "durationMin": 15,
+   "weight": "LICHT",
+   "infoChecked": true,
+   "notes": ""
+  },
+  {
+   "id": "g-trio",
+   "name": "Trio",
+   "owner": "Amra",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Trio",
+   "video": "",
+   "interested": [],
+   "minPlayers": 3,
+   "maxPlayers": 6,
+   "durationMin": 15,
+   "weight": "LICHT",
+   "infoChecked": true,
+   "notes": ""
+  },
+  {
+   "id": "g-kittin",
+   "name": "Kittin",
+   "owner": "Amra",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Kittin",
+   "video": "",
+   "interested": [],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": ""
+  },
+  {
+   "id": "g-raas",
+   "name": "Raas",
+   "owner": "Cindy",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/358912/raas-a-dance-of-love",
+   "video": "https://boardgamegeek.com/video/576587/raas-a-dance-of-love/raas-a-dance-of-love-take-a-look-at-this-game",
+   "interested": [
+    "Amra",
+    "Wilma",
+    "Marc",
+    "Mandy",
+    "Kelly"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": ""
+  },
+  {
+   "id": "g-bitoku",
+   "name": "Bitoku",
+   "owner": "Desiree",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Bitoku",
+   "video": "https://www.youtube.com/watch?v=rcM0qn3HyH0",
+   "interested": [
+    "Mandy",
+    "Wilma"
+   ],
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 120,
+   "weight": "ZWAAR",
+   "infoChecked": true,
+   "notes": ""
+  },
+  {
+   "id": "g-galactic-cruise",
+   "name": "Galactic Cruise",
+   "owner": "Desiree",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/391137/galactic-cruise",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 120,
+   "weight": "ZWAAR",
+   "infoChecked": true,
+   "notes": ""
+  },
+  {
+   "id": "g-woodcraft",
+   "name": "Woodcraft",
+   "owner": "Desiree",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/355093/woodcraft",
+   "video": "",
+   "interested": [
+    "Wilma",
+    "Melissa",
+    "Manuela"
+   ],
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 90,
+   "weight": "MIDDEL",
+   "infoChecked": true,
+   "notes": ""
+  },
+  {
+   "id": "g-a-gentle-rain",
+   "name": "A gentle rain",
+   "owner": "Femke",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/334011/a-gentle-rain",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 1,
+   "maxPlayers": 1,
+   "durationMin": 20,
+   "weight": "LICHT",
+   "infoChecked": true,
+   "notes": ""
+  },
+  {
+   "id": "g-ruins",
+   "name": "Ruins",
+   "owner": "Maikel",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/428635/ruins",
+   "video": "https://boardgamegeek.com/video/563267/ruins/how-to-play-ruins",
+   "interested": [
+    "Amela",
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": ""
+  },
+  {
+   "id": "g-kaas-en-wijn",
+   "name": "Kaas en Wijn",
+   "owner": "Mandy",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/461919/wine-and-cheese",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": ""
+  },
+  {
+   "id": "g-la-fleur-en-uitbreidingen",
+   "name": "La Fleur (en uitbreidingen)",
+   "owner": "Mandy",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=La+Fleur",
+   "video": "https://www.youtube.com/watch?v=NxyLLNHABAk",
+   "interested": [],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": ""
+  },
+  {
+   "id": "g-maracaibo-en-uitbreiding-the-uprising",
+   "name": "Maracaibo (en uitbreiding the uprising)",
+   "owner": "Mandy",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Maracaibo",
+   "video": "https://www.youtube.com/watch?v=PMCCyLW2NjU",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 120,
+   "weight": "ZWAAR",
+   "infoChecked": true,
+   "notes": ""
+  },
+  {
+   "id": "g-nippon",
+   "name": "Nippon",
+   "owner": "Mandy",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/154809/nippon",
+   "video": "https://boardgamegeek.com/video/85634/nippon/gaming-rules-how-to-play-rules-video-nippon",
+   "interested": [
+    "Amela",
+    "Amra"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 120,
+   "weight": "ZWAAR",
+   "infoChecked": true,
+   "notes": ""
+  },
+  {
+   "id": "g-ohanami",
+   "name": "Ohanami",
+   "owner": "Mandy",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Ohanami",
+   "video": "https://www.youtube.com/watch?v=omygTLNE6xA",
+   "interested": [],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 20,
+   "weight": "LICHT",
+   "infoChecked": true,
+   "notes": ""
+  },
+  {
+   "id": "g-river-of-gold-legend-of-the-five-rings",
+   "name": "River of Gold - Legend of the Five Rings",
+   "owner": "Manuela",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/399941/river-of-gold",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": ""
+  },
+  {
+   "id": "g-the-lost-code",
+   "name": "The Lost Code",
+   "owner": "Manuela",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/299702/the-lost-code",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": ""
+  },
+  {
+   "id": "g-civolution",
+   "name": "Civolution",
+   "owner": "Marc",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/400602/civolution",
+   "video": "https://boardgamegeek.com/video/523654/civolution/civolution-how-to-play-complete-clear-and-concise",
+   "interested": [
+    "Robbert",
+    "Manuela"
+   ],
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 180,
+   "weight": "ZWAAR",
+   "infoChecked": true,
+   "notes": ""
+  },
+  {
+   "id": "g-inventions",
+   "name": "Inventions",
+   "owner": "Marc",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/347305/inventions-evolution-of-ideas",
+   "video": "https://boardgamegeek.com/video/504873/inventions-evolution-of-ideas/inventions-evolution-of-ideas-review-and-overview",
+   "interested": [
+    "Mandy",
+    "Wilma"
+   ],
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 120,
+   "weight": "ZWAAR",
+   "infoChecked": true,
+   "notes": ""
+  },
+  {
+   "id": "g-pili-pili",
+   "name": "Pili Pili",
+   "owner": "Marc",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Pili+Pili",
+   "video": "https://boardgamegeek.com/video/610770/pili-pili/how-to-play-pili-pili",
+   "interested": [],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": ""
+  },
+  {
+   "id": "g-tianxia",
+   "name": "Tianxia",
+   "owner": "Marc",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/447746/tianxia",
+   "video": "https://boardgamegeek.com/video/591063/tianxia/tianxia-board-game-review",
+   "interested": [],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": ""
+  },
+  {
+   "id": "g-honey-buzz",
+   "name": "Honey Buzz",
+   "owner": "Mélanie",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/284742/honey-buzz",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 90,
+   "weight": "MIDDEL",
+   "infoChecked": true,
+   "notes": ""
+  },
+  {
+   "id": "g-river-market",
+   "name": "River Market",
+   "owner": "Mélanie",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/435311/river-market",
+   "video": "",
+   "interested": [
+    "Wilma",
+    "Dagmar"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": ""
+  },
+  {
+   "id": "g-frosted-blooms",
+   "name": "Frosted Blooms",
+   "owner": "Mélanie",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/449853/frosted-blooms",
+   "video": "https://boardgamegeek.com/video/603343/frosted-blooms/frosted-blooms-bgg-how-to-play",
+   "interested": [
+    "Cindy"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": ""
+  },
+  {
+   "id": "g-dice-forge",
+   "name": "Dice Forge",
+   "owner": "Melissa",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/194594/dice-forge",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 45,
+   "weight": "LICHT",
+   "infoChecked": true,
+   "notes": ""
+  },
+  {
+   "id": "g-gaudi",
+   "name": "Gaudi",
+   "owner": "Melissa",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/457557/gaudi",
+   "video": "https://boardgamegeek.com/video/636554/gaudi/gaudi-a-devir-games-hot-new-release-board-game-rev",
+   "interested": [
+    "Cindy",
+    "Wilma",
+    "Rebecca",
+    "Marc",
+    "Kelly"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": ""
+  },
+  {
+   "id": "g-arcs",
+   "name": "arcs",
+   "owner": "Moris",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=arcs",
+   "video": "",
+   "interested": [],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 120,
+   "weight": "ZWAAR",
+   "infoChecked": true,
+   "notes": ""
+  },
+  {
+   "id": "g-greenwood",
+   "name": "greenwood",
+   "owner": "Moris",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=greenwood",
+   "video": "",
+   "interested": [],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": ""
+  },
+  {
+   "id": "g-seti-evt-met-space-agencies",
+   "name": "Seti (evt met space agencies)",
+   "owner": "Moris",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/418059/seti-search-for-extraterrestrial-intelligence",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 160,
+   "weight": "ZWAAR",
+   "infoChecked": true,
+   "notes": ""
+  },
+  {
+   "id": "g-timespan",
+   "name": "timespan",
+   "owner": "Moris",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=timespan",
+   "video": "",
+   "interested": [],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": ""
+  },
+  {
+   "id": "g-endeavor-deep-sea",
+   "name": "endeavor deep sea",
+   "owner": "Moris",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=endeavor+deep+sea",
+   "video": "",
+   "interested": [],
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 90,
+   "weight": "MIDDEL",
+   "infoChecked": true,
+   "notes": ""
+  },
+  {
+   "id": "g-elementica",
+   "name": "elementica",
+   "owner": "Moris",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=elementica",
+   "video": "",
+   "interested": [],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": ""
+  },
+  {
+   "id": "g-the-gang",
+   "name": "the gang",
+   "owner": "Moris",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=the+gang",
+   "video": "",
+   "interested": [],
+   "minPlayers": 3,
+   "maxPlayers": 6,
+   "durationMin": 20,
+   "weight": "LICHT",
+   "infoChecked": true,
+   "notes": ""
+  },
+  {
+   "id": "g-fishing",
+   "name": "fishing",
+   "owner": "Moris",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=fishing",
+   "video": "",
+   "interested": [],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": ""
+  },
+  {
+   "id": "g-a-wild-venture",
+   "name": "A wild venture",
+   "owner": "Rebecca",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/447174/a-wild-venture",
+   "video": "https://boardgamegeek.com/video/595123/a-wild-venture/a-wild-venture-how-to-play-and-solo-playthrough-co",
+   "interested": [
+    "Cindy"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": ""
+  },
+  {
+   "id": "g-behind",
+   "name": "Behind",
+   "owner": "Rebecca",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/423787/behind",
+   "video": "https://boardgamegeek.com/video/525343/behind/ludochrono-behind",
+   "interested": [],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": ""
+  },
+  {
+   "id": "g-class-of-89",
+   "name": "Class of '89",
+   "owner": "Rebecca",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/442093/class-of-89",
+   "video": "https://boardgamegeek.com/video/634383/class-of-89/class-of-89-how-to-play",
+   "interested": [
+    "Amela",
+    "Cindy",
+    "Amra",
+    "Mandy",
+    "Kelly"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": ""
+  },
+  {
+   "id": "g-chronocritters",
+   "name": "Chronocritters",
+   "owner": "Robbert",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/466862/chronocritters",
+   "video": "https://www.youtube.com/watch?v=mfAvT_oDW04",
+   "interested": [
+    "Marc",
+    "Amra"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": ""
+  },
+  {
+   "id": "g-entropy",
+   "name": "Entropy",
+   "owner": "Robbert",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/462941/entropy",
+   "video": "",
+   "interested": [
+    "Wilma",
+    "Kelly"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": ""
+  },
+  {
+   "id": "g-oshaka-trick",
+   "name": "Oshaka Trick",
+   "owner": "Robbert",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/468836/oshaka-trick",
+   "video": "https://www.youtube.com/watch?v=09NYA5lcBRM",
+   "interested": [],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": ""
+  },
+  {
+   "id": "g-shackleton-base",
+   "name": "Shackleton Base",
+   "owner": "Robbert",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/408180/shackleton-base-a-journey-to-the-moon",
+   "video": "https://boardgamegeek.com/video/526943/shackleton-base-a-journey-to-the-moon/shackleton-base-how-to-play-including-all-corporat",
+   "interested": [
+    "Amra"
+   ],
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 120,
+   "weight": "ZWAAR",
+   "infoChecked": true,
+   "notes": ""
+  },
+  {
+   "id": "g-60",
+   "name": "-60°",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=-60°",
+   "video": "",
+   "interested": [
+    "Amra",
+    "Moris"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-23-knives",
+   "name": "23 Knives",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/396740/23-knives",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-abroad",
+   "name": "Abroad",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Abroad",
+   "video": "",
+   "interested": [
+    "Cindy"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-arborea",
+   "name": "Arborea",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Arborea",
+   "video": "https://www.youtube.com/watch?v=0EajqRMzFkE",
+   "interested": [
+    "Mandy",
+    "Wilma"
+   ],
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 120,
+   "weight": "ZWAAR",
+   "infoChecked": true,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-calimala",
+   "name": "Calimala",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/199383/calimala",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 1,
+   "maxPlayers": 5,
+   "durationMin": 90,
+   "weight": "MIDDEL",
+   "infoChecked": true,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-catvale",
+   "name": "Catvale",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/437246/catvale",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-century-spice-road",
+   "name": "Century Spice Road",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/209685/century-spice-road",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 5,
+   "durationMin": 45,
+   "weight": "LICHT",
+   "infoChecked": true,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-container",
+   "name": "Container",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Container",
+   "video": "",
+   "interested": [
+    "Amra"
+   ],
+   "minPlayers": 3,
+   "maxPlayers": 5,
+   "durationMin": 90,
+   "weight": "MIDDEL",
+   "infoChecked": true,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-daitoshi",
+   "name": "Daitoshi",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/402677/daitoshi",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 120,
+   "weight": "ZWAAR",
+   "infoChecked": true,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-dinosaur-island",
+   "name": "Dinosaur Island",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/221194/dinosaur-island",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 120,
+   "weight": "MIDDEL",
+   "infoChecked": true,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-drillers",
+   "name": "Drillers",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Drillers",
+   "video": "https://www.youtube.com/watch?v=6JDFdUDKu1I",
+   "interested": [
+    "Mandy",
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-echoes-of-time",
+   "name": "Echoes of Time",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/441850/echoes-of-time",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-emberheart",
+   "name": "Emberheart",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/452817/emberheart",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-everdell-emerland",
+   "name": "Everdell Emerland",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/455843/everdell-emerland",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-everdell-journeys",
+   "name": "Everdell Journeys",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/468395/everdell-journeys",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-fireflies",
+   "name": "Fireflies",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/472706/fireflies",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-grand-austria-hotel",
+   "name": "Grand Austria Hotel",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/182874/grand-austria-hotel",
+   "video": "",
+   "interested": [
+    "Wilma",
+    "Cindy"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 120,
+   "weight": "ZWAAR",
+   "infoChecked": true,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-harmoni-kresendo",
+   "name": "Harmoni kresendo",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/472690/harmonies-crescendo",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-het-witte-kasteel-het-duel",
+   "name": "Het Witte Kasteel - Het Duel",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/438936/the-white-castle-duel",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 2,
+   "durationMin": 30,
+   "weight": "MIDDEL",
+   "infoChecked": true,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-hitster-alle-versies",
+   "name": "Hitster (alle versies)",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/318243/hitster",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 10,
+   "durationMin": 30,
+   "weight": "LICHT",
+   "infoChecked": true,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-kano",
+   "name": "Kano",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/470343/kano",
+   "video": "https://boardgamegeek.com/video/624518/kano/all-the-games-with-steph-kano-teach",
+   "interested": [
+    "Cindy",
+    "Manuela"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-kingdom-crossing",
+   "name": "Kingdom crossing",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/437245/kingdom-crossing",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-libertalia-winds-of-galecrest",
+   "name": "Libertalia: Winds of Galecrest",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/356033/libertalia-winds-of-galecrest",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 1,
+   "maxPlayers": 6,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": true,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-marajoara",
+   "name": "Marajoara",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/392463/marajoara",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-men-nefer",
+   "name": "Men Nefer",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/404431/men-nefer",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-merlin-evt-met-uitbreiding-morgana",
+   "name": "Merlin (evt met uitbreiding Morgana)",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/230933/merlin",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 90,
+   "weight": "MIDDEL",
+   "infoChecked": true,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-navoria",
+   "name": "Navoria",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Navoria",
+   "video": "",
+   "interested": [
+    "Cindy"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-night-at-the-zoo",
+   "name": "Night at the Zoo",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/457412/night-at-the-zoo",
+   "video": "",
+   "interested": [
+    "Wilma",
+    "Melissa",
+    "Cindy"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-opera-magna",
+   "name": "Opera Magna",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/471164/opera-magna",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-parks",
+   "name": "Parks",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/266524/parks",
+   "video": "",
+   "interested": [
+    "Wilma",
+    "Melissa",
+    "Cindy"
+   ],
+   "minPlayers": 1,
+   "maxPlayers": 5,
+   "durationMin": 60,
+   "weight": "LICHT",
+   "infoChecked": true,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-parks-potions-uitbreiding",
+   "name": "Parks & potions + uitbreiding",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/414927/parks-and-potions",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-phoenix-new-horizon",
+   "name": "Phoenix New Horizon",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/419704/phoenix-new-horizon",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-queen-alice",
+   "name": "Queen Alice",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Queen+Alice",
+   "video": "",
+   "interested": [
+    "Amra",
+    "Moris"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-rebirth",
+   "name": "Rebirth",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/417197/rebirth",
+   "video": "https://boardgamegeek.com/video/619699/rebirth/rebirth-gamenight-se14-ep08-how-to-play-and-playth",
+   "interested": [
+    "Amela",
+    "Cindy",
+    "Melissa"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-red-north",
+   "name": "Red North",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/447737/red-north",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-resafa",
+   "name": "Resafa",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/418858/resafa",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-riverside",
+   "name": "Riverside",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/321108/riverside",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-sabika",
+   "name": "Sabika",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/360265/sabika",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 90,
+   "weight": "ZWAAR",
+   "infoChecked": true,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-scholars-of-the-south-tigris",
+   "name": "Scholars of the South Tigris",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/367041/scholars-of-the-south-tigris",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 120,
+   "weight": "ZWAAR",
+   "infoChecked": true,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-tenby",
+   "name": "Tenby",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Tenby",
+   "video": "",
+   "interested": [
+    "Cindy"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-tenpenny-parks",
+   "name": "Tenpenny Parks",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/294702/tenpenny-parks",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 75,
+   "weight": "MIDDEL",
+   "infoChecked": true,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-the-castles-of-burgundy",
+   "name": "The castles of Burgundy",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=The+castles+of+Burgundy",
+   "video": "",
+   "interested": [
+    "Melissa"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 90,
+   "weight": "MIDDEL",
+   "infoChecked": true,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-the-game-makers",
+   "name": "the Game Makers",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/447776/the-game-makers",
+   "video": "",
+   "interested": [
+    "Wilma",
+    "Melissa"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-the-great-library",
+   "name": "The Great Library",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/432834/the-great-library",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 150,
+   "weight": "ZWAAR",
+   "infoChecked": true,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-the-sheep-don-t-let-them-catch-you-sleeping",
+   "name": "The Sheep - don't let them catch you sleeping",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/451646/the-sheep",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-thesauros",
+   "name": "Thesauros",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/440885/thesauros",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-thessaloniki",
+   "name": "Thessaloniki",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/463637/thessaloniki",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-tolleno",
+   "name": "Tolleno",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/434131/tolleno",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-urban-sketchers",
+   "name": "Urban Sketchers",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/433891/urban-sketchers",
+   "video": "",
+   "interested": [
+    "Kelly"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-vogelvrij",
+   "name": "Vogelvrij",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/boardgame/387560/perch",
+   "video": "",
+   "interested": [
+    "Wilma"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": "Wens: nog niemand neemt dit mee"
+  },
+  {
+   "id": "g-moon-colony-bloodbath",
+   "name": "Moon Colony Bloodbath",
+   "owner": "Wesley",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Moon+Colony+Bloodbath",
+   "video": "https://boardgamegeek.com/video/623189/moon-colony-bloodbath/moon-colony-bloodbath-board-game-how-to-and-watch",
+   "interested": [
+    "Amra",
+    "Amela",
+    "Igor"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "notes": ""
+  }
+ ],
+ "chores": [
+  {
+   "id": "c17-zaterdag-ochtend",
+   "placeId": "res17",
+   "day": "Zaterdag",
+   "slot": "ochtend",
+   "startAt": 1794038400000,
+   "endAt": 1794052800000,
+   "names": [
+    "Sandra",
+    "Edith"
+   ]
+  },
+  {
+   "id": "c17-zondag-ochtend",
+   "placeId": "res17",
+   "day": "Zondag",
+   "slot": "ochtend",
+   "startAt": 1794124800000,
+   "endAt": 1794139200000,
+   "names": [
+    "Godelief",
+    "Laura"
+   ]
+  },
+  {
+   "id": "c17-maandag-ochtend",
+   "placeId": "res17",
+   "day": "Maandag",
+   "slot": "ochtend",
+   "startAt": 1794211200000,
+   "endAt": 1794225600000,
+   "names": [
+    "Roel",
+    "Dagmar",
+    "Wilma",
+    "Femke"
+   ]
+  },
+  {
+   "id": "c17-zaterdag-middag",
+   "placeId": "res17",
+   "day": "Zaterdag",
+   "slot": "middag",
+   "startAt": 1794052800000,
+   "endAt": 1794070800000,
+   "names": [
+    "Bjorn",
+    "Cindy",
+    "Mélanie"
+   ]
+  },
+  {
+   "id": "c17-zondag-middag",
+   "placeId": "res17",
+   "day": "Zondag",
+   "slot": "middag",
+   "startAt": 1794139200000,
+   "endAt": 1794157200000,
+   "names": [
+    "Mandy",
+    "Marc",
+    "Scott"
+   ]
+  },
+  {
+   "id": "c17-vrijdag-avond",
+   "placeId": "res17",
+   "day": "Vrijdag",
+   "slot": "avond",
+   "startAt": 1793984400000,
+   "endAt": 1793998800000,
+   "names": [
+    "Guillaume",
+    "Rebecca"
+   ]
+  },
+  {
+   "id": "c17-zaterdag-avond",
+   "placeId": "res17",
+   "day": "Zaterdag",
+   "slot": "avond",
+   "startAt": 1794070800000,
+   "endAt": 1794085200000,
+   "names": [
+    "Wesley",
+    "Vriendin van Wesley"
+   ]
+  },
+  {
+   "id": "c17-zondag-avond",
+   "placeId": "res17",
+   "day": "Zondag",
+   "slot": "avond",
+   "startAt": 1794157200000,
+   "endAt": 1794171600000,
+   "names": [
+    "Desiree",
+    "Melissa"
+   ]
+  },
+  {
+   "id": "c18-zaterdag-ochtend",
+   "placeId": "res18",
+   "day": "Zaterdag",
+   "slot": "ochtend",
+   "startAt": 1794038400000,
+   "endAt": 1794052800000,
+   "names": [
+    "Branco",
+    "Vincent"
+   ]
+  },
+  {
+   "id": "c18-zondag-ochtend",
+   "placeId": "res18",
+   "day": "Zondag",
+   "slot": "ochtend",
+   "startAt": 1794124800000,
+   "endAt": 1794139200000,
+   "names": [
+    "Moris",
+    "Baukje"
+   ]
+  },
+  {
+   "id": "c18-maandag-ochtend",
+   "placeId": "res18",
+   "day": "Maandag",
+   "slot": "ochtend",
+   "startAt": 1794211200000,
+   "endAt": 1794225600000,
+   "names": [
+    "Igor",
+    "Manolis",
+    "Curro",
+    "Raymond",
+    "Job"
+   ]
+  },
+  {
+   "id": "c18-zaterdag-middag",
+   "placeId": "res18",
+   "day": "Zaterdag",
+   "slot": "middag",
+   "startAt": 1794052800000,
+   "endAt": 1794070800000,
+   "names": [
+    "Manuela",
+    "Patrick",
+    "Juul"
+   ]
+  },
+  {
+   "id": "c18-zondag-middag",
+   "placeId": "res18",
+   "day": "Zondag",
+   "slot": "middag",
+   "startAt": 1794139200000,
+   "endAt": 1794157200000,
+   "names": [
+    "Robbert",
+    "Danny",
+    "Amela"
+   ]
+  },
+  {
+   "id": "c18-vrijdag-avond",
+   "placeId": "res18",
+   "day": "Vrijdag",
+   "slot": "avond",
+   "startAt": 1793984400000,
+   "endAt": 1793998800000,
+   "names": [
+    "Kelly",
+    "Mark"
+   ]
+  },
+  {
+   "id": "c18-zaterdag-avond",
+   "placeId": "res18",
+   "day": "Zaterdag",
+   "slot": "avond",
+   "startAt": 1794070800000,
+   "endAt": 1794085200000,
+   "names": [
+    "Maikel",
+    "Petra"
+   ]
+  },
+  {
+   "id": "c18-zondag-avond",
+   "placeId": "res18",
+   "day": "Zondag",
+   "slot": "avond",
+   "startAt": 1794157200000,
+   "endAt": 1794171600000,
+   "names": [
+    "Jerry",
+    "Dennis"
+   ]
+  }
+ ],
+ "activities": [
+  {
+   "id": "a-inchecken",
+   "type": "ANDERS",
+   "title": "Inchecken Molen van Medael",
+   "startAt": 1793977200000,
+   "durationMin": 60,
+   "placeId": "",
+   "notes": "Vanaf 16:00"
+  },
+  {
+   "id": "a-uitchecken",
+   "type": "ANDERS",
+   "title": "Uitchecken (uiterlijk 10:00)",
+   "startAt": 1794213000000,
+   "durationMin": 30,
+   "placeId": "",
+   "notes": "Corvee maandag ochtend: zie rooster"
+  }
+ ]
+}

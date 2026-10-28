@@ -1,0 +1,37 @@
+rules_version = '2';
+
+// Iedereen die is ingelogd (anoniem) mag een weekend aanmaken of er met een code
+// bij komen. Daarna kan alleen wie lid is van het weekend de gegevens lezen en wijzigen.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isMember(eventId) {
+      return signedIn() &&
+        exists(/databases/$(database)/documents/events/$(eventId)/members/$(request.auth.uid));
+    }
+
+    match /events/{eventId} {
+      // Lezen is nodig om een weekend op code te kunnen vinden.
+      allow read: if signedIn();
+      allow create: if signedIn() && request.resource.data.createdBy == request.auth.uid;
+      allow update, delete: if isMember(eventId);
+
+      match /members/{uid} {
+        allow read: if isMember(eventId);
+        // Jezelf toevoegen (meedoen met de code)
+        allow create: if signedIn() && request.auth.uid == uid;
+        // Leden mogen elkaars status bijwerken (bv. bij starten van een spel)
+        allow update: if isMember(eventId);
+        allow delete: if signedIn() && request.auth.uid == uid;
+      }
+
+      match /{collection}/{docId} {
+        allow read, write: if collection != 'members' && isMember(eventId);
+      }
+    }
+  }
+}

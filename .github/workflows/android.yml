@@ -1,0 +1,57 @@
+name: Android APK
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "firestore.rules"
+      - "**.md"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: google-services.json uit secret plaatsen
+        env:
+          GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
+        run: |
+          if [ -z "$GOOGLE_SERVICES_JSON" ]; then
+            echo "::error::Secret GOOGLE_SERVICES_JSON ontbreekt. Zie README, stap 4."
+            exit 1
+          fi
+          printf '%s' "$GOOGLE_SERVICES_JSON" > app/google-services.json
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: APK bouwen
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon --stacktrace
+
+      - name: APK klaarzetten
+        run: cp app/build/outputs/apk/debug/app-debug.apk Spellenweekend.apk
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Spellenweekend-${{ github.run_number }}
+          path: Spellenweekend.apk
+
+      - name: Release publiceren
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: build-${{ github.run_number }}
+          name: Spellenweekend build ${{ github.run_number }}
+          body: Automatisch gebouwd vanaf ${{ github.sha }}
+          files: Spellenweekend.apk
+          make_latest: true

@@ -1,0 +1,13 @@
+.gradle/
+build/
+local.properties
+.idea/
+*.iml
+.DS_Store
+captures/
+.kotlin/
+
+# Wordt in GitHub Actions uit een secret aangemaakt
+app/google-services.json
+
+functions/node_modules/
