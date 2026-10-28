@@ -1,4 +1,4 @@
-@file:OptIn(ExperimentalLayoutApi::class)
+@file:OptIn(ExperimentalLayoutApi::class, androidx.compose.material3.ExperimentalMaterial3Api::class)
 
 package nl.spellenweekend.app.ui
 
@@ -165,10 +165,13 @@ fun MyStayCard(myself: Member?, look: Lookup, vm: AppViewModel) {
 
 @Composable
 private fun GuestClaim(myself: Member?, guests: List<Guest>, onClaim: (Guest) -> Unit) {
-    val free = guests.filter { it.claimedBy.isBlank() || it.id == myself?.guestId }
-        .sortedBy { it.name.lowercase() }
-    val guess = free.firstOrNull { it.name.equals(myself?.name?.trim(), ignoreCase = true) }
+    val all = guests.sortedBy { it.name.lowercase() }
+    val guess = all.firstOrNull { it.name.equals(myself?.name?.trim(), ignoreCase = true) }
+    var query by remember { mutableStateOf("") }
     var selected by remember(guess) { mutableStateOf(guess?.id ?: "") }
+    var confirm by remember { mutableStateOf<Guest?>(null) }
+    val me = myself?.id ?: ""
+    fun inUseElsewhere(g: Guest) = g.claimedBy.isNotBlank() && g.claimedBy != me
 
     Text("Wie ben jij in de kamerindeling?", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)
     Text(
@@ -177,17 +180,64 @@ private fun GuestClaim(myself: Member?, guests: List<Guest>, onClaim: (Guest) ->
         color = MaterialTheme.colorScheme.onSurfaceVariant,
         modifier = Modifier.padding(vertical = 8.dp),
     )
-    SelectField(
-        label = "Naam",
-        value = selected,
-        options = listOf("" to "Kies je naam…") + free.map { it.id to it.name },
-        onSelect = { selected = it },
+    androidx.compose.material3.OutlinedTextField(
+        value = query,
+        onValueChange = { query = it },
+        label = { Text("Zoek je naam") },
+        singleLine = true,
+        modifier = Modifier.fillMaxWidth(),
     )
+    val shown = all.filter { query.isBlank() || it.name.contains(query.trim(), ignoreCase = true) }
+    Column(Modifier.padding(top = 6.dp)) {
+        shown.take(if (query.isBlank()) 6 else 12).forEach { g ->
+            val sel = g.id == selected
+            Surface(
+                onClick = { selected = g.id },
+                shape = MaterialTheme.shapes.small,
+                color = if (sel) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surface,
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                Row(Modifier.padding(horizontal = 12.dp, vertical = 10.dp), verticalAlignment = Alignment.CenterVertically) {
+                    Text(g.name, modifier = Modifier.weight(1f), fontWeight = if (sel) FontWeight.SemiBold else FontWeight.Normal)
+                    if (inUseElsewhere(g)) {
+                        Text("op ander toestel", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    }
+                }
+            }
+        }
+        if (query.isBlank() && all.size > 6) {
+            Text(
+                "Typ een deel van je naam om te zoeken (${all.size} namen).",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(top = 4.dp),
+            )
+        } else if (shown.isEmpty()) {
+            Text("Geen naam gevonden. Vraag de organisatie om je toe te voegen.", style = MaterialTheme.typography.bodySmall)
+        }
+    }
     Button(
         enabled = selected.isNotBlank(),
-        onClick = { free.firstOrNull { it.id == selected }?.let(onClaim) },
+        onClick = {
+            all.firstOrNull { it.id == selected }?.let { g -> if (inUseElsewhere(g)) confirm = g else onClaim(g) }
+        },
         modifier = Modifier.padding(top = 8.dp),
     ) { Text("Koppelen") }
+
+    confirm?.let { g ->
+        androidx.compose.material3.AlertDialog(
+            onDismissRequest = { confirm = null },
+            title = { Text("${g.name} overnemen?") },
+            text = {
+                Text(
+                    "Deze naam is al gekoppeld aan een ander toestel (bijvoorbeeld na het wissen of opnieuw " +
+                        "installeren van de app). Je ♥'s gaan mee en het oude account verdwijnt uit de lijsten."
+                )
+            },
+            confirmButton = { TextButton(onClick = { confirm = null; onClaim(g) }) { Text("Overnemen") } },
+            dismissButton = { TextButton(onClick = { confirm = null }) { Text("Annuleren") } },
+        )
+    }
 }
 
 // =====================================================================

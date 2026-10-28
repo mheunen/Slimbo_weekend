@@ -114,7 +114,7 @@ class Repository(context: Context) {
         suspend fun get(name: String) = col(eventId, name).get(src).await().documents
         return Snapshot(
             activities = get("activities").map { it.toActivity() },
-            members = get("members").filter { it.getBoolean("web") != true }.map { it.toMember() },
+            members = get("members").filter { it.getBoolean("web") != true && it.getBoolean("hidden") != true }.map { it.toMember() },
             places = get("places").map { it.toPlace() },
             tables = get("tables").map { it.toTable() },
         )
@@ -151,13 +151,13 @@ class Repository(context: Context) {
         awaitClose { reg.remove() }
     }
 
-    /** Leden van de beheerwebsite (web = true) tellen niet mee in de app. */
+    /** Leden van de beheerwebsite (web) en vervangen oude toestellen (hidden) tellen niet mee in de app. */
     fun members(eventId: String): Flow<List<Member>> = callbackFlow {
         val reg = col(eventId, "members").addSnapshotListener { snap, err ->
             if (err != null) {
                 Log.w(TAG, "members", err); return@addSnapshotListener
             }
-            if (snap != null) trySend(snap.documents.filter { it.getBoolean("web") != true }.map { it.toMember() })
+            if (snap != null) trySend(snap.documents.filter { it.getBoolean("web") != true && it.getBoolean("hidden") != true }.map { it.toMember() })
         }
         awaitClose { reg.remove() }
     }
@@ -215,6 +215,18 @@ class Repository(context: Context) {
         batch.update(col(eventId, "guests").document(guest.id), "claimedBy", me)
         if (previousGuestId.isNotBlank() && previousGuestId != guest.id) {
             batch.update(col(eventId, "guests").document(previousGuestId), "claimedBy", "")
+        }
+        // Naam was gekoppeld aan een ander (oud) toestel: ♥'s overnemen en dat account verbergen
+        val old = guest.claimedBy
+        if (old.isNotBlank() && old != me) {
+            val oldDoc = runCatching { col(eventId, "members").document(old).get().await() }.getOrNull()
+            val oldWants = (oldDoc?.get("wants") as? List<*>)?.filterIsInstance<String>().orEmpty()
+            if (oldWants.isNotEmpty()) {
+                batch.update(member, "wants", FieldValue.arrayUnion(*oldWants.toTypedArray()))
+            }
+            if (oldDoc?.exists() == true) {
+                batch.update(oldDoc.reference, mapOf("hidden" to true, "replacedBy" to me, "guestId" to ""))
+            }
         }
         batch.commit().await()
     }

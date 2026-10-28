@@ -344,9 +344,9 @@ function weekendView() {
     <label class="f"><span>Weekendinfo — kopjes met "## ", regels met "- "</span><textarea id="eInfo" style="min-height:320px">${esc(infoToText(e.info))}</textarea></label>
     <div class="row"><span class="grow"></span><button class="btn" id="eSave">Opslaan</button></div>
   </div>
-  <div class="card"><h3>Deelnemers in de app (${S.members.filter((m) => !m.web).length})</h3>
+  <div class="card"><h3>Deelnemers in de app (${S.members.filter((m) => !m.web && !m.hidden).length})</h3>
     <div class="tablewrap"><table><thead><tr><th>Naam</th><th>Status</th><th>Toelichting</th><th>♥</th></tr></thead><tbody>
-    ${S.members.filter((m) => !m.web).sort((a, b) => (a.name || "").localeCompare(b.name || "", "nl")).map((m) => `<tr><td>${esc(m.name)}</td><td>${esc(m.status)}</td><td>${esc(m.statusNote)}</td><td>${(m.wants || []).length}</td></tr>`).join("")}
+    ${S.members.filter((m) => !m.web && !m.hidden).sort((a, b) => (a.name || "").localeCompare(b.name || "", "nl")).map((m) => `<tr><td>${esc(m.name)}</td><td>${esc(m.status)}</td><td>${esc(m.statusNote)}</td><td>${(m.wants || []).length}</td></tr>`).join("")}
     </tbody></table></div></div>`;
 }
 
@@ -372,7 +372,8 @@ function ago(ms) {
   return d === 1 ? "gisteren" : `${d} dagen geleden`;
 }
 function usersView() {
-  const appUsers = S.members.filter((m) => !m.web);
+  const appUsers = S.members.filter((m) => !m.web && !m.hidden);
+  const oldDevices = S.members.filter((m) => !m.web && m.hidden);
   const webUsers = S.members.filter((m) => m.web);
   const guestOf = (m) => S.guests.find((g) => g.claimedBy === m.id);
   const verCell = (m) => {
@@ -402,7 +403,7 @@ function usersView() {
       </tr></thead><tbody>
       ${sorted.map((m) => `<tr style="cursor:default">
         <td>${esc(m.name)}</td>
-        <td>${guestOf(m) ? esc(guestOf(m).name) : `<span class="muted">—</span>`}</td>
+        <td>${guestOf(m) ? `${esc(guestOf(m).name)} <button class="btn ghost" style="padding:2px 10px;font-size:12px" data-unlink="${esc(guestOf(m).id)}">ontkoppel</button>` : `<span class="muted">—</span>`}</td>
         <td>${verCell(m)}</td>
         <td>${esc(ago(m.lastOpenedAt))}</td>
         <td>${esc(ago(m.lastSeenAt || m.updatedAt))}</td>
@@ -417,6 +418,9 @@ function usersView() {
       <p class="muted">Namen uit de kamerindeling die nog niet aan een app-gebruiker gekoppeld zijn.</p>
       <p>${notYet.length ? notYet.map((n) => `<span class="pill" style="margin:2px">${esc(n)}</span>`).join(" ") : "Iedereen is gekoppeld."}</p>
     </div>
+    ${oldDevices.length ? `<div class="card"><h3>Vervangen toestellen (${oldDevices.length})</h3>
+      <p class="muted">Oude accounts na wissen of herinstalleren; de naam is overgenomen door een nieuw toestel. Ze tellen nergens meer mee.</p>
+      <p>${oldDevices.map((m) => `<span class="pill" style="margin:2px">${esc(m.name)} · ${esc(ago(m.lastSeenAt || m.updatedAt))}</span>`).join(" ")}</p></div>` : ""}
     <div class="card"><h3>Op de website (${webUsers.length})</h3>
       <p>${webUsers.map((m) => `<span class="pill" style="margin:2px">${esc(m.name)} · ${esc(ago(m.updatedAt))}</span>`).join(" ") || "—"}</p>
     </div>`;
@@ -509,6 +513,17 @@ function bind() {
     } catch (e) { toast("Opslaan mislukt: " + e.message); }
   };
   if ($("#doImport")) $("#doImport").onclick = runImport;
+  document.querySelectorAll("[data-unlink]").forEach((btn) => btn.onclick = async (e) => {
+    e.stopPropagation();
+    const g = S.guests.find((x) => x.id === btn.dataset.unlink);
+    if (!g || !confirm(`${g.name} ontkoppelen? Die persoon kan zich daarna in de app opnieuw aan de naam koppelen.`)) return;
+    try {
+      const b = writeBatch(db);
+      b.set(ref("guests", g.id), { claimedBy: "" }, { merge: true });
+      if (g.claimedBy) b.set(ref("members", g.claimedBy), { guestId: "" }, { merge: true });
+      await b.commit(); toast(`${g.name} ontkoppeld`);
+    } catch (err) { toast("Mislukt: " + err.message); }
+  });
 }
 
 // Niet opnieuw tekenen terwijl iemand in een formulierveld typt (anders gaat invoer verloren)
