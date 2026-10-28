@@ -1,0 +1,4 @@
+{
+ "error": "HTTPError: HTTP Error 401: Unauthorized | Unauthorized. See https://boardgamegeek.com/using_the_xml_api",
+ "tokenSet": false
+}
