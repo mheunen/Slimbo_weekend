@@ -75,57 +75,86 @@ def weight_label(w: float) -> str:
     return "LICHT" if w < 2.2 else "MIDDEL" if w < 3.2 else "ZWAAR"
 
 
+GEEKDO = "https://api.geekdo.com/api"
+
+
+def get_json(url: str):
+    headers = {"User-Agent": "Mozilla/5.0 (Spellenweekend-app)", "Accept": "application/json"}
+    for attempt in range(6):
+        try:
+            with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=30) as r:
+                return json.loads(r.read().decode("utf-8"))
+        except urllib.error.HTTPError as e:
+            if e.code in (429, 500, 502, 503):
+                time.sleep(4 + attempt * 3)
+                continue
+            raise
+    raise RuntimeError(f"geen antwoord: {url}")
+
+
+def search_web(name: str) -> str | None:
+    q = clean(name)
+    url = "https://boardgamegeek.com/search/boardgame?nosession=1&showcount=10&q=" + urllib.parse.quote(q)
+    data = get_json(url)
+    items = data.get("items", [])
+    if not items:
+        return None
+    ql = q.lower()
+    items.sort(key=lambda it: (0 if it.get("name", "").lower() == ql else
+                               1 if it.get("name", "").lower().startswith(ql) else 2))
+    return str(items[0].get("objectid"))
+
+
+def thing_web(bid: str) -> dict:
+    item = get_json(f"{GEEKDO}/geekitems?nosession=1&objecttype=thing&subtype=boardgame&objectid={bid}").get("item", {})
+    w = 0.0
+    try:
+        dyn = get_json(f"{GEEKDO}/dynamicinfo?objectid={bid}&objecttype=thing")
+        w = float(dyn.get("item", {}).get("stats", {}).get("avgweight") or 0)
+    except Exception:  # noqa: BLE001
+        pass
+    def num(k):
+        try:
+            return int(item.get(k) or 0)
+        except (TypeError, ValueError):
+            return 0
+    return {
+        "bggId": bid,
+        "bggName": item.get("name", ""),
+        "minPlayers": num("minplayers"),
+        "maxPlayers": num("maxplayers"),
+        "durationMin": num("maxplaytime") or num("minplaytime"),
+        "weight": weight_label(w),
+        "averageWeight": round(w, 2),
+    }
+
+
 def main():
     seed = json.loads(SEED.read_text(encoding="utf-8"))
     games = seed["games"]
-    ids: dict[str, str] = {}
-    unresolved = []
+    result, unresolved, errors = {}, [], []
+    cache: dict[str, dict] = {}
     for g in games:
-        m = re.search(r"/boardgame/(\d+)", g.get("link", "")) or re.search(r"boardgamegeek\.com/boardgame/(\d+)", g.get("link", ""))
-        if m:
-            ids[g["id"]] = m.group(1)
-            continue
+        m = re.search(r"/boardgame/(\d+)", g.get("link", ""))
+        bid = m.group(1) if m else None
         try:
-            found = search(g["name"])
+            if not bid:
+                bid = search_web(g["name"])
+                time.sleep(1)
+            if not bid:
+                unresolved.append(g["name"])
+                continue
+            if bid not in cache:
+                cache[bid] = thing_web(bid)
+                time.sleep(1)
+            result[g["id"]] = {"name": g["name"], **cache[bid]}
         except Exception as e:  # noqa: BLE001
-            print(f"zoeken mislukt voor {g['name']}: {e}", file=sys.stderr)
-            found = None
-        time.sleep(1.5)
-        if found:
-            ids[g["id"]] = found
-        else:
-            unresolved.append(g["name"])
-
-    result = {}
-    bgg_ids = sorted(set(ids.values()))
-    info = {}
-    for i in range(0, len(bgg_ids), 20):
-        chunk = bgg_ids[i:i + 20]
-        root = get(f"{API}/thing?stats=1&id={','.join(chunk)}")
-        for it in root.findall("item"):
-            def val(tag, default="0"):
-                el = it.find(tag)
-                return el.get("value") if el is not None else default
-            primary = next((n.get("value") for n in it.findall("name") if n.get("type") == "primary"), "")
-            w = it.find("statistics/ratings/averageweight")
-            info[it.get("id")] = {
-                "bggId": it.get("id"),
-                "bggName": primary,
-                "minPlayers": int(val("minplayers") or 0),
-                "maxPlayers": int(val("maxplayers") or 0),
-                "durationMin": int(val("playingtime") or 0) or int(val("maxplaytime") or 0),
-                "weight": weight_label(float(w.get("value")) if w is not None else 0.0),
-                "averageWeight": round(float(w.get("value")), 2) if w is not None else 0.0,
-            }
-        time.sleep(2)
-
-    for g in games:
-        bid = ids.get(g["id"])
-        if bid and bid in info:
-            result[g["id"]] = {"name": g["name"], **info[bid]}
-
-    OUT.write_text(json.dumps({"games": result, "unresolved": unresolved}, ensure_ascii=False, indent=1), encoding="utf-8")
-    print(f"{len(result)} van {len(games)} spellen gevonden; niet gevonden: {unresolved}")
+            errors.append(f"{g['name']}: {type(e).__name__}: {e}")
+            if len(errors) >= 5 and not result:
+                raise RuntimeError(" ; ".join(errors))
+    OUT.write_text(json.dumps({"games": result, "unresolved": unresolved, "errors": errors},
+                              ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"{len(result)} van {len(games)} spellen gevonden")
 
 
 if __name__ == "__main__":
