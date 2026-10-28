@@ -152,6 +152,8 @@ def thing_web(bid: str) -> dict:
         "durationMin": num("maxplaytime") or num("minplaytime"),
         "weight": weight_label(w),
         "averageWeight": round(w, 2),
+        "subdomains": [l.get("name", "") for l in (item.get("links", {}) or {}).get("boardgamesubdomain", [])],
+        "categories": [l.get("name", "") for l in (item.get("links", {}) or {}).get("boardgamecategory", [])][:6],
     }
 
 
