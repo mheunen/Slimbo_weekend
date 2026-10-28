@@ -131,6 +131,22 @@ CATEGORY_NL = [  # volgorde = voorrang, voor spellen zonder BGG-"subdomain"
 ]
 
 
+# Handmatige indeling voor spellen waar BGG geen bruikbare groep voor geeft
+CATEGORY_OVERRIDE = {
+    "g-printing-press": "Strategie", "g-kronologic-groene-doos": "Familie", "g-lost-in-the-woods": "Familie",
+    "g-meow-tiles": "Familie", "g-similo-slimbo": "Coöperatief", "g-trio": "Kaartspel", "g-harmoni-cresendo": "Familie",
+    "g-shipwreck-arcana": "Coöperatief", "g-arborea": "Strategie", "g-kaas-en-wijn": "Familie",
+    "g-la-fleur-en-uitbreidingen": "Strategie", "g-ohanami": "Kaartspel", "g-pili-pili": "Party",
+    "g-paint-the-roses": "Coöperatief", "g-gaudi": "Strategie", "g-kano": "Familie", "g-elementica": "Strategie",
+    "g-endeavor-deep-sea": "Strategie", "g-fishing": "Familie", "g-class-of-89": "Familie", "g-gibberesh": "Party",
+    "g-detective-spelletje": "Coöperatief", "g-60": "Coöperatief", "g-abroad": "Familie",
+    "g-automania-second-edition": "Strategie", "g-for-the-gods": "Strategie", "g-the-great-library": "Strategie",
+    "g-thesauros": "Strategie", "g-tolleno": "Familie", "g-pokespan": "Kaartspel", "g-container": "Strategie",
+    "g-march-of-the-ants": "Strategie", "g-moon-colony-bloodbath": "Thematisch", "g-night-soil": "Strategie",
+    "g-panda-spin-xp": "Familie", "g-pax-porfiriana-second-edition": "Strategie",
+}
+
+
 def category_of(b: dict) -> str:
     subs = b.get("subdomains") or []
     # Party/Kinderen/Oorlog gaan voor; anders de eerste (BGG zet de belangrijkste vooraan)
@@ -265,7 +281,7 @@ def main(xlsx: str):
             "durationMin": known[2] if known else 60,
             "weight": known[3] if known else "MIDDEL",
             "infoChecked": bool(known),
-            "category": category,
+            "category": category or CATEGORY_OVERRIDE.get(gid, ""),
             "categories": categories,
             "notes": "Wens: nog niemand neemt dit mee" if wish else "",
         }

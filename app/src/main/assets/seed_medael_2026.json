@@ -970,7 +970,7 @@
    "durationMin": 60,
    "weight": "LICHT",
    "infoChecked": true,
-   "category": "",
+   "category": "Strategie",
    "categories": [
     "Industry / Manufacturing"
    ],
@@ -1092,7 +1092,7 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": false,
-   "category": "",
+   "category": "Familie",
    "categories": [],
    "notes": ""
   },
@@ -1109,7 +1109,7 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": false,
-   "category": "",
+   "category": "Familie",
    "categories": [],
    "notes": ""
   },
@@ -1126,7 +1126,7 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": false,
-   "category": "",
+   "category": "Familie",
    "categories": [],
    "notes": ""
   },
@@ -1193,7 +1193,7 @@
    "durationMin": 15,
    "weight": "LICHT",
    "infoChecked": true,
-   "category": "",
+   "category": "Coöperatief",
    "categories": [],
    "notes": ""
   },
@@ -1210,7 +1210,7 @@
    "durationMin": 15,
    "weight": "LICHT",
    "infoChecked": true,
-   "category": "",
+   "category": "Kaartspel",
    "categories": [],
    "notes": ""
   },
@@ -1305,7 +1305,7 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": false,
-   "category": "",
+   "category": "Familie",
    "categories": [
     "Expansion for Base-game"
    ],
@@ -1348,7 +1348,7 @@
    "durationMin": 30,
    "weight": "LICHT",
    "infoChecked": true,
-   "category": "",
+   "category": "Coöperatief",
    "categories": [],
    "notes": ""
   },
@@ -1601,7 +1601,7 @@
    "durationMin": 120,
    "weight": "ZWAAR",
    "infoChecked": true,
-   "category": "",
+   "category": "Strategie",
    "categories": [],
    "notes": ""
   },
@@ -1666,7 +1666,7 @@
    "durationMin": 75,
    "weight": "MIDDEL",
    "infoChecked": true,
-   "category": "",
+   "category": "Familie",
    "categories": [
     "Farming"
    ],
@@ -1688,7 +1688,7 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": true,
-   "category": "",
+   "category": "Strategie",
    "categories": [
     "Educational",
     "Humor"
@@ -1781,7 +1781,7 @@
    "durationMin": 20,
    "weight": "LICHT",
    "infoChecked": true,
-   "category": "",
+   "category": "Kaartspel",
    "categories": [],
    "notes": ""
   },
@@ -1962,7 +1962,7 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": false,
-   "category": "",
+   "category": "Party",
    "categories": [],
    "notes": ""
   },
@@ -2116,7 +2116,7 @@
    "durationMin": 45,
    "weight": "MIDDEL",
    "infoChecked": true,
-   "category": "",
+   "category": "Coöperatief",
    "categories": [],
    "notes": ""
   },
@@ -2183,7 +2183,7 @@
    "durationMin": 100,
    "weight": "MIDDEL",
    "infoChecked": true,
-   "category": "",
+   "category": "Strategie",
    "categories": [],
    "notes": ""
   },
@@ -2204,7 +2204,7 @@
    "durationMin": 40,
    "weight": "LICHT",
    "infoChecked": true,
-   "category": "",
+   "category": "Familie",
    "categories": [],
    "notes": ""
   },
@@ -2241,7 +2241,7 @@
    "durationMin": 100,
    "weight": "MIDDEL",
    "infoChecked": true,
-   "category": "",
+   "category": "Strategie",
    "categories": [],
    "notes": ""
   },
@@ -2261,7 +2261,7 @@
    "durationMin": 90,
    "weight": "MIDDEL",
    "infoChecked": true,
-   "category": "",
+   "category": "Strategie",
    "categories": [],
    "notes": ""
   },
@@ -2278,7 +2278,7 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": false,
-   "category": "",
+   "category": "Familie",
    "categories": [],
    "notes": ""
   },
@@ -2448,7 +2448,7 @@
    "durationMin": 90,
    "weight": "MIDDEL",
    "infoChecked": true,
-   "category": "",
+   "category": "Familie",
    "categories": [],
    "notes": ""
   },
@@ -2468,7 +2468,7 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": false,
-   "category": "",
+   "category": "Party",
    "categories": [],
    "notes": ""
   },
@@ -2489,7 +2489,7 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": false,
-   "category": "",
+   "category": "Coöperatief",
    "categories": [],
    "notes": ""
   },
@@ -2634,7 +2634,7 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": false,
-   "category": "",
+   "category": "Coöperatief",
    "categories": [],
    "notes": "Wens: nog niemand neemt dit mee"
   },
@@ -2676,7 +2676,7 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": false,
-   "category": "",
+   "category": "Familie",
    "categories": [],
    "notes": "Wens: nog niemand neemt dit mee"
   },
@@ -2696,7 +2696,7 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": false,
-   "category": "",
+   "category": "Strategie",
    "categories": [],
    "notes": "Wens: nog niemand neemt dit mee"
   },
@@ -2953,7 +2953,7 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": true,
-   "category": "",
+   "category": "Strategie",
    "categories": [
     "Mythology"
    ],
@@ -3393,7 +3393,7 @@
    "durationMin": 180,
    "weight": "ZWAAR",
    "infoChecked": true,
-   "category": "",
+   "category": "Strategie",
    "categories": [
     "Ancient"
    ],
@@ -3437,7 +3437,7 @@
    "durationMin": 180,
    "weight": "ZWAAR",
    "infoChecked": true,
-   "category": "",
+   "category": "Strategie",
    "categories": [
     "Exploration",
     "Nautical"
@@ -3504,7 +3504,7 @@
    "durationMin": 48,
    "weight": "LICHT",
    "infoChecked": true,
-   "category": "",
+   "category": "Familie",
    "categories": [
     "City Building"
    ],
@@ -3569,7 +3569,7 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": false,
-   "category": "",
+   "category": "Kaartspel",
    "categories": [],
    "notes": "Wens: nog niemand neemt dit mee"
   },
@@ -3588,7 +3588,7 @@
    "durationMin": 90,
    "weight": "MIDDEL",
    "infoChecked": true,
-   "category": "",
+   "category": "Strategie",
    "categories": [],
    "notes": ""
   },
@@ -3652,7 +3652,7 @@
    "durationMin": 90,
    "weight": "MIDDEL",
    "infoChecked": true,
-   "category": "",
+   "category": "Strategie",
    "categories": [],
    "notes": ""
   },
@@ -3696,7 +3696,7 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": false,
-   "category": "",
+   "category": "Thematisch",
    "categories": [],
    "notes": ""
   },
@@ -3715,7 +3715,7 @@
    "durationMin": 90,
    "weight": "MIDDEL",
    "infoChecked": true,
-   "category": "",
+   "category": "Strategie",
    "categories": [
     "Renaissance"
    ],
@@ -3758,7 +3758,7 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "infoChecked": false,
-   "category": "",
+   "category": "Familie",
    "categories": [],
    "notes": ""
   },
@@ -3778,7 +3778,7 @@
    "durationMin": 120,
    "weight": "ZWAAR",
    "infoChecked": true,
-   "category": "",
+   "category": "Strategie",
    "categories": [],
    "notes": ""
   },
