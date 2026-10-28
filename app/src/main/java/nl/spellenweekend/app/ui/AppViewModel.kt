@@ -101,6 +101,7 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
                 val snap = repo.fetchAll(ev)
                 checker.check(ev, myId.value, snap)
                 lastRefresh.value = System.currentTimeMillis()
+                repo.reportPresence(ev, getApplication(), opened = true)
                 message.value = "Bijgewerkt om ${fmtTime(lastRefresh.value)}"
             } catch (e: Exception) {
                 message.value = "Geen verbinding met de server — je ziet de laatst bekende gegevens"
@@ -121,6 +122,7 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
                 if (ev != null) {
                     lastRefresh.value = checker.lastCheck(ev)
                     CheckWorker.schedule(getApplication())
+                    repo.reportPresence(ev, getApplication(), opened = true)
                 }
             } catch (e: Exception) {
                 phase.value = Phase.Failed(e.message ?: "Kan geen verbinding maken")
@@ -152,6 +154,7 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
                 eventId.value = id
                 phase.value = Phase.Ready
                 CheckWorker.schedule(getApplication())
+                repo.reportPresence(id, getApplication(), opened = true)
             } catch (e: Exception) {
                 message.value = e.message ?: "Er ging iets mis"
             } finally {

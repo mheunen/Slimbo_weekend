@@ -350,6 +350,78 @@ function weekendView() {
     </tbody></table></div></div>`;
 }
 
+// ------------------------------------------------------------------ gebruikers
+let LATEST = null; // { code, name, date }
+async function loadLatest() {
+  try {
+    const r = await fetch("https://api.github.com/repos/mheunen/Slimbo_weekend/releases/latest", { cache: "no-store" });
+    if (!r.ok) return;
+    const j = await r.json();
+    const code = parseInt(String(j.tag_name || "").replace(/\D/g, ""), 10);
+    if (code) { LATEST = { code, name: "1.0." + code, date: j.published_at }; softRender(); }
+  } catch {}
+}
+function ago(ms) {
+  if (!ms) return "—";
+  const m = Math.round((now() - ms) / 60000);
+  if (m < 1) return "zojuist";
+  if (m < 60) return `${m} min geleden`;
+  const h = Math.round(m / 60);
+  if (h < 24) return `${h} uur geleden`;
+  const d = Math.round(h / 24);
+  return d === 1 ? "gisteren" : `${d} dagen geleden`;
+}
+function usersView() {
+  const appUsers = S.members.filter((m) => !m.web);
+  const webUsers = S.members.filter((m) => m.web);
+  const guestOf = (m) => S.guests.find((g) => g.claimedBy === m.id);
+  const verCell = (m) => {
+    if (!m.appVersionCode) return `<span class="pill warn">onbekend (oud)</span>`;
+    if (!LATEST) return esc(m.appVersion);
+    return m.appVersionCode >= LATEST.code
+      ? `<span class="pill ok">${esc(m.appVersion)} ✓</span>`
+      : `<span class="pill warn">${esc(m.appVersion)} – update</span>`;
+  };
+  const sorted = [...appUsers].sort((a, b) => (b.lastSeenAt || 0) - (a.lastSeenAt || 0));
+  const upToDate = LATEST ? appUsers.filter((m) => (m.appVersionCode || 0) >= LATEST.code).length : null;
+  const noNotif = appUsers.filter((m) => m.notifications === false).length;
+  const notYet = S.guests.filter((g) => !g.claimedBy).map((g) => g.name).sort((a, b) => a.localeCompare(b, "nl"));
+  const unlinked = appUsers.filter((m) => !guestOf(m)).length;
+  return `<div class="card">
+      <div class="row">
+        <div class="grow"><h3>App-gebruikers (${appUsers.length})</h3>
+          <span class="muted">Nieuwste app-versie: ${LATEST ? `<b>${esc(LATEST.name)}</b> (${esc(new Date(LATEST.date).toLocaleString("nl-NL", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }))})` : "laden…"}</span></div>
+        <div class="row">
+          ${upToDate !== null ? `<span class="pill ${upToDate === appUsers.length ? "ok" : "warn"}">${upToDate}/${appUsers.length} up-to-date</span>` : ""}
+          ${noNotif ? `<span class="pill warn">${noNotif} zonder meldingen</span>` : ""}
+          ${unlinked ? `<span class="pill warn">${unlinked} niet gekoppeld aan naam</span>` : ""}
+        </div>
+      </div>
+      <div class="tablewrap" style="margin-top:10px"><table><thead><tr>
+        <th>Naam</th><th>Gekoppeld aan</th><th>App-versie</th><th>Laatst geopend</th><th>Laatst online</th><th>Meldingen</th><th>Status</th><th>Toestel</th>
+      </tr></thead><tbody>
+      ${sorted.map((m) => `<tr style="cursor:default">
+        <td>${esc(m.name)}</td>
+        <td>${guestOf(m) ? esc(guestOf(m).name) : `<span class="muted">—</span>`}</td>
+        <td>${verCell(m)}</td>
+        <td>${esc(ago(m.lastOpenedAt))}</td>
+        <td>${esc(ago(m.lastSeenAt || m.updatedAt))}</td>
+        <td>${m.notifications === undefined ? "—" : m.notifications ? "aan" : `<span class="pill warn">uit</span>`}</td>
+        <td>${esc({ BESCHIKBAAR: "Beschikbaar", RESERVEERBAAR: "Reserveerbaar", BEZET: "Bezet" }[m.status] || m.status || "")}${m.statusNote ? ` <span class="muted">· ${esc(m.statusNote)}</span>` : ""}</td>
+        <td class="muted">${esc([m.device, m.android ? "Android " + m.android : ""].filter(Boolean).join(" · "))}</td>
+      </tr>`).join("")}
+      </tbody></table></div>
+      <p class="muted">"Laatst online" telt ook de achtergrondcontrole (±15 min) mee. "Onbekend (oud)": app-versie van vóór 1.0.14, die nog niets doorgeeft.</p>
+    </div>
+    <div class="card"><h3>Nog niet in de app (${notYet.length})</h3>
+      <p class="muted">Namen uit de kamerindeling die nog niet aan een app-gebruiker gekoppeld zijn.</p>
+      <p>${notYet.length ? notYet.map((n) => `<span class="pill" style="margin:2px">${esc(n)}</span>`).join(" ") : "Iedereen is gekoppeld."}</p>
+    </div>
+    <div class="card"><h3>Op de website (${webUsers.length})</h3>
+      <p>${webUsers.map((m) => `<span class="pill" style="margin:2px">${esc(m.name)} · ${esc(ago(m.updatedAt))}</span>`).join(" ") || "—"}</p>
+    </div>`;
+}
+
 function importView() {
   return `<div class="card">
     <h3>Slimbo-gegevens laden</h3>
@@ -365,7 +437,7 @@ function importView() {
 }
 
 const TABS = [
-  ["weekend", "Weekend"], ["activities", "Planning"], ["games", "Spellen"],
+  ["users", "Gebruikers"], ["weekend", "Weekend"], ["activities", "Planning"], ["games", "Spellen"],
   ["places", "Locaties"], ["tables", "Tafels"], ["rooms", "Kamers"], ["chores", "Corvee"], ["import", "Laden"],
 ];
 
@@ -374,7 +446,8 @@ function render() {
   if (!S.eventId || !S.event) return renderLogin();
   const me = S.members.find((m) => m.id === S.uid);
   let body = "";
-  if (S.tab === "weekend") body = weekendView();
+  if (S.tab === "users") body = usersView();
+  else if (S.tab === "weekend") body = weekendView();
   else if (S.tab === "import") body = importView();
   else if (S.tab === "games") body = listView("games", "Klik op een rij om te bewerken. Wijzigingen zijn direct zichtbaar in de app.");
   else body = listView(S.tab);
@@ -449,6 +522,7 @@ $("#dlg").addEventListener("close", () => { if (pending) softRender(); });
 function unsubscribe() { S.unsub.forEach((u) => u()); S.unsub = []; }
 function subscribe() {
   unsubscribe();
+  setDoc(doc(db, "events", S.eventId, "members", S.uid), { updatedAt: now() }, { merge: true }).catch(() => {});
   S.unsub.push(onSnapshot(doc(db, "events", S.eventId), (d) => {
     if (!d.exists()) { store.set("eventId", null); S.eventId = null; S.event = null; render(); return; }
     S.event = { id: d.id, ...d.data() }; softRender();
@@ -507,6 +581,7 @@ async function runImport() {
 onAuthStateChanged(auth, (u) => {
   if (!u) { signInAnonymously(auth).catch((e) => { $("#app").innerHTML = `<main><div class="card">Inloggen bij Firebase mislukt: ${esc(e.message)}</div></main>`; }); return; }
   S.uid = u.uid;
+  loadLatest();
   if (S.eventId) subscribe(); else render();
 });
 render();

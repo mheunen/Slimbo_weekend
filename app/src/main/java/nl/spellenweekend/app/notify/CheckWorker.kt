@@ -27,6 +27,7 @@ class CheckWorker(ctx: Context, params: WorkerParameters) : CoroutineWorker(ctx,
         return try {
             val snap = repo.fetchAll(eventId)
             ChangeChecker(applicationContext).check(eventId, me, snap)
+            repo.reportPresence(eventId, applicationContext, opened = false)
             Result.success()
         } catch (e: Exception) {
             Log.w("CheckWorker", "controle mislukt", e)

@@ -120,6 +120,20 @@ class Repository(context: Context) {
         )
     }
 
+    /**
+     * Meldt app-versie en "laatst gezien" aan de database (voor de beheerwebsite).
+     * [opened] = de app is geopend of vernieuwd; anders alleen een achtergrondcontrole.
+     */
+    suspend fun reportPresence(eventId: String, context: Context, opened: Boolean) {
+        val u = uid ?: return
+        val data = DeviceInfo.fields(context) +
+            (if (opened) mapOf("lastOpenedAt" to now()) else emptyMap()) +
+            mapOf("lastSeenAt" to now())
+        runCatching {
+            col(eventId, "members").document(u).set(data, SetOptions.merge()).await()
+        }.onFailure { Log.w(TAG, "presence", it) }
+    }
+
     private fun newJoinCode(): String {
         val chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789" // geen 0/O/1/I
         return (1..6).map { chars.random() }.joinToString("")
