@@ -2,6 +2,8 @@
  "games": {
   "g-dice-hospital": {
    "name": "Dice Hospital",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "218121",
    "bggName": "Dice Hospital",
    "minPlayers": 1,
@@ -12,6 +14,8 @@
   },
   "g-jaipur": {
    "name": "Jaipur",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "54043",
    "bggName": "Jaipur",
    "minPlayers": 2,
@@ -22,6 +26,8 @@
   },
   "g-letter-jam": {
    "name": "Letter Jam",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "275467",
    "bggName": "Letter Jam",
    "minPlayers": 2,
@@ -32,6 +38,8 @@
   },
   "g-printing-press": {
    "name": "Printing Press",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "390606",
    "bggName": "Printing Press",
    "minPlayers": 1,
@@ -42,6 +50,8 @@
   },
   "g-reforest": {
    "name": "Reforest",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "387276",
    "bggName": "Reforest",
    "minPlayers": 1,
@@ -52,6 +62,8 @@
   },
   "g-urbion": {
    "name": "Urbion",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "94389",
    "bggName": "Urbion",
    "minPlayers": 1,
@@ -60,8 +72,70 @@
    "weight": "LICHT",
    "averageWeight": 1.83
   },
+  "g-cat-in-a-box": {
+   "name": "Cat in a Box",
+   "source": "id",
+   "nameMismatch": true,
+   "bggId": "345972",
+   "bggName": "Cat in the Box: Deluxe Edition",
+   "minPlayers": 2,
+   "maxPlayers": 5,
+   "durationMin": 40,
+   "weight": "LICHT",
+   "averageWeight": 2.05
+  },
+  "g-curious-cargo": {
+   "name": "Curious Cargo",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "312251",
+   "bggName": "Curious Cargo",
+   "minPlayers": 2,
+   "maxPlayers": 2,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "averageWeight": 3.19
+  },
+  "g-high-rise-penguins": {
+   "name": "High Rise Penguins",
+   "source": "id",
+   "nameMismatch": true,
+   "bggId": "296164",
+   "bggName": "Yura Yura Penguin",
+   "minPlayers": 2,
+   "maxPlayers": 6,
+   "durationMin": 20,
+   "weight": "LICHT",
+   "averageWeight": 1.0
+  },
+  "g-lost-in-the-woods": {
+   "name": "Lost in the Woods",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "238210",
+   "bggName": "Lost in the Woods",
+   "minPlayers": 1,
+   "maxPlayers": 1,
+   "durationMin": 30,
+   "weight": "LICHT",
+   "averageWeight": 1.83
+  },
+  "g-pray-another-day": {
+   "name": "Pray another Day",
+   "source": "id",
+   "nameMismatch": true,
+   "bggId": "234260",
+   "bggName": "Prey Another Day",
+   "minPlayers": 2,
+   "maxPlayers": 5,
+   "durationMin": 20,
+   "weight": "LICHT",
+   "averageWeight": 1.1
+  },
   "g-sankore": {
    "name": "Sankoré",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "382518",
    "bggName": "Sankoré: The Pride of Mansa Musa",
    "minPlayers": 1,
@@ -70,8 +144,34 @@
    "weight": "ZWAAR",
    "averageWeight": 4.27
   },
+  "g-trio": {
+   "name": "Trio",
+   "source": "id",
+   "nameMismatch": true,
+   "bggId": "366013",
+   "bggName": "Heat: Pedal to the Metal",
+   "minPlayers": 1,
+   "maxPlayers": 6,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "averageWeight": 2.2
+  },
+  "g-kittin": {
+   "name": "Kittin",
+   "source": "id",
+   "nameMismatch": true,
+   "bggId": "231280",
+   "bggName": "Harvest Dice",
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 30,
+   "weight": "LICHT",
+   "averageWeight": 1.36
+  },
   "g-raas": {
    "name": "Raas",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "358912",
    "bggName": "Raas: A Dance of Love",
    "minPlayers": 1,
@@ -82,6 +182,8 @@
   },
   "g-century-spice-road": {
    "name": "Century Spice Road",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "209685",
    "bggName": "Century: Spice Road",
    "minPlayers": 2,
@@ -92,6 +194,8 @@
   },
   "g-harmoni-cresendo": {
    "name": "Harmoni Cresendo",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "472690",
    "bggName": "Harmonies: Crescendo",
    "minPlayers": 1,
@@ -102,6 +206,8 @@
   },
   "g-kingdom-crossing": {
    "name": "Kingdom crossing",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "437245",
    "bggName": "Kingdom Crossing",
    "minPlayers": 1,
@@ -110,8 +216,34 @@
    "weight": "MIDDEL",
    "averageWeight": 2.99
   },
+  "g-shipwreck-arcana": {
+   "name": "Shipwreck Arcana",
+   "source": "id",
+   "nameMismatch": true,
+   "bggId": "220924",
+   "bggName": "",
+   "minPlayers": 0,
+   "maxPlayers": 0,
+   "durationMin": 0,
+   "weight": "",
+   "averageWeight": 0.0
+  },
+  "g-bitoku": {
+   "name": "Bitoku",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "323612",
+   "bggName": "Bitoku",
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 120,
+   "weight": "ZWAAR",
+   "averageWeight": 3.77
+  },
   "g-galactic-cruise": {
    "name": "Galactic Cruise",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "391137",
    "bggName": "Galactic Cruise",
    "minPlayers": 1,
@@ -120,8 +252,22 @@
    "weight": "ZWAAR",
    "averageWeight": 3.98
   },
+  "g-the-castles-of-burgundy": {
+   "name": "The castles of Burgundy",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "84876",
+   "bggName": "The Castles of Burgundy",
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 90,
+   "weight": "MIDDEL",
+   "averageWeight": 2.97
+  },
   "g-woodcraft": {
    "name": "Woodcraft",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "355093",
    "bggName": "Woodcraft",
    "minPlayers": 1,
@@ -132,6 +278,8 @@
   },
   "g-a-gentle-rain": {
    "name": "A gentle rain",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "334011",
    "bggName": "A Gentle Rain",
    "minPlayers": 1,
@@ -142,6 +290,8 @@
   },
   "g-1655-habemus-papam": {
    "name": "1655: Habemus papam",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "82955",
    "bggName": "1655: Habemus Papam",
    "minPlayers": 3,
@@ -150,8 +300,22 @@
    "weight": "LICHT",
    "averageWeight": 2.15
   },
+  "g-drillers": {
+   "name": "Drillers",
+   "source": "id",
+   "nameMismatch": true,
+   "bggId": "435107",
+   "bggName": "Lost Tomb of the Mummy Lich",
+   "minPlayers": 0,
+   "maxPlayers": 0,
+   "durationMin": 0,
+   "weight": "",
+   "averageWeight": 0.0
+  },
   "g-last-lantern": {
    "name": "Last lantern",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "439519",
    "bggName": "Last Lantern",
    "minPlayers": 2,
@@ -162,6 +326,8 @@
   },
   "g-paper-world": {
    "name": "Paper world",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "429020",
    "bggName": "Paper World",
    "minPlayers": 2,
@@ -172,6 +338,8 @@
   },
   "g-splentia": {
    "name": "Splentia",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "448881",
    "bggName": "Splentia",
    "minPlayers": 2,
@@ -180,8 +348,22 @@
    "weight": "LICHT",
    "averageWeight": 2.0
   },
+  "g-arborea": {
+   "name": "Arborea",
+   "source": "id",
+   "nameMismatch": true,
+   "bggId": "356123",
+   "bggName": "Turing Machine",
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 20,
+   "weight": "MIDDEL",
+   "averageWeight": 2.53
+  },
   "g-libertalia-winds-of-galecrest": {
    "name": "Libertalia: Winds of Galecrest",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "356033",
    "bggName": "Libertalia: Winds of Galecrest",
    "minPlayers": 1,
@@ -192,6 +374,8 @@
   },
   "g-ruins": {
    "name": "Ruins",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "428635",
    "bggName": "Ruins",
    "minPlayers": 2,
@@ -202,6 +386,8 @@
   },
   "g-kaas-en-wijn": {
    "name": "Kaas en Wijn",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "461919",
    "bggName": "Wine & Cheese",
    "minPlayers": 2,
@@ -210,8 +396,34 @@
    "weight": "MIDDEL",
    "averageWeight": 3.11
   },
+  "g-la-fleur-en-uitbreidingen": {
+   "name": "La Fleur (en uitbreidingen)",
+   "source": "id",
+   "nameMismatch": true,
+   "bggId": "389214",
+   "bggName": "War of the Ring: The Card Game – Shadow Card Box and Sleeves",
+   "minPlayers": 0,
+   "maxPlayers": 0,
+   "durationMin": 0,
+   "weight": "",
+   "averageWeight": 0.0
+  },
+  "g-maracaibo-en-uitbreiding-the-uprising": {
+   "name": "Maracaibo (en uitbreiding the uprising)",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "276025",
+   "bggName": "Maracaibo",
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 120,
+   "weight": "ZWAAR",
+   "averageWeight": 3.92
+  },
   "g-night-at-the-zoo": {
    "name": "Night at the Zoo",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "457412",
    "bggName": "Night at the Zoo",
    "minPlayers": 1,
@@ -222,6 +434,8 @@
   },
   "g-nippon": {
    "name": "Nippon",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "154809",
    "bggName": "Nippon",
    "minPlayers": 2,
@@ -230,8 +444,22 @@
    "weight": "ZWAAR",
    "averageWeight": 3.76
   },
+  "g-ohanami": {
+   "name": "Ohanami",
+   "source": "id",
+   "nameMismatch": true,
+   "bggId": "270138",
+   "bggName": "Terror Below",
+   "minPlayers": 1,
+   "maxPlayers": 5,
+   "durationMin": 60,
+   "weight": "LICHT",
+   "averageWeight": 1.96
+  },
   "g-grand-austria-hotel": {
    "name": "Grand Austria Hotel",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "182874",
    "bggName": "Grand Austria Hotel",
    "minPlayers": 2,
@@ -240,8 +468,22 @@
    "weight": "MIDDEL",
    "averageWeight": 3.19
   },
+  "g-puzzle-strike-2": {
+   "name": "Puzzle Strike 2",
+   "source": "id",
+   "nameMismatch": true,
+   "bggId": "416159",
+   "bggName": "Hollow",
+   "minPlayers": 2,
+   "maxPlayers": 2,
+   "durationMin": 180,
+   "weight": "",
+   "averageWeight": 0.0
+  },
   "g-resafa": {
    "name": "Resafa",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "418858",
    "bggName": "Resafa",
    "minPlayers": 1,
@@ -252,6 +494,8 @@
   },
   "g-river-of-gold-legend-of-the-five-rings": {
    "name": "River of Gold - Legend of the Five Rings",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "399941",
    "bggName": "River of Gold",
    "minPlayers": 2,
@@ -262,6 +506,8 @@
   },
   "g-the-lost-code": {
    "name": "The Lost Code",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "299702",
    "bggName": "The Lost Code",
    "minPlayers": 2,
@@ -272,6 +518,8 @@
   },
   "g-civolution": {
    "name": "Civolution",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "400602",
    "bggName": "Civolution",
    "minPlayers": 1,
@@ -282,6 +530,8 @@
   },
   "g-inventions": {
    "name": "Inventions",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "347305",
    "bggName": "Inventions: Evolution of Ideas",
    "minPlayers": 1,
@@ -292,6 +542,8 @@
   },
   "g-tianxia": {
    "name": "Tianxia",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "447746",
    "bggName": "Tianxia",
    "minPlayers": 1,
@@ -302,6 +554,8 @@
   },
   "g-honey-buzz": {
    "name": "Honey Buzz",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "284742",
    "bggName": "Honey Buzz",
    "minPlayers": 1,
@@ -312,6 +566,8 @@
   },
   "g-river-market": {
    "name": "River Market",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "435311",
    "bggName": "River Market",
    "minPlayers": 1,
@@ -320,8 +576,58 @@
    "weight": "LICHT",
    "averageWeight": 2.0
   },
+  "g-alchemists": {
+   "name": "Alchemists",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "161970",
+   "bggName": "Alchemists",
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 120,
+   "weight": "ZWAAR",
+   "averageWeight": 3.92
+  },
+  "g-cryptid": {
+   "name": "Cryptid",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "246784",
+   "bggName": "Cryptid",
+   "minPlayers": 3,
+   "maxPlayers": 5,
+   "durationMin": 50,
+   "weight": "MIDDEL",
+   "averageWeight": 2.26
+  },
+  "g-decrypto": {
+   "name": "Decrypto",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "225694",
+   "bggName": "Decrypto",
+   "minPlayers": 3,
+   "maxPlayers": 8,
+   "durationMin": 45,
+   "weight": "LICHT",
+   "averageWeight": 1.82
+  },
+  "g-paint-the-roses": {
+   "name": "Paint the Roses",
+   "source": "id",
+   "nameMismatch": true,
+   "bggId": "307862",
+   "bggName": "Dollars to Donuts",
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 45,
+   "weight": "LICHT",
+   "averageWeight": 1.8
+  },
   "g-frosted-blooms": {
    "name": "Frosted Blooms",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "449853",
    "bggName": "Frosted Blooms",
    "minPlayers": 1,
@@ -332,6 +638,8 @@
   },
   "g-dice-forge": {
    "name": "Dice Forge",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "194594",
    "bggName": "Dice Forge",
    "minPlayers": 2,
@@ -342,6 +650,8 @@
   },
   "g-gaudi": {
    "name": "Gaudi",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "457557",
    "bggName": "Gaudí",
    "minPlayers": 1,
@@ -352,6 +662,8 @@
   },
   "g-kano": {
    "name": "Kano",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "470343",
    "bggName": "Kano",
    "minPlayers": 1,
@@ -360,8 +672,46 @@
    "weight": "LICHT",
    "averageWeight": 1.73
   },
+  "g-arcs": {
+   "name": "Arcs",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "359871",
+   "bggName": "Arcs",
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 120,
+   "weight": "ZWAAR",
+   "averageWeight": 3.45
+  },
+  "g-endeavor-deep-sea": {
+   "name": "Endeavor deep sea",
+   "source": "id",
+   "nameMismatch": true,
+   "bggId": "367150",
+   "bggName": "Dune: War for Arrakis",
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 120,
+   "weight": "ZWAAR",
+   "averageWeight": 3.65
+  },
+  "g-greenwood": {
+   "name": "Greenwood",
+   "source": "id",
+   "nameMismatch": true,
+   "bggId": "391834",
+   "bggName": "SpellBook",
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 45,
+   "weight": "LICHT",
+   "averageWeight": 2.05
+  },
   "g-seti-evt-met-space-agencies": {
    "name": "Seti (evt met space agencies)",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "418059",
    "bggName": "SETI: Search for Extraterrestrial Intelligence",
    "minPlayers": 1,
@@ -370,8 +720,34 @@
    "weight": "ZWAAR",
    "averageWeight": 3.84
   },
+  "g-the-gang": {
+   "name": "The Gang",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "411567",
+   "bggName": "The Gang",
+   "minPlayers": 3,
+   "maxPlayers": 6,
+   "durationMin": 20,
+   "weight": "LICHT",
+   "averageWeight": 1.57
+  },
+  "g-timespan": {
+   "name": "Timespan",
+   "source": "id",
+   "nameMismatch": true,
+   "bggId": "392492",
+   "bggName": "Stupor Mundi",
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 150,
+   "weight": "ZWAAR",
+   "averageWeight": 3.26
+  },
   "g-a-wild-venture": {
    "name": "A wild venture",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "447174",
    "bggName": "A Wild Venture",
    "minPlayers": 2,
@@ -382,6 +758,8 @@
   },
   "g-behind": {
    "name": "Behind",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "423787",
    "bggName": "Behind",
    "minPlayers": 1,
@@ -392,6 +770,8 @@
   },
   "g-class-of-89": {
    "name": "Class of '89",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "442093",
    "bggName": "Class of '89",
    "minPlayers": 1,
@@ -400,8 +780,34 @@
    "weight": "MIDDEL",
    "averageWeight": 3.0
   },
+  "g-gibberesh": {
+   "name": "Gibberesh",
+   "source": "id",
+   "nameMismatch": true,
+   "bggId": "336936",
+   "bggName": "L.A.M.A.: 3 Gry w 1",
+   "minPlayers": 2,
+   "maxPlayers": 6,
+   "durationMin": 20,
+   "weight": "LICHT",
+   "averageWeight": 1.4
+  },
+  "g-forage": {
+   "name": "Forage",
+   "source": "id",
+   "nameMismatch": true,
+   "bggId": "374581",
+   "bggName": "",
+   "minPlayers": 0,
+   "maxPlayers": 0,
+   "durationMin": 0,
+   "weight": "",
+   "averageWeight": 0.0
+  },
   "g-chronocritters": {
    "name": "Chronocritters",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "466862",
    "bggName": "Chronocritters",
    "minPlayers": 1,
@@ -412,6 +818,8 @@
   },
   "g-entropy": {
    "name": "Entropy",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "462941",
    "bggName": "Entropy",
    "minPlayers": 1,
@@ -422,6 +830,8 @@
   },
   "g-oshaka-trick": {
    "name": "Oshaka Trick",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "468836",
    "bggName": "Oshaka Trick",
    "minPlayers": 3,
@@ -432,6 +842,8 @@
   },
   "g-shackleton-base": {
    "name": "Shackleton Base",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "408180",
    "bggName": "Shackleton Base: A Journey to the Moon",
    "minPlayers": 1,
@@ -442,6 +854,8 @@
   },
   "g-23-knives": {
    "name": "23 Knives",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "396740",
    "bggName": "23 Knives",
    "minPlayers": 3,
@@ -450,8 +864,34 @@
    "weight": "MIDDEL",
    "averageWeight": 2.3
   },
+  "g-automania-second-edition": {
+   "name": "Automania Second Edition",
+   "source": "id",
+   "nameMismatch": true,
+   "bggId": "313262",
+   "bggName": "Shamans",
+   "minPlayers": 3,
+   "maxPlayers": 5,
+   "durationMin": 60,
+   "weight": "LICHT",
+   "averageWeight": 2.0
+  },
+  "g-bullet-3": {
+   "name": "Bullet <3",
+   "source": "id",
+   "nameMismatch": true,
+   "bggId": "300322",
+   "bggName": "Hallertau",
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 140,
+   "weight": "ZWAAR",
+   "averageWeight": 3.28
+  },
   "g-calimala": {
    "name": "Calimala",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "199383",
    "bggName": "Calimala",
    "minPlayers": 2,
@@ -462,6 +902,8 @@
   },
   "g-catvale": {
    "name": "Catvale",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "437246",
    "bggName": "Catvale",
    "minPlayers": 2,
@@ -472,6 +914,8 @@
   },
   "g-daitoshi": {
    "name": "Daitoshi",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "402677",
    "bggName": "Daitoshi",
    "minPlayers": 1,
@@ -482,6 +926,8 @@
   },
   "g-dinosaur-island": {
    "name": "Dinosaur Island",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "221194",
    "bggName": "Dinosaur Island",
    "minPlayers": 1,
@@ -492,6 +938,8 @@
   },
   "g-echoes-of-time": {
    "name": "Echoes of Time",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "441850",
    "bggName": "Echoes of Time",
    "minPlayers": 2,
@@ -502,6 +950,8 @@
   },
   "g-emberheart": {
    "name": "Emberheart",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "452817",
    "bggName": "Emberheart",
    "minPlayers": 2,
@@ -512,6 +962,8 @@
   },
   "g-everdell-emerland": {
    "name": "Everdell Emerland",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "455843",
    "bggName": "Everdell Emerland",
    "minPlayers": 1,
@@ -522,6 +974,8 @@
   },
   "g-everdell-journeys": {
    "name": "Everdell Journeys",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "468395",
    "bggName": "Everdell Journeys",
    "minPlayers": 2,
@@ -532,6 +986,8 @@
   },
   "g-fireflies": {
    "name": "Fireflies",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "472706",
    "bggName": "Fireflies",
    "minPlayers": 2,
@@ -542,6 +998,8 @@
   },
   "g-het-witte-kasteel-het-duel": {
    "name": "Het Witte Kasteel - Het Duel",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "438936",
    "bggName": "The White Castle Duel",
    "minPlayers": 2,
@@ -552,6 +1010,8 @@
   },
   "g-hitster-alle-versies": {
    "name": "Hitster (alle versies)",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "318243",
    "bggName": "Hitster",
    "minPlayers": 2,
@@ -562,6 +1022,8 @@
   },
   "g-marajoara": {
    "name": "Marajoara",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "392463",
    "bggName": "Marajoara",
    "minPlayers": 1,
@@ -572,6 +1034,8 @@
   },
   "g-men-nefer": {
    "name": "Men Nefer",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "404431",
    "bggName": "Men-Nefer",
    "minPlayers": 1,
@@ -582,6 +1046,8 @@
   },
   "g-merlin-evt-met-uitbreiding-morgana": {
    "name": "Merlin (evt met uitbreiding Morgana)",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "230933",
    "bggName": "Merlin",
    "minPlayers": 2,
@@ -590,8 +1056,22 @@
    "weight": "MIDDEL",
    "averageWeight": 3.11
   },
+  "g-navoria": {
+   "name": "Navoria",
+   "source": "id",
+   "nameMismatch": true,
+   "bggId": "409300",
+   "bggName": "B2 Keep on the Borderlands",
+   "minPlayers": 0,
+   "maxPlayers": 0,
+   "durationMin": 0,
+   "weight": "",
+   "averageWeight": 0.0
+  },
   "g-parks": {
    "name": "Parks",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "266524",
    "bggName": "Parks",
    "minPlayers": 1,
@@ -602,6 +1082,8 @@
   },
   "g-parks-potions-uitbreiding": {
    "name": "Parks & potions + uitbreiding",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "414927",
    "bggName": "Parks & Potions",
    "minPlayers": 1,
@@ -612,6 +1094,8 @@
   },
   "g-phoenix-new-horizon": {
    "name": "Phoenix New Horizon",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "419704",
    "bggName": "Phoenix New Horizon",
    "minPlayers": 1,
@@ -622,6 +1106,8 @@
   },
   "g-rebirth": {
    "name": "Rebirth",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "417197",
    "bggName": "Rebirth",
    "minPlayers": 2,
@@ -632,6 +1118,8 @@
   },
   "g-red-north": {
    "name": "Red North",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "447737",
    "bggName": "Red North",
    "minPlayers": 2,
@@ -642,6 +1130,8 @@
   },
   "g-riverside": {
    "name": "Riverside",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "321108",
    "bggName": "Riverside",
    "minPlayers": 1,
@@ -652,6 +1142,8 @@
   },
   "g-sabika": {
    "name": "Sabika",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "360265",
    "bggName": "Sabika",
    "minPlayers": 1,
@@ -662,6 +1154,8 @@
   },
   "g-scholars-of-the-south-tigris": {
    "name": "Scholars of the South Tigris",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "367041",
    "bggName": "Scholars of the South Tigris",
    "minPlayers": 1,
@@ -672,6 +1166,8 @@
   },
   "g-tenpenny-parks": {
    "name": "Tenpenny Parks",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "294702",
    "bggName": "Tenpenny Parks",
    "minPlayers": 1,
@@ -682,6 +1178,8 @@
   },
   "g-the-game-makers": {
    "name": "the Game Makers",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "447776",
    "bggName": "The Game Makers",
    "minPlayers": 1,
@@ -692,6 +1190,8 @@
   },
   "g-the-great-library": {
    "name": "The Great Library",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "432834",
    "bggName": "The Great Library",
    "minPlayers": 1,
@@ -702,6 +1202,8 @@
   },
   "g-the-sheep-don-t-let-them-catch-you-sleeping": {
    "name": "The Sheep - don't let them catch you sleeping",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "451646",
    "bggName": "The Sheep",
    "minPlayers": 2,
@@ -712,6 +1214,8 @@
   },
   "g-thesauros": {
    "name": "Thesauros",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "440885",
    "bggName": "Thesauros",
    "minPlayers": 1,
@@ -722,6 +1226,8 @@
   },
   "g-thessaloniki": {
    "name": "Thessaloniki",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "463637",
    "bggName": "Thessaloniki",
    "minPlayers": 1,
@@ -730,8 +1236,22 @@
    "weight": "ZWAAR",
    "averageWeight": 3.3
   },
+  "g-thrones-of-valeria": {
+   "name": "Thrones of Valeria",
+   "source": "id",
+   "nameMismatch": true,
+   "bggId": "258036",
+   "bggName": "Between Two Castles of Mad King Ludwig",
+   "minPlayers": 2,
+   "maxPlayers": 7,
+   "durationMin": 60,
+   "weight": "LICHT",
+   "averageWeight": 2.18
+  },
   "g-tolleno": {
    "name": "Tolleno",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "434131",
    "bggName": "Tolleno",
    "minPlayers": 2,
@@ -742,6 +1262,8 @@
   },
   "g-urban-sketchers": {
    "name": "Urban Sketchers",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "433891",
    "bggName": "Urban Sketchers",
    "minPlayers": 2,
@@ -752,6 +1274,8 @@
   },
   "g-vogelvrij": {
    "name": "Vogelvrij",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "387560",
    "bggName": "Perch",
    "minPlayers": 2,
@@ -760,8 +1284,70 @@
    "weight": "MIDDEL",
    "averageWeight": 2.21
   },
+  "g-container": {
+   "name": "Container",
+   "source": "id",
+   "nameMismatch": true,
+   "bggId": "21763",
+   "bggName": "Mr. Jack",
+   "minPlayers": 2,
+   "maxPlayers": 2,
+   "durationMin": 30,
+   "weight": "LICHT",
+   "averageWeight": 2.17
+  },
+  "g-inside-job": {
+   "name": "Inside Job",
+   "source": "id",
+   "nameMismatch": true,
+   "bggId": "333553",
+   "bggName": "For the King (and Me)",
+   "minPlayers": 2,
+   "maxPlayers": 5,
+   "durationMin": 30,
+   "weight": "LICHT",
+   "averageWeight": 1.41
+  },
+  "g-march-of-the-ants": {
+   "name": "March of the Ants",
+   "source": "id",
+   "nameMismatch": true,
+   "bggId": "121297",
+   "bggName": "Fleet",
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 45,
+   "weight": "MIDDEL",
+   "averageWeight": 2.24
+  },
+  "g-moon-colony-bloodbath": {
+   "name": "Moon Colony Bloodbath",
+   "source": "id",
+   "nameMismatch": true,
+   "bggId": "403492",
+   "bggName": "Sewer",
+   "minPlayers": 0,
+   "maxPlayers": 0,
+   "durationMin": 0,
+   "weight": "",
+   "averageWeight": 0.0
+  },
+  "g-night-soil": {
+   "name": "Night Soil",
+   "source": "id",
+   "nameMismatch": true,
+   "bggId": "398580",
+   "bggName": "Paladin - Oath of Metal",
+   "minPlayers": 0,
+   "maxPlayers": 0,
+   "durationMin": 0,
+   "weight": "",
+   "averageWeight": 0.0
+  },
   "g-opera-magna": {
    "name": "Opera Magna",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "471164",
    "bggName": "Opera Magna",
    "minPlayers": 2,
@@ -769,64 +1355,80 @@
    "durationMin": 60,
    "weight": "MIDDEL",
    "averageWeight": 2.88
+  },
+  "g-pax-porfiriana-second-edition": {
+   "name": "Pax Porfiriana (Second Edition)",
+   "source": "id",
+   "nameMismatch": true,
+   "bggId": "128174",
+   "bggName": "Dragon Farkle",
+   "minPlayers": 2,
+   "maxPlayers": 5,
+   "durationMin": 30,
+   "weight": "LICHT",
+   "averageWeight": 1.45
+  },
+  "g-power-vacuum": {
+   "name": "Power Vacuum",
+   "source": "id",
+   "nameMismatch": true,
+   "bggId": "290380",
+   "bggName": "Westphalia",
+   "minPlayers": 6,
+   "maxPlayers": 6,
+   "durationMin": 120,
+   "weight": "MIDDEL",
+   "averageWeight": 3.12
   }
  },
  "unresolved": [
-  "Cat in a Box",
-  "Curious Cargo",
-  "High Rise Penguins",
   "Kronologic Groene Doos",
-  "Lost in the Woods",
   "Meow Tiles",
-  "Pray another Day",
   "Similo Slimbo",
-  "Trio",
-  "Kittin",
-  "Shipwreck Arcana",
-  "Bitoku",
-  "The castles of Burgundy",
-  "Drillers",
-  "Arborea",
-  "La Fleur (en uitbreidingen)",
-  "Maracaibo (en uitbreiding the uprising)",
-  "Ohanami",
-  "Puzzle Strike 2",
   "Pili Pili",
-  "Alchemists",
-  "Cryptid",
-  "Decrypto",
-  "Paint the Roses",
-  "Arcs",
   "Elementica",
-  "Endeavor deep sea",
   "Fishing",
-  "Greenwood",
-  "The Gang",
-  "Timespan",
-  "Gibberesh",
   "detective spelletje",
-  "Forage",
   "-60°",
   "Abroad",
-  "Automania Second Edition",
-  "Bullet <3",
   "For the Gods",
   "Hell of a Deal",
-  "Navoria",
   "Tenby",
-  "Thrones of Valeria",
   "Pokespan",
-  "Container",
-  "Inside Job",
   "JiSoGi",
-  "March of the Ants",
   "Melodies",
-  "Moon Colony Bloodbath",
-  "Night Soil",
   "Panda Spin + XP",
-  "Pax Porfiriana (Second Edition)",
-  "Power Vacuum",
   "Queen Alice"
+ ],
+ "rejected": [
+  "Cat in a Box -> 345972 = Cat in the Box: Deluxe Edition",
+  "High Rise Penguins -> 296164 = Yura Yura Penguin",
+  "Pray another Day -> 234260 = Prey Another Day",
+  "Trio -> 366013 = Heat: Pedal to the Metal",
+  "Kittin -> 231280 = Harvest Dice",
+  "Shipwreck Arcana -> 220924 = ",
+  "Drillers -> 435107 = Lost Tomb of the Mummy Lich",
+  "Arborea -> 356123 = Turing Machine",
+  "La Fleur (en uitbreidingen) -> 389214 = War of the Ring: The Card Game – Shadow Card Box and Sleeves",
+  "Ohanami -> 270138 = Terror Below",
+  "Puzzle Strike 2 -> 416159 = Hollow",
+  "Paint the Roses -> 307862 = Dollars to Donuts",
+  "Endeavor deep sea -> 367150 = Dune: War for Arrakis",
+  "Greenwood -> 391834 = SpellBook",
+  "Timespan -> 392492 = Stupor Mundi",
+  "Gibberesh -> 336936 = L.A.M.A.: 3 Gry w 1",
+  "Forage -> 374581 = ",
+  "Automania Second Edition -> 313262 = Shamans",
+  "Bullet <3 -> 300322 = Hallertau",
+  "Navoria -> 409300 = B2 Keep on the Borderlands",
+  "Thrones of Valeria -> 258036 = Between Two Castles of Mad King Ludwig",
+  "Container -> 21763 = Mr. Jack",
+  "Inside Job -> 333553 = For the King (and Me)",
+  "March of the Ants -> 121297 = Fleet",
+  "Moon Colony Bloodbath -> 403492 = Sewer",
+  "Night Soil -> 398580 = Paladin - Oath of Metal",
+  "Pax Porfiriana (Second Edition) -> 128174 = Dragon Farkle",
+  "Power Vacuum -> 290380 = Westphalia"
  ],
  "errors": [],
  "searchLog": [
