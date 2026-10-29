@@ -1,5 +1,14 @@
 # Spellenweekend
 
+## 🔗 Links
+
+| Wat | Voor wie | Link |
+|---|---|---|
+| 📱 **Android-app** (APK, altijd de nieuwste) | deelnemers met Android | https://github.com/mheunen/Slimbo_weekend/releases/latest/download/Spellenweekend.apk |
+| 🌐 **Web-app** (iPhone & browser) | deelnemers met iPhone, of zonder APK | https://mheunen.github.io/Slimbo_weekend/app/ |
+| 🛠️ **Beheersite** | organisatie | https://mheunen.github.io/Slimbo_weekend/ |
+| 📝 Release-notes per versie | iedereen | https://github.com/mheunen/Slimbo_weekend/releases |
+
 Android-app (Kotlin + Jetpack Compose) voor een spellenweekend met meerdere deelnemers.
 
 ## Wat de app doet
