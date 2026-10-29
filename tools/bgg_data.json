@@ -120,8 +120,8 @@
   },
   "g-cat-in-a-box": {
    "name": "Cat in a Box",
-   "source": "id",
-   "nameMismatch": true,
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "345972",
    "bggName": "Cat in the Box: Deluxe Edition",
    "minPlayers": 2,
@@ -139,7 +139,7 @@
   },
   "g-curious-cargo": {
    "name": "Curious Cargo",
-   "source": "id",
+   "source": "link",
    "nameMismatch": false,
    "bggId": "312251",
    "bggName": "Curious Cargo",
@@ -159,8 +159,8 @@
   },
   "g-high-rise-penguins": {
    "name": "High Rise Penguins",
-   "source": "id",
-   "nameMismatch": true,
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "296164",
    "bggName": "Yura Yura Penguin",
    "minPlayers": 2,
@@ -175,10 +175,29 @@
     "Action / Dexterity"
    ]
   },
-  "g-pray-another-day": {
-   "name": "Pray another Day",
+  "g-kronologic-groene-doos": {
+   "name": "Kronologic Groene Doos",
    "source": "id",
    "nameMismatch": true,
+   "bggId": "435421",
+   "bggName": "Kronologic: Paris 1920 – Panic at the Opera & The Cursed Lovers",
+   "minPlayers": 1,
+   "maxPlayers": 4,
+   "durationMin": 30,
+   "weight": "LICHT",
+   "averageWeight": 2.0,
+   "subdomains": [],
+   "categories": [
+    "Expansion for Base-game",
+    "Deduction",
+    "Murder / Mystery",
+    "Puzzle"
+   ]
+  },
+  "g-pray-another-day": {
+   "name": "Pray another Day",
+   "source": "link",
+   "nameMismatch": false,
    "bggId": "234260",
    "bggName": "Prey Another Day",
    "minPlayers": 2,
@@ -221,7 +240,7 @@
   },
   "g-kittin": {
    "name": "Kittin",
-   "source": "link",
+   "source": "id",
    "nameMismatch": false,
    "bggId": "302477",
    "bggName": "Kittin",
@@ -313,7 +332,7 @@
   },
   "g-bitoku": {
    "name": "Bitoku",
-   "source": "id",
+   "source": "link",
    "nameMismatch": false,
    "bggId": "323612",
    "bggName": "Bitoku",
@@ -354,7 +373,7 @@
   },
   "g-the-castles-of-burgundy": {
    "name": "The castles of Burgundy",
-   "source": "id",
+   "source": "link",
    "nameMismatch": false,
    "bggId": "84876",
    "bggName": "The Castles of Burgundy",
@@ -432,7 +451,7 @@
   },
   "g-drillers": {
    "name": "Drillers",
-   "source": "link",
+   "source": "id",
    "nameMismatch": false,
    "bggId": "465669",
    "bggName": "Drillers",
@@ -560,7 +579,7 @@
   },
   "g-la-fleur-en-uitbreidingen": {
    "name": "La Fleur (en uitbreidingen)",
-   "source": "link",
+   "source": "id",
    "nameMismatch": false,
    "bggId": "402817",
    "bggName": "La Fleur",
@@ -577,7 +596,7 @@
   },
   "g-maracaibo-en-uitbreiding-the-uprising": {
    "name": "Maracaibo (en uitbreiding the uprising)",
-   "source": "id",
+   "source": "link",
    "nameMismatch": false,
    "bggId": "276025",
    "bggName": "Maracaibo",
@@ -651,7 +670,7 @@
   },
   "g-puzzle-strike-2": {
    "name": "Puzzle Strike 2",
-   "source": "link",
+   "source": "id",
    "nameMismatch": false,
    "bggId": "368942",
    "bggName": "Puzzle Strike 2: Bold Adventures!",
@@ -767,6 +786,23 @@
     "Industry / Manufacturing"
    ]
   },
+  "g-pili-pili": {
+   "name": "Pili Pili",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "453584",
+   "bggName": "Pili Pili",
+   "minPlayers": 2,
+   "maxPlayers": 8,
+   "durationMin": 30,
+   "weight": "LICHT",
+   "averageWeight": 1.11,
+   "subdomains": [],
+   "categories": [
+    "Card Game",
+    "Party Game"
+   ]
+  },
   "g-tianxia": {
    "name": "Tianxia",
    "source": "link",
@@ -824,7 +860,7 @@
   },
   "g-alchemists": {
    "name": "Alchemists",
-   "source": "id",
+   "source": "link",
    "nameMismatch": false,
    "bggId": "161970",
    "bggName": "Alchemists",
@@ -844,7 +880,7 @@
   },
   "g-cryptid": {
    "name": "Cryptid",
-   "source": "id",
+   "source": "link",
    "nameMismatch": false,
    "bggId": "246784",
    "bggName": "Cryptid",
@@ -863,7 +899,7 @@
   },
   "g-decrypto": {
    "name": "Decrypto",
-   "source": "id",
+   "source": "link",
    "nameMismatch": false,
    "bggId": "225694",
    "bggName": "Decrypto",
@@ -949,7 +985,7 @@
   },
   "g-arcs": {
    "name": "Arcs",
-   "source": "id",
+   "source": "link",
    "nameMismatch": false,
    "bggId": "359871",
    "bggName": "Arcs",
@@ -968,7 +1004,7 @@
   },
   "g-elementica": {
    "name": "Elementica",
-   "source": "link",
+   "source": "id",
    "nameMismatch": false,
    "bggId": "469261",
    "bggName": "Elementica",
@@ -982,7 +1018,7 @@
   },
   "g-greenwood": {
    "name": "Greenwood",
-   "source": "link",
+   "source": "id",
    "nameMismatch": false,
    "bggId": "469383",
    "bggName": "Greenwood",
@@ -1017,7 +1053,7 @@
   },
   "g-the-gang": {
    "name": "The Gang",
-   "source": "id",
+   "source": "link",
    "nameMismatch": false,
    "bggId": "411567",
    "bggName": "The Gang",
@@ -1036,7 +1072,7 @@
   },
   "g-timespan": {
    "name": "Timespan",
-   "source": "link",
+   "source": "id",
    "nameMismatch": false,
    "bggId": "462479",
    "bggName": "Timespan",
@@ -1106,9 +1142,28 @@
    "subdomains": [],
    "categories": []
   },
+  "g-gibberesh": {
+   "name": "Gibberesh",
+   "source": "id",
+   "nameMismatch": true,
+   "bggId": "27689",
+   "bggName": "Gibberish",
+   "minPlayers": 2,
+   "maxPlayers": 16,
+   "durationMin": 30,
+   "weight": "MIDDEL",
+   "averageWeight": 3.0,
+   "subdomains": [],
+   "categories": [
+    "Humor",
+    "Memory",
+    "Party Game",
+    "Word Game"
+   ]
+  },
   "g-forage": {
    "name": "Forage",
-   "source": "link",
+   "source": "id",
    "nameMismatch": false,
    "bggId": "458390",
    "bggName": "Forage",
@@ -1218,9 +1273,46 @@
     "Political"
    ]
   },
+  "g-abroad": {
+   "name": "Abroad",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "437337",
+   "bggName": "Abroad",
+   "minPlayers": 1,
+   "maxPlayers": 5,
+   "durationMin": 90,
+   "weight": "MIDDEL",
+   "averageWeight": 2.78,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Travel"
+   ]
+  },
+  "g-automania-second-edition": {
+   "name": "Automania Second Edition",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "176544",
+   "bggName": "Automania",
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 90,
+   "weight": "MIDDEL",
+   "averageWeight": 2.76,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Economic",
+    "Industry / Manufacturing"
+   ]
+  },
   "g-bullet-3": {
    "name": "Bullet <3",
-   "source": "link",
+   "source": "id",
    "nameMismatch": false,
    "bggId": "307305",
    "bggName": "Bullet♥︎",
@@ -1414,7 +1506,7 @@
   },
   "g-for-the-gods": {
    "name": "For the Gods",
-   "source": "link",
+   "source": "id",
    "nameMismatch": false,
    "bggId": "444234",
    "bggName": "For the Gods!",
@@ -1430,7 +1522,7 @@
   },
   "g-hell-of-a-deal": {
    "name": "Hell of a Deal",
-   "source": "link",
+   "source": "id",
    "nameMismatch": false,
    "bggId": "463605",
    "bggName": "Hell of a Deal",
@@ -1543,7 +1635,7 @@
   },
   "g-navoria": {
    "name": "Navoria",
-   "source": "link",
+   "source": "id",
    "nameMismatch": false,
    "bggId": "371932",
    "bggName": "Explorers of Navoria",
@@ -1716,7 +1808,7 @@
   },
   "g-tenby": {
    "name": "Tenby",
-   "source": "link",
+   "source": "id",
    "nameMismatch": false,
    "bggId": "407233",
    "bggName": "Tenby",
@@ -1841,7 +1933,7 @@
   },
   "g-thrones-of-valeria": {
    "name": "Thrones of Valeria",
-   "source": "link",
+   "source": "id",
    "nameMismatch": false,
    "bggId": "345894",
    "bggName": "Thrones of Valeria",
@@ -1908,7 +2000,7 @@
   },
   "g-inside-job": {
    "name": "Inside Job",
-   "source": "link",
+   "source": "id",
    "nameMismatch": false,
    "bggId": "324914",
    "bggName": "Inside Job",
@@ -1928,7 +2020,7 @@
   },
   "g-jisogi": {
    "name": "JiSoGi",
-   "source": "link",
+   "source": "id",
    "nameMismatch": false,
    "bggId": "429845",
    "bggName": "Jisogi: Anime Studio Tycoon",
@@ -1949,7 +2041,7 @@
   },
   "g-melodies": {
    "name": "Melodies",
-   "source": "link",
+   "source": "id",
    "nameMismatch": false,
    "bggId": "475188",
    "bggName": "Melodies",
@@ -1964,9 +2056,28 @@
     "Music"
    ]
   },
+  "g-moon-colony-bloodbath": {
+   "name": "Moon Colony Bloodbath",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "425549",
+   "bggName": "Moon Colony Bloodbath",
+   "minPlayers": 1,
+   "maxPlayers": 5,
+   "durationMin": 90,
+   "weight": "LICHT",
+   "averageWeight": 2.16,
+   "subdomains": [
+    "Strategy Games"
+   ],
+   "categories": [
+    "Card Game",
+    "Science Fiction"
+   ]
+  },
   "g-night-soil": {
    "name": "Night Soil",
-   "source": "link",
+   "source": "id",
    "nameMismatch": false,
    "bggId": "421530",
    "bggName": "Night Soil",
@@ -1999,9 +2110,29 @@
     "Renaissance"
    ]
   },
+  "g-panda-spin-xp": {
+   "name": "Panda Spin + XP",
+   "source": "id",
+   "nameMismatch": false,
+   "bggId": "417323",
+   "bggName": "Panda Spin",
+   "minPlayers": 2,
+   "maxPlayers": 5,
+   "durationMin": 40,
+   "weight": "LICHT",
+   "averageWeight": 2.04,
+   "subdomains": [
+    "Family Games",
+    "Strategy Games"
+   ],
+   "categories": [
+    "Animals",
+    "Card Game"
+   ]
+  },
   "g-power-vacuum": {
    "name": "Power Vacuum",
-   "source": "link",
+   "source": "id",
    "nameMismatch": false,
    "bggId": "402106",
    "bggName": "Power Vacuum",
@@ -2022,7 +2153,7 @@
   },
   "g-queen-alice": {
    "name": "Queen Alice",
-   "source": "link",
+   "source": "id",
    "nameMismatch": false,
    "bggId": "456236",
    "bggName": "Queen Alice",
@@ -2040,7 +2171,6 @@
   }
  },
  "unresolved": [
-  "Kronologic Groene Doos",
   "Lost in the Woods",
   "Meow Tiles",
   "Similo Slimbo",
@@ -2048,26 +2178,19 @@
   "Shipwreck Arcana",
   "Arborea",
   "Ohanami",
-  "Pili Pili",
   "Paint the Roses",
   "Endeavor deep sea",
   "Fishing",
-  "Gibberesh",
   "detective spelletje",
   "-60°",
-  "Abroad",
-  "Automania Second Edition",
   "Pokespan",
   "Container",
   "March of the Ants",
-  "Moon Colony Bloodbath",
-  "Panda Spin + XP",
   "Pax Porfiriana (Second Edition)"
  ],
  "rejected": [
-  "Cat in a Box -> 345972 = Cat in the Box: Deluxe Edition",
-  "High Rise Penguins -> 296164 = Yura Yura Penguin",
-  "Pray another Day -> 234260 = Prey Another Day"
+  "Kronologic Groene Doos -> 435421 = Kronologic: Paris 1920 – Panic at the Opera & The Cursed Lovers",
+  "Gibberesh -> 27689 = Gibberish"
  ],
  "errors": [],
  "searchLog": [
