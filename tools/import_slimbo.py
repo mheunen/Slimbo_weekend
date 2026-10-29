@@ -165,6 +165,40 @@ def category_of(b: dict) -> str:
     return ""
 
 
+# Aannames bij het koppelen aan BGG (worden als notitie getoond)
+NOTE_ASSUMPTION = {
+    "g-kronologic-groene-doos": "Aanname: gekoppeld aan Kronologic: Paris 1920 – Panic at the Opera & The Cursed Lovers",
+    "g-gibberesh": "Aanname: gekoppeld aan het partyspel Gibberish",
+    "g-harmoni-cresendo": "Uitbreiding voor Harmonies; speelduur van het basisspel",
+}
+
+
+def _plain(s: str) -> str:
+    s = re.sub(r"\(.*?\)", "", s.lower())
+    return re.sub(r"[^a-z0-9]", "", s)
+
+
+def auto_note(gid: str, name: str, wish: bool, b: dict | None, checked: bool) -> str:
+    """Automatische notitie. Begint altijd met een vast voorvoegsel, zodat de import
+    alleen eigen notities bijwerkt en wat mensen zelf schrijven laat staan."""
+    parts = []
+    if wish:
+        parts.append("Wens: nog niemand neemt het mee")
+    if gid in NOTE_ASSUMPTION:
+        parts.append(NOTE_ASSUMPTION[gid])
+    if gid not in NOTE_ASSUMPTION and b and b.get("bggName") and _plain(b["bggName"]) not in _plain(name) and _plain(name) not in _plain(b["bggName"]):
+        parts.append(f"BGG: {b['bggName']}")
+    m = re.search(r"\((.*?)\)", name)
+    if m:
+        t = m.group(1).strip()
+        t = ("Met " + t[3:]) if t.lower().startswith("en ") else ("Eventueel met " + t[8:]) if t.lower().startswith("evt met ") else t
+        parts.append(t)
+    if not checked:
+        parts.append("Spelers/duur onbekend – graag aanvullen")
+    # "ⓘ " markeert een automatische notitie
+    return ("ⓘ " + " · ".join(parts)) if parts else ""
+
+
 def load_bgg() -> dict:
     """Gegevens van BoardGameGeek (tools/bgg_data.json, gemaakt door fetch_bgg.py in GitHub Actions).
     Alleen spellen met een BGG-link uit het document of een gecontroleerd nummer uit bgg_ids.json."""
@@ -284,7 +318,7 @@ def main(xlsx: str):
             "infoChecked": bool(known),
             "category": category or CATEGORY_OVERRIDE.get(gid, ""),
             "categories": categories,
-            "notes": "Wens: nog niemand neemt dit mee" if wish else "",
+            "notes": auto_note(gid, name, wish, b, bool(known)),
         }
         games.append(g)
         for n in interested:
