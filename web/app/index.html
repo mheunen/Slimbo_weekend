@@ -477,7 +477,7 @@ function gamesView() {
     </div>
     ${active ? `<button class="btn text" id="gClear">Filters wissen</button>` : ""}
   </div>` : "";
-  return `<input data-live="1" id="gq" placeholder="🔍 Zoek een spel" value="${esc(u.gq)}">
+  return `<div class="row"><input data-live="1" id="gq" placeholder="🔍 Zoek een spel" value="${esc(u.gq)}" style="flex:1;min-width:0"><button class="btn" id="gameNew">+ Spel</button></div>
     <div class="row" style="margin:10px 0">
       ${mn ? `<button class="chip ${u.gMine ? "on" : ""}" data-ui="gMine">Neem ik mee</button>` : ""}
       <button class="chip ${u.gFilters || active ? "on" : ""}" data-ui="gFilters">Filters${active ? ` (${active})` : ""}</button>
@@ -490,7 +490,7 @@ function gamesView() {
       const f = [...new Set([...(fans[g.id] || []), ...(g.interested || []).filter((n) => !claimedNames.has(n))])];
       return `<div class="card row" style="align-items:flex-start">
         <div class="grow">
-          <div class="title">${esc(g.name)}</div>
+          <div class="title" data-gedit="${g.id}" style="cursor:pointer">${esc(g.name)} <span class="muted small">✎</span></div>
           <div class="muted">${g.wishlist ? "Wenslijst · nog niemand neemt het mee" : g.owner ? "Neemt mee: " + esc(g.owner) : "Eigenaar onbekend"}</div>
           <div class="small ${g.infoChecked === false ? "warn" : "muted"}">${g.infoChecked === false ? "spelers/duur nog onbekend" : esc([`${g.minPlayers}–${g.maxPlayers} spelers`, `${g.durationMin} min`, WEIGHTS[g.weight], g.category].filter(Boolean).join(" · "))}</div>
           ${f.length ? `<div class="small" style="color:var(--accent);margin-top:2px">♥ ${esc(f.join(", "))}</div>` : ""}
@@ -652,6 +652,68 @@ function openEditor(init) {
   dlg.showModal();
 }
 
+// ================================================================== editor voor spellen
+function openGameEditor(init) {
+  const isNew = !init.id;
+  const g = { name: "", owner: isNew ? myName() : "", wishlist: false, minPlayers: 2, maxPlayers: 4, durationMin: 60, weight: "MIDDEL",
+    category: "", link: "", notes: "", ...init };
+  const dlg = $("#dlg");
+  const num = (id, v, min, max, step = 1) => `<input id="${id}" type="number" inputmode="numeric" min="${min}" max="${max}" step="${step}" value="${v}">`;
+  dlg.innerHTML = `<div class="dhead"><button class="btn text" id="gClose">✕</button><h3>${isNew ? "Spel toevoegen" : "Spel bewerken"}</h3><button class="btn" id="gSave">Opslaan</button></div>
+  <div class="dbody">
+    <label class="f"><span>Naam</span><input id="gName" value="${esc(g.name)}" autocapitalize="words"></label>
+    <label class="f"><span>Wie neemt het mee</span><input id="gOwnerIn" value="${esc(g.owner)}" autocapitalize="words" placeholder="Leeg laten voor de wenslijst"></label>
+    <label class="check" style="border:0"><input type="checkbox" id="gWishIn" ${g.wishlist ? "checked" : ""}><span>Wenslijst (niemand neemt het mee)</span></label>
+    <div class="grid2">
+      <label class="f"><span>Min. spelers</span>${num("gMin", g.minPlayers, 1, 20)}</label>
+      <label class="f"><span>Max. spelers</span>${num("gMax", g.maxPlayers, 1, 20)}</label>
+      <label class="f"><span>Speelduur (min)</span>${num("gDur", g.durationMin, 5, 600, 5)}</label>
+      <label class="f"><span>Moeilijkheid</span><select id="gWeight">${Object.entries(WEIGHTS).map(([k, l]) => `<option value="${k}" ${g.weight === k ? "selected" : ""}>${l}</option>`).join("")}</select></label>
+    </div>
+    <label class="f"><span>Categorie</span><select id="gCatIn"><option value="">Geen</option>${CATEGORIES.map((c) => `<option ${g.category === c ? "selected" : ""}>${esc(c)}</option>`).join("")}</select></label>
+    <label class="f"><span>Link (BoardGameGeek, optioneel)</span><input id="gLink" type="url" value="${esc(g.link)}" placeholder="https://boardgamegeek.com/boardgame/…"></label>
+    <label class="f"><span>Notitie</span><input id="gNotes" value="${esc(g.notes && g.notes.startsWith("ⓘ ") ? "" : g.notes)}"></label>
+    ${isNew ? `<p class="muted small">Tip: zoek het spel op BoardGameGeek voor het juiste aantal spelers en de speelduur.
+      <a id="gBgg" href="https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=" target="_blank" rel="noopener">Zoek op BGG ↗</a></p>` : ""}
+    ${isNew ? "" : `<button class="btn danger" id="gDel" style="margin-top:10px">Spel verwijderen</button>`}
+  </div>`;
+  const owner = $("#gOwnerIn"), wish = $("#gWishIn");
+  owner.oninput = () => { if (owner.value.trim()) wish.checked = false; };
+  wish.onchange = () => { if (wish.checked) owner.value = ""; };
+  if ($("#gBgg")) $("#gName").oninput = () => { $("#gBgg").href = "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=" + encodeURIComponent($("#gName").value.trim()); };
+  $("#gClose").onclick = () => dlg.close();
+  if ($("#gDel")) $("#gDel").onclick = () => {
+    if (!confirm(`"${g.name}" voor iedereen verwijderen?`)) return;
+    dlg.close(); act(() => deleteDoc(ref("games", g.id)), "Spel verwijderd");
+  };
+  $("#gSave").onclick = async () => {
+    const name = $("#gName").value.trim();
+    if (!name) { toast("Geef het spel een naam"); return; }
+    if (isNew && S.games.some((x) => x.name.trim().toLowerCase() === name.toLowerCase())) { toast(`"${name}" staat al in de lijst`); return; }
+    let mn = parseInt($("#gMin").value || "2", 10), mx = parseInt($("#gMax").value || "4", 10);
+    if (mx < mn) mx = mn;
+    const ownerName = owner.value.trim();
+    const keptAuto = g.notes && g.notes.startsWith("ⓘ ") && !$("#gNotes").value.trim() ? g.notes : $("#gNotes").value.trim();
+    const data = {
+      name, owner: ownerName, wishlist: wish.checked && !ownerName, minPlayers: mn, maxPlayers: mx,
+      durationMin: parseInt($("#gDur").value || "60", 10), weight: $("#gWeight").value, category: $("#gCatIn").value,
+      link: $("#gLink").value.trim(), notes: keptAuto, infoChecked: true,
+    };
+    dlg.close();
+    if (isNew) {
+      await act(async () => {
+        const r = await addDoc(col("games"), { ...data, interested: [], video: "", categories: [], addedBy: S.uid, addedAt: now() });
+        // Wie het toevoegt, wil het waarschijnlijk ook spelen
+        await updateDoc(ref("members", S.uid), { wants: arrayUnion(r.id) });
+      }, `${name} toegevoegd`);
+    } else {
+      await act(() => setDoc(ref("games", g.id), data, { merge: true }), "Opgeslagen");
+    }
+  };
+  dlg.showModal();
+  if (isNew) setTimeout(() => $("#gName").focus(), 50);
+}
+
 function openMenu(a) {
   const dlg = $("#dlg");
   dlg.innerHTML = `<div class="dhead"><button class="btn text" id="mClose">✕</button><h3>${esc(a.title)}</h3></div>
@@ -687,6 +749,8 @@ function bind() {
   if ($("#gCat")) $("#gCat").onchange = (e) => { S.ui.gCat = e.target.value; e.target.blur(); render(); };
   if ($("#gOwner")) $("#gOwner").onchange = (e) => { S.ui.gOwner = e.target.value; e.target.blur(); render(); };
   if ($("#gClear")) $("#gClear").onclick = () => { Object.assign(S.ui, { gPlayers: 0, gWeights: [], gCat: "", gOwner: "" }); render(); };
+  if ($("#gameNew")) $("#gameNew").onclick = () => openGameEditor({});
+  $$("[data-gedit]").forEach((el) => el.onclick = () => { const g = S.games.find((x) => x.id === el.dataset.gedit); if (g) openGameEditor(g); });
   if ($("#gq")) $("#gq").oninput = (e) => { S.ui.gq = e.target.value; render(); };
   if ($("#claimQ")) $("#claimQ").oninput = (e) => { S.ui.claimQ = e.target.value; render(); };
   $$("[data-claim]").forEach((el) => el.onclick = () => { S.ui.claimSel = el.dataset.claim; render(); });
