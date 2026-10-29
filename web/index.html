@@ -141,6 +141,7 @@ const SCHEMAS = {
       { k: "notes", l: "Notitie", t: "text" },
     ],
     beforeSave: (d) => ({ ...d, infoChecked: true, wishlist: d.wishlist && !d.owner }),
+    info: (g) => { const a = appFans(g); return a.length ? `♥ in de app: ${a.join(", ")} (aanpassen kan alleen in de app zelf)` : ""; },
     cols: [
       ["Spel", (g) => esc(g.name)],
       ["Neemt mee", (g) => g.wishlist ? `<span class="pill">wens</span>` : esc(g.owner)],
@@ -149,7 +150,7 @@ const SCHEMAS = {
       ["Zwaarte", (g) => label(WEIGHTS, g.weight)],
       ["Categorie", (g) => esc(g.category || "")],
       ["Info", (g) => g.infoChecked === false ? `<span class="pill warn">controleren</span>` : `<span class="pill ok">ok</span>`],
-      ["Interesse", (g) => (g.interested || []).length || ""],
+      ["Interesse", (g) => { const f = fansOf(g); return f.length ? `<b>${f.length}</b> <span class="muted">${esc(f.join(", "))}</span>` : ""; }],
       ["Notitie", (g) => `<span class="muted">${esc(g.notes || "")}</span>`],
     ],
   },
@@ -224,6 +225,15 @@ const SCHEMAS = {
     cols: [["Residentie", (c) => esc(placeName(c.placeId))], ["Dag", (c) => esc(c.day)], ["Dagdeel", (c) => label(SLOTS, c.slot)], ["Tijd", (c) => c.startAt ? esc(new Date(c.startAt).toLocaleTimeString("nl-NL", { hour: "2-digit", minute: "2-digit" }) + "–" + new Date(c.endAt).toLocaleTimeString("nl-NL", { hour: "2-digit", minute: "2-digit" })) : ""], ["Wie", (c) => esc((c.names || []).join(", "))]],
   },
 };
+
+// Interesse = ♥ in de app (bij de deelnemer) + namen uit het spreadsheet van wie nog niet in de app zit
+function appFans(g) {
+  return S.members.filter((m) => !m.web && !m.hidden && (m.wants || []).includes(g.id)).map((m) => m.name);
+}
+function fansOf(g) {
+  const claimed = new Set(S.guests.filter((x) => x.claimedBy).map((x) => x.name));
+  return [...new Set([...appFans(g), ...(g.interested || []).filter((n) => !claimed.has(n))])];
+}
 
 async function syncGuestsForRoom(room) {
   const b = writeBatch(db);
