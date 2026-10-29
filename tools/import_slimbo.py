@@ -105,6 +105,7 @@ KNOWN = {
     "tenpenny-parks": (1, 4, 75, "MIDDEL"),
     "the-castles-of-burgundy": (2, 4, 90, "MIDDEL"),
     "alchemists": (2, 4, 120, "ZWAAR"),
+    "harmoni-cresendo": (1, 4, 45, "MIDDEL"),
     "cryptid": (3, 5, 50, "MIDDEL"),
     "decrypto": (3, 8, 45, "LICHT"),
     "paint-the-roses": (2, 5, 45, "MIDDEL"),

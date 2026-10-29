@@ -1024,7 +1024,7 @@
    "name": "Cat in a Box",
    "owner": "Amra",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/boardgame/345972",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Cat+in+a+Box",
    "video": "",
    "interested": [],
    "minPlayers": 2,
@@ -1044,7 +1044,7 @@
    "name": "Curious Cargo",
    "owner": "Amra",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/boardgame/312251",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Curious+Cargo",
    "video": "",
    "interested": [],
    "minPlayers": 2,
@@ -1065,7 +1065,7 @@
    "name": "High Rise Penguins",
    "owner": "Amra",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/boardgame/296164",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=High+Rise+Penguins",
    "video": "",
    "interested": [],
    "minPlayers": 2,
@@ -1084,16 +1084,21 @@
    "name": "Kronologic Groene Doos",
    "owner": "Amra",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Kronologic+Groene+Doos",
+   "link": "https://boardgamegeek.com/boardgame/435421",
    "video": "",
    "interested": [],
-   "minPlayers": 2,
+   "minPlayers": 1,
    "maxPlayers": 4,
-   "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
-   "category": "Familie",
-   "categories": [],
+   "durationMin": 30,
+   "weight": "LICHT",
+   "infoChecked": true,
+   "category": "Party",
+   "categories": [
+    "Expansion for Base-game",
+    "Deduction",
+    "Murder / Mystery",
+    "Puzzle"
+   ],
    "notes": ""
   },
   {
@@ -1135,7 +1140,7 @@
    "name": "Pray another Day",
    "owner": "Amra",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/boardgame/234260",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Pray+another+Day",
    "video": "",
    "interested": [],
    "minPlayers": 2,
@@ -1219,7 +1224,7 @@
    "name": "Kittin",
    "owner": "Amra",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Kittin",
+   "link": "https://boardgamegeek.com/boardgame/302477",
    "video": "",
    "interested": [],
    "minPlayers": 2,
@@ -1300,11 +1305,11 @@
     "Mélanie",
     "Rebecca"
    ],
-   "minPlayers": 2,
+   "minPlayers": 1,
    "maxPlayers": 4,
-   "durationMin": 60,
+   "durationMin": 45,
    "weight": "MIDDEL",
-   "infoChecked": false,
+   "infoChecked": true,
    "category": "Familie",
    "categories": [
     "Expansion for Base-game"
@@ -1357,7 +1362,7 @@
    "name": "Bitoku",
    "owner": "Desiree",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/boardgame/323612",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Bitoku",
    "video": "https://www.youtube.com/watch?v=rcM0qn3HyH0",
    "interested": [
     "Mandy",
@@ -1407,7 +1412,7 @@
    "name": "The castles of Burgundy",
    "owner": "Desiree",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/boardgame/84876",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=The+castles+of+Burgundy",
    "video": "",
    "interested": [
     "Melissa"
@@ -1497,7 +1502,7 @@
    "name": "Drillers",
    "owner": "Godelief",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Drillers",
+   "link": "https://boardgamegeek.com/boardgame/465669",
    "video": "https://www.youtube.com/watch?v=6JDFdUDKu1I",
    "interested": [
     "Mandy",
@@ -1677,7 +1682,7 @@
    "name": "La Fleur (en uitbreidingen)",
    "owner": "Mandy",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=La+Fleur",
+   "link": "https://boardgamegeek.com/boardgame/402817",
    "video": "https://www.youtube.com/watch?v=NxyLLNHABAk",
    "interested": [
     "Mélanie",
@@ -1700,7 +1705,7 @@
    "name": "Maracaibo (en uitbreiding the uprising)",
    "owner": "Mandy",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/boardgame/276025",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Maracaibo",
    "video": "https://www.youtube.com/watch?v=PMCCyLW2NjU",
    "interested": [
     "Wilma",
@@ -1812,7 +1817,7 @@
    "name": "Puzzle Strike 2",
    "owner": "Manolis",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Puzzle+Strike+2",
+   "link": "https://boardgamegeek.com/boardgame/368942",
    "video": "",
    "interested": [
     "Wesley",
@@ -1954,16 +1959,19 @@
    "name": "Pili Pili",
    "owner": "Marc",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Pili+Pili",
+   "link": "https://boardgamegeek.com/boardgame/453584",
    "video": "https://boardgamegeek.com/video/610770/pili-pili/how-to-play-pili-pili",
    "interested": [],
    "minPlayers": 2,
-   "maxPlayers": 4,
-   "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
+   "maxPlayers": 8,
+   "durationMin": 30,
+   "weight": "LICHT",
+   "infoChecked": true,
    "category": "Party",
-   "categories": [],
+   "categories": [
+    "Card Game",
+    "Party Game"
+   ],
    "notes": ""
   },
   {
@@ -2039,7 +2047,7 @@
    "name": "Alchemists",
    "owner": "Mélanie",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/boardgame/161970",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Alchemists",
    "video": "",
    "interested": [
     "Guillaume"
@@ -2062,7 +2070,7 @@
    "name": "Cryptid",
    "owner": "Mélanie",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/boardgame/246784",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Cryptid",
    "video": "",
    "interested": [
     "Dagmar"
@@ -2083,7 +2091,7 @@
    "name": "Decrypto",
    "owner": "Mélanie",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/boardgame/225694",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Decrypto",
    "video": "",
    "interested": [],
    "minPlayers": 3,
@@ -2213,7 +2221,7 @@
    "name": "Arcs",
    "owner": "Moris",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/boardgame/359871",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Arcs",
    "video": "",
    "interested": [],
    "minPlayers": 2,
@@ -2233,7 +2241,7 @@
    "name": "Elementica",
    "owner": "Moris",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Elementica",
+   "link": "https://boardgamegeek.com/boardgame/469261",
    "video": "",
    "interested": [],
    "minPlayers": 1,
@@ -2287,7 +2295,7 @@
    "name": "Greenwood",
    "owner": "Moris",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Greenwood",
+   "link": "https://boardgamegeek.com/boardgame/469383",
    "video": "",
    "interested": [
     "Wesley",
@@ -2334,7 +2342,7 @@
    "name": "The Gang",
    "owner": "Moris",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/boardgame/411567",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=The+Gang",
    "video": "",
    "interested": [
     "Wesley",
@@ -2358,7 +2366,7 @@
    "name": "Timespan",
    "owner": "Moris",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Timespan",
+   "link": "https://boardgamegeek.com/boardgame/462479",
    "video": "",
    "interested": [
     "Mandy",
@@ -2457,19 +2465,24 @@
    "name": "Gibberesh",
    "owner": "Rebecca",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Gibberesh",
+   "link": "https://boardgamegeek.com/boardgame/27689",
    "video": "",
    "interested": [
     "Dagmar",
     "Mélanie"
    ],
    "minPlayers": 2,
-   "maxPlayers": 4,
-   "durationMin": 60,
+   "maxPlayers": 16,
+   "durationMin": 30,
    "weight": "MIDDEL",
-   "infoChecked": false,
+   "infoChecked": true,
    "category": "Party",
-   "categories": [],
+   "categories": [
+    "Humor",
+    "Memory",
+    "Party Game",
+    "Word Game"
+   ],
    "notes": ""
   },
   {
@@ -2498,7 +2511,7 @@
    "name": "Forage",
    "owner": "Rebecca",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Forage",
+   "link": "https://boardgamegeek.com/boardgame/458390",
    "video": "",
    "interested": [
     "Femke",
@@ -2666,18 +2679,20 @@
    "name": "Abroad",
    "owner": "",
    "wishlist": true,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Abroad",
+   "link": "https://boardgamegeek.com/boardgame/437337",
    "video": "",
    "interested": [
     "Cindy"
    ],
-   "minPlayers": 2,
-   "maxPlayers": 4,
-   "durationMin": 60,
+   "minPlayers": 1,
+   "maxPlayers": 5,
+   "durationMin": 90,
    "weight": "MIDDEL",
-   "infoChecked": false,
-   "category": "Familie",
-   "categories": [],
+   "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Travel"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2685,7 +2700,7 @@
    "name": "Automania Second Edition",
    "owner": "",
    "wishlist": true,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Automania+Second+Edition",
+   "link": "https://boardgamegeek.com/boardgame/176544",
    "video": "",
    "interested": [
     "Wesley",
@@ -2693,11 +2708,14 @@
    ],
    "minPlayers": 2,
    "maxPlayers": 4,
-   "durationMin": 60,
+   "durationMin": 90,
    "weight": "MIDDEL",
-   "infoChecked": false,
+   "infoChecked": true,
    "category": "Strategie",
-   "categories": [],
+   "categories": [
+    "Economic",
+    "Industry / Manufacturing"
+   ],
    "notes": "Wens: nog niemand neemt dit mee"
   },
   {
@@ -2705,7 +2723,7 @@
    "name": "Bullet <3",
    "owner": "",
    "wishlist": true,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Bullet+<3",
+   "link": "https://boardgamegeek.com/boardgame/307305",
    "video": "",
    "interested": [
     "Wesley",
@@ -2942,7 +2960,7 @@
    "name": "For the Gods",
    "owner": "",
    "wishlist": true,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=For+the+Gods",
+   "link": "https://boardgamegeek.com/boardgame/444234",
    "video": "",
    "interested": [
     "Wesley",
@@ -2964,7 +2982,7 @@
    "name": "Hell of a Deal",
    "owner": "",
    "wishlist": true,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Hell+of+a+Deal",
+   "link": "https://boardgamegeek.com/boardgame/463605",
    "video": "",
    "interested": [
     "Wesley",
@@ -3106,7 +3124,7 @@
    "name": "Navoria",
    "owner": "",
    "wishlist": true,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Navoria",
+   "link": "https://boardgamegeek.com/boardgame/371932",
    "video": "",
    "interested": [
     "Cindy"
@@ -3315,7 +3333,7 @@
    "name": "Tenby",
    "owner": "",
    "wishlist": true,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Tenby",
+   "link": "https://boardgamegeek.com/boardgame/407233",
    "video": "",
    "interested": [
     "Cindy"
@@ -3471,7 +3489,7 @@
    "name": "Thrones of Valeria",
    "owner": "",
    "wishlist": true,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Thrones+of+Valeria",
+   "link": "https://boardgamegeek.com/boardgame/345894",
    "video": "",
    "interested": [
     "Wesley",
@@ -3597,7 +3615,7 @@
    "name": "Inside Job",
    "owner": "Wesley",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Inside+Job",
+   "link": "https://boardgamegeek.com/boardgame/324914",
    "video": "",
    "interested": [
     "Dinna"
@@ -3619,7 +3637,7 @@
    "name": "JiSoGi",
    "owner": "Wesley",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=JiSoGi",
+   "link": "https://boardgamegeek.com/boardgame/429845",
    "video": "",
    "interested": [
     "Dinna"
@@ -3661,7 +3679,7 @@
    "name": "Melodies",
    "owner": "Wesley",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Melodies",
+   "link": "https://boardgamegeek.com/boardgame/475188",
    "video": "",
    "interested": [
     "Dinna"
@@ -3683,7 +3701,7 @@
    "name": "Moon Colony Bloodbath",
    "owner": "Wesley",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Moon+Colony+Bloodbath",
+   "link": "https://boardgamegeek.com/boardgame/425549",
    "video": "https://boardgamegeek.com/video/623189/moon-colony-bloodbath/moon-colony-bloodbath-board-game-how-to-and-watch",
    "interested": [
     "Amra",
@@ -3691,13 +3709,16 @@
     "Igor",
     "Guillaume"
    ],
-   "minPlayers": 2,
-   "maxPlayers": 4,
-   "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
-   "category": "Thematisch",
-   "categories": [],
+   "minPlayers": 1,
+   "maxPlayers": 5,
+   "durationMin": 90,
+   "weight": "LICHT",
+   "infoChecked": true,
+   "category": "Strategie",
+   "categories": [
+    "Card Game",
+    "Science Fiction"
+   ],
    "notes": ""
   },
   {
@@ -3705,7 +3726,7 @@
    "name": "Night Soil",
    "owner": "Wesley",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Night+Soil",
+   "link": "https://boardgamegeek.com/boardgame/421530",
    "video": "",
    "interested": [
     "Dinna"
@@ -3748,18 +3769,21 @@
    "name": "Panda Spin + XP",
    "owner": "Wesley",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Panda+Spin+++XP",
+   "link": "https://boardgamegeek.com/boardgame/417323",
    "video": "",
    "interested": [
     "Dinna"
    ],
    "minPlayers": 2,
-   "maxPlayers": 4,
-   "durationMin": 60,
-   "weight": "MIDDEL",
-   "infoChecked": false,
-   "category": "Familie",
-   "categories": [],
+   "maxPlayers": 5,
+   "durationMin": 40,
+   "weight": "LICHT",
+   "infoChecked": true,
+   "category": "Kaartspel",
+   "categories": [
+    "Animals",
+    "Card Game"
+   ],
    "notes": ""
   },
   {
@@ -3787,7 +3811,7 @@
    "name": "Power Vacuum",
    "owner": "Wesley",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Power+Vacuum",
+   "link": "https://boardgamegeek.com/boardgame/402106",
    "video": "",
    "interested": [
     "Dinna"
@@ -3811,7 +3835,7 @@
    "name": "Queen Alice",
    "owner": "Wesley",
    "wishlist": false,
-   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Queen+Alice",
+   "link": "https://boardgamegeek.com/boardgame/456236",
    "video": "",
    "interested": [
     "Amra",
