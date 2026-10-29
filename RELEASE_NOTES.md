@@ -1,5 +1,5 @@
 **Nieuw in deze versie** 🎲
 
-- **Opgelost:** een eigenaar die je in de app bij een spel invult, verdwijnt niet meer na het laden van de Slimbo-gegevens. Ook een zelf aangepaste naam, link of notitie blijft staan.
+- **Opgelost:** wie zijn naam (opnieuw) overneemt nadat zijn account eerder verborgen was, staat nu weer gewoon in de deelnemerslijst.
 
 Download `Spellenweekend.apk` hieronder en installeer die over de oude heen; je gegevens blijven bewaard.

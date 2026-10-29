@@ -200,7 +200,7 @@ const A = {
     await act(async () => {
       const b = writeBatch(db);
       const m = ref("members", S.uid);
-      b.set(m, { guestId: g.id, name: g.name, updatedAt: now() }, { merge: true });
+      b.set(m, { guestId: g.id, name: g.name, hidden: false, replacedBy: "", updatedAt: now() }, { merge: true });
       if ((g.wants || []).length) b.update(m, { wants: arrayUnion(...g.wants) });
       b.update(ref("guests", g.id), { claimedBy: S.uid });
       const prev = me()?.guestId;
@@ -385,7 +385,7 @@ function claimView() {
 
 function stayView() {
   if (!S.guests.length) return "";
-  if (!me()?.guestId) return claimView();
+  if (!me()?.guestId || me()?.hidden) return claimView();
   const g = myGuest(); const room = S.rooms.find((r) => r.id === g?.roomId);
   const chores = S.chores.filter((c) => (c.names || []).includes(g?.name)).sort((a, b) => a.startAt - b.startAt);
   return `<div class="card">

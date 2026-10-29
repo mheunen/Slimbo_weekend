@@ -208,7 +208,10 @@ class Repository(context: Context) {
     suspend fun claimGuest(eventId: String, guest: Guest, previousGuestId: String) {
         val batch = db.batch()
         val member = col(eventId, "members").document(me)
-        batch.update(member, mapOf("guestId" to guest.id, "name" to guest.name, "updatedAt" to now()))
+        batch.update(
+            member,
+            mapOf("guestId" to guest.id, "name" to guest.name, "hidden" to false, "replacedBy" to "", "updatedAt" to now()),
+        )
         if (guest.wants.isNotEmpty()) {
             batch.update(member, "wants", FieldValue.arrayUnion(*guest.wants.toTypedArray()))
         }
