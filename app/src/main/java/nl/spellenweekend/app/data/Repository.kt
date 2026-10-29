@@ -281,6 +281,7 @@ class Repository(context: Context) {
         val gameDocs = col(eventId, "games").get().await().documents
         val uncheckedGames = gameDocs.filter { it.getBoolean("infoChecked") == false }.map { it.id }.toSet()
         val uncategorized = gameDocs.filter { it.getString("category").isNullOrBlank() }.map { it.id }.toSet()
+        val gameById = gameDocs.associateBy { it.id }
         if (seedGames != null) {
             for (i in 0 until seedGames.length()) {
                 val obj = seedGames.getJSONObject(i)
@@ -290,13 +291,27 @@ class Repository(context: Context) {
                 val data = (toValue(obj) as Map<String, Any>) - "id"
                 val ref = col(eventId, "games").document(id)
                 if (id in existing["games"].orEmpty()) {
-                    val fields = mutableSetOf("name", "owner", "wishlist", "interested", "link", "video", "categories")
+                    // Naam, eigenaar en link uit de app blijven staan; eigenaar alleen overnemen
+                    // als het spreadsheet er een noemt, nooit wissen.
+                    val cur = gameById[id]
+                    val fields = mutableSetOf("interested", "video", "categories")
+                    val curLink = cur?.getString("link").orEmpty()
+                    if (curLink.isBlank() || "geeksearch" in curLink) fields += "link"
+                    val seedOwner = obj.optString("owner")
+                    var dataOut = data
+                    if (seedOwner.isNotBlank()) {
+                        fields += setOf("owner", "wishlist"); dataOut = data + ("wishlist" to false)
+                    } else if (cur?.getString("owner").isNullOrBlank()) {
+                        fields += "wishlist"
+                    }
                     if (id in uncategorized) fields += "category"
+                    val curNotes = cur?.getString("notes").orEmpty()
+                    if (curNotes.isBlank() || curNotes.startsWith("ⓘ ") || curNotes == "Wens: nog niemand neemt dit mee") fields += "notes"
                     // BGG-gegevens alleen overnemen als niemand ze in de app heeft aangepast
                     if (id in uncheckedGames && obj.optBoolean("infoChecked", false)) {
                         fields += setOf("minPlayers", "maxPlayers", "durationMin", "weight", "infoChecked")
                     }
-                    ops += ref to data.filterKeys { it in fields }
+                    ops += ref to dataOut.filterKeys { it in fields }
                     updatedGames++
                 } else {
                     ops += ref to data

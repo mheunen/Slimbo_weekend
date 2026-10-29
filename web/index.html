@@ -582,7 +582,12 @@ async function runImport() {
       const { id, ...data } = g; seedIds.add(id);
       const cur = existing.games.get(id);
       if (cur) {
-        const keys = ["name", "owner", "wishlist", "interested", "link", "video", "categories"];
+        // Naam, eigenaar en link die in de app/site zijn ingevuld blijven staan:
+        // eigenaar alleen overnemen als het spreadsheet er een noemt, nooit wissen.
+        const keys = ["interested", "video", "categories"];
+        if (!cur.link || cur.link.includes("geeksearch")) keys.push("link");
+        if (data.owner) { keys.push("owner"); data.wishlist = false; keys.push("wishlist"); }
+        else if (!cur.owner) keys.push("wishlist");
         if (!cur.category) keys.push("category");
         // Notitie alleen bijwerken als die leeg is of automatisch gemaakt (zelf geschreven notities blijven staan)
         if (!cur.notes || AUTO_NOTE.test(cur.notes)) keys.push("notes");
