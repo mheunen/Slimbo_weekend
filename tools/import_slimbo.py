@@ -199,6 +199,15 @@ def auto_note(gid: str, name: str, wish: bool, b: dict | None, checked: bool) ->
     return ("ⓘ " + " · ".join(parts)) if parts else ""
 
 
+# Spellen die (nog) niet in het spreadsheet staan; zelfde kolommen als het tabblad Games:
+# (Spel, Wie, Geïnteresseerd, BGG-link, video)
+EXTRA_GAMES = [
+    ("Rewild: South America", "Dagmar", "Rebecca, Guillaume", "https://boardgamegeek.com/boardgame/436205/rewild-south-america", None),
+    ("Wat schets je me nou", "Rebecca", None, None, None),
+    ("So Clover!", "Wens", "Dagmar", None, None),
+]
+
+
 def load_bgg() -> dict:
     """Gegevens van BoardGameGeek (tools/bgg_data.json, gemaakt door fetch_bgg.py in GitHub Actions).
     Alleen spellen met een BGG-link uit het document of een gecontroleerd nummer uit bgg_ids.json."""
@@ -276,7 +285,7 @@ def main(xlsx: str):
     # ---------------- Spellen (tabblad Games) ----------------
     ws = wb["Games"]
     games = []
-    for r in list(ws.iter_rows(min_row=2, values_only=True)):
+    for r in list(ws.iter_rows(min_row=2, values_only=True)) + EXTRA_GAMES:
         name = cell_text(r[0])
         if not name:
             continue

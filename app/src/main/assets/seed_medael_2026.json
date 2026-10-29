@@ -486,7 +486,8 @@
     "g-a-wild-venture",
     "g-class-of-89",
     "g-gibberesh",
-    "g-forage"
+    "g-forage",
+    "g-so-clover"
    ]
   },
   {
@@ -578,7 +579,8 @@
     "g-class-of-89",
     "g-phoenix-new-horizon",
     "g-pokespan",
-    "g-moon-colony-bloodbath"
+    "g-moon-colony-bloodbath",
+    "g-rewild-south-america"
    ]
   },
   {
@@ -765,7 +767,8 @@
     "g-harmoni-cresendo",
     "g-shipwreck-arcana",
     "g-paint-the-roses",
-    "g-gaudi"
+    "g-gaudi",
+    "g-rewild-south-america"
    ]
   },
   {
@@ -3853,6 +3856,62 @@
     "Novel-based"
    ],
    "notes": ""
+  },
+  {
+   "id": "g-rewild-south-america",
+   "name": "Rewild: South America",
+   "owner": "Dagmar",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/boardgame/436205/rewild-south-america",
+   "video": "",
+   "interested": [
+    "Rebecca",
+    "Guillaume"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "category": "",
+   "categories": [],
+   "notes": "ⓘ Spelers/duur onbekend – graag aanvullen"
+  },
+  {
+   "id": "g-wat-schets-je-me-nou",
+   "name": "Wat schets je me nou",
+   "owner": "Rebecca",
+   "wishlist": false,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Wat+schets+je+me+nou",
+   "video": "",
+   "interested": [],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "category": "",
+   "categories": [],
+   "notes": "ⓘ Spelers/duur onbekend – graag aanvullen"
+  },
+  {
+   "id": "g-so-clover",
+   "name": "So Clover!",
+   "owner": "",
+   "wishlist": true,
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=So+Clover!",
+   "video": "",
+   "interested": [
+    "Dagmar"
+   ],
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "infoChecked": false,
+   "category": "",
+   "categories": [],
+   "notes": "ⓘ Wens: nog niemand neemt het mee · Spelers/duur onbekend – graag aanvullen"
   }
  ],
  "chores": [
