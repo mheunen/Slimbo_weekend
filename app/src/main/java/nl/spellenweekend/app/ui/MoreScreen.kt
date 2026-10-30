@@ -16,6 +16,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Place
+import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.TableRestaurant
 import androidx.compose.material3.AlertDialog
@@ -77,9 +78,16 @@ fun MoreScreen(
     var sub by rememberSaveable { mutableIntStateOf(0) }
     val myself = look.members[me]
     Column {
-        ScrollableTabRow(selectedTabIndex = sub, edgePadding = 8.dp) {
-            listOf("Weekend", "Kamers", "Corvee", "Beheer").forEachIndexed { i, label ->
-                Tab(selected = sub == i, onClick = { sub = i }, text = { Text(label) })
+        val context = androidx.compose.ui.platform.LocalContext.current
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            ScrollableTabRow(selectedTabIndex = sub, edgePadding = 8.dp, modifier = Modifier.weight(1f)) {
+                listOf("Weekend", "Kamers", "Corvee", "Beheer").forEachIndexed { i, label ->
+                    Tab(selected = sub == i, onClick = { sub = i }, text = { Text(label) })
+                }
+            }
+            // Altijd zichtbaar: snel naar de Slimbo-website
+            IconButton(onClick = { openUrl(context, SLIMBO_URL) }) {
+                Icon(androidx.compose.material.icons.Icons.Filled.Language, contentDescription = "slimbo.nl")
             }
         }
         when (sub) {
