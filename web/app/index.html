@@ -99,10 +99,6 @@
 const fold = (key, title, body, def = false) =>
   `<details class="fold" data-fold="${key}" ${(S.fold[key] ?? def) ? "open" : ""}><summary>${title}</summary>${body}</details>`;
 
-// ♥'s die de spreadsheet al eens gaf; die voegt Laden/koppelen niet opnieuw toe (zelf weggehaald = blijft weg).
-// Oud account zonder veld maar met gekoppelde naam: alle spreadsheet-wensen gelden als al gegeven.
-const seededOf = (m, guestWants) => !m ? null : Array.isArray(m.seedWants) ? m.seedWants : (m.guestId ? guestWants : null);
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import {
@@ -214,13 +210,8 @@ const A = {
     await act(async () => {
       const b = writeBatch(db);
       const m = ref("members", S.uid);
-      const gw = g.wants || [], cur = me();
-      let oldData = null;
-      if (g.claimedBy && g.claimedBy !== S.uid) { const o = await getDoc(ref("members", g.claimedBy)); if (o.exists()) oldData = o.data(); }
-      const seen = [...new Set([...(cur?.guestId === g.id ? seededOf(cur, gw) || [] : cur?.seedWants || []), ...(seededOf(oldData, gw) || [])])];
-      const fresh = gw.filter((x) => !seen.includes(x));
-      b.set(m, { guestId: g.id, name: g.name, hidden: false, replacedBy: "", updatedAt: now(), seedWants: [...new Set([...seen, ...gw])] }, { merge: true });
-      if (fresh.length) b.update(m, { wants: arrayUnion(...fresh) });
+      // Alleen naam/kamer koppelen; ♥'s uit het Slimbo-document worden niet meer overgenomen
+      b.set(m, { guestId: g.id, name: g.name, hidden: false, replacedBy: "", updatedAt: now() }, { merge: true });
       b.update(ref("guests", g.id), { claimedBy: S.uid });
       const prev = me()?.guestId;
       if (prev && prev !== g.id) b.update(ref("guests", prev), { claimedBy: "" });
@@ -397,7 +388,7 @@ function claimView() {
   const shown = all.filter((g) => !q || g.name.toLowerCase().includes(q)).slice(0, q ? 12 : 6);
   return `<div class="card">
     <div class="title">Wie ben jij in de kamerindeling?</div>
-    <p class="muted">Dan zie je je kamer en corvee, en komen de spellen waar je interesse in had op je ♥-lijst.</p>
+    <p class="muted">Dan zie je je kamer en je corveebeurten.</p>
     <input data-live="1" id="claimQ" placeholder="Zoek je naam" value="${esc(S.ui.claimQ)}">
     <div style="margin-top:6px">${shown.map((g) => `<div class="list-item ${S.ui.claimSel === g.id ? "sel" : ""}" data-claim="${g.id}">
       <span>${esc(g.name)}</span>${g.claimedBy && g.claimedBy !== S.uid ? `<span class="muted small">op ander toestel</span>` : ""}</div>`).join("")}
@@ -475,7 +466,6 @@ function planningView() {
 
 function gamesView() {
   const u = S.ui, wants = new Set(me()?.wants || []), mn = myName().toLowerCase();
-  const claimedNames = new Set(S.guests.filter((g) => g.claimedBy).map((g) => g.name));
   const fans = {};
   visibleMembers().forEach((m) => (m.wants || []).forEach((gid) => (fans[gid] = fans[gid] || []).push(m.name)));
   const owners = [...new Set(S.games.filter((g) => !g.wishlist && g.owner).map((g) => g.owner.trim()))].sort((a, b) => a.localeCompare(b, "nl"));
@@ -512,7 +502,7 @@ function gamesView() {
     ${filters}
     <p class="muted small">${list.length} van ${S.games.length} spellen · tik op ♥ voor spellen die je wilt spelen — Match gebruikt dat.</p>
     ${list.map((g) => {
-      const f = [...new Set([...(fans[g.id] || []), ...(g.interested || []).filter((n) => !claimedNames.has(n))])];
+      const f = fans[g.id] || [];
       return `<div class="card row" style="align-items:flex-start">
         <div class="grow">
           <div class="title" data-gedit="${g.id}" style="cursor:pointer">${esc(g.name)} <span class="muted small">✎</span></div>

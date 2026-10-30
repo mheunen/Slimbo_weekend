@@ -5,7 +5,6 @@ on:
     branches: [main]
     paths:
       - "web/**"
-      - "app/src/main/assets/seed_*.json"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -33,7 +32,6 @@ jobs:
         run: |
           mkdir -p _site
           cp -r web/. _site/
-          cp app/src/main/assets/seed_medael_2026.json _site/seed.json
           python3 - <<'PY'
           import json, os
           gs = json.loads(os.environ["GOOGLE_SERVICES_JSON"])

@@ -83,9 +83,6 @@
 const fold = (key, title, body, def = false) =>
   `<details class="fold" data-fold="${key}" ${(S.fold[key] ?? def) ? "open" : ""}><summary>${title}</summary>${body}</details>`;
 
-// ♥'s die de spreadsheet al eens gaf; die voegt Laden/koppelen niet opnieuw toe (zelf weggehaald = blijft weg).
-// Oud account zonder veld maar met gekoppelde naam: alle spreadsheet-wensen gelden als al gegeven.
-const seededOf = (m, guestWants) => !m ? null : Array.isArray(m.seedWants) ? m.seedWants : (m.guestId ? guestWants : null);
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
@@ -151,7 +148,6 @@ const SCHEMAS = {
       { k: "weight", l: "Zwaarte", t: "select", opts: () => WEIGHTS, def: "MIDDEL", half: true },
       { k: "category", l: "Categorie", t: "select", opts: () => [["", "—"], ...CATEGORIES.map((c) => [c, c])] },
       { k: "link", l: "Link (BoardGameGeek)", t: "text" },
-      { k: "interested", l: "Interesse (namen, komma-gescheiden)", t: "list" },
       { k: "notes", l: "Notitie", t: "text" },
     ],
     beforeSave: (d) => ({ ...d, infoChecked: true, wishlist: d.wishlist && !d.owner }),
@@ -240,14 +236,11 @@ const SCHEMAS = {
   },
 };
 
-// Interesse = ♥ in de app (bij de deelnemer) + namen uit het spreadsheet van wie nog niet in de app zit
+// Interesse = alleen de ♥'s in de app; het Slimbo-document wordt nergens meer voor gebruikt
 function appFans(g) {
   return S.members.filter((m) => !m.web && !m.hidden && (m.wants || []).includes(g.id)).map((m) => m.name);
 }
-function fansOf(g) {
-  const claimed = new Set(S.guests.filter((x) => x.claimedBy).map((x) => x.name));
-  return [...new Set([...appFans(g), ...(g.interested || []).filter((n) => !claimed.has(n))])];
-}
+function fansOf(g) { return appFans(g); }
 
 async function syncGuestsForRoom(room) {
   const b = writeBatch(db);
@@ -461,33 +454,19 @@ function usersView() {
     </div>`;
 }
 
-function importView() {
-  return `<div class="card">
-    <h3>Slimbo-gegevens laden</h3>
-    <p>Laadt het importbestand dat bij de laatste versie van de app hoort: spellen (met BGG-gegevens), kamers, gastenlijst, corvee, weekendinfo en vaste activiteiten.</p>
-    <ul class="muted">
-      <li>Nieuwe spellen en activiteiten worden toegevoegd.</li>
-      <li>Bij bestaande spellen worden eigenaar, interesse en links bijgewerkt; spelers/duur alleen als die nog niet zijn gecontroleerd.</li>
-      <li>Kamers, gastenlijst, corvee en weekendinfo worden volledig bijgewerkt.</li>
-      <li>Spellen uit een eerdere import die niet meer in het document staan, worden verwijderd.</li>
-    </ul>
-    <button class="btn" id="doImport">Laden</button> <span class="muted" id="impMsg"></span>
-  </div>`;
-}
-
 const TABS = [
   ["users", "Gebruikers"], ["weekend", "Weekend"], ["activities", "Planning"], ["games", "Spellen"],
-  ["places", "Locaties"], ["tables", "Tafels"], ["rooms", "Kamers"], ["chores", "Corvee"], ["import", "Laden"],
+  ["places", "Locaties"], ["tables", "Tafels"], ["rooms", "Kamers"], ["chores", "Corvee"],
 ];
 
 function render() {
   if (!S.uid) { $("#app").innerHTML = `<main><p class="muted">Verbinden…</p></main>`; return; }
   if (!S.eventId || !S.event) return renderLogin();
+  if (!TABS.some(([k]) => k === S.tab)) S.tab = "weekend"; // bv. het vervallen tabblad "Laden"
   const me = S.members.find((m) => m.id === S.uid);
   let body = "";
   if (S.tab === "users") body = usersView();
   else if (S.tab === "weekend") body = weekendView();
-  else if (S.tab === "import") body = importView();
   else if (S.tab === "games") body = listView("games", "Klik op een rij om te bewerken. Wijzigingen zijn direct zichtbaar in de app.");
   else body = listView(S.tab);
   $("#app").innerHTML = `<header>
@@ -548,7 +527,6 @@ function bind() {
       toast("Weekend opgeslagen");
     } catch (e) { toast("Opslaan mislukt: " + e.message); }
   };
-  if ($("#doImport")) $("#doImport").onclick = runImport;
   document.querySelectorAll("[data-restore]").forEach((btn) => btn.onclick = async () => {
     try { await setDoc(ref("members", btn.dataset.restore), { hidden: false, replacedBy: "" }, { merge: true }); toast("Teruggezet"); }
     catch (err) { toast("Mislukt: " + err.message); }
@@ -562,11 +540,6 @@ function bind() {
       const cur = S.members.find((m) => m.id === mid);
       if (cur?.guestId && cur.guestId !== g.id) b.set(ref("guests", cur.guestId), { claimedBy: "" }, { merge: true });
       b.set(ref("members", mid), { guestId: g.id, name: g.name, hidden: false, replacedBy: "" }, { merge: true });
-      { const gw = g.wants || [];
-        const seen = [...new Set([...(cur?.guestId === g.id ? seededOf(cur, gw) || [] : cur?.seedWants || []),
-          ...(g.claimedBy && g.claimedBy !== mid ? seededOf(S.members.find((x) => x.id === g.claimedBy), gw) || [] : [])])];
-        const fresh = gw.filter((x) => !seen.includes(x));
-        b.set(ref("members", mid), { seedWants: [...new Set([...seen, ...gw])], ...(fresh.length ? { wants: arrayUnion(...fresh) } : {}) }, { merge: true }); }
       b.set(ref("guests", g.id), { claimedBy: mid }, { merge: true });
       await b.commit(); toast(`Gekoppeld aan ${g.name}`);
     } catch (err) { toast("Mislukt: " + err.message); }
@@ -606,60 +579,6 @@ function subscribe() {
       softRender();
     }));
   }
-}
-
-// ------------------------------------------------------------------ import (zelfde regels als de app)
-async function runImport() {
-  const btn = $("#doImport"); btn.disabled = true; $("#impMsg").textContent = "Bezig…";
-  try {
-    const seed = await (await fetch("seed.json", { cache: "no-store" })).json();
-    const existing = {};
-    for (const c of ["games", "places", "tables", "activities", "guests"]) existing[c] = new Map((await getDocs(col(c))).docs.map((d) => [d.id, d.data()]));
-    const ops = [];
-    const ev = seed.event;
-    ops.push([doc(db, "events", S.eventId), { venue: ev.venue, address: ev.address, phone: ev.phone, checkInAt: ev.checkInAt, checkOutAt: ev.checkOutAt, info: ev.info, seedVersion: seed.version || 1 }]);
-    let newGames = 0, updGames = 0;
-    const seedIds = new Set();
-    for (const g of seed.games) {
-      const { id, ...data } = g; seedIds.add(id);
-      const cur = existing.games.get(id);
-      if (cur) {
-        // Naam, eigenaar en link die in de app/site zijn ingevuld blijven staan:
-        // eigenaar alleen overnemen als het spreadsheet er een noemt, nooit wissen.
-        const keys = ["interested", "video", "categories"];
-        if (!cur.link || cur.link.includes("geeksearch")) keys.push("link");
-        if (data.owner) { keys.push("owner"); data.wishlist = false; keys.push("wishlist"); }
-        else if (!cur.owner) keys.push("wishlist");
-        if (!cur.category) keys.push("category");
-        // Notitie alleen bijwerken als die leeg is of automatisch gemaakt (zelf geschreven notities blijven staan)
-        if (!cur.notes || AUTO_NOTE.test(cur.notes)) keys.push("notes");
-        if (cur.infoChecked === false && data.infoChecked) keys.push("minPlayers", "maxPlayers", "durationMin", "weight", "infoChecked");
-        ops.push([ref("games", id), Object.fromEntries(keys.map((k) => [k, data[k]]))]); updGames++;
-      } else { ops.push([ref("games", id), data]); newGames++; }
-    }
-    const stale = [...existing.games.keys()].filter((id) => id.startsWith("g-") && !seedIds.has(id));
-    for (const c of ["places", "tables"]) for (const it of seed[c] || []) { const { id, ...d } = it; if (!existing[c].has(id)) ops.push([ref(c, id), d]); }
-    for (const c of ["rooms", "chores", "guests"]) for (const it of seed[c] || []) { const { id, ...d } = it; ops.push([ref(c, id), d]); }
-    for (const a of seed.activities || []) {
-      const { id, ...d } = a;
-      if (existing.activities.has(id)) ops.push([ref("activities", id), { title: d.title, type: d.type, startAt: d.startAt, durationMin: d.durationMin, notes: d.notes, updatedBy: S.uid, updatedAt: now() }]);
-      else ops.push([ref("activities", id), { ...d, createdBy: S.uid, participants: [], invited: [], declined: [], status: "GEPLAND", maxParticipants: 0, tableId: "", gameId: "", reminderSent: false, updatedBy: S.uid, updatedAt: now() }]);
-    }
-    for (const g of seed.guests || []) {
-      const cur = existing.guests.get(g.id);
-      if (!cur?.claimedBy || !g.wants?.length) continue;
-      const m = S.members.find((x) => x.id === cur.claimedBy); if (!m) continue;
-      const seen = seededOf(m, g.wants) || [];
-      const fresh = g.wants.filter((x) => !seen.includes(x));
-      ops.push([ref("members", cur.claimedBy), { seedWants: [...new Set([...seen, ...g.wants])], ...(fresh.length ? { wants: arrayUnion(...fresh) } : {}) }]);
-    }
-    for (let i = 0; i < ops.length; i += 400) {
-      const b = writeBatch(db); ops.slice(i, i + 400).forEach(([r, d]) => b.set(r, d, { merge: true })); await b.commit();
-    }
-    if (stale.length) { const b = writeBatch(db); stale.forEach((id) => b.delete(ref("games", id))); await b.commit(); }
-    $("#impMsg").textContent = `Klaar: ${newGames} nieuwe en ${updGames} bijgewerkte spellen, ${seed.rooms.length} kamers, ${seed.guests.length} gasten.`;
-  } catch (e) { $("#impMsg").textContent = "Mislukt: " + e.message; }
-  btn.disabled = false;
 }
 
 // ------------------------------------------------------------------ start
