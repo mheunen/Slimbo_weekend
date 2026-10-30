@@ -110,7 +110,6 @@ private fun ManageTab(
     var openPlaces by rememberSaveable { mutableStateOf(false) }
     var openTables by rememberSaveable { mutableStateOf(false) }
     var openMembers by rememberSaveable { mutableStateOf(false) }
-    val importing by vm.importing.collectAsStateWithLifecycle()
     val now = System.currentTimeMillis()
 
     val busyTables = activities
@@ -197,20 +196,6 @@ private fun ManageTab(
                 Text("Versie ${vm.currentVersionName}", modifier = Modifier.weight(1f))
                 OutlinedButton(onClick = { vm.checkForUpdate(manual = true) }) { Text("Controleren op updates") }
             }
-        }
-        item { SectionHeader("Gegevens") }
-        item {
-            OutlinedButton(onClick = { vm.importSeed() }, enabled = !importing) {
-                Text(if (importing) "Bezig met laden…" else "Slimbo-gegevens (opnieuw) laden")
-            }
-        }
-        item {
-            Text(
-                "Kamers, gastenlijst, corvee en weekendinfo worden bijgewerkt. " +
-                    "Spellen, locaties en tafels die al bestaan blijven zoals ze zijn.",
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
         }
         item {
             OutlinedButton(

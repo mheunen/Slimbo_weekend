@@ -87,8 +87,6 @@ fun GamesScreen(
             .sortedBy { GAME_CATEGORIES.indexOf(it).let { i -> if (i < 0) 99 else i } }
     }
     val activeFilters = listOf(players != 0, weights.isNotEmpty(), category.isNotBlank(), owner.isNotBlank()).count { it }
-    // Namen die al via de app meedoen: hun ♥ komt uit de app, niet meer uit de spreadsheet
-    val claimedNames = remember(guests) { guests.filter { it.claimedBy.isNotBlank() }.map { it.name }.toSet() }
     var editing by remember { mutableStateOf<Game?>(null) }
 
     val myWants = members.firstOrNull { it.id == me }?.wants?.toSet() ?: emptySet()
@@ -215,8 +213,7 @@ fun GamesScreen(
                 }
             }
             items(visible, key = { it.id }) { g ->
-                val fanNames = (wantCount[g.id].orEmpty().map { it.name } +
-                    g.interested.filter { it !in claimedNames }).distinct()
+                val fanNames = wantCount[g.id].orEmpty().map { it.name }.distinct()
                 Card(onClick = { editing = g }, modifier = Modifier.fillMaxWidth()) {
                     Row(
                         verticalAlignment = Alignment.CenterVertically,

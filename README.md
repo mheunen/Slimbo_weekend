@@ -19,7 +19,7 @@ Android-app (Kotlin + Jetpack Compose) voor een spellenweekend met meerdere deel
 | **Planning** | Alle activiteiten per dag: spellen, eten, wandelen, overig. Uitnodigen, meedoen, starten, afronden, annuleren |
 | **Spellen** | Gezamenlijke spellenlijst (spelers, duur, zwaarte, wie het meeneemt). Met ♥ geef je aan wat je wilt spelen |
 | **Match** | Suggesties: welk spel kan nú met wie, op welke vrije tafel. Plus "bijna"-spellen waar nog 1–2 spelers voor nodig zijn |
-| **Meer** | Weekend (adres, route, in-/uitchecken, afspraken, meenemen), Kamers, Corvee, Beheer (code, locaties, tafels, deelnemers, import) |
+| **Meer** | Weekend (adres, route, in-/uitchecken, afspraken, meenemen), Kamers, Corvee, Beheer (code, locaties, tafels, deelnemers — inklapbaar) |
 
 **Volledig gratis:** draait op het Firebase **Spark**-abonnement (geen creditcard, geen Blaze).
 
@@ -42,32 +42,12 @@ Tip voor het weekend: zet batterijoptimalisatie voor Spellenweekend uit
 
 ## Slimbo-weekend · Molen van Medael (6 – 9 november 2026)
 
-In de app zit een importbestand (`app/src/main/assets/seed_medael_2026.json`), gemaakt uit
-*Slimbo weekend – Wie neemt wat mee* met `tools/import_slimbo.py`. Eén tik op **Laden**
-(op het tabblad Nu of onder Meer → Beheer) zet alles in het weekend:
+De database is één keer gevuld vanuit het Slimbo-document (*Wie neemt wat mee*): locaties, kamers, gastenlijst, corvee, weekendinfo en de spellenlijst.
+**Het document wordt daarna nergens meer voor gebruikt.** Alle wijzigingen gebeuren in de app, de web-app of op de beheersite, en de database is de enige bron.
 
-| Onderdeel | Inhoud |
-|---|---|
-| Locaties | Residentie 17 en Residentie 18, Rue de Rémersdael 98, 4852 Hombourg (B) |
-| Tafels per residentie | Eettafel A (11), Eettafel B (11), loungehoek (4), 2 picknicktafels op het terras (6) |
-| Kamers | 16 kamers: per residentie op de 1e en 2e verdieping één 2-pers. en drie 3-pers. kamers, met de kamerindeling |
-| Gastenlijst | 42 namen uit de kamerindeling; iedereen koppelt zichzelf in de app aan zijn naam |
-| Spellen | 105 titels: wie het meeneemt of *Wens*, BGG-link, en wie interesse heeft (komt bij koppelen op je ♥-lijst) |
-| Corvee | Rooster per residentie, vrijdagavond t/m maandagochtend |
-| Weekendinfo | In-/uitchecken, zelf meenemen, gezamenlijke inkopen, afspraken, carpool, te koop aangeboden, Murder Mystery |
-| Planning | Inchecken vrijdag 16:00 en uitchecken maandag (uiterlijk 10:00) |
-
-Aannames bij de import:
-- **Data:** komend weekend = vrijdag 6 t/m maandag 9 november 2026.
-- **Tafels:** de site noemt per residentie 2 grote tafels met samen 22 stoelen en 2 picknicktafels op het terras. Zitplaatsen voor loungehoek en picknicktafels zijn geschat; pas ze aan onder Meer → Beheer.
-- **Kamernummers** (1.1 t/m 2.4) zijn toegekend in de volgorde van de kamerindeling; het document heeft geen nummers.
-- **Bedden:** eenpersoons boxsprings 90×200 (volgens de website), dus hoeslaken 90×200.
-- **Spelersaantal/duur:** het document bevat die niet. Voor 41 bekende titels zijn ze ingevuld; de overige 64 tonen "⚠ nog invullen" met de standaard 2–4 spelers / 60 min. Openen, controleren via de BGG-link en opslaan haalt de waarschuwing weg.
-- **Wenslijst-spellen** (eigenaar "Wens") doen niet mee in Match, omdat niemand ze meeneemt.
-- **Namen gelijkgetrokken:** Melisss → Melissa, Melanie → Mélanie, Dennis L → Dennis, "Vriendin" → Vriendin van Wesley.
-- **Niet overgenomen:** achternamen, adressen, postcodes, nationaliteit en geboortedata (Gastenfiche en Verjaardagen). Die horen niet in een gedeelde app.
-
-Nieuwe versie van het document? `python3 tools/import_slimbo.py <bestand.xlsx>`, committen, en daarna in de app opnieuw **Laden**.
+- Er is geen knop *Laden* meer: niet in de app en niet op de beheersite.
+- Interesse in spellen = alleen de ♥'s die iemand zelf in de app zet. Bij het koppelen aan je naam komen er geen ♥'s uit het document bij; alleen de ♥'s van je eigen oude toestel gaan mee.
+- Het importscript, het importbestand en de BGG-tooling daarvoor zijn verwijderd (staan nog in de git-geschiedenis).
 
 ## Gemaakte keuzes (aannames)
 
@@ -116,7 +96,6 @@ app/src/main/java/nl/spellenweekend/app/
   notify/     eigen meldingen: vergelijken met vorige stand (ChangeChecker),
               achtergrondcontrole elke ~15 min (CheckWorker), tonen (Notifier)
 firestore.rules     beveiligingsregels (handmatig plakken in de console)
-tools/              import_slimbo.py: Excel → importbestand
 .github/workflows/  android.yml (APK bouwen)
 ```
 

@@ -63,7 +63,6 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
     val rooms: StateFlow<List<Room>> = live { repo.rooms(it) }
     val guests: StateFlow<List<Guest>> = live { repo.guests(it) }
     val chores: StateFlow<List<Chore>> = live { repo.chores(it) }
-    val importing = MutableStateFlow(false)
 
     private val checker = ChangeChecker(app)
     val refreshing = MutableStateFlow(false)
@@ -262,40 +261,4 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
     fun claimGuest(g: Guest, previousGuestId: String) =
         act("Gekoppeld aan ${g.name}") { repo.claimGuest(it, g, previousGuestId) }
 
-    /** Laadt de gegevens uit de bijlage (Molen van Medael, okt/nov 2026). */
-    fun importSeed() {
-        if (importing.value || event.value == null) return
-        importing.value = true
-        act {
-            try {
-                // Eerst de nieuwste versie van de website; zonder internet het ingebouwde bestand
-                val online = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
-                    runCatching {
-                        val conn = java.net.URL(SEED_URL).openConnection() as java.net.HttpURLConnection
-                        conn.connectTimeout = 8000
-                        conn.readTimeout = 15000
-                        conn.useCaches = false
-                        conn.setRequestProperty("Cache-Control", "no-cache")
-                        try {
-                            if (conn.responseCode == 200) conn.inputStream.bufferedReader().use { r -> r.readText() } else null
-                        } finally {
-                            conn.disconnect()
-                        }
-                    }.getOrNull()?.takeIf { t -> t.trimStart().startsWith("{") }
-                }
-                val json = online ?: getApplication<Application>().assets
-                    .open(SEED_FILE).bufferedReader().use { r -> r.readText() }
-                val result = repo.importSeed(it, json)
-                message.value = if (online != null) result else "$result (offline: ingebouwde gegevens)"
-            } finally {
-                importing.value = false
-            }
-        }
-    }
-
-    companion object {
-        const val SEED_FILE = "seed_medael_2026.json"
-        /** Altijd actuele gegevens, gepubliceerd door de workflow "Website". */
-        const val SEED_URL = "https://mheunen.github.io/Slimbo_weekend/seed.json"
-    }
 }

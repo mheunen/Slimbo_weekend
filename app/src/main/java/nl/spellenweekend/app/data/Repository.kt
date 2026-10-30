@@ -14,8 +14,6 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.tasks.await
-import org.json.JSONArray
-import org.json.JSONObject
 
 private const val TAG = "Repository"
 
@@ -196,47 +194,22 @@ class Repository(context: Context) {
         col(eventId, "members").document(me).update("name", name.trim()).await()
     }
 
-    /**
-     * ♥'s die de spreadsheet (Slimbo-document) al eens op iemands lijst heeft gezet.
-     * Staat een spel hierin, dan voegt Laden of opnieuw koppelen het niet nog eens toe:
-     * wie een ♥ weghaalt, houdt hem weg. Ontbreekt het veld (oud account), dan gelden
-     * alle spreadsheet-wensen van die naam als al eens toegevoegd.
-     */
-    private fun seededOf(doc: com.google.firebase.firestore.DocumentSnapshot?, guestWants: List<String>): Set<String>? {
-        if (doc == null || !doc.exists()) return null
-        val list = (doc.get("seedWants") as? List<*>)?.filterIsInstance<String>()
-        return list?.toSet() ?: if (doc.getString("guestId").orEmpty().isNotBlank()) guestWants.toSet() else null
-    }
-
     suspend fun setWant(eventId: String, gameId: String, want: Boolean) {
         val value = if (want) FieldValue.arrayUnion(gameId) else FieldValue.arrayRemove(gameId)
         col(eventId, "members").document(me).update("wants", value).await()
     }
 
     /**
-     * Koppelt jou aan een naam uit de gastenlijst: je naam wordt overgenomen en
-     * de spellen waar je in de spreadsheet interesse in had, komen op je ♥-lijst.
+     * Koppelt jou aan een naam uit de gastenlijst (kamer en corvee).
+     * ♥'s uit het Slimbo-document worden niet overgenomen; alleen de ♥'s van je eigen oude toestel gaan mee.
      */
     suspend fun claimGuest(eventId: String, guest: Guest, previousGuestId: String) {
         val batch = db.batch()
         val member = col(eventId, "members").document(me)
-        val myDoc = runCatching { member.get().await() }.getOrNull()
-        val oldId = guest.claimedBy.takeIf { it.isNotBlank() && it != me }
-        val oldDocForSeed = oldId?.let { runCatching { col(eventId, "members").document(it).get().await() }.getOrNull() }
-        // Alleen spreadsheet-♥'s die deze naam nog nooit kreeg (ook niet op het oude toestel)
-        val mine = if (myDoc?.getString("guestId") == guest.id) seededOf(myDoc, guest.wants) else
-            (myDoc?.get("seedWants") as? List<*>)?.filterIsInstance<String>()?.toSet()
-        val seen = mine.orEmpty() + seededOf(oldDocForSeed, guest.wants).orEmpty()
-        val newWants = guest.wants.filter { it !in seen }
-        val fields = mutableMapOf<String, Any>(
-            "guestId" to guest.id, "name" to guest.name, "hidden" to false, "replacedBy" to "", "updatedAt" to now(),
+        batch.update(
+            member,
+            mapOf("guestId" to guest.id, "name" to guest.name, "hidden" to false, "replacedBy" to "", "updatedAt" to now()),
         )
-        val allSeen = seen + guest.wants
-        fields["seedWants"] = if (allSeen.isEmpty()) emptyList<String>() else FieldValue.arrayUnion(*allSeen.toTypedArray())
-        batch.update(member, fields)
-        if (newWants.isNotEmpty()) {
-            batch.update(member, "wants", FieldValue.arrayUnion(*newWants.toTypedArray()))
-        }
         batch.update(col(eventId, "guests").document(guest.id), "claimedBy", me)
         if (previousGuestId.isNotBlank() && previousGuestId != guest.id) {
             batch.update(col(eventId, "guests").document(previousGuestId), "claimedBy", "")
@@ -256,180 +229,6 @@ class Repository(context: Context) {
         batch.commit().await()
     }
 
-    /**
-     * Laadt het importbestand (assets/seed_*.json) in het weekend.
-     * Locaties en tafels die al bestaan blijven ongemoeid. Bij spellen worden alleen
-     * eigenaar, wenslijst, interesse en links bijgewerkt; spellen die uit het document
-     * verdwenen zijn worden verwijderd. Kamers, gastenlijst, corvee en weekendinfo
-     * worden volledig bijgewerkt.
-     */
-    suspend fun importSeed(eventId: String, json: String): String {
-        val root = JSONObject(json)
-        val existing = mutableMapOf<String, Set<String>>()
-        for (c in listOf("games", "places", "tables", "activities", "guests")) {
-            existing[c] = col(eventId, c).get().await().documents.map { it.id }.toSet()
-        }
-        val ops = mutableListOf<Pair<com.google.firebase.firestore.DocumentReference, Map<String, Any>>>()
-
-        val ev = root.getJSONObject("event")
-        ops += event(eventId) to mapOf(
-            "venue" to ev.optString("venue"),
-            "address" to ev.optString("address"),
-            "phone" to ev.optString("phone"),
-            "checkInAt" to ev.optLong("checkInAt"),
-            "checkOutAt" to ev.optLong("checkOutAt"),
-            "info" to toList(ev.optJSONArray("info")),
-            "seedVersion" to root.optInt("version", 1),
-        )
-
-        var newGames = 0
-        var updatedGames = 0
-        fun addAll(collection: String, onlyNew: Boolean, transform: (Map<String, Any>) -> Map<String, Any> = { it }) {
-            val arr = root.optJSONArray(collection) ?: return
-            for (i in 0 until arr.length()) {
-                val obj = arr.getJSONObject(i)
-                val id = obj.getString("id")
-                if (onlyNew && id in existing[collection].orEmpty()) continue
-                @Suppress("UNCHECKED_CAST")
-                val data = (toValue(obj) as Map<String, Any>) - "id"
-                ops += col(eventId, collection).document(id) to transform(data)
-                if (collection == "games") newGames++
-            }
-        }
-
-        // Spellen: nieuwe toevoegen; bij bestaande alleen de velden uit het document
-        // bijwerken (eigenaar, wenslijst, interesse, links). Spelersaantal, duur,
-        // zwaarte en notities die in de app zijn aangepast blijven staan.
-        val seedGames = root.optJSONArray("games")
-        val seedGameIds = mutableSetOf<String>()
-        // Spellen waarvan spelers/duur nog niet in de app zijn gecontroleerd of aangepast
-        val gameDocs = col(eventId, "games").get().await().documents
-        val uncheckedGames = gameDocs.filter { it.getBoolean("infoChecked") == false }.map { it.id }.toSet()
-        val uncategorized = gameDocs.filter { it.getString("category").isNullOrBlank() }.map { it.id }.toSet()
-        val gameById = gameDocs.associateBy { it.id }
-        if (seedGames != null) {
-            for (i in 0 until seedGames.length()) {
-                val obj = seedGames.getJSONObject(i)
-                val id = obj.getString("id")
-                seedGameIds += id
-                @Suppress("UNCHECKED_CAST")
-                val data = (toValue(obj) as Map<String, Any>) - "id"
-                val ref = col(eventId, "games").document(id)
-                if (id in existing["games"].orEmpty()) {
-                    // Naam, eigenaar en link uit de app blijven staan; eigenaar alleen overnemen
-                    // als het spreadsheet er een noemt, nooit wissen.
-                    val cur = gameById[id]
-                    val fields = mutableSetOf("interested", "video", "categories")
-                    val curLink = cur?.getString("link").orEmpty()
-                    if (curLink.isBlank() || "geeksearch" in curLink) fields += "link"
-                    val seedOwner = obj.optString("owner")
-                    var dataOut = data
-                    if (seedOwner.isNotBlank()) {
-                        fields += setOf("owner", "wishlist"); dataOut = data + ("wishlist" to false)
-                    } else if (cur?.getString("owner").isNullOrBlank()) {
-                        fields += "wishlist"
-                    }
-                    if (id in uncategorized) fields += "category"
-                    val curNotes = cur?.getString("notes").orEmpty()
-                    if (curNotes.isBlank() || curNotes.startsWith("ⓘ ") || curNotes == "Wens: nog niemand neemt dit mee") fields += "notes"
-                    // BGG-gegevens alleen overnemen als niemand ze in de app heeft aangepast
-                    if (id in uncheckedGames && obj.optBoolean("infoChecked", false)) {
-                        fields += setOf("minPlayers", "maxPlayers", "durationMin", "weight", "infoChecked")
-                    }
-                    ops += ref to dataOut.filterKeys { it in fields }
-                    updatedGames++
-                } else {
-                    ops += ref to data
-                    newGames++
-                }
-            }
-        }
-        // Spellen uit een eerdere import die niet meer in het document staan (bv. hernoemd).
-        // Zelf in de app toegevoegde spellen hebben een willekeurige id zonder "g-" en blijven staan.
-        val staleGames = existing["games"].orEmpty().filter { it.startsWith("g-") && it !in seedGameIds }
-
-        addAll("places", onlyNew = true)
-        addAll("tables", onlyNew = true)
-        addAll("rooms", onlyNew = false)
-        addAll("chores", onlyNew = false)
-        addAll("guests", onlyNew = false)
-
-        // Activiteiten uit het document: nieuwe toevoegen, bestaande krijgen titel/tijd/notitie bij
-        val seedActs = root.optJSONArray("activities")
-        if (seedActs != null) {
-            for (i in 0 until seedActs.length()) {
-                val obj = seedActs.getJSONObject(i)
-                val id = obj.getString("id")
-                @Suppress("UNCHECKED_CAST")
-                val data = (toValue(obj) as Map<String, Any>) - "id"
-                val ref = col(eventId, "activities").document(id)
-                ops += ref to if (id in existing["activities"].orEmpty()) {
-                    data.filterKeys { it in setOf("title", "type", "startAt", "durationMin", "notes") } +
-                        mapOf("updatedBy" to me, "updatedAt" to now())
-                } else {
-                    data + mapOf(
-                        "createdBy" to me,
-                        "participants" to emptyList<String>(),
-                        "invited" to emptyList<String>(),
-                        "declined" to emptyList<String>(),
-                        "status" to ActivityStatus.GEPLAND.name,
-                        "maxParticipants" to 0,
-                        "tableId" to "",
-                        "gameId" to "",
-                        "reminderSent" to false,
-                        "updatedBy" to me,
-                        "updatedAt" to now(),
-                    )
-                }
-            }
-        }
-
-        // Leden die al aan een naam gekoppeld zijn krijgen alleen NIEUWE spreadsheet-interesse op hun ♥-lijst.
-        // Wat ze al eens kregen (seedWants) en zelf weghaalden, komt niet terug.
-        val claimed = col(eventId, "guests").get().await().documents
-            .map { it.toGuest() }.filter { it.claimedBy.isNotBlank() }.associateBy { it.id }
-        val memberDocs = col(eventId, "members").get().await().documents.associateBy { it.id }
-        val seedGuests = root.optJSONArray("guests")
-        if (seedGuests != null) {
-            for (i in 0 until seedGuests.length()) {
-                val obj = seedGuests.getJSONObject(i)
-                val g = claimed[obj.getString("id")] ?: continue
-                val wants = obj.optJSONArray("wants")?.let { a -> (0 until a.length()).map { a.getString(it) } }.orEmpty()
-                if (wants.isEmpty()) continue
-                val doc = memberDocs[g.claimedBy] ?: continue
-                val seen = seededOf(doc, wants).orEmpty()
-                val fresh = wants.filter { it !in seen }
-                val data = mutableMapOf<String, Any>("seedWants" to FieldValue.arrayUnion(*(seen + wants).toTypedArray()))
-                if (fresh.isNotEmpty()) data["wants"] = FieldValue.arrayUnion(*fresh.toTypedArray())
-                ops += doc.reference to data
-            }
-        }
-
-        // Firestore: max. 500 schrijfacties per batch
-        ops.chunked(400).forEach { chunk ->
-            val batch = db.batch()
-            chunk.forEach { (ref, data) -> batch.set(ref, data, SetOptions.merge()) }
-            batch.commit().await()
-        }
-        staleGames.chunked(400).forEach { chunk ->
-            val batch = db.batch()
-            chunk.forEach { batch.delete(col(eventId, "games").document(it)) }
-            batch.commit().await()
-        }
-        val rooms = root.optJSONArray("rooms")?.length() ?: 0
-        val guests = root.optJSONArray("guests")?.length() ?: 0
-        return "Geladen: $newGames nieuwe en $updatedGames bijgewerkte spellen, $rooms kamers, $guests gasten, corvee en weekendinfo"
-    }
-
-    private fun toValue(v: Any?): Any = when (v) {
-        is JSONObject -> v.keys().asSequence().associateWith { toValue(v.get(it)) }
-        is JSONArray -> toList(v)
-        JSONObject.NULL, null -> ""
-        else -> v
-    }
-
-    private fun toList(arr: JSONArray?): List<Any> =
-        if (arr == null) emptyList() else (0 until arr.length()).map { toValue(arr.get(it)) }
 
     // ---------------- Spellen, locaties, tafels ----------------
 

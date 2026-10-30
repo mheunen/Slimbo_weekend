@@ -79,31 +79,6 @@ fun floorLabel(floor: Int): String = when (floor) {
 // =====================================================================
 
 @Composable
-fun ImportCard(vm: AppViewModel) {
-    val importing by vm.importing.collectAsStateWithLifecycle()
-    Card(
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer),
-        modifier = Modifier.fillMaxWidth(),
-    ) {
-        Column(Modifier.padding(16.dp)) {
-            Text("Gegevens Slimbo-weekend laden", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)
-            Text(
-                "Molen van Medael (residentie 17 en 18), kamerindeling, corveerooster, " +
-                    "spellenlijst met interesse, afspraken en wat je mee moet nemen.",
-                style = MaterialTheme.typography.bodyMedium,
-                modifier = Modifier.padding(vertical = 8.dp),
-            )
-            Button(onClick = { vm.importSeed() }, enabled = !importing) {
-                if (importing) CircularProgressIndicator(Modifier.size(18.dp), strokeWidth = 2.dp)
-                else Icon(Icons.Filled.CloudDownload, null)
-                Spacer(Modifier.width(8.dp))
-                Text("Laden")
-            }
-        }
-    }
-}
-
-@Composable
 fun MyStayCard(myself: Member?, look: Lookup, vm: AppViewModel) {
     var changing by remember { mutableStateOf(false) }
     val linked = !myself?.guestId.isNullOrBlank()
@@ -176,7 +151,7 @@ private fun GuestClaim(myself: Member?, guests: List<Guest>, onClaim: (Guest) ->
 
     Text("Wie ben jij in de kamerindeling?", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)
     Text(
-        "Dan zie je je kamer en corvee, en komen de spellen waar je in het document interesse in had op je ♥-lijst.",
+        "Dan zie je je kamer en je corveebeurten.",
         style = MaterialTheme.typography.bodySmall,
         color = MaterialTheme.colorScheme.onSurfaceVariant,
         modifier = Modifier.padding(vertical = 8.dp),
@@ -293,10 +268,6 @@ fun WeekendInfoTab(event: WeekendEvent?, vm: AppViewModel) {
             }
         }
         item { JoinCodeCard(event) }
-        if (event != null && event.info.isEmpty()) {
-            item { Spacer(Modifier.padding(4.dp)) }
-            item { ImportCard(vm) }
-        }
         items(event?.info.orEmpty(), key = { "i-" + it.title }) { section ->
             Card(Modifier.fillMaxWidth()) {
                 Column(Modifier.padding(16.dp)) {
@@ -358,7 +329,6 @@ fun RoomsTab(look: Lookup, myself: Member?, rooms: List<Room>, guests: List<Gues
     ) {
         if (rooms.isEmpty()) {
             item { EmptyHint("Nog geen kamerindeling.") }
-            item { ImportCard(vm) }
         }
         byPlace.forEach { (placeId, list) ->
             val beds = list.sumOf { it.beds }
@@ -454,7 +424,6 @@ fun ChoresTab(look: Lookup, myself: Member?, chores: List<Chore>, vm: AppViewMod
         }
         if (chores.isEmpty()) {
             item { EmptyHint("Nog geen corveerooster.") }
-            item { ImportCard(vm) }
         }
         byPlace.forEach { (placeId, list) ->
             item(key = "ch-$placeId") { SectionHeader(look.placeName(placeId).ifBlank { "Corvee" }) }

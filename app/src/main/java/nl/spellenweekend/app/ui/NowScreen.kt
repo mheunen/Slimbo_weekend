@@ -69,9 +69,6 @@ fun NowScreen(
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         item { MyStatusCard(myself, vm) }
-        if (look.event != null && look.event.seedVersion == 0 && look.guests.isEmpty()) {
-            item { ImportCard(vm) }
-        }
         if (look.guests.isNotEmpty()) {
             item { MyStayCard(myself, look, vm) }
         }
