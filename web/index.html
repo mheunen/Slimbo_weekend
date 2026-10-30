@@ -73,6 +73,10 @@
 
 <script src="config.js"></script>
 <script type="module">
+// ♥'s die de spreadsheet al eens gaf; die voegt Laden/koppelen niet opnieuw toe (zelf weggehaald = blijft weg).
+// Oud account zonder veld maar met gekoppelde naam: alle spreadsheet-wensen gelden als al gegeven.
+const seededOf = (m, guestWants) => !m ? null : Array.isArray(m.seedWants) ? m.seedWants : (m.guestId ? guestWants : null);
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import {
@@ -546,7 +550,11 @@ function bind() {
       const cur = S.members.find((m) => m.id === mid);
       if (cur?.guestId && cur.guestId !== g.id) b.set(ref("guests", cur.guestId), { claimedBy: "" }, { merge: true });
       b.set(ref("members", mid), { guestId: g.id, name: g.name, hidden: false, replacedBy: "" }, { merge: true });
-      if ((g.wants || []).length) b.set(ref("members", mid), { wants: arrayUnion(...g.wants) }, { merge: true });
+      { const gw = g.wants || [];
+        const seen = [...new Set([...(cur?.guestId === g.id ? seededOf(cur, gw) || [] : cur?.seedWants || []),
+          ...(g.claimedBy && g.claimedBy !== mid ? seededOf(S.members.find((x) => x.id === g.claimedBy), gw) || [] : [])])];
+        const fresh = gw.filter((x) => !seen.includes(x));
+        b.set(ref("members", mid), { seedWants: [...new Set([...seen, ...gw])], ...(fresh.length ? { wants: arrayUnion(...fresh) } : {}) }, { merge: true }); }
       b.set(ref("guests", g.id), { claimedBy: mid }, { merge: true });
       await b.commit(); toast(`Gekoppeld aan ${g.name}`);
     } catch (err) { toast("Mislukt: " + err.message); }
@@ -627,7 +635,11 @@ async function runImport() {
     }
     for (const g of seed.guests || []) {
       const cur = existing.guests.get(g.id);
-      if (cur?.claimedBy && g.wants?.length) ops.push([ref("members", cur.claimedBy), { wants: arrayUnion(...g.wants) }]);
+      if (!cur?.claimedBy || !g.wants?.length) continue;
+      const m = S.members.find((x) => x.id === cur.claimedBy); if (!m) continue;
+      const seen = seededOf(m, g.wants) || [];
+      const fresh = g.wants.filter((x) => !seen.includes(x));
+      ops.push([ref("members", cur.claimedBy), { seedWants: [...new Set([...seen, ...g.wants])], ...(fresh.length ? { wants: arrayUnion(...fresh) } : {}) }]);
     }
     for (let i = 0; i < ops.length; i += 400) {
       const b = writeBatch(db); ops.slice(i, i + 400).forEach(([r, d]) => b.set(r, d, { merge: true })); await b.commit();

@@ -89,6 +89,10 @@
 <div id="toast"></div>
 <script src="../config.js"></script>
 <script type="module">
+// ♥'s die de spreadsheet al eens gaf; die voegt Laden/koppelen niet opnieuw toe (zelf weggehaald = blijft weg).
+// Oud account zonder veld maar met gekoppelde naam: alle spreadsheet-wensen gelden als al gegeven.
+const seededOf = (m, guestWants) => !m ? null : Array.isArray(m.seedWants) ? m.seedWants : (m.guestId ? guestWants : null);
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import {
@@ -121,7 +125,7 @@ const S = {
   uid: null, eventId: store.get("app_eventId"), event: null, tab: store.get("app_tab") || "nu",
   members: [], games: [], places: [], tables: [], activities: [], rooms: [], guests: [], chores: [],
   loaded: new Set(), unsub: [],
-  ui: { plMine: false, plDone: false, gq: "", gWant: false, gMine: false, gWish: false, gPlayers: 0, gWeights: [], gCat: "", gOwner: "", gFilters: false, claimQ: "", claimSel: "" },
+  ui: { plMine: false, plDone: false, gq: "", gWant: false, gMine: false, gWish: false, gPlayers: 0, gWeights: [], gCat: "", gOwner: "", gFilters: false, mMe: false, mFilters: false, mWeights: [], mCat: "", mDur: 0, mPlace: "", claimQ: "", claimSel: "" },
 };
 const col = (n) => collection(db, "events", S.eventId, n);
 const ref = (n, id) => doc(db, "events", S.eventId, n, id);
@@ -200,8 +204,13 @@ const A = {
     await act(async () => {
       const b = writeBatch(db);
       const m = ref("members", S.uid);
-      b.set(m, { guestId: g.id, name: g.name, hidden: false, replacedBy: "", updatedAt: now() }, { merge: true });
-      if ((g.wants || []).length) b.update(m, { wants: arrayUnion(...g.wants) });
+      const gw = g.wants || [], cur = me();
+      let oldData = null;
+      if (g.claimedBy && g.claimedBy !== S.uid) { const o = await getDoc(ref("members", g.claimedBy)); if (o.exists()) oldData = o.data(); }
+      const seen = [...new Set([...(cur?.guestId === g.id ? seededOf(cur, gw) || [] : cur?.seedWants || []), ...(seededOf(oldData, gw) || [])])];
+      const fresh = gw.filter((x) => !seen.includes(x));
+      b.set(m, { guestId: g.id, name: g.name, hidden: false, replacedBy: "", updatedAt: now(), seedWants: [...new Set([...seen, ...gw])] }, { merge: true });
+      if (fresh.length) b.update(m, { wants: arrayUnion(...fresh) });
       b.update(ref("guests", g.id), { claimedBy: S.uid });
       const prev = me()?.guestId;
       if (prev && prev !== g.id) b.update(ref("guests", prev), { claimedBy: "" });
@@ -225,10 +234,16 @@ function matchmake() {
   const busy = new Set(running.flatMap((a) => a.participants || []));
   const soon = S.activities.filter((a) => a.status === "GEPLAND" && a.startAt >= t - 15 * 60000 && a.startAt <= t + 60 * 60000);
   const occupied = new Set([...running, ...soon].map((a) => a.tableId).filter(Boolean));
-  const free = S.tables.filter((x) => !occupied.has(x.id));
+  const u = S.ui, myWants = new Set(me()?.wants || []);
+  const free = S.tables.filter((x) => !occupied.has(x.id)).filter((x) => !u.mPlace || x.placeId === u.mPlace);
   const people = visibleMembers();
   const sugg = [], near = [];
-  for (const g of S.games.filter((x) => !x.wishlist)) {
+  const pool = S.games.filter((x) => !x.wishlist)
+    .filter((g) => !u.mMe || myWants.has(g.id))
+    .filter((g) => !u.mWeights.length || u.mWeights.includes(g.weight))
+    .filter((g) => !u.mCat || (g.category || "Overig") === u.mCat)
+    .filter((g) => !u.mDur || (g.durationMin || 0) <= u.mDur);
+  for (const g of pool) {
     const min = g.minPlayers || 2, max = g.maxPlayers || 4;
     const inter = people.filter((m) => (m.wants || []).includes(g.id) && m.status !== "BEZET" && !busy.has(m.id))
       .sort((a, b) => (a.status === "BESCHIKBAAR" ? 0 : 1) - (b.status === "BESCHIKBAAR" ? 0 : 1));
@@ -502,8 +517,27 @@ function gamesView() {
 
 function matchView() {
   const r = matchmake();
-  const m = me();
+  const m = me(), u = S.ui;
+  const active = (u.mWeights.length ? 1 : 0) + (u.mCat ? 1 : 0) + (u.mDur ? 1 : 0) + (u.mPlace ? 1 : 0);
+  const cats = [...new Set(S.games.filter((g) => !g.wishlist).map((g) => g.category || "Overig"))].sort((a, b) => CATEGORIES.indexOf(a) - CATEGORIES.indexOf(b));
+  const places = [...S.places].sort((a, b) => (a.name || "").localeCompare(b.name || "", "nl"));
+  const filters = u.mFilters ? `<div class="card">
+    <div class="small" style="font-weight:600;margin-bottom:6px">Moeilijkheid</div>
+    <div class="row">${Object.entries(WEIGHTS).map(([k, l]) => `<button class="chip ${u.mWeights.includes(k) ? "on" : ""}" data-mweight="${k}">${l}</button>`).join("")}</div>
+    <div class="small" style="font-weight:600;margin:10px 0 6px">Speelduur</div>
+    <div class="row">${[0, 30, 60, 90, 120].map((d) => `<button class="chip ${u.mDur === d ? "on" : ""}" data-mdur="${d}">${d ? "≤ " + d + " min" : "Alle"}</button>`).join("")}</div>
+    <div class="grid2" style="margin-top:10px">
+      <label class="f"><span>Categorie</span><select id="mCat"><option value="">Alle</option>${cats.map((c) => `<option ${u.mCat === c ? "selected" : ""}>${esc(c)}</option>`).join("")}</select></label>
+      ${places.length ? `<label class="f"><span>Tafel in locatie</span><select id="mPlace"><option value="">Alle locaties</option>${places.map((p) => `<option value="${esc(p.id)}" ${u.mPlace === p.id ? "selected" : ""}>${esc(p.name)}</option>`).join("")}</select></label>` : ""}
+    </div>
+    ${active ? `<button class="btn text" id="mClear">Filters wissen</button>` : ""}
+  </div>` : "";
   return `<p class="muted">Op basis van ieders ♥-spellen, status (beschikbaar / reserveerbaar) en vrije tafels.</p>
+    <div class="row" style="margin:10px 0">
+      <button class="chip ${u.mMe ? "on" : ""}" data-ui="mMe">Met mijn ♥ (${(m?.wants || []).length})</button>
+      <button class="chip ${u.mFilters || active ? "on" : ""}" data-ui="mFilters">Filters${active ? ` (${active})` : ""}</button>
+    </div>
+    ${filters}
     ${m?.status === "BEZET" ? `<div class="card">Je staat op Bezet, dus je telt nu niet mee in de suggesties.</div>` : ""}
     <h2>Kan nu gespeeld worden</h2>
     ${r.sugg.length ? r.sugg.map((s, i) => `<div class="card">
@@ -511,7 +545,7 @@ function matchView() {
       <div class="muted">${s.players.length} van max. ${s.g.maxPlayers} · ${s.g.durationMin} min · ${s.table ? "vrij: " + esc(s.table.name) + (placeName(s.table.placeId) ? " (" + esc(placeName(s.table.placeId)) + ")" : "") : "geen vrije tafel"}</div>
       <div style="margin:8px 0">${s.players.map((p) => `<span class="pill">${dot(p.status)} ${esc(p.name)}</span>`).join("")}</div>
       <button class="btn" data-plan="${i}">📅 Plan en nodig uit</button></div>`).join("")
-      : `<p class="muted center">${visibleMembers().every((x) => !(x.wants || []).length) ? "Nog niemand heeft spellen met ♥ gemarkeerd." : "Geen spel heeft nu genoeg vrije liefhebbers."}</p>`}
+      : `<p class="muted center">${visibleMembers().every((x) => !(x.wants || []).length) ? "Nog niemand heeft spellen met ♥ gemarkeerd." : u.mMe || active ? "Geen spel past bij deze filters. Pas ze aan of wis ze." : "Geen spel heeft nu genoeg vrije liefhebbers."}</p>`}
     ${r.near.length ? `<h2>Bijna — er mist nog iemand</h2>${r.near.map((n) => `<div class="card row"><div class="grow">
       <div class="title">${esc(n.g.name)}</div><div class="muted">Nog ${n.missing} speler${n.missing > 1 ? "s" : ""} nodig · ${esc(n.inter.map((x) => x.name).join(", "))}</div></div>
       ${(m?.wants || []).includes(n.g.id) ? "" : `<button class="btn ghost" data-want="${n.g.id}">♥ Ik wil ook</button>`}</div>`).join("")}` : ""}
@@ -748,6 +782,11 @@ function bind() {
   $$("[data-weight]").forEach((b) => b.onclick = () => { const w = b.dataset.weight; S.ui.gWeights = S.ui.gWeights.includes(w) ? S.ui.gWeights.filter((x) => x !== w) : [...S.ui.gWeights, w]; render(); });
   if ($("#gCat")) $("#gCat").onchange = (e) => { S.ui.gCat = e.target.value; e.target.blur(); render(); };
   if ($("#gOwner")) $("#gOwner").onchange = (e) => { S.ui.gOwner = e.target.value; e.target.blur(); render(); };
+  $$("[data-mweight]").forEach((b) => b.onclick = () => { const w = b.dataset.mweight; S.ui.mWeights = S.ui.mWeights.includes(w) ? S.ui.mWeights.filter((x) => x !== w) : [...S.ui.mWeights, w]; render(); });
+  $$("[data-mdur]").forEach((b) => b.onclick = () => { S.ui.mDur = Number(b.dataset.mdur); render(); });
+  if ($("#mCat")) $("#mCat").onchange = (e) => { S.ui.mCat = e.target.value; e.target.blur(); render(); };
+  if ($("#mPlace")) $("#mPlace").onchange = (e) => { S.ui.mPlace = e.target.value; e.target.blur(); render(); };
+  if ($("#mClear")) $("#mClear").onclick = () => { Object.assign(S.ui, { mWeights: [], mCat: "", mDur: 0, mPlace: "" }); render(); };
   if ($("#gClear")) $("#gClear").onclick = () => { Object.assign(S.ui, { gPlayers: 0, gWeights: [], gCat: "", gOwner: "" }); render(); };
   if ($("#gameNew")) $("#gameNew").onclick = () => openGameEditor({});
   $$("[data-gedit]").forEach((el) => el.onclick = () => { const g = S.games.find((x) => x.id === el.dataset.gedit); if (g) openGameEditor(g); });
