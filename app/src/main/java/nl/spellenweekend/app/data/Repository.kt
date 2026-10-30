@@ -196,6 +196,18 @@ class Repository(context: Context) {
         col(eventId, "members").document(me).update("name", name.trim()).await()
     }
 
+    /**
+     * ♥'s die de spreadsheet (Slimbo-document) al eens op iemands lijst heeft gezet.
+     * Staat een spel hierin, dan voegt Laden of opnieuw koppelen het niet nog eens toe:
+     * wie een ♥ weghaalt, houdt hem weg. Ontbreekt het veld (oud account), dan gelden
+     * alle spreadsheet-wensen van die naam als al eens toegevoegd.
+     */
+    private fun seededOf(doc: com.google.firebase.firestore.DocumentSnapshot?, guestWants: List<String>): Set<String>? {
+        if (doc == null || !doc.exists()) return null
+        val list = (doc.get("seedWants") as? List<*>)?.filterIsInstance<String>()
+        return list?.toSet() ?: if (doc.getString("guestId").orEmpty().isNotBlank()) guestWants.toSet() else null
+    }
+
     suspend fun setWant(eventId: String, gameId: String, want: Boolean) {
         val value = if (want) FieldValue.arrayUnion(gameId) else FieldValue.arrayRemove(gameId)
         col(eventId, "members").document(me).update("wants", value).await()
@@ -208,12 +220,22 @@ class Repository(context: Context) {
     suspend fun claimGuest(eventId: String, guest: Guest, previousGuestId: String) {
         val batch = db.batch()
         val member = col(eventId, "members").document(me)
-        batch.update(
-            member,
-            mapOf("guestId" to guest.id, "name" to guest.name, "hidden" to false, "replacedBy" to "", "updatedAt" to now()),
+        val myDoc = runCatching { member.get().await() }.getOrNull()
+        val oldId = guest.claimedBy.takeIf { it.isNotBlank() && it != me }
+        val oldDocForSeed = oldId?.let { runCatching { col(eventId, "members").document(it).get().await() }.getOrNull() }
+        // Alleen spreadsheet-♥'s die deze naam nog nooit kreeg (ook niet op het oude toestel)
+        val mine = if (myDoc?.getString("guestId") == guest.id) seededOf(myDoc, guest.wants) else
+            (myDoc?.get("seedWants") as? List<*>)?.filterIsInstance<String>()?.toSet()
+        val seen = mine.orEmpty() + seededOf(oldDocForSeed, guest.wants).orEmpty()
+        val newWants = guest.wants.filter { it !in seen }
+        val fields = mutableMapOf<String, Any>(
+            "guestId" to guest.id, "name" to guest.name, "hidden" to false, "replacedBy" to "", "updatedAt" to now(),
         )
-        if (guest.wants.isNotEmpty()) {
-            batch.update(member, "wants", FieldValue.arrayUnion(*guest.wants.toTypedArray()))
+        val allSeen = seen + guest.wants
+        fields["seedWants"] = if (allSeen.isEmpty()) emptyList<String>() else FieldValue.arrayUnion(*allSeen.toTypedArray())
+        batch.update(member, fields)
+        if (newWants.isNotEmpty()) {
+            batch.update(member, "wants", FieldValue.arrayUnion(*newWants.toTypedArray()))
         }
         batch.update(col(eventId, "guests").document(guest.id), "claimedBy", me)
         if (previousGuestId.isNotBlank() && previousGuestId != guest.id) {
@@ -362,9 +384,11 @@ class Repository(context: Context) {
             }
         }
 
-        // Leden die al aan een naam gekoppeld zijn krijgen nieuwe interesse op hun ♥-lijst
+        // Leden die al aan een naam gekoppeld zijn krijgen alleen NIEUWE spreadsheet-interesse op hun ♥-lijst.
+        // Wat ze al eens kregen (seedWants) en zelf weghaalden, komt niet terug.
         val claimed = col(eventId, "guests").get().await().documents
             .map { it.toGuest() }.filter { it.claimedBy.isNotBlank() }.associateBy { it.id }
+        val memberDocs = col(eventId, "members").get().await().documents.associateBy { it.id }
         val seedGuests = root.optJSONArray("guests")
         if (seedGuests != null) {
             for (i in 0 until seedGuests.length()) {
@@ -372,8 +396,12 @@ class Repository(context: Context) {
                 val g = claimed[obj.getString("id")] ?: continue
                 val wants = obj.optJSONArray("wants")?.let { a -> (0 until a.length()).map { a.getString(it) } }.orEmpty()
                 if (wants.isEmpty()) continue
-                ops += col(eventId, "members").document(g.claimedBy) to
-                    mapOf("wants" to FieldValue.arrayUnion(*wants.toTypedArray()))
+                val doc = memberDocs[g.claimedBy] ?: continue
+                val seen = seededOf(doc, wants).orEmpty()
+                val fresh = wants.filter { it !in seen }
+                val data = mutableMapOf<String, Any>("seedWants" to FieldValue.arrayUnion(*(seen + wants).toTypedArray()))
+                if (fresh.isNotEmpty()) data["wants"] = FieldValue.arrayUnion(*fresh.toTypedArray())
+                ops += doc.reference to data
             }
         }
 

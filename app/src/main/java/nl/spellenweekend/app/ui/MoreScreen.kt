@@ -15,6 +15,8 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.ExpandLess
+import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material.icons.filled.Place
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.TableRestaurant
@@ -104,6 +106,10 @@ private fun ManageTab(
     var editPlace by remember { mutableStateOf<Place?>(null) }
     var editTable by remember { mutableStateOf<GameTable?>(null) }
     var confirmLeave by remember { mutableStateOf(false) }
+    // Lange lijsten standaard ingeklapt; tik op de kop om ze te openen
+    var openPlaces by rememberSaveable { mutableStateOf(false) }
+    var openTables by rememberSaveable { mutableStateOf(false) }
+    var openMembers by rememberSaveable { mutableStateOf(false) }
     val importing by vm.importing.collectAsStateWithLifecycle()
     val now = System.currentTimeMillis()
 
@@ -125,9 +131,9 @@ private fun ManageTab(
         item { RenameField(look.members[me]?.name ?: "", vm::rename) }
 
         // ---------- locaties ----------
-        item { HeaderWithAdd("Locaties (${places.size})") { editPlace = Place() } }
-        if (places.isEmpty()) item { EmptyHint("Bijvoorbeeld: Woonkamer, Serre, Zolder, Tuin.") }
-        items(places, key = { "p-" + it.id }) { p ->
+        item { CollapsibleHeader("Locaties (${places.size})", openPlaces, { openPlaces = !openPlaces }) { editPlace = Place() } }
+        if (openPlaces && places.isEmpty()) item { EmptyHint("Bijvoorbeeld: Woonkamer, Serre, Zolder, Tuin.") }
+        if (openPlaces) items(places, key = { "p-" + it.id }) { p ->
             val n = tables.count { it.placeId == p.id }
             ListItem(
                 headlineContent = { Text(p.name) },
@@ -141,9 +147,14 @@ private fun ManageTab(
         }
 
         // ---------- tafels ----------
-        item { HeaderWithAdd("Tafels (${tables.size})") { editTable = GameTable(placeId = places.firstOrNull()?.id ?: "") } }
-        if (tables.isEmpty()) item { EmptyHint("Voeg tafels toe met het aantal plaatsen; Match zoekt er een passende bij.") }
-        items(tables, key = { "t-" + it.id }) { t ->
+        item {
+            val free = tables.count { it.id !in busyTables }
+            CollapsibleHeader("Tafels (${tables.size}, $free vrij)", openTables, { openTables = !openTables }) {
+                editTable = GameTable(placeId = places.firstOrNull()?.id ?: "")
+            }
+        }
+        if (openTables && tables.isEmpty()) item { EmptyHint("Voeg tafels toe met het aantal plaatsen; Match zoekt er een passende bij.") }
+        if (openTables) items(tables, key = { "t-" + it.id }) { t ->
             val running = busyTables[t.id]
             val next = nextOnTable[t.id]
             val state = when {
@@ -168,8 +179,8 @@ private fun ManageTab(
         }
 
         // ---------- deelnemers ----------
-        item { SectionHeader("Deelnemers (${members.size})") }
-        items(members.sortedBy { it.name.lowercase() }, key = { "m-" + it.id }) { m ->
+        item { CollapsibleHeader("Deelnemers (${members.size})", openMembers, { openMembers = !openMembers }) }
+        if (openMembers) items(members.sortedBy { it.name.lowercase() }, key = { "m-" + it.id }) { m ->
             ListItem(
                 headlineContent = { Text(m.name + if (m.id == me) " (jij)" else "") },
                 supportingContent = {
@@ -237,11 +248,23 @@ private fun ManageTab(
     }
 }
 
+/** Kop van een in- en uitklapbare lijst; met optionele +-knop. */
 @Composable
-private fun HeaderWithAdd(text: String, onAdd: () -> Unit) {
-    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
+private fun CollapsibleHeader(text: String, open: Boolean, onToggle: () -> Unit, onAdd: (() -> Unit)? = null) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.fillMaxWidth().clickable(onClick = onToggle),
+    ) {
+        Icon(
+            if (open) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore,
+            contentDescription = if (open) "Inklappen" else "Uitklappen",
+            tint = MaterialTheme.colorScheme.primary,
+            modifier = Modifier.padding(top = 12.dp, end = 6.dp),
+        )
         SectionHeader(text, Modifier.weight(1f))
-        IconButton(onClick = onAdd, modifier = Modifier.padding(top = 12.dp)) { Icon(Icons.Filled.Add, "Toevoegen") }
+        if (onAdd != null) {
+            IconButton(onClick = onAdd, modifier = Modifier.padding(top = 12.dp)) { Icon(Icons.Filled.Add, "Toevoegen") }
+        }
     }
 }
 

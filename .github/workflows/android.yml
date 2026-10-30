@@ -52,7 +52,9 @@ jobs:
           name: Spellenweekend-${{ github.run_number }}
           path: Spellenweekend.apk
 
+      # Alleen vanaf main een release; een handmatige build op een andere branch is een testbuild
       - name: Release publiceren
+        if: github.ref == 'refs/heads/main'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: build-${{ github.run_number }}

@@ -17,6 +17,16 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.EventAvailable
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FilterList
+import androidx.compose.material3.FilterChip
+import androidx.compose.material3.TextButton
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import nl.spellenweekend.app.data.GAME_CATEGORIES
+import nl.spellenweekend.app.data.Weight
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -48,10 +58,31 @@ fun MatchScreen(
     activities: List<Activity>,
     onEdit: (Activity) -> Unit,
 ) {
-    val result = remember(games, members, tables, activities) {
-        Matchmaker.run(games, members, tables, activities)
-    }
+    // ---------- filters ----------
+    var showFilters by rememberSaveable { mutableStateOf(false) }
+    var withMe by rememberSaveable { mutableStateOf(false) }          // alleen spellen met mijn ♥
+    var weights by rememberSaveable { mutableStateOf(setOf<String>()) }
+    var category by rememberSaveable { mutableStateOf("") }
+    var maxDuration by rememberSaveable { mutableIntStateOf(0) }     // 0 = alle
+    var placeId by rememberSaveable { mutableStateOf("") }           // tafels in deze locatie
+    val activeFilters = listOf(weights.isNotEmpty(), category.isNotBlank(), maxDuration != 0, placeId.isNotBlank()).count { it }
     val myself = look.members[me]
+    val categories = remember(games) {
+        games.filter { !it.wishlist }.map { it.category.ifBlank { "Overig" } }.distinct()
+            .sortedBy { GAME_CATEGORIES.indexOf(it).let { i -> if (i < 0) 99 else i } }
+    }
+    val places = remember(look) { look.places.values.sortedBy { it.name.lowercase() } }
+
+    val myWants = myself?.wants?.toSet().orEmpty()
+    val filteredGames = games
+        .filter { !withMe || it.id in myWants }
+        .filter { weights.isEmpty() || it.weight.name in weights }
+        .filter { category.isBlank() || it.category.ifBlank { "Overig" } == category }
+        .filter { maxDuration == 0 || it.durationMin <= maxDuration }
+    val filteredTables = tables.filter { placeId.isBlank() || it.placeId == placeId }
+    val result = remember(filteredGames, members, filteredTables, activities) {
+        Matchmaker.run(filteredGames, members, filteredTables, activities)
+    }
 
     fun plan(game: Game, players: List<Member>, table: GameTable?) {
         onEdit(
@@ -80,6 +111,66 @@ fun MatchScreen(
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
         }
+        item {
+            FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                FilterChip(
+                    selected = withMe,
+                    onClick = { withMe = !withMe },
+                    label = { Text("Met mijn ♥ (${myWants.size})") },
+                )
+                FilterChip(
+                    selected = showFilters || activeFilters > 0,
+                    onClick = { showFilters = !showFilters },
+                    label = { Text(if (activeFilters > 0) "Filters ($activeFilters)" else "Filters") },
+                    leadingIcon = { Icon(Icons.Filled.FilterList, null) },
+                )
+            }
+            if (showFilters) {
+                Card(Modifier.fillMaxWidth().padding(top = 6.dp)) {
+                    Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                        Text("Moeilijkheid", style = MaterialTheme.typography.labelLarge)
+                        FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                            Weight.entries.forEach { w ->
+                                FilterChip(
+                                    selected = w.name in weights,
+                                    onClick = { weights = if (w.name in weights) weights - w.name else weights + w.name },
+                                    label = { Text(w.label) },
+                                )
+                            }
+                        }
+                        Text("Speelduur", style = MaterialTheme.typography.labelLarge)
+                        FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                            listOf(0, 30, 60, 90, 120).forEach { d ->
+                                FilterChip(
+                                    selected = maxDuration == d,
+                                    onClick = { maxDuration = d },
+                                    label = { Text(if (d == 0) "Alle" else "≤ $d min") },
+                                )
+                            }
+                        }
+                        SelectField(
+                            label = "Categorie",
+                            value = category,
+                            options = listOf("" to "Alle categorieën") + categories.map { it to it },
+                            onSelect = { category = it },
+                        )
+                        if (places.isNotEmpty()) {
+                            SelectField(
+                                label = "Tafel in locatie",
+                                value = placeId,
+                                options = listOf("" to "Alle locaties") + places.map { it.id to it.name },
+                                onSelect = { placeId = it },
+                            )
+                        }
+                        if (activeFilters > 0) {
+                            TextButton(onClick = {
+                                weights = emptySet(); category = ""; maxDuration = 0; placeId = ""
+                            }) { Text("Filters wissen") }
+                        }
+                    }
+                }
+            }
+        }
         if (myself?.status == MemberStatus.BEZET) {
             item {
                 Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.tertiaryContainer)) {
@@ -97,6 +188,7 @@ fun MatchScreen(
                 EmptyHint(
                     if (members.all { it.wants.isEmpty() })
                         "Nog niemand heeft spellen met ♥ gemarkeerd. Doe dat op het tabblad Spellen."
+                    else if (withMe || activeFilters > 0) "Geen spel past bij deze filters. Pas ze aan of wis ze."
                     else "Geen spel heeft nu genoeg vrije liefhebbers."
                 )
             }
