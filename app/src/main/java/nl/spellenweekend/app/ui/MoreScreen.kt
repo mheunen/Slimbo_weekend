@@ -180,6 +180,13 @@ private fun ManageTab(
             )
         }
 
+        item { SectionHeader("App") }
+        item {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text("Versie ${vm.currentVersionName}", modifier = Modifier.weight(1f))
+                OutlinedButton(onClick = { vm.checkForUpdate(manual = true) }) { Text("Controleren op updates") }
+            }
+        }
         item { SectionHeader("Gegevens") }
         item {
             OutlinedButton(onClick = { vm.importSeed() }, enabled = !importing) {

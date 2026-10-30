@@ -25,6 +25,8 @@ import nl.spellenweekend.app.data.Place
 import nl.spellenweekend.app.data.Repository
 import nl.spellenweekend.app.data.WeekendEvent
 import nl.spellenweekend.app.notify.ChangeChecker
+import nl.spellenweekend.app.update.UpdateInfo
+import nl.spellenweekend.app.update.Updater
 import nl.spellenweekend.app.notify.CheckWorker
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.combine
@@ -111,7 +113,60 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
 
+    // ---------- app-updates ----------
+
+    val update = MutableStateFlow<UpdateInfo?>(null)
+    /** null = niet bezig; 0..1 = voortgang; -1 = onbekende grootte */
+    val updateProgress = MutableStateFlow<Float?>(null)
+    val currentVersionName: String = Updater.currentVersionName(app)
+    private var updateChecked = false
+
+    /** [manual] = via de knop in Beheer: ook melden als je al de nieuwste hebt. */
+    fun checkForUpdate(manual: Boolean = false) {
+        if (updateChecked && !manual) return
+        updateChecked = true
+        viewModelScope.launch {
+            val found = Updater.check(getApplication())
+            if (found != null) update.value = found
+            else if (manual) message.value = "Je hebt de nieuwste versie ($currentVersionName)"
+        }
+    }
+
+    fun dismissUpdate() {
+        update.value = null
+    }
+
+    fun downloadUpdateInBrowser() {
+        val u = update.value ?: return
+        Updater.openInBrowser(getApplication(), u.apkUrl)
+        update.value = null
+    }
+
+    fun installUpdate() {
+        val u = update.value ?: return
+        val ctx = getApplication<Application>()
+        if (!Updater.canInstall(ctx)) {
+            message.value = "Sta \"Installeren van onbekende apps\" toe voor Spellenweekend en tik daarna opnieuw op Bijwerken"
+            Updater.openInstallPermission(ctx)
+            return
+        }
+        if (updateProgress.value != null) return
+        updateProgress.value = 0f
+        viewModelScope.launch {
+            try {
+                val file = Updater.download(ctx, u.apkUrl) { p -> updateProgress.value = p }
+                Updater.install(ctx, file)
+                update.value = null
+            } catch (e: Exception) {
+                message.value = "Bijwerken mislukt: ${e.message}. Probeer Downloaden."
+            } finally {
+                updateProgress.value = null
+            }
+        }
+    }
+
     fun start() {
+        checkForUpdate()
         phase.value = Phase.Loading
         viewModelScope.launch {
             try {

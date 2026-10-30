@@ -60,6 +60,7 @@ enum class MainTab(val label: String, val icon: ImageVector) {
 @Composable
 fun AppRoot(vm: AppViewModel = viewModel()) {
     val phase by vm.phase.collectAsStateWithLifecycle()
+    UpdateDialog(vm)
     when (val p = phase) {
         Phase.Loading -> LoadingScreen()
         is Phase.Failed -> FailedScreen(p.message, vm::start)

@@ -1,5 +1,6 @@
 **Nieuw in deze versie** 🎲
 
-- **Opgelost:** wie zijn naam (opnieuw) overneemt nadat zijn account eerder verborgen was, staat nu weer gewoon in de deelnemerslijst.
+- **Updatemelding**: bij het opstarten controleert de app of er een nieuwere versie is. Je kiest dan **Bijwerken** (downloaden en installeren vanuit de app), **Downloaden** (via de browser) of **Later**.
+- Onder **Meer → Beheer** zie je je app-versie en kun je zelf **controleren op updates**.
 
 Download `Spellenweekend.apk` hieronder en installeer die over de oude heen; je gegevens blijven bewaard.
