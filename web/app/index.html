@@ -534,7 +534,7 @@ function meerView() {
       <div class="row" style="margin-top:10px">
         ${e.address ? `<a class="btn tonal" style="text-decoration:none" target="_blank" rel="noopener" href="https://maps.google.com/?q=${encodeURIComponent(e.address)}">🗺️ Route</a>` : ""}
         ${e.phone ? `<a class="btn ghost" style="text-decoration:none" href="tel:${esc(e.phone.replace(/\s/g, ""))}">📞 Bellen</a>` : ""}
-        <a class="btn ghost" style="text-decoration:none" target="_blank" rel="noopener" href="https://www.slimbo.nl/">slimbo.nl</a>
+        <a class="btn ghost" style="text-decoration:none" target="_blank" rel="noopener" href="https://www.slimbo.nl/">🌐 slimbo.nl</a>
       </div>
     </div>
     <div class="card row"><div class="grow"><div class="muted small">Code om mee te doen</div><div style="font:700 26px ui-monospace,monospace">${esc(e.joinCode)}</div></div><button class="btn tonal" id="share">Delen</button></div>
@@ -576,7 +576,7 @@ function renderLogin() {
       <button class="btn" id="lGo" style="width:100%">Meedoen</button>
       <p class="muted small center" id="lMsg"></p>
     </div>
-    <p class="center small"><a href="https://www.slimbo.nl/" target="_blank" rel="noopener">www.slimbo.nl</a></p>
+    <p class="center small"><a href="https://www.slimbo.nl/" target="_blank" rel="noopener">🌐 www.slimbo.nl</a></p>
   </div></main>`;
   $("#lGo").onclick = login;
 }

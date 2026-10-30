@@ -479,7 +479,7 @@ function render() {
       <div class="bar"><span class="logo"><img src="slimbo_logo.png" alt="Slimbo"></span>
         <h1>${esc(S.event.name)} · beheer</h1>
         <span class="who">${esc(me?.name || "")}</span>
-        <a class="muted" href="https://www.slimbo.nl/" target="_blank" rel="noopener">slimbo.nl</a>
+        <a class="muted" href="https://www.slimbo.nl/" target="_blank" rel="noopener">🌐 slimbo.nl</a>
         <button class="btn ghost" id="logout">Ander weekend</button></div>
       <nav>${TABS.map(([k, l]) => `<button data-tab="${k}" class="${S.tab === k ? "on" : ""}">${l}</button>`).join("")}</nav>
     </header><main>${body}</main>`;
@@ -494,7 +494,7 @@ function renderLogin() {
     <label class="f"><span>Weekendcode</span><input id="lCode" maxlength="6" style="text-transform:uppercase" value=""></label>
     <label class="f"><span>Jouw naam</span><input id="lName" value="${esc(store.get("name") || "")}"></label>
     <button class="btn" id="lGo">Inloggen</button> <span class="muted" id="lMsg"></span>
-    <p class="muted" style="margin-top:14px"><a href="https://www.slimbo.nl/" target="_blank" rel="noopener">www.slimbo.nl</a></p>
+    <p class="muted" style="margin-top:14px"><a href="https://www.slimbo.nl/" target="_blank" rel="noopener">🌐 www.slimbo.nl</a></p>
   </div></main>`;
   $("#lGo").onclick = login;
 }
