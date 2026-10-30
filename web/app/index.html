@@ -81,6 +81,12 @@
   .login .logo img { height: 52px; }
   .list-item { padding: 10px 12px; border-radius: 10px; cursor: pointer; display: flex; justify-content: space-between; gap: 8px; }
   .list-item.sel { background: var(--brand-soft); font-weight: 600; }
+  details.fold > summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: 8px; }
+  details.fold > summary::-webkit-details-marker { display: none; }
+  details.fold > summary::before { content: "▸"; color: var(--brand); font-size: 14px; width: 12px; }
+  details.fold[open] > summary::before { content: "▾"; }
+  details.fold > summary > * { margin: 0; }
+  details.fold > summary .muted { font-weight: 400; }
 </style>
 </head>
 <body>
@@ -89,6 +95,10 @@
 <div id="toast"></div>
 <script src="../config.js"></script>
 <script type="module">
+// In- en uitklapbaar blok; de open/dicht-stand blijft bewaard bij het verversen
+const fold = (key, title, body, def = false) =>
+  `<details class="fold" data-fold="${key}" ${(S.fold[key] ?? def) ? "open" : ""}><summary>${title}</summary>${body}</details>`;
+
 // ♥'s die de spreadsheet al eens gaf; die voegt Laden/koppelen niet opnieuw toe (zelf weggehaald = blijft weg).
 // Oud account zonder veld maar met gekoppelde naam: alle spreadsheet-wensen gelden als al gegeven.
 const seededOf = (m, guestWants) => !m ? null : Array.isArray(m.seedWants) ? m.seedWants : (m.guestId ? guestWants : null);
@@ -121,7 +131,7 @@ const fb = initializeApp(window.FIREBASE_CONFIG);
 const auth = getAuth(fb);
 const db = getFirestore(fb);
 
-const S = {
+const S = { fold: {},
   uid: null, eventId: store.get("app_eventId"), event: null, tab: store.get("app_tab") || "nu",
   members: [], games: [], places: [], tables: [], activities: [], rooms: [], guests: [], chores: [],
   loaded: new Set(), unsub: [],
@@ -560,6 +570,8 @@ function meerView() {
   const roomsBy = {}; S.rooms.forEach((r) => (roomsBy[r.placeId] = roomsBy[r.placeId] || []).push(r));
   const choresBy = {}; S.chores.forEach((c) => (choresBy[c.placeId] = choresBy[c.placeId] || []).push(c));
   const mine = myGuest()?.name;
+  const myRoom = mine ? S.rooms.find((r) => (r.occupants || []).includes(mine)) : null;
+  const myChores = mine ? S.chores.filter((c) => (c.names || []).includes(mine)).length : 0;
   return `<div class="card center" style="background:#fff"><img src="slimbo_logo.png" alt="Slimbo" style="max-width:260px;width:80%"></div>
     <div class="card">
       <div class="title">${esc(e.name)}</div>
@@ -573,10 +585,10 @@ function meerView() {
     </div>
     <div class="card row"><div class="grow"><div class="muted small">Code om mee te doen</div><div style="font:700 26px ui-monospace,monospace">${esc(e.joinCode)}</div></div><button class="btn tonal" id="share">Delen</button></div>
     ${(e.info || []).map((s) => `<div class="card"><div class="title" style="font-size:16px">${esc(s.title)}</div>${(s.items || []).map((i) => `<div class="small" style="margin-top:4px">• ${esc(i)}</div>`).join("")}</div>`).join("")}
-    ${Object.keys(roomsBy).length ? `<h2>Kamers</h2>${Object.entries(roomsBy).map(([pid, rs]) => `<div class="card"><div class="title" style="font-size:16px">${esc(placeName(pid))}</div>
-      ${rs.sort((a, b) => a.floor - b.floor || a.name.localeCompare(b.name)).map((r) => `<div class="small" style="margin-top:6px;${(r.occupants || []).includes(mine) ? "font-weight:700;color:var(--brand)" : ""}">${esc(r.name)} · ${esc((r.occupants || []).join(", ") || "—")} <span class="muted">(${(r.occupants || []).length}/${r.beds})</span></div>`).join("")}</div>`).join("")}` : ""}
-    ${Object.keys(choresBy).length ? `<h2>Corvee</h2>${Object.entries(choresBy).map(([pid, cs]) => `<div class="card"><div class="title" style="font-size:16px">${esc(placeName(pid))}</div>
-      ${DAYS.filter((d) => cs.some((c) => c.day === d)).map((d) => `<div class="small" style="margin-top:8px;font-weight:600">${d}</div>${cs.filter((c) => c.day === d).sort((a, b) => a.startAt - b.startAt).map((c) => `<div class="small" style="${(c.names || []).includes(mine) ? "font-weight:700;color:var(--brand)" : ""}">${slot[c.slot] || c.slot} <span class="muted">${esc(choreTimes(c))}</span>: ${esc((c.names || []).join(", "))}</div>`).join("")}`).join("")}</div>`).join("")}` : ""}
+    ${Object.keys(roomsBy).length ? fold("rooms", `<h2>Kamers</h2>${myRoom ? `<span class="muted small">jij: ${esc(myRoom.name)}</span>` : ""}`, `${Object.entries(roomsBy).map(([pid, rs]) => `<div class="card"><div class="title" style="font-size:16px">${esc(placeName(pid))}</div>
+      ${rs.sort((a, b) => a.floor - b.floor || a.name.localeCompare(b.name)).map((r) => `<div class="small" style="margin-top:6px;${(r.occupants || []).includes(mine) ? "font-weight:700;color:var(--brand)" : ""}">${esc(r.name)} · ${esc((r.occupants || []).join(", ") || "—")} <span class="muted">(${(r.occupants || []).length}/${r.beds})</span></div>`).join("")}</div>`).join("")}`) : ""}
+    ${Object.keys(choresBy).length ? fold("chores", `<h2>Corvee</h2>${myChores ? `<span class="muted small">jij: ${myChores}×</span>` : ""}`, `${Object.entries(choresBy).map(([pid, cs]) => `<div class="card"><div class="title" style="font-size:16px">${esc(placeName(pid))}</div>
+      ${DAYS.filter((d) => cs.some((c) => c.day === d)).map((d) => `<div class="small" style="margin-top:8px;font-weight:600">${d}</div>${cs.filter((c) => c.day === d).sort((a, b) => a.startAt - b.startAt).map((c) => `<div class="small" style="${(c.names || []).includes(mine) ? "font-weight:700;color:var(--brand)" : ""}">${slot[c.slot] || c.slot} <span class="muted">${esc(choreTimes(c))}</span>: ${esc((c.names || []).join(", "))}</div>`).join("")}`).join("")}</div>`).join("")}`) : ""}
     <div class="card"><label class="f"><span>Jouw naam</span><div class="row"><input id="myName" value="${esc(me()?.name || "")}" style="flex:1"><button class="btn tonal" id="nameSave">Opslaan</button></div></label></div>
     <button class="btn ghost" id="leave" style="margin:10px 0 30px">Ander weekend kiezen</button>`;
 }
@@ -766,6 +778,7 @@ function openMenu(a) {
 
 // ================================================================== events
 function bind() {
+  $$("details[data-fold]").forEach((d) => d.ontoggle = () => { S.fold[d.dataset.fold] = d.open; });
   $$("[data-tab]").forEach((b) => b.onclick = () => { S.tab = b.dataset.tab; store.set("app_tab", S.tab); window.scrollTo(0, 0); render(); });
   $$("[data-go]").forEach((b) => b.onclick = () => { S.tab = b.dataset.go; store.set("app_tab", S.tab); window.scrollTo(0, 0); render(); });
   $$("[data-status]").forEach((b) => b.onclick = () => A.setStatus(b.dataset.status, $("#note")?.value || me()?.statusNote));

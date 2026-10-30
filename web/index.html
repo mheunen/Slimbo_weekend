@@ -64,6 +64,12 @@
   .login .logo { margin: 0 auto 16px; display: flex; justify-content: center; }
   .login .logo img { height: 56px; }
   h3 { margin: 0 0 8px; font-size: 15px; }
+  details.fold > summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: 8px; }
+  details.fold > summary::-webkit-details-marker { display: none; }
+  details.fold > summary::before { content: "▸"; color: var(--brand); font-size: 14px; width: 12px; }
+  details.fold[open] > summary::before { content: "▾"; }
+  details.fold > summary > * { margin: 0; }
+  details.fold > summary .muted { font-weight: 400; }
 </style>
 </head>
 <body>
@@ -73,6 +79,10 @@
 
 <script src="config.js"></script>
 <script type="module">
+// In- en uitklapbaar blok; de open/dicht-stand blijft bewaard bij het verversen
+const fold = (key, title, body, def = false) =>
+  `<details class="fold" data-fold="${key}" ${(S.fold[key] ?? def) ? "open" : ""}><summary>${title}</summary>${body}</details>`;
+
 // ♥'s die de spreadsheet al eens gaf; die voegt Laden/koppelen niet opnieuw toe (zelf weggehaald = blijft weg).
 // Oud account zonder veld maar met gekoppelde naam: alle spreadsheet-wensen gelden als al gegeven.
 const seededOf = (m, guestWants) => !m ? null : Array.isArray(m.seedWants) ? m.seedWants : (m.guestId ? guestWants : null);
@@ -101,7 +111,7 @@ const auth = getAuth(fb);
 const db = getFirestore(fb);
 
 // ------------------------------------------------------------------ state
-const S = {
+const S = { fold: {},
   uid: null, eventId: store.get("eventId"), event: null, tab: store.get("tab") || "weekend",
   games: [], places: [], tables: [], rooms: [], guests: [], chores: [], activities: [], members: [],
   unsub: [],
@@ -363,10 +373,10 @@ function weekendView() {
     <label class="f"><span>Weekendinfo — kopjes met "## ", regels met "- "</span><textarea id="eInfo" style="min-height:320px">${esc(infoToText(e.info))}</textarea></label>
     <div class="row"><span class="grow"></span><button class="btn" id="eSave">Opslaan</button></div>
   </div>
-  <div class="card"><h3>Deelnemers in de app (${S.members.filter((m) => !m.web && !m.hidden).length})</h3>
+  <div class="card">${fold("w-members", `<h3>Deelnemers in de app (${S.members.filter((m) => !m.web && !m.hidden).length})</h3>`, `
     <div class="tablewrap"><table><thead><tr><th>Naam</th><th>Status</th><th>Toelichting</th><th>♥</th></tr></thead><tbody>
     ${S.members.filter((m) => !m.web && !m.hidden).sort((a, b) => (a.name || "").localeCompare(b.name || "", "nl")).map((m) => `<tr><td>${esc(m.name)}</td><td>${esc(m.status)}</td><td>${esc(m.statusNote)}</td><td>${(m.wants || []).length}</td></tr>`).join("")}
-    </tbody></table></div></div>`;
+    </tbody></table></div>`)}</div>`;
 }
 
 // ------------------------------------------------------------------ gebruikers
@@ -421,6 +431,7 @@ function usersView() {
           ${unlinked ? `<span class="pill warn">${unlinked} niet gekoppeld aan naam</span>` : ""}
         </div>
       </div>
+      ${fold("u-app", `<span class="muted">Tabel met alle app-gebruikers</span>`, `
       <div class="tablewrap" style="margin-top:10px"><table><thead><tr>
         <th>Naam</th><th>Gekoppeld aan</th><th>App-versie</th><th>Laatst geopend</th><th>Laatst online</th><th>Meldingen</th><th>Status</th><th>Toestel</th>
       </tr></thead><tbody>
@@ -435,18 +446,18 @@ function usersView() {
         <td class="muted">${esc([m.device, m.android ? "Android " + m.android : ""].filter(Boolean).join(" · "))}</td>
       </tr>`).join("")}
       </tbody></table></div>
-      <p class="muted">"Laatst online" telt ook de achtergrondcontrole (±15 min) mee. "Onbekend (oud)": app-versie van vóór 1.0.14, die nog niets doorgeeft.</p>
+      <p class="muted">"Laatst online" telt ook de achtergrondcontrole (±15 min) mee. "Onbekend (oud)": app-versie van vóór 1.0.14, die nog niets doorgeeft.</p>`, true)}
     </div>
-    <div class="card"><h3>Nog niet in de app (${notYet.length})</h3>
+    <div class="card">${fold("u-notyet", `<h3>Nog niet in de app (${notYet.length})</h3>`, `
       <p class="muted">Namen uit de kamerindeling die nog niet aan een app-gebruiker gekoppeld zijn.</p>
-      <p>${notYet.length ? notYet.map((n) => `<span class="pill" style="margin:2px">${esc(n)}</span>`).join(" ") : "Iedereen is gekoppeld."}</p>
+      <p>${notYet.length ? notYet.map((n) => `<span class="pill" style="margin:2px">${esc(n)}</span>`).join(" ") : "Iedereen is gekoppeld."}</p>`)}
     </div>
-    ${oldDevices.length ? `<div class="card"><h3>Vervangen toestellen (${oldDevices.length})</h3>
+    ${oldDevices.length ? `<div class="card">${fold("u-old", `<h3>Vervangen toestellen (${oldDevices.length})</h3>`, `
       <p class="muted">Oude accounts na wissen of herinstalleren; de naam is overgenomen door een nieuw toestel. Ze tellen nergens meer mee. Per ongeluk verborgen? Klik op terugzetten en koppel het account daarna eventueel aan een naam.</p>
       <p>${oldDevices.map((m) => `<span class="pill" style="margin:2px">${esc(m.name)} · ${esc(m.appVersion || "")} · ${esc(ago(m.lastSeenAt || m.updatedAt))}
-        <button class="btn ghost" style="padding:1px 8px;font-size:12px;margin-left:4px" data-restore="${esc(m.id)}">terugzetten</button></span>`).join(" ")}</p></div>` : ""}
-    <div class="card"><h3>Op de website (${webUsers.length})</h3>
-      <p>${webUsers.map((m) => `<span class="pill" style="margin:2px">${esc(m.name)} · ${esc(ago(m.updatedAt))}</span>`).join(" ") || "—"}</p>
+        <button class="btn ghost" style="padding:1px 8px;font-size:12px;margin-left:4px" data-restore="${esc(m.id)}">terugzetten</button></span>`).join(" ")}</p>`)}</div>` : ""}
+    <div class="card">${fold("u-web", `<h3>Op de website (${webUsers.length})</h3>`, `
+      <p>${webUsers.map((m) => `<span class="pill" style="margin:2px">${esc(m.name)} · ${esc(ago(m.updatedAt))}</span>`).join(" ") || "—"}</p>`)}
     </div>`;
 }
 
@@ -518,6 +529,7 @@ async function login() {
 }
 
 function bind() {
+  document.querySelectorAll("details[data-fold]").forEach((d) => d.ontoggle = () => { S.fold[d.dataset.fold] = d.open; });
   document.querySelectorAll("[data-tab]").forEach((b) => b.onclick = () => { S.tab = b.dataset.tab; store.set("tab", S.tab); render(); });
   document.querySelectorAll("[data-new]").forEach((b) => b.onclick = () => openEditor(b.dataset.new, null));
   document.querySelectorAll("[data-edit]").forEach((tr) => tr.onclick = () => openEditor(tr.dataset.edit, S[tr.dataset.edit].find((x) => x.id === tr.dataset.id)));
