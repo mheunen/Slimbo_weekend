@@ -483,7 +483,7 @@ function meerView() {
     ${Object.keys(choresBy).length ? `<h2>Corvee${myChores ? ` <span class="muted small">jij: ${myChores}×</span>` : ""}</h2>${Object.entries(choresBy).map(([pid, cs]) => { const n = cs.filter((c) => (c.names || []).includes(mine)).length; return `<div class="card">${fold("chore-" + pid, `<div class="title" style="font-size:16px">${esc(placeName(pid))}</div>${n ? `<span class="muted small">jij: ${n}×</span>` : ""}`, `
       ${DAYS.filter((d) => cs.some((c) => c.day === d)).map((d) => `<div class="small" style="margin-top:8px;font-weight:600">${d}</div>${cs.filter((c) => c.day === d).sort((a, b) => a.startAt - b.startAt).map((c) => `<div class="small" style="${(c.names || []).includes(mine) ? "font-weight:700;color:var(--brand)" : ""}">${slot[c.slot] || c.slot} <span class="muted">${esc(choreTimes(c))}</span>: ${esc((c.names || []).join(", "))}</div>`).join("")}`).join("")}`)}</div>`; }).join("")}` : ""}
     <div class="card"><label class="f"><span>Jouw naam</span><div class="row"><input id="myName" value="${esc(me()?.name || "")}" style="flex:1"><button class="btn tonal" id="nameSave">Opslaan</button></div></label></div>
-    <button class="btn ghost" id="leave" style="margin:10px 0 30px">Ander weekend kiezen</button>`;
+    <div style="height:30px"></div>`;
 }
 
 const TABS = [["nu", "Nu", "🏠"], ["planning", "Planning", "📅"], ["spellen", "Spellen", "🎲"], ["meer", "Meer", "☰"]];
@@ -497,7 +497,7 @@ function render() {
   if (!views[S.tab]) S.tab = "nu";
   const body = views[S.tab]();
   const scroll = window.scrollY, focusId = document.activeElement?.id, pos = document.activeElement?.selectionStart;
-  $("#app").innerHTML = `<header><span class="logo"><img src="slimbo_logo.png" alt="Slimbo"></span><h1>${esc(S.event.name)}</h1></header>
+  $("#app").innerHTML = `<header><span class="logo"><img src="slimbo_logo.png" alt="Slimbo"></span><h1>${esc(S.event.name)}</h1><button class="btn ghost" id="leave" style="padding:6px 10px;font-size:13px;white-space:nowrap">Ander weekend</button></header>
     <main>${body}</main>
     <nav class="tabs">${TABS.map(([k, l, ic]) => `<button data-tab="${k}" class="${S.tab === k ? "on" : ""}"><span class="ic">${ic}</span>${l}</button>`).join("")}</nav>`;
   window.scrollTo(0, scroll);
