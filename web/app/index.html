@@ -114,6 +114,10 @@ const store = {
   get(k) { try { return localStorage.getItem(k); } catch { return null; } },
   set(k, v) { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch {} },
 };
+// Weekenden waarvoor je in deze browser bent aangemeld
+const knownEvents = () => { try { return JSON.parse(store.get("app_events") || "[]"); } catch { return []; } };
+const rememberEvent = (e) => store.set("app_events", JSON.stringify([{ id: e.id, name: e.name || "", code: e.joinCode || "" }, ...knownEvents().filter((x) => x.id !== e.id)]));
+const forgetEvent = (id) => store.set("app_events", JSON.stringify(knownEvents().filter((x) => x.id !== id)));
 function toast(msg) { const t = $("#toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove("show"), 3200); }
 const now = () => Date.now();
 
@@ -282,8 +286,8 @@ function unsubscribe() { S.unsub.forEach((u) => u()); S.unsub = []; S.loaded.cle
 function subscribe() {
   unsubscribe();
   S.unsub.push(onSnapshot(doc(db, "events", S.eventId), (d) => {
-    if (!d.exists()) return leave();
-    S.event = { id: d.id, ...d.data() }; S.loaded.add("event"); softRender();
+    if (!d.exists()) { forgetEvent(S.eventId); return leave(); }
+    S.event = { id: d.id, ...d.data() }; S.loaded.add("event"); rememberEvent(S.event); softRender();
   }, () => { toast("Geen toegang tot dit weekend"); leave(); }));
   for (const c of ["members", "games", "places", "tables", "activities", "rooms", "guests", "chores"]) {
     S.unsub.push(onSnapshot(col(c), (snap) => {
@@ -502,10 +506,16 @@ function render() {
 }
 
 function renderLogin() {
+  const known = knownEvents();
   $("#app").innerHTML = `<main><div class="login">
     <div class="logo"><img src="slimbo_logo.png" alt="Slimbo"></div>
+    ${known.length ? `<div class="card">
+      <div class="title">Jouw weekenden</div>
+      ${known.map((e) => `<button class="btn" data-open="${esc(e.id)}" style="width:100%;margin-top:8px">${esc(e.name || e.code)}</button>`).join("")}
+      <p class="muted small center" id="oMsg"></p>
+    </div>` : ""}
     <div class="card">
-      <div class="title">Meedoen met het spellenweekend</div>
+      <div class="title">${known.length ? "Meedoen met een ander weekend" : "Meedoen met het spellenweekend"}</div>
       <p class="muted">Vul de code in die je van de organisatie hebt gekregen.</p>
       <label class="f"><span>Jouw naam</span><input id="lName" autocomplete="given-name" value="${esc(store.get("app_name") || "")}"></label>
       <label class="f"><span>Code van het weekend</span><input id="lCode" maxlength="6" autocapitalize="characters" style="text-transform:uppercase;letter-spacing:2px" value="${esc(store.get("app_code") || "")}"></label>
@@ -515,6 +525,20 @@ function renderLogin() {
     <p class="center small"><a href="https://www.slimbo.nl/" target="_blank" rel="noopener">🌐 www.slimbo.nl</a></p>
   </div></main>`;
   $("#lGo").onclick = login;
+  document.querySelectorAll("[data-open]").forEach((b) => b.onclick = () => openKnown(b.dataset.open));
+}
+
+async function openKnown(id) {
+  $("#oMsg").textContent = "Bezig…";
+  try {
+    const m = await getDoc(doc(db, "events", id, "members", S.uid));
+    if (!m.exists()) throw new Error("niet aangemeld");
+    store.set("app_eventId", id); S.eventId = id; subscribe();
+  } catch {
+    forgetEvent(id);
+    renderLogin();
+    toast("Je bent niet meer aangemeld voor dit weekend. Doe opnieuw mee met de code.");
+  }
 }
 
 async function login() {
