@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import nl.spellenweekend.app.data.Activity
@@ -51,8 +52,17 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
     val message = MutableStateFlow<String?>(null)
     private val eventId = MutableStateFlow<String?>(null)
 
+    /** Weekenden waarvoor je op dit toestel bent aangemeld (knoppen op het startscherm). */
+    val knownEvents = MutableStateFlow(repo.knownEvents)
+
     val event: StateFlow<WeekendEvent?> = eventId
         .flatMapLatest { id -> if (id == null) flowOf(null) else repo.observeEvent(id) }
+        .onEach { e ->
+            if (e != null && e.id.isNotBlank()) {
+                repo.rememberEvent(nl.spellenweekend.app.data.KnownEvent(e.id, e.name, e.joinCode))
+                knownEvents.value = repo.knownEvents
+            }
+        }
         .stateIn(viewModelScope, SharingStarted.Eagerly, null)
 
     val members: StateFlow<List<Member>> = live { repo.members(it) }
@@ -215,6 +225,16 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
                 busy.value = false
             }
         }
+    }
+
+    /** Direct naar een weekend waarvoor je al bent aangemeld. */
+    fun openEvent(id: String) = onboarding {
+        if (!repo.isMember(id)) {
+            repo.forgetEvent(id)
+            knownEvents.value = repo.knownEvents
+            error("Je bent niet meer aangemeld voor dit weekend. Doe opnieuw mee met de code.")
+        }
+        id
     }
 
     fun leaveEvent() {

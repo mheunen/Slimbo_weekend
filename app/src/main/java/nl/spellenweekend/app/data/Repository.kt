@@ -45,6 +45,34 @@ class Repository(context: Context) {
 
     private fun now() = System.currentTimeMillis()
 
+    /** Weekenden waarvoor je op dit toestel bent aangemeld. */
+    val knownEvents: List<KnownEvent>
+        get() = runCatching {
+            val arr = org.json.JSONArray(prefs.getString("knownEvents", "[]"))
+            (0 until arr.length()).map { i ->
+                val o = arr.getJSONObject(i)
+                KnownEvent(o.getString("id"), o.optString("name"), o.optString("code"))
+            }
+        }.getOrDefault(emptyList())
+
+    fun rememberEvent(e: KnownEvent) {
+        val list = listOf(e) + knownEvents.filter { it.id != e.id }
+        saveKnown(list)
+    }
+
+    fun forgetEvent(id: String) = saveKnown(knownEvents.filter { it.id != id })
+
+    private fun saveKnown(list: List<KnownEvent>) {
+        val arr = org.json.JSONArray()
+        list.forEach { arr.put(org.json.JSONObject().put("id", it.id).put("name", it.name).put("code", it.code)) }
+        prefs.edit().putString("knownEvents", arr.toString()).apply()
+    }
+
+    /** Ben je (nog) lid van dit weekend? */
+    suspend fun isMember(eventId: String): Boolean = runCatching {
+        col(eventId, "members").document(me).get().await().exists()
+    }.getOrDefault(false)
+
     suspend fun signIn(): String {
         val current = auth.currentUser
         if (current != null) return current.uid

@@ -55,6 +55,7 @@ fun OnboardingScreen(vm: AppViewModel) {
     var name by rememberSaveable { mutableStateOf("") }
     var weekend by rememberSaveable { mutableStateOf("") }
     var code by rememberSaveable { mutableStateOf("") }
+    val known by vm.knownEvents.collectAsStateWithLifecycle()
 
     Scaffold(snackbarHost = { SnackbarHost(snackbar) }) { pad ->
         Column(
@@ -79,6 +80,22 @@ fun OnboardingScreen(vm: AppViewModel) {
                 textAlign = TextAlign.Center,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
+
+            if (known.isNotEmpty()) {
+                Text("Jouw weekenden", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)
+                known.forEach { e ->
+                    Button(
+                        enabled = !busy,
+                        onClick = { vm.openEvent(e.id) },
+                        modifier = Modifier.fillMaxWidth(),
+                    ) { Text(e.name.ifBlank { e.code }) }
+                }
+                Text(
+                    "Of doe mee met een ander weekend:",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
 
             OutlinedTextField(
                 value = name,

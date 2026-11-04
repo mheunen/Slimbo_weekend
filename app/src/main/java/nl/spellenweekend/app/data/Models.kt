@@ -51,6 +51,9 @@ data class InfoSection(
     val items: List<String> = emptyList(),
 )
 
+/** Een weekend waarvoor je op dit toestel bent aangemeld (voor de knoppen op het startscherm). */
+data class KnownEvent(val id: String, val name: String, val code: String)
+
 data class WeekendEvent(
     val id: String = "",
     val name: String = "",
