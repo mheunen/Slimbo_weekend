@@ -105,7 +105,6 @@ private fun ManageTab(
 ) {
     var editPlace by remember { mutableStateOf<Place?>(null) }
     var editTable by remember { mutableStateOf<GameTable?>(null) }
-    var confirmLeave by remember { mutableStateOf(false) }
     // Lange lijsten standaard ingeklapt; tik op de kop om ze te openen
     var openPlaces by rememberSaveable { mutableStateOf(false) }
     var openTables by rememberSaveable { mutableStateOf(false) }
@@ -197,12 +196,7 @@ private fun ManageTab(
                 OutlinedButton(onClick = { vm.checkForUpdate(manual = true) }) { Text("Controleren op updates") }
             }
         }
-        item {
-            OutlinedButton(
-                onClick = { confirmLeave = true },
-                modifier = Modifier.padding(top = 24.dp, bottom = 32.dp),
-            ) { Text("Ander weekend kiezen") }
-        }
+        item { Spacer(Modifier.padding(bottom = 32.dp)) }
     }
 
     editPlace?.let { p ->
@@ -220,15 +214,6 @@ private fun ManageTab(
             onDismiss = { editTable = null },
             onSave = { vm.saveTable(it); editTable = null },
             onDelete = { vm.deleteTable(t.id); editTable = null },
-        )
-    }
-    if (confirmLeave) {
-        AlertDialog(
-            onDismissRequest = { confirmLeave = false },
-            title = { Text("Ander weekend kiezen?") },
-            text = { Text("Je kunt later met dezelfde code terugkomen in dit weekend.") },
-            confirmButton = { TextButton(onClick = { confirmLeave = false; vm.leaveEvent() }) { Text("Doorgaan") } },
-            dismissButton = { TextButton(onClick = { confirmLeave = false }) { Text("Annuleren") } },
         )
     }
 }

@@ -31,6 +31,9 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material.icons.filled.SwapHoriz
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.TextButton
 import androidx.compose.foundation.layout.size
 import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.Composable
@@ -114,12 +117,23 @@ fun MainScreen(vm: AppViewModel) {
 
     var tab by rememberSaveable { mutableStateOf(MainTab.NU) }
     var editing by remember { mutableStateOf<Activity?>(null) }
+    var confirmLeave by remember { mutableStateOf(false) }
     val snackbar = remember { SnackbarHostState() }
 
     LaunchedEffect(msg) {
         msg?.let { snackbar.showSnackbar(it); vm.clearMessage() }
     }
 
+
+    if (confirmLeave) {
+        AlertDialog(
+            onDismissRequest = { confirmLeave = false },
+            title = { Text("Ander weekend kiezen?") },
+            text = { Text("Je weekenden staan als knop op het startscherm; je kunt zo weer terug.") },
+            confirmButton = { TextButton(onClick = { confirmLeave = false; vm.leaveEvent() }) { Text("Doorgaan") } },
+            dismissButton = { TextButton(onClick = { confirmLeave = false }) { Text("Annuleren") } },
+        )
+    }
 
     Scaffold(
         topBar = {
@@ -135,6 +149,9 @@ fun MainScreen(vm: AppViewModel) {
                     }
                 },
                 actions = {
+                    IconButton(onClick = { confirmLeave = true }) {
+                        Icon(Icons.Filled.SwapHoriz, "Ander weekend kiezen")
+                    }
                     IconButton(onClick = { vm.refresh() }, enabled = !refreshing) {
                         if (refreshing) CircularProgressIndicator(Modifier.size(22.dp), strokeWidth = 2.dp)
                         else Icon(Icons.Filled.Refresh, "Vernieuwen")
