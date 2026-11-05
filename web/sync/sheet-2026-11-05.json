@@ -1,0 +1,199 @@
+{
+ "source": "Google-spreadsheet, uitgelezen op 5 november 2026 (wijzigingen sinds 4 november)",
+ "addGames": [
+  {
+   "id": "g-arkham-horror-3rd-edition",
+   "name": "Arkham Horror 3rd edition",
+   "owner": "Kelly",
+   "wishlist": false,
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "category": "",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Arkham+Horror+3rd+edition",
+   "video": "",
+   "interested": [],
+   "categories": [],
+   "infoChecked": false,
+   "notes": "ⓘ Spelers/duur onbekend – graag aanvullen"
+  },
+  {
+   "id": "g-cross-clues",
+   "name": "Cross Clues",
+   "owner": "Kelly",
+   "wishlist": false,
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "category": "",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Cross+Clues",
+   "video": "",
+   "interested": [],
+   "categories": [],
+   "infoChecked": false,
+   "notes": "ⓘ Spelers/duur onbekend – graag aanvullen"
+  },
+  {
+   "id": "g-dewan",
+   "name": "Dewan",
+   "owner": "Kelly",
+   "wishlist": false,
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "category": "",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Dewan",
+   "video": "",
+   "interested": [],
+   "categories": [],
+   "infoChecked": false,
+   "notes": "ⓘ Spelers/duur onbekend – graag aanvullen"
+  },
+  {
+   "id": "g-feya-s-swamp",
+   "name": "Feya's Swamp",
+   "owner": "Kelly",
+   "wishlist": false,
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "category": "",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Feya%27s+Swamp",
+   "video": "",
+   "interested": [],
+   "categories": [],
+   "infoChecked": false,
+   "notes": "ⓘ Spelers/duur onbekend – graag aanvullen"
+  },
+  {
+   "id": "g-pet-hotel",
+   "name": "Pet Hotel",
+   "owner": "Kelly",
+   "wishlist": false,
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "category": "",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Pet+Hotel",
+   "video": "",
+   "interested": [],
+   "categories": [],
+   "infoChecked": false,
+   "notes": "ⓘ Spelers/duur onbekend – graag aanvullen"
+  },
+  {
+   "id": "g-things-in-rings",
+   "name": "Things in Rings",
+   "owner": "Kelly",
+   "wishlist": false,
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "category": "",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Things+in+Rings",
+   "video": "",
+   "interested": [],
+   "categories": [],
+   "infoChecked": false,
+   "notes": "ⓘ Spelers/duur onbekend – graag aanvullen"
+  },
+  {
+   "id": "g-kanagawa",
+   "name": "Kanagawa",
+   "owner": "Job",
+   "wishlist": false,
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "category": "",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Kanagawa",
+   "video": "",
+   "interested": [],
+   "categories": [],
+   "infoChecked": false,
+   "notes": "ⓘ Spelers/duur onbekend – graag aanvullen"
+  },
+  {
+   "id": "g-witchstone",
+   "name": "Witchstone",
+   "owner": "Job",
+   "wishlist": false,
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "category": "",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Witchstone",
+   "video": "",
+   "interested": [],
+   "categories": [],
+   "infoChecked": false,
+   "notes": "ⓘ Spelers/duur onbekend – graag aanvullen"
+  },
+  {
+   "id": "g-harry-potter-hogwarts-battle",
+   "name": "Harry Potter Hogwarts Battle",
+   "owner": "Job",
+   "wishlist": false,
+   "minPlayers": 2,
+   "maxPlayers": 4,
+   "durationMin": 60,
+   "weight": "MIDDEL",
+   "category": "",
+   "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Harry+Potter+Hogwarts+Battle",
+   "video": "",
+   "interested": [],
+   "categories": [],
+   "infoChecked": false,
+   "notes": "ⓘ Spelers/duur onbekend – graag aanvullen"
+  }
+ ],
+ "setOwner": [
+  {
+   "game": "Letter Jam",
+   "owner": "Danny"
+  },
+  {
+   "game": "Echoes of Time",
+   "owner": "Kelly"
+  }
+ ],
+ "rename": [],
+ "appendNote": [],
+ "removeNote": [],
+ "hearts": [
+  {
+   "game": "Bitoku",
+   "names": [
+    "Edith"
+   ]
+  },
+  {
+   "game": "Woodcraft",
+   "names": [
+    "Edith"
+   ]
+  },
+  {
+   "game": "Maracaibo (en uitbreiding the uprising)",
+   "names": [
+    "Manuela"
+   ]
+  }
+ ],
+ "unhearts": [
+  {
+   "game": "La Fleur (en uitbreidingen)",
+   "names": [
+    "Mélanie"
+   ]
+  }
+ ]
+}
