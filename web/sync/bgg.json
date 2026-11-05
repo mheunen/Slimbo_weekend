@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-05 22:18 UTC",
+ "generated": "2026-11-05 22:26 UTC",
  "event": "d14PclMtaeM25doZi7i6",
  "total": 195,
  "games": [
@@ -448,16 +448,21 @@
   {
    "id": "MNjuK8ExCMS2383jroEL",
    "name": "Awkward Guests",
-   "source": "gezocht",
+   "source": "link",
    "nameMatch": true,
    "current": {
     "minPlayers": 1,
     "maxPlayers": 8,
-    "durationMin": 60,
-    "weight": "LICHT",
-    "category": "",
-    "categories": null,
-    "link": "",
+    "durationMin": 75,
+    "weight": "MIDDEL",
+    "category": "Kaartspel",
+    "categories": [
+     "Card Game",
+     "Deduction",
+     "Movies / TV / Radio theme",
+     "Murder / Mystery"
+    ],
+    "link": "https://boardgamegeek.com/boardgame/188866",
     "infoChecked": true
    },
    "bgg": {
@@ -585,16 +590,20 @@
   {
    "id": "Q4d5buKPIjnn6n56MkEq",
    "name": "Brood En Bier",
-   "source": "lijst",
+   "source": "link",
    "nameMatch": false,
    "current": {
     "minPlayers": 2,
     "maxPlayers": 2,
     "durationMin": 45,
-    "weight": "LICHT",
-    "category": "",
-    "categories": null,
-    "link": "",
+    "weight": "MIDDEL",
+    "category": "Kaartspel",
+    "categories": [
+     "Card Game",
+     "Farming",
+     "Medieval"
+    ],
+    "link": "https://boardgamegeek.com/boardgame/369880",
     "infoChecked": true
    },
    "bgg": {
@@ -770,16 +779,19 @@
   {
    "id": "vRLosrAm60HZQBVm9P3Q",
    "name": "Castle Combo",
-   "source": "gezocht",
+   "source": "link",
    "nameMatch": true,
    "current": {
     "minPlayers": 2,
     "maxPlayers": 5,
-    "durationMin": 30,
+    "durationMin": 25,
     "weight": "LICHT",
-    "category": "",
-    "categories": null,
-    "link": "",
+    "category": "Kaartspel",
+    "categories": [
+     "Card Game",
+     "Medieval"
+    ],
+    "link": "https://boardgamegeek.com/boardgame/416851",
     "infoChecked": true
    },
    "bgg": {
@@ -1253,10 +1265,13 @@
    "current": {
     "minPlayers": 2,
     "maxPlayers": 5,
-    "durationMin": 15,
+    "durationMin": 20,
     "weight": "LICHT",
     "category": "Kaartspel",
-    "categories": null,
+    "categories": [
+     "Animals",
+     "Card Game"
+    ],
     "link": "https://boardgamegeek.com/boardgame/245476/cubirds",
     "infoChecked": true
    },
@@ -2046,16 +2061,20 @@
   {
    "id": "sRGL8sakmJutA0OpQnSS",
    "name": "Flip 7",
-   "source": "gezocht",
+   "source": "link",
    "nameMatch": true,
    "current": {
     "minPlayers": 3,
-    "maxPlayers": 20,
-    "durationMin": 15,
+    "maxPlayers": 28,
+    "durationMin": 20,
     "weight": "LICHT",
-    "category": "",
-    "categories": null,
-    "link": "",
+    "category": "Party",
+    "categories": [
+     "Card Game",
+     "Number",
+     "Party Game"
+    ],
+    "link": "https://boardgamegeek.com/boardgame/463441",
     "infoChecked": true
    },
    "bgg": {
@@ -5241,16 +5260,18 @@
   {
    "id": "zdC8MhGkMd0s5QcDL2Ki",
    "name": "Scout",
-   "source": "gezocht",
+   "source": "link",
    "nameMatch": true,
    "current": {
     "minPlayers": 2,
     "maxPlayers": 5,
-    "durationMin": 15,
+    "durationMin": 20,
     "weight": "LICHT",
-    "category": "",
-    "categories": null,
-    "link": "",
+    "category": "Kaartspel",
+    "categories": [
+     "Card Game"
+    ],
+    "link": "https://boardgamegeek.com/boardgame/291453",
     "infoChecked": true
    },
    "bgg": {
@@ -5726,7 +5747,12 @@
     "durationMin": 15,
     "weight": "LICHT",
     "category": "Party",
-    "categories": null,
+    "categories": [
+     "Bluffing",
+     "Card Game",
+     "Memory",
+     "Party Game"
+    ],
     "link": "https://boardgamegeek.com/boardgame/375651/thats-not-a-hat",
     "infoChecked": true
    },
@@ -6318,16 +6344,20 @@
   {
    "id": "Gunq8rx1OY1lquE2xvIx",
    "name": "Turing Machine",
-   "source": "gezocht",
+   "source": "link",
    "nameMatch": true,
    "current": {
     "minPlayers": 1,
     "maxPlayers": 4,
-    "durationMin": 30,
+    "durationMin": 20,
     "weight": "MIDDEL",
-    "category": "",
-    "categories": null,
-    "link": "",
+    "category": "Strategie",
+    "categories": [
+     "Deduction",
+     "Math",
+     "Spies / Secret Agents"
+    ],
+    "link": "https://boardgamegeek.com/boardgame/356123",
     "infoChecked": true
    },
    "bgg": {
@@ -6531,16 +6561,19 @@
   {
    "id": "0PVgBNgxbkcEFJvXSRz3",
    "name": "Wispwood",
-   "source": "gezocht",
+   "source": "link",
    "nameMatch": true,
    "current": {
     "minPlayers": 1,
     "maxPlayers": 4,
     "durationMin": 45,
     "weight": "LICHT",
-    "category": "",
-    "categories": null,
-    "link": "",
+    "category": "Abstract",
+    "categories": [
+     "Abstract Strategy",
+     "Fantasy"
+    ],
+    "link": "https://boardgamegeek.com/boardgame/445044",
     "infoChecked": true
    },
    "bgg": {
