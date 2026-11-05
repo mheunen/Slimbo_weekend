@@ -250,7 +250,7 @@ def changes(row):
         upd["category"] = b["category"]
     if b["categories"]:
         upd["categories"] = b["categories"]
-    if not re.search(r"/boardgame(?:expansion)?/\d+", c.get("link") or ""):
+    if row["source"] == "lijst" or not re.search(r"/boardgame(?:expansion)?/\d+", c.get("link") or ""):
         upd["link"] = b["link"]
     upd["infoChecked"] = True
     upd["bggId"] = b["bggId"]
@@ -274,6 +274,9 @@ def run(st, event, manual, manual_norm):
         name = g.get("name") or ""
         m = re.search(r"/boardgame(?:expansion)?/(\d+)", g.get("link") or "")
         bid, source = (m.group(1), "link") if m else (None, "")
+        fixed = manual.get(name) or manual_norm.get(norm(name))
+        if isinstance(fixed, str) and norm(name) in apply_names and fixed != bid:
+            bid, source = fixed, "lijst"  # vaste koppeling gaat bij direct bijwerken voor de link
         try:
             if not bid:
                 entry = manual.get(name) or manual_norm.get(norm(name))
