@@ -1,7 +1,7 @@
 {
- "generated": "2026-11-05 20:34 UTC",
+ "generated": "2026-11-05 20:39 UTC",
  "event": "d14PclMtaeM25doZi7i6",
- "total": 184,
+ "total": 189,
  "games": [
   {
    "id": "g-1655-habemus-papam",
@@ -2178,6 +2178,40 @@
    }
   },
   {
+   "id": "g-harry-potter-hogwarts-battle",
+   "name": "Harry Potter Hogwarts Battle",
+   "source": "gezocht",
+   "nameMatch": true,
+   "current": {
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "durationMin": 60,
+    "weight": "MIDDEL",
+    "category": "",
+    "categories": [],
+    "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Harry+Potter+Hogwarts+Battle",
+    "infoChecked": false
+   },
+   "bgg": {
+    "bggId": "199042",
+    "bggName": "Harry Potter: Hogwarts Battle",
+    "year": "2016",
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "durationMin": 60,
+    "weight": "LICHT",
+    "averageWeight": 2.08,
+    "category": "Kaartspel",
+    "categories": [
+     "Card Game",
+     "Fantasy",
+     "Movies / TV / Radio theme",
+     "Novel-based"
+    ],
+    "link": "https://boardgamegeek.com/boardgame/199042"
+   }
+  },
+  {
    "id": "g-hell-of-a-deal",
    "name": "Hell of a Deal (mits op tijd binnen)",
    "source": "link",
@@ -2562,6 +2596,38 @@
      "Farming"
     ],
     "link": "https://boardgamegeek.com/boardgame/461919"
+   }
+  },
+  {
+   "id": "g-kanagawa",
+   "name": "Kanagawa",
+   "source": "gezocht",
+   "nameMatch": true,
+   "current": {
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "durationMin": 60,
+    "weight": "MIDDEL",
+    "category": "",
+    "categories": [],
+    "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Kanagawa",
+    "infoChecked": false
+   },
+   "bgg": {
+    "bggId": "200147",
+    "bggName": "Kanagawa",
+    "year": "2016",
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "durationMin": 45,
+    "weight": "LICHT",
+    "averageWeight": 1.99,
+    "category": "Kaartspel",
+    "categories": [
+     "Animals",
+     "Card Game"
+    ],
+    "link": "https://boardgamegeek.com/boardgame/200147"
    }
   },
   {
@@ -5853,6 +5919,37 @@
    }
   },
   {
+   "id": "g-witchstone",
+   "name": "Witchstone",
+   "source": "gezocht",
+   "nameMatch": true,
+   "current": {
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "durationMin": 60,
+    "weight": "MIDDEL",
+    "category": "",
+    "categories": [],
+    "link": "https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=Witchstone",
+    "infoChecked": false
+   },
+   "bgg": {
+    "bggId": "318560",
+    "bggName": "Witchstone",
+    "year": "2021",
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "durationMin": 90,
+    "weight": "MIDDEL",
+    "averageWeight": 2.76,
+    "category": "Strategie",
+    "categories": [
+     "Fantasy"
+    ],
+    "link": "https://boardgamegeek.com/boardgame/318560"
+   }
+  },
+  {
    "id": "NvRZUPNUixTzphmNkL6z",
    "name": "Wonderland's War",
    "source": "gezocht",
@@ -6063,11 +6160,13 @@
   "Awkward Guests",
   "Brood En Bier",
   "Castle Combo",
+  "Cubirds",
   "Flip 7",
   "Lost in the Woods",
   "Meow Tiles",
   "Pokespan",
   "Scout",
+  "That's Not A Hat",
   "Turing Machine",
   "Wispwood"
  ],
