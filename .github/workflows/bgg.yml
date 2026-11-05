@@ -27,13 +27,23 @@ jobs:
         with:
           python-version: "3.12"
 
+      # Zonder secret (bijv. een fork) is er niets te vergelijken
+      - name: Secret aanwezig?
+        id: gs
+        env:
+          GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
+        run: |
+          if [ -z "$GOOGLE_SERVICES_JSON" ]; then echo "::notice::Secret GOOGLE_SERVICES_JSON ontbreekt: overgeslagen."; else echo "ok=true" >> "$GITHUB_OUTPUT"; fi
+
       - name: Spellen vergelijken met BoardGameGeek
+        if: steps.gs.outputs.ok == 'true'
         env:
           GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
           BGG_TOKEN: ${{ secrets.BGG_TOKEN }}
         run: python3 tools/bgg_sync.py
 
       - name: Resultaat committen en website bijwerken
+        if: steps.gs.outputs.ok == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |

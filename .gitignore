@@ -11,3 +11,7 @@ captures/
 app/google-services.json
 
 functions/node_modules/
+
+# Web-tests
+tests/web/node_modules/
+tests/web/test-results/

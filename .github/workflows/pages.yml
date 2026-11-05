@@ -26,10 +26,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Zonder secret (bijv. een fork) wordt de site niet gepubliceerd
       - name: Site samenstellen
+        id: site
         env:
           GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
         run: |
+          if [ -z "$GOOGLE_SERVICES_JSON" ]; then
+            echo "::notice::Secret GOOGLE_SERVICES_JSON ontbreekt: site niet gepubliceerd. Zie README, stap 4."
+            exit 0
+          fi
+          echo "ok=true" >> "$GITHUB_OUTPUT"
           mkdir -p _site
           cp -r web/. _site/
           python3 - <<'PY'
@@ -47,8 +54,11 @@ jobs:
           PY
 
       - uses: actions/configure-pages@v5
+        if: steps.site.outputs.ok == 'true'
       - uses: actions/upload-pages-artifact@v3
+        if: steps.site.outputs.ok == 'true'
         with:
           path: _site
       - id: deployment
+        if: steps.site.outputs.ok == 'true'
         uses: actions/deploy-pages@v4

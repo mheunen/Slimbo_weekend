@@ -135,7 +135,7 @@ const S = { fold: {},
   uid: null, eventId: store.get("app_eventId"), event: null, tab: store.get("app_tab") || "nu",
   members: [], games: [], places: [], tables: [], activities: [], rooms: [], guests: [], chores: [],
   loaded: new Set(), unsub: [],
-  ui: { plMine: false, plDone: false, gq: "", gWant: false, gMine: false, gWish: false, gPlayers: 0, gWeights: [], gCat: "", gOwner: "", gFilters: false, mMe: false, mFilters: false, mWeights: [], mCat: "", mDur: 0, mPlace: "", claimQ: "", claimSel: "" },
+  ui: { plMine: false, plDone: false, gq: "", gWant: false, gGoing: false, gWish: false, gPlayers: 0, gWeights: [], gCat: "", gOwner: "", gFilters: false, mMe: false, mFilters: false, mWeights: [], mCat: "", mDur: 0, mPlace: "", claimQ: "", claimSel: "" },
 };
 const col = (n) => collection(db, "events", S.eventId, n);
 const ref = (n, id) => doc(db, "events", S.eventId, n, id);
@@ -415,12 +415,12 @@ function gamesView() {
   const list = S.games
     .filter((g) => !u.gq || g.name.toLowerCase().includes(u.gq.toLowerCase()))
     .filter((g) => !u.gWant || wants.has(g.id))
-    .filter((g) => !u.gMine || (g.owner || "").trim().toLowerCase() === mn)
+    .filter((g) => !u.gGoing || !g.wishlist)
     .filter((g) => !u.gWish || g.wishlist)
     .filter((g) => !u.gPlayers || (u.gPlayers >= 7 ? (g.maxPlayers || 0) >= 7 : u.gPlayers >= (g.minPlayers || 0) && u.gPlayers <= (g.maxPlayers || 99)))
     .filter((g) => !u.gWeights.length || u.gWeights.includes(g.weight))
     .filter((g) => !u.gCat || (g.category || "Overig") === u.gCat)
-    .filter((g) => !u.gOwner || (g.owner || "").trim().toLowerCase() === u.gOwner.toLowerCase())
+    .filter((g) => !u.gOwner || (u.gOwner === "*" ? !g.wishlist && g.owner : (g.owner || "").trim().toLowerCase() === u.gOwner.toLowerCase()))
     .sort((a, b) => a.name.localeCompare(b.name, "nl"));
   const filters = u.gFilters ? `<div class="card">
     <div class="small" style="font-weight:600;margin-bottom:6px">Aantal spelers</div>
@@ -429,16 +429,17 @@ function gamesView() {
     <div class="row">${Object.entries(WEIGHTS).map(([k, l]) => `<button class="chip ${u.gWeights.includes(k) ? "on" : ""}" data-weight="${k}">${l}</button>`).join("")}</div>
     <div class="grid2" style="margin-top:10px">
       <label class="f"><span>Categorie</span><select id="gCat"><option value="">Alle</option>${cats.map((c) => `<option ${u.gCat === c ? "selected" : ""}>${esc(c)}</option>`).join("")}</select></label>
-      <label class="f"><span>Wie neemt het mee</span><select id="gOwner"><option value="">Iedereen</option>${owners.map((o) => `<option ${u.gOwner === o ? "selected" : ""}>${esc(o)}</option>`).join("")}</select></label>
+      <label class="f"><span>Wie neemt het mee</span><select id="gOwner"><option value="">Alle spellen</option><option value="*" ${u.gOwner === "*" ? "selected" : ""}>Iedereen (meegebracht)</option>${owners.map((o) => `<option ${u.gOwner === o ? "selected" : ""}>${esc(o)}</option>`).join("")}</select></label>
     </div>
     ${active ? `<button class="btn text" id="gClear">Filters wissen</button>` : ""}
   </div>` : "";
   return `<div class="row"><input data-live="1" id="gq" placeholder="🔍 Zoek een spel" value="${esc(u.gq)}" style="flex:1;min-width:0"><button class="btn" id="gameNew">+ Spel</button></div>
     <div class="row" style="margin:10px 0">
-      ${mn ? `<button class="chip ${u.gMine ? "on" : ""}" data-ui="gMine">Neem ik mee</button>` : ""}
+      ${mn ? `<button class="chip ${u.gOwner.toLowerCase() === mn ? "on" : ""}" id="gMineChip">Neem ik mee (${S.games.filter((g) => (g.owner || "").trim().toLowerCase() === mn).length})</button>` : ""}
       <button class="chip ${u.gFilters || active ? "on" : ""}" data-ui="gFilters">Filters${active ? ` (${active})` : ""}</button>
       <button class="chip ${u.gWant ? "on" : ""}" data-ui="gWant">Mijn ♥ (${wants.size})</button>
-      <button class="chip ${u.gWish ? "on" : ""}" data-ui="gWish">Wenslijst</button>
+      <button class="chip ${u.gGoing ? "on" : ""}" data-ui="gGoing">Gaat mee (${S.games.filter((g) => !g.wishlist).length})</button>
+      <button class="chip ${u.gWish ? "on" : ""}" data-ui="gWish">Wenslijst (${S.games.filter((g) => g.wishlist).length})</button>
     </div>
     ${filters}
     <p class="muted small">${list.length} van ${S.games.length} spellen · tik op ♥ voor spellen die je wilt spelen — zo zien anderen wat je graag speelt.</p>
@@ -692,7 +693,13 @@ function bind() {
     const a = S.activities.find((x) => x.id === b.dataset.id); if (!a) return;
     if (b.dataset.a === "menu") openMenu(a);
   });
-  $$("[data-ui]").forEach((b) => b.onclick = () => { S.ui[b.dataset.ui] = !S.ui[b.dataset.ui]; render(); });
+  $$("[data-ui]").forEach((b) => b.onclick = () => {
+    const k = b.dataset.ui; S.ui[k] = !S.ui[k];
+    if (S.ui[k] && k === "gGoing") S.ui.gWish = false;
+    if (S.ui[k] && k === "gWish") S.ui.gGoing = false;
+    render();
+  });
+  if ($("#gMineChip")) $("#gMineChip").onclick = () => { S.ui.gOwner = S.ui.gOwner.toLowerCase() === myName().trim().toLowerCase() ? "" : myName().trim(); render(); };
   $$("[data-want]").forEach((b) => b.onclick = () => A.setWant(b.dataset.want, !(me()?.wants || []).includes(b.dataset.want)));
   $$("[data-players]").forEach((b) => b.onclick = () => { S.ui.gPlayers = Number(b.dataset.players); render(); });
   $$("[data-weight]").forEach((b) => b.onclick = () => { const w = b.dataset.weight; S.ui.gWeights = S.ui.gWeights.includes(w) ? S.ui.gWeights.filter((x) => x !== w) : [...S.ui.gWeights, w]; render(); });

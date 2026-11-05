@@ -27,34 +27,47 @@ jobs:
           distribution: temurin
           java-version: "17"
 
-      - name: google-services.json uit secret plaatsen
+      # Zonder secret (bijv. een fork) draaien alleen de unit-tests, met een dummybestand
+      - name: google-services.json plaatsen
+        id: gs
         env:
           GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
         run: |
           if [ -z "$GOOGLE_SERVICES_JSON" ]; then
-            echo "::error::Secret GOOGLE_SERVICES_JSON ontbreekt. Zie README, stap 4."
-            exit 1
+            echo "::notice::Secret GOOGLE_SERVICES_JSON ontbreekt: alleen unit-tests, geen APK. Zie README, stap 4."
+            cp .github/google-services.test.json app/google-services.json
+            echo "real=false" >> "$GITHUB_OUTPUT"
+          else
+            printf '%s' "$GOOGLE_SERVICES_JSON" > app/google-services.json
+            echo "real=true" >> "$GITHUB_OUTPUT"
           fi
-          printf '%s' "$GOOGLE_SERVICES_JSON" > app/google-services.json
 
       - uses: gradle/actions/setup-gradle@v4
 
+      - name: Unit-tests
+        run: |
+          chmod +x gradlew
+          ./gradlew testDebugUnitTest --no-daemon --stacktrace
+
       - name: APK bouwen
+        if: steps.gs.outputs.real == 'true'
         run: |
           chmod +x gradlew
           ./gradlew assembleDebug --no-daemon --stacktrace
 
       - name: APK klaarzetten
+        if: steps.gs.outputs.real == 'true'
         run: cp app/build/outputs/apk/debug/app-debug.apk Spellenweekend.apk
 
       - uses: actions/upload-artifact@v4
+        if: steps.gs.outputs.real == 'true'
         with:
           name: Spellenweekend-${{ github.run_number }}
           path: Spellenweekend.apk
 
       # Alleen vanaf main een release; een handmatige build op een andere branch is een testbuild
       - name: Release publiceren
-        if: github.ref == 'refs/heads/main'
+        if: steps.gs.outputs.real == 'true' && github.ref == 'refs/heads/main'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: build-${{ github.run_number }}

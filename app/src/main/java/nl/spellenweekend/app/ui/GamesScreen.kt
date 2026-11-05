@@ -53,7 +53,9 @@ import androidx.compose.ui.platform.LocalContext
 import nl.spellenweekend.app.data.Game
 import nl.spellenweekend.app.data.GAME_CATEGORIES
 import androidx.compose.material.icons.filled.FilterList
+import nl.spellenweekend.app.data.ANYONE_OWNER
 import nl.spellenweekend.app.data.Guest
+import nl.spellenweekend.app.data.filterGames
 import nl.spellenweekend.app.data.Member
 import nl.spellenweekend.app.data.Weight
 
@@ -72,7 +74,7 @@ fun GamesScreen(
     var players by rememberSaveable { mutableIntStateOf(0) } // 0 = alle
     var weights by rememberSaveable { mutableStateOf(setOf<String>()) }
     var category by rememberSaveable { mutableStateOf("") }
-    var owner by rememberSaveable { mutableStateOf("") } // "" = iedereen
+    var owner by rememberSaveable { mutableStateOf("") } // "" = geen filter, ANYONE_OWNER = alle meegebrachte spellen
     var showFilters by rememberSaveable { mutableStateOf(false) }
     val myName = remember(members, guests) {
         val m = members.firstOrNull { it.id == me }
@@ -94,15 +96,9 @@ fun GamesScreen(
         members.flatMap { m -> m.wants.map { it to m } }
             .groupBy({ it.first }, { it.second })
     }
-    val visible = games
-        .filter { query.isBlank() || it.name.contains(query.trim(), ignoreCase = true) }
-        .filter { !onlyWanted || it.id in myWants }
-        .filter { filter == 0 || (filter == 1 && !it.wishlist) || (filter == 2 && it.wishlist) }
-        .filter { players == 0 || (if (players >= 7) it.maxPlayers >= 7 else it.supports(players)) }
-        .filter { weights.isEmpty() || it.weight.name in weights }
-        .filter { category.isBlank() || it.category.ifBlank { "Overig" } == category }
-        .filter { owner.isBlank() || it.owner.trim().equals(owner, ignoreCase = true) }
-        .sortedBy { it.name.lowercase() }
+    val visible = filterGames(
+        games, query, if (onlyWanted) myWants else null, filter, players, weights, category, owner,
+    )
 
     Box(Modifier.fillMaxSize()) {
         LazyColumn(
@@ -184,7 +180,7 @@ fun GamesScreen(
                             SelectField(
                                 label = "Wie neemt het mee",
                                 value = owner,
-                                options = listOf("" to "Iedereen") + owners.map { o ->
+                                options = listOf("" to "Alle spellen", ANYONE_OWNER to "Iedereen (${games.count { !it.wishlist && it.owner.isNotBlank() }})") + owners.map { o ->
                                     o to "$o (${games.count { it.owner.trim().equals(o, ignoreCase = true) }})"
                                 },
                                 onSelect = { owner = it },
