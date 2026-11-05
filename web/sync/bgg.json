@@ -1,7 +1,7 @@
 {
- "generated": "2026-11-03 22:56 UTC",
+ "generated": "2026-11-05 20:26 UTC",
  "event": "d14PclMtaeM25doZi7i6",
- "total": 175,
+ "total": 184,
  "games": [
   {
    "id": "g-1655-habemus-papam",
@@ -321,6 +321,40 @@
    }
   },
   {
+   "id": "2RXWclZPF3AqgCZPMkfG",
+   "name": "Arkham Horror 3rd Edition",
+   "source": "link",
+   "nameMatch": true,
+   "current": {
+    "minPlayers": 1,
+    "maxPlayers": 6,
+    "durationMin": 180,
+    "weight": "MIDDEL",
+    "category": "Coöperatief",
+    "categories": null,
+    "link": "https://boardgamegeek.com/boardgame/257499/arkham-horror-third-edition",
+    "infoChecked": true
+   },
+   "bgg": {
+    "bggId": "257499",
+    "bggName": "Arkham Horror (Third Edition)",
+    "year": "2018",
+    "minPlayers": 1,
+    "maxPlayers": 6,
+    "durationMin": 180,
+    "weight": "ZWAAR",
+    "averageWeight": 3.37,
+    "category": "Thematisch",
+    "categories": [
+     "Adventure",
+     "Fighting",
+     "Horror",
+     "Novel-based"
+    ],
+    "link": "https://boardgamegeek.com/boardgame/257499"
+   }
+  },
+  {
    "id": "g-automania-second-edition",
    "name": "Automania Second Edition",
    "source": "link",
@@ -378,7 +412,7 @@
     "maxPlayers": 4,
     "durationMin": 120,
     "weight": "ZWAAR",
-    "averageWeight": 3.63,
+    "averageWeight": 3.64,
     "category": "Strategie",
     "categories": [
      "Adventure",
@@ -452,7 +486,7 @@
     "maxPlayers": 4,
     "durationMin": 120,
     "weight": "ZWAAR",
-    "averageWeight": 3.76,
+    "averageWeight": 3.77,
     "category": "Strategie",
     "categories": [
      "Fantasy",
@@ -520,7 +554,7 @@
     "maxPlayers": 4,
     "durationMin": 20,
     "weight": "LICHT",
-    "averageWeight": 2.15,
+    "averageWeight": 2.16,
     "category": "Familie",
     "categories": [
      "Fighting",
@@ -628,7 +662,7 @@
     "maxPlayers": 4,
     "durationMin": 45,
     "weight": "MIDDEL",
-    "averageWeight": 2.38,
+    "averageWeight": 2.35,
     "category": "Abstract",
     "categories": [
      "Animals",
@@ -807,7 +841,7 @@
     "maxPlayers": 4,
     "durationMin": 150,
     "weight": "ZWAAR",
-    "averageWeight": 3.88,
+    "averageWeight": 3.89,
     "category": "Thematisch",
     "categories": [
      "Dice",
@@ -953,6 +987,41 @@
      "Transportation"
     ],
     "link": "https://boardgamegeek.com/boardgame/229892"
+   }
+  },
+  {
+   "id": "pb1PJ0RHSLmA6utYTtbg",
+   "name": "Cross Clues",
+   "source": "link",
+   "nameMatch": true,
+   "current": {
+    "minPlayers": 2,
+    "maxPlayers": 6,
+    "durationMin": 60,
+    "weight": "LICHT",
+    "category": "Party",
+    "categories": null,
+    "link": "https://boardgamegeek.com/boardgame/300753/cross-clues",
+    "infoChecked": true
+   },
+   "bgg": {
+    "bggId": "300753",
+    "bggName": "Cross Clues",
+    "year": "2020",
+    "minPlayers": 2,
+    "maxPlayers": 6,
+    "durationMin": 10,
+    "weight": "LICHT",
+    "averageWeight": 1.09,
+    "category": "Party",
+    "categories": [
+     "Card Game",
+     "Deduction",
+     "Party Game",
+     "Real-time",
+     "Word Game"
+    ],
+    "link": "https://boardgamegeek.com/boardgame/300753"
    }
   },
   {
@@ -1133,6 +1202,37 @@
    }
   },
   {
+   "id": "ziZ3k8eXni0ssRYcbVOa",
+   "name": "Dewan",
+   "source": "link",
+   "nameMatch": true,
+   "current": {
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "durationMin": 60,
+    "weight": "LICHT",
+    "category": "Familie",
+    "categories": null,
+    "link": "https://boardgamegeek.com/boardgame/439742/dewan",
+    "infoChecked": true
+   },
+   "bgg": {
+    "bggId": "439742",
+    "bggName": "Dewan",
+    "year": "2025",
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "durationMin": 40,
+    "weight": "LICHT",
+    "averageWeight": 2.11,
+    "category": "Familie",
+    "categories": [
+     "Territory Building"
+    ],
+    "link": "https://boardgamegeek.com/boardgame/439742"
+   }
+  },
+  {
    "id": "g-dice-forge",
    "name": "Dice Forge",
    "source": "link",
@@ -1271,7 +1371,7 @@
     "maxPlayers": 4,
     "durationMin": 120,
     "weight": "MIDDEL",
-    "averageWeight": 2.66,
+    "averageWeight": 2.67,
     "category": "Strategie",
     "categories": [
      "Card Game",
@@ -1317,71 +1417,6 @@
      "Fantasy"
     ],
     "link": "https://boardgamegeek.com/boardgame/441850"
-   }
-  },
-  {
-   "id": "W948JI7sbANy2GJYjVHf",
-   "name": "Eclipse Second Dawn",
-   "source": "link",
-   "nameMatch": true,
-   "current": {
-    "minPlayers": 4,
-    "maxPlayers": 6,
-    "durationMin": 180,
-    "weight": "MIDDEL",
-    "category": null,
-    "categories": null,
-    "link": "https://boardgamegeek.com/boardgame/246900/eclipse-second-dawn-for-the-galaxy",
-    "infoChecked": true
-   },
-   "bgg": {
-    "bggId": "246900",
-    "bggName": "Eclipse: Second Dawn for the Galaxy",
-    "year": "2020",
-    "minPlayers": 2,
-    "maxPlayers": 6,
-    "durationMin": 200,
-    "weight": "ZWAAR",
-    "averageWeight": 3.67,
-    "category": "Strategie",
-    "categories": [
-     "Civilization",
-     "Exploration",
-     "Science Fiction",
-     "Space Exploration",
-     "Territory Building",
-     "Wargame"
-    ],
-    "link": "https://boardgamegeek.com/boardgame/246900"
-   }
-  },
-  {
-   "id": "g-elementica",
-   "name": "Elementica",
-   "source": "link",
-   "nameMatch": true,
-   "current": {
-    "minPlayers": 1,
-    "maxPlayers": 4,
-    "durationMin": 100,
-    "weight": "MIDDEL",
-    "category": "Strategie",
-    "categories": [],
-    "link": "https://boardgamegeek.com/boardgame/469261",
-    "infoChecked": true
-   },
-   "bgg": {
-    "bggId": "469261",
-    "bggName": "Elementica",
-    "year": "2026",
-    "minPlayers": 1,
-    "maxPlayers": 4,
-    "durationMin": 100,
-    "weight": "MIDDEL",
-    "averageWeight": 3.0,
-    "category": "",
-    "categories": [],
-    "link": "https://boardgamegeek.com/boardgame/469261"
    }
   },
   {
@@ -1595,6 +1630,41 @@
    }
   },
   {
+   "id": "zCiHRBtycy5O7TSzDzId",
+   "name": "Feya's Swamp",
+   "source": "link",
+   "nameMatch": true,
+   "current": {
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "durationMin": 105,
+    "weight": "MIDDEL",
+    "category": "Strategie",
+    "categories": null,
+    "link": "https://boardgamegeek.com/boardgame/438442/feyas-swamp",
+    "infoChecked": true
+   },
+   "bgg": {
+    "bggId": "438442",
+    "bggName": "Feya's Swamp",
+    "year": "2025",
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "durationMin": 100,
+    "weight": "ZWAAR",
+    "averageWeight": 3.2,
+    "category": "Strategie",
+    "categories": [
+     "Animals",
+     "Civilization",
+     "Economic",
+     "Fantasy",
+     "Territory Building"
+    ],
+    "link": "https://boardgamegeek.com/boardgame/438442"
+   }
+  },
+  {
    "id": "g-fireflies",
    "name": "Fireflies",
    "source": "link",
@@ -1691,7 +1761,7 @@
     "maxPlayers": 5,
     "durationMin": 60,
     "weight": "LICHT",
-    "averageWeight": 1.67,
+    "averageWeight": 2.0,
     "category": "Kaartspel",
     "categories": [
      "Animals",
@@ -1932,7 +2002,7 @@
     "maxPlayers": 4,
     "durationMin": 100,
     "weight": "MIDDEL",
-    "averageWeight": 2.9,
+    "averageWeight": 2.86,
     "category": "",
     "categories": [],
     "link": "https://boardgamegeek.com/boardgame/457557"
@@ -2066,7 +2136,7 @@
     "maxPlayers": 4,
     "durationMin": 160,
     "weight": "MIDDEL",
-    "averageWeight": 3.17,
+    "averageWeight": 3.18,
     "category": "Thematisch",
     "categories": [
      "Fantasy"
@@ -2099,8 +2169,8 @@
     "maxPlayers": 4,
     "durationMin": 0,
     "weight": "MIDDEL",
-    "averageWeight": 2.25,
-    "category": "",
+    "averageWeight": 2.2,
+    "category": "Abstract",
     "categories": [
      "Expansion for Base-game"
     ],
@@ -2517,7 +2587,7 @@
     "maxPlayers": 4,
     "durationMin": 40,
     "weight": "LICHT",
-    "averageWeight": 1.57,
+    "averageWeight": 1.6,
     "category": "",
     "categories": [],
     "link": "https://boardgamegeek.com/boardgame/470343"
@@ -3189,7 +3259,7 @@
     "maxPlayers": 4,
     "durationMin": 80,
     "weight": "MIDDEL",
-    "averageWeight": 2.29,
+    "averageWeight": 2.28,
     "category": "Strategie",
     "categories": [
      "Adventure",
@@ -3460,7 +3530,7 @@
     "maxPlayers": 4,
     "durationMin": 60,
     "weight": "MIDDEL",
-    "averageWeight": 2.89,
+    "averageWeight": 3.0,
     "category": "Strategie",
     "categories": [
      "City Building",
@@ -3783,6 +3853,38 @@
    }
   },
   {
+   "id": "ZqEVHZDzyrMCU95KIwuI",
+   "name": "Pet Hotel",
+   "source": "link",
+   "nameMatch": true,
+   "current": {
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "durationMin": 15,
+    "weight": "LICHT",
+    "category": "Kaartspel",
+    "categories": null,
+    "link": "https://boardgamegeek.com/boardgame/481488/pet-hotel",
+    "infoChecked": true
+   },
+   "bgg": {
+    "bggId": "481488",
+    "bggName": "Pet Hotel",
+    "year": "2026",
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "durationMin": 20,
+    "weight": "",
+    "averageWeight": 0.0,
+    "category": "Kaartspel",
+    "categories": [
+     "Animals",
+     "Card Game"
+    ],
+    "link": "https://boardgamegeek.com/boardgame/481488"
+   }
+  },
+  {
    "id": "g-phoenix-new-horizon",
    "name": "Phoenix New Horizon",
    "source": "link",
@@ -4091,7 +4193,7 @@
     "maxPlayers": 4,
     "durationMin": 120,
     "weight": "ZWAAR",
-    "averageWeight": 3.82,
+    "averageWeight": 3.85,
     "category": "Strategie",
     "categories": [
      "Novel-based"
@@ -4668,7 +4770,7 @@
     "maxPlayers": 4,
     "durationMin": 120,
     "weight": "ZWAAR",
-    "averageWeight": 3.95,
+    "averageWeight": 3.94,
     "category": "Strategie",
     "categories": [
      "Science Fiction",
@@ -5307,6 +5409,39 @@
    }
   },
   {
+   "id": "dPZ7zQuah1W8KF9jaNZz",
+   "name": "Things In Rings",
+   "source": "link",
+   "nameMatch": true,
+   "current": {
+    "minPlayers": 2,
+    "maxPlayers": 6,
+    "durationMin": 15,
+    "weight": "LICHT",
+    "category": "Party",
+    "categories": null,
+    "link": "https://boardgamegeek.com/boardgame/408547/things-in-rings",
+    "infoChecked": true
+   },
+   "bgg": {
+    "bggId": "408547",
+    "bggName": "Things in Rings",
+    "year": "2024",
+    "minPlayers": 2,
+    "maxPlayers": 6,
+    "durationMin": 20,
+    "weight": "LICHT",
+    "averageWeight": 1.33,
+    "category": "Party",
+    "categories": [
+     "Deduction",
+     "Party Game",
+     "Word Game"
+    ],
+    "link": "https://boardgamegeek.com/boardgame/408547"
+   }
+  },
+  {
    "id": "g-thrones-of-valeria",
    "name": "Thrones of Valeria",
    "source": "link",
@@ -5366,7 +5501,7 @@
     "maxPlayers": 5,
     "durationMin": 90,
     "weight": "MIDDEL",
-    "averageWeight": 2.93,
+    "averageWeight": 2.97,
     "category": "Strategie",
     "categories": [
      "Civilization"
@@ -5718,38 +5853,6 @@
    }
   },
   {
-   "id": "tQfsU2RVstqfBz3rADvA",
-   "name": "Wingspan Pocket",
-   "source": "gezocht",
-   "nameMatch": true,
-   "current": {
-    "minPlayers": 2,
-    "maxPlayers": 5,
-    "durationMin": 30,
-    "weight": "LICHT",
-    "category": "",
-    "categories": null,
-    "link": "",
-    "infoChecked": true
-   },
-   "bgg": {
-    "bggId": "473508",
-    "bggName": "Wingspan Pocket",
-    "year": "2026",
-    "minPlayers": 1,
-    "maxPlayers": 5,
-    "durationMin": 35,
-    "weight": "LICHT",
-    "averageWeight": 1.93,
-    "category": "Kaartspel",
-    "categories": [
-     "Animals",
-     "Card Game"
-    ],
-    "link": "https://boardgamegeek.com/boardgame/473508"
-   }
-  },
-  {
    "id": "NvRZUPNUixTzphmNkL6z",
    "name": "Wonderland's War",
    "source": "gezocht",
@@ -5841,7 +5944,7 @@
     "maxPlayers": 4,
     "durationMin": 180,
     "weight": "ZWAAR",
-    "averageWeight": 3.81,
+    "averageWeight": 3.8,
     "category": "Strategie",
     "categories": [
      "Economic",
@@ -5957,10 +6060,16 @@
  ],
  "unresolved": [
   "-60°",
-  "detective spelletje",
+  "Awkward Guests",
+  "Brood En Bier",
+  "Castle Combo",
+  "Flip 7",
   "Lost in the Woods",
   "Meow Tiles",
-  "Pokespan"
+  "Pokespan",
+  "Scout",
+  "Turing Machine",
+  "Wispwood"
  ],
  "rejected": [],
  "errors": [],
