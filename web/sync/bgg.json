@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-05 22:30 UTC",
+ "generated": "2026-11-05 22:33 UTC",
  "event": "d14PclMtaeM25doZi7i6",
  "total": 195,
  "games": [
@@ -2061,38 +2061,40 @@
   {
    "id": "sRGL8sakmJutA0OpQnSS",
    "name": "Flip 7",
-   "source": "link",
+   "source": "lijst",
    "nameMatch": true,
    "current": {
     "minPlayers": 3,
-    "maxPlayers": 28,
+    "maxPlayers": 18,
     "durationMin": 20,
     "weight": "LICHT",
     "category": "Party",
     "categories": [
      "Card Game",
+     "Novel-based",
      "Number",
      "Party Game"
     ],
-    "link": "https://boardgamegeek.com/boardgame/463441",
+    "link": "https://boardgamegeek.com/boardgame/420087",
     "infoChecked": true
    },
    "bgg": {
-    "bggId": "463441",
-    "bggName": "Flip 7: With A Vengeance",
-    "year": "2026",
+    "bggId": "420087",
+    "bggName": "Flip 7",
+    "year": "2024",
     "minPlayers": 3,
-    "maxPlayers": 28,
+    "maxPlayers": 18,
     "durationMin": 20,
     "weight": "LICHT",
     "averageWeight": 1.04,
     "category": "Party",
     "categories": [
      "Card Game",
+     "Novel-based",
      "Number",
      "Party Game"
     ],
-    "link": "https://boardgamegeek.com/boardgame/463441"
+    "link": "https://boardgamegeek.com/boardgame/420087"
    }
   },
   {
@@ -6866,5 +6868,7 @@
  "rejected": [],
  "errors": [],
  "tokenSet": false,
- "applied": []
+ "applied": [
+  "Flip 7"
+ ]
 }
