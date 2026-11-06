@@ -88,7 +88,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/fireba
 import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import {
   getFirestore, collection, doc, getDoc, getDocs, setDoc, addDoc, deleteDoc, query, where, limit,
-  onSnapshot, writeBatch, arrayUnion
+  onSnapshot, writeBatch, arrayUnion, arrayRemove
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const $ = (s, el = document) => el.querySelector(s);
@@ -580,7 +580,7 @@ async function login() {
 }
 
 // ------------------------------------------------------------------ eenmalige wijzigingen uit de Google-spreadsheet
-const SYNC_FILE = "sheet-2026-11-04";
+const SYNC_FILE = "sheet-2026-11-05";
 let SYNC = null;
 fetch(`sync/${SYNC_FILE}.json`, { cache: "no-store" }).then((r) => r.ok ? r.json() : null).then((j) => { SYNC = j; softRender(); }).catch(() => {});
 const normName = (s) => String(s || "").normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\(.*?\)/g, "").replace(/[^a-z0-9]/g, "");
@@ -601,6 +601,7 @@ function sheetView() {
     ${(SYNC.removeNote || []).length ? `<b>Notitie eraf (${SYNC.removeNote.length})</b>${li(SYNC.removeNote.map((n) => `${esc(n.game)}: ${esc(n.note)}${gameByName(n.game) ? "" : " <span class='pill warn'>niet gevonden</span>"}`))}` : ""}
     ${(SYNC.notInSheet || []).length ? `<b>Niet in de spreadsheet (${SYNC.notInSheet.length}) — blijven staan</b>${li(SYNC.notInSheet.map((n) => `${esc(n)}${gameByName(n) ? "" : " <span class='pill warn'>niet meer in de lijst</span>"}`))}` : ""}
     <b>♥ erbij (${SYNC.hearts.length} spellen)</b>${li(SYNC.hearts.map((h) => `${esc(h.game)}: ${esc(h.names.join(", "))}`))}
+    ${(SYNC.unhearts || []).length ? `<b>♥ eraf (${SYNC.unhearts.length} spellen)</b>${li(SYNC.unhearts.map((h) => `${esc(h.game)}: ${esc(h.names.join(", "))}`))}` : ""}
     <p class="muted">♥'s komen alleen bij wie in de app aan zijn naam gekoppeld is. Spellen die al bestaan worden niet dubbel toegevoegd. Er wordt nooit een spel verwijderd: wat niet in de spreadsheet staat, is in de app toegevoegd.</p>
     ${(SYNC.restoreGames || []).some((g) => !gameByName(g.name)) ? `<button class="btn tonal" id="doRestore">Verdwenen spellen terugzetten (${SYNC.restoreGames.filter((g) => !gameByName(g.name)).length})</button> ` : ""}
     <button class="btn" id="doSync">${done ? "Nogmaals verwerken" : "Verwerken"}</button> <span class="muted" id="syncMsg"></span>
@@ -614,7 +615,7 @@ async function runSync() {
     const flush = async () => { if (n) { await b.commit(); b = writeBatch(db); n = 0; } };
     const put = async (r, d) => { b.set(r, d, { merge: true }); if (++n >= 400) await flush(); };
     const ids = new Map(S.games.map((g) => [normName(g.name), g.id]));
-    let added = 0, owners = 0, hearts = 0;
+    let added = 0, owners = 0, hearts = 0, unhearts = 0;
     const missing = new Set();
     for (const g of SYNC.addGames) {
       if (ids.has(normName(g.name))) continue;
@@ -644,9 +645,17 @@ async function runSync() {
         if (!(m.wants || []).includes(gid)) { await put(ref("members", m.id), { wants: arrayUnion(gid) }); hearts++; }
       }
     }
+    for (const h of SYNC.unhearts || []) {
+      const gid = ids.get(normName(h.game)); if (!gid) continue;
+      for (const person of h.names) {
+        const guest = S.guests.find((x) => normName(x.name) === normName(person));
+        const m = guest && live.find((x) => x.id === guest.claimedBy);
+        if (m && (m.wants || []).includes(gid)) { await put(ref("members", m.id), { wants: arrayRemove(gid) }); unhearts++; }
+      }
+    }
     await put(doc(db, "events", S.eventId), { syncApplied: { [SYNC_FILE]: now() } });
     await flush();
-    $("#syncMsg").textContent = `Klaar: ${added} spellen toegevoegd, ${owners} eigenaars aangepast, ${hearts} ♥ gezet. Niets verwijderd.` +
+    $("#syncMsg").textContent = `Klaar: ${added} spellen toegevoegd, ${owners} eigenaars aangepast, ${hearts} ♥ gezet${unhearts ? `, ${unhearts} ♥ weggehaald` : ""}. Geen spellen verwijderd.` +
       (missing.size ? ` Niet in de app gekoppeld (geen ♥): ${[...missing].join(", ")}.` : "");
   } catch (e) { $("#syncMsg").textContent = "Mislukt: " + e.message; }
   btn.disabled = false;

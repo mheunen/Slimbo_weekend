@@ -2,6 +2,11 @@ name: BGG bijwerken
 
 on:
   workflow_dispatch:
+    inputs:
+      apply:
+        description: "Spellen (komma-gescheiden) die direct met BGG-gegevens in de app worden bijgewerkt"
+        required: false
+        default: ""
   push:
     branches: [main]
     paths:
@@ -40,6 +45,7 @@ jobs:
         env:
           GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
           BGG_TOKEN: ${{ secrets.BGG_TOKEN }}
+          BGG_APPLY: ${{ github.event.inputs.apply }}
         run: python3 tools/bgg_sync.py
 
       - name: Resultaat committen en website bijwerken
@@ -49,9 +55,12 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp web/sync/bgg.json "$RUNNER_TEMP/bgg.json"
+          git fetch -q origin main
+          git reset -q --hard origin/main
+          cp "$RUNNER_TEMP/bgg.json" web/sync/bgg.json
           git add web/sync/bgg.json
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "BGG-vergelijking bijgewerkt"
-          git pull --rebase origin main
-          git push
+          git push origin HEAD:main
           gh workflow run pages.yml --ref main

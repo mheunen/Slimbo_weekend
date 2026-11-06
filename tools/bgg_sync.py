@@ -86,6 +86,11 @@ class Store:
     def delete_member(self, event):
         http(f"{self.base}/events/{event}/members/{self.uid}", None, self._h(), "DELETE")
 
+    def update_game(self, event, gid, data):
+        mask = "&".join("updateMask.fieldPaths=" + urllib.parse.quote(k) for k in data)
+        doc = {"fields": {k: enc(v) for k, v in data.items()}}
+        http(f"{self.base}/events/{event}/games/{gid}?{mask}", doc, self._h(), "PATCH")
+
     def games(self, event):
         out, page = [], ""
         while True:
@@ -96,6 +101,14 @@ class Store:
             page = res.get("nextPageToken")
             if not page:
                 return out
+
+
+def enc(v):
+    if isinstance(v, bool): return {"booleanValue": v}
+    if isinstance(v, int): return {"integerValue": str(v)}
+    if isinstance(v, float): return {"doubleValue": v}
+    if isinstance(v, list): return {"arrayValue": {"values": [enc(x) for x in v]}}
+    return {"stringValue": str(v)}
 
 
 def val(v):
@@ -210,12 +223,44 @@ def main():
     event = st.find_event(JOIN_CODE)
     st.set_member(event)
     try:
-        games = st.games(event)
+        run(st, event, manual, manual_norm)
     finally:
         try:
             st.delete_member(event)
         except Exception as e:  # noqa: BLE001
             print("afmelden mislukt:", e, file=sys.stderr)
+
+
+UNKNOWN_NOTE = "ⓘ Spelers/duur onbekend – graag aanvullen"
+
+
+def changes(row):
+    """Zelfde regels als het BGG-tabblad op de beheersite (bestaande categorie blijft staan)."""
+    c, b = row["current"], row["bgg"]
+    upd = {}
+    if b["minPlayers"]:
+        upd["minPlayers"] = b["minPlayers"]
+    if b["maxPlayers"]:
+        upd["maxPlayers"] = max(b["maxPlayers"], upd.get("minPlayers", c.get("minPlayers") or 1))
+    if b["durationMin"]:
+        upd["durationMin"] = b["durationMin"]
+    if b["weight"]:
+        upd["weight"] = b["weight"]
+    if b["category"] and not c.get("category"):
+        upd["category"] = b["category"]
+    if b["categories"]:
+        upd["categories"] = b["categories"]
+    if row["source"] == "lijst" or not re.search(r"/boardgame(?:expansion)?/\d+", c.get("link") or ""):
+        upd["link"] = b["link"]
+    upd["infoChecked"] = True
+    upd["bggId"] = b["bggId"]
+    return upd
+
+
+def run(st, event, manual, manual_norm):
+    games = st.games(event)
+    apply_names = {norm(x) for x in os.environ.get("BGG_APPLY", "").split(",") if x.strip()}
+    applied = []
 
     cache, result, unresolved, errors, rejected = {}, [], [], [], []
 
@@ -229,6 +274,9 @@ def main():
         name = g.get("name") or ""
         m = re.search(r"/boardgame(?:expansion)?/(\d+)", g.get("link") or "")
         bid, source = (m.group(1), "link") if m else (None, "")
+        fixed = manual.get(name) or manual_norm.get(norm(name))
+        if isinstance(fixed, str) and norm(name) in apply_names and fixed != bid:
+            bid, source = fixed, "lijst"  # vaste koppeling gaat bij direct bijwerken voor de link
         try:
             if not bid:
                 entry = manual.get(name) or manual_norm.get(norm(name))
@@ -263,10 +311,32 @@ def main():
         except Exception as e:  # noqa: BLE001
             errors.append(f"{name}: {type(e).__name__}: {e}")
 
+    # Direct in de app zetten (alleen voor de opgegeven spellen; workflow-invoer "apply")
+    if apply_names:
+        notes_by_id = {g["id"]: g.get("notes") or "" for g in games}
+        for row in result:
+            if norm(row["name"]) not in apply_names or not (row["nameMatch"] or row["source"] == "lijst"):
+                continue
+            upd = changes(row)
+            notes = notes_by_id.get(row["id"], "")
+            if UNKNOWN_NOTE in notes:
+                upd["notes"] = " · ".join(p for p in notes.split(" · ") if p.strip() != UNKNOWN_NOTE)
+            upd["updatedAt"] = int(time.time() * 1000)
+            try:
+                st.update_game(event, row["id"], upd)
+                applied.append(row["name"])
+                row["current"].update({k: v for k, v in upd.items() if k in row["current"]})
+            except Exception as e:  # noqa: BLE001
+                errors.append(f"bijwerken {row['name']}: {type(e).__name__}: {e}")
+        print("Direct bijgewerkt:", ", ".join(applied) or "niets")
+        missing = apply_names - {norm(n) for n in applied}
+        if missing:
+            print("Niet bijgewerkt:", ", ".join(sorted(missing)))
+
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps({"generated": time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime()), "event": event,
                                "total": len(games), "games": result, "unresolved": unresolved, "rejected": rejected, "errors": errors,
-                               "tokenSet": bool(TOKEN)}, ensure_ascii=False, indent=1), encoding="utf-8")
+                               "tokenSet": bool(TOKEN), "applied": applied}, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"{len(result)} van {len(games)} spellen gekoppeld; {len(unresolved)} zonder BGG-nummer; {len(errors)} fouten")
 
 
