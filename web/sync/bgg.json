@@ -1,7 +1,7 @@
 {
- "generated": "2026-11-05 22:33 UTC",
+ "generated": "2026-11-06 06:01 UTC",
  "event": "d14PclMtaeM25doZi7i6",
- "total": 195,
+ "total": 196,
  "games": [
   {
    "id": "g-1655-habemus-papam",
@@ -2061,7 +2061,7 @@
   {
    "id": "sRGL8sakmJutA0OpQnSS",
    "name": "Flip 7",
-   "source": "lijst",
+   "source": "link",
    "nameMatch": true,
    "current": {
     "minPlayers": 3,
@@ -6524,6 +6524,39 @@
    }
   },
   {
+   "id": "ekwGSFo6Vs9ATHKCyCy7",
+   "name": "War of the Ring TCG + Fire and Swords",
+   "source": "link",
+   "nameMatch": false,
+   "current": {
+    "minPlayers": 1,
+    "maxPlayers": 6,
+    "durationMin": 120,
+    "weight": "MIDDEL",
+    "category": "Thematisch",
+    "categories": null,
+    "link": "https://boardgamegeek.com/boardgame/362944/war-of-the-ring-the-card-game",
+    "infoChecked": true
+   },
+   "bgg": {
+    "bggId": "362944",
+    "bggName": "War of the Ring: The Card Game",
+    "year": "2022",
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "durationMin": 120,
+    "weight": "MIDDEL",
+    "averageWeight": 2.98,
+    "category": "Strategie",
+    "categories": [
+     "Card Game",
+     "Fantasy",
+     "Novel-based"
+    ],
+    "link": "https://boardgamegeek.com/boardgame/362944"
+   }
+  },
+  {
    "id": "g-wat-schets-je-me-nou",
    "name": "Wat schets je me nou",
    "source": "link",
@@ -6868,7 +6901,5 @@
  "rejected": [],
  "errors": [],
  "tokenSet": false,
- "applied": [
-  "Flip 7"
- ]
+ "applied": []
 }
