@@ -719,7 +719,11 @@ function bggView() {
         <td><a href="${esc(r.bgg.link)}" target="_blank" rel="noopener">${esc(r.bgg.bggName)}</a>${r.bgg.year ? ` <span class="muted">(${esc(r.bgg.year)})</span>` : ""}${r.nameMatch ? "" : ` <span class="pill warn">andere naam</span>`}</td>
         <td class="muted">${esc(c.txt.join(" · "))}</td></tr>`).join("")}
     </tbody></table>` : `<p class="pill ok">Alles komt al overeen met BGG.</p>`}
-    ${(BGG.unresolved || []).length ? `<p style="margin-top:12px"><b>Niet gevonden op BGG (${BGG.unresolved.length})</b><br><span class="muted">${esc(BGG.unresolved.join(", "))} — vul hier zelf een BGG-link in bij het spel, dan gaat het de volgende keer mee.</span></p>` : ""}
+    ${(() => {
+      // Alleen spellen die nog geen echte BGG-link hebben en geen eigen spel zijn (noBgg)
+      const open = (BGG.unresolved || []).filter((n) => { const g = gameByName(n); return g && !g.noBgg && !/geen bgg|niet op bgg/i.test(g.notes || "") && !/\/boardgame(expansion)?\/\d+/.test(g.link || ""); });
+      return open.length ? `<p style="margin-top:12px"><b>Niet gevonden op BGG (${open.length})</b><br><span class="muted">${esc(open.join(", "))} — vul zelf een BGG-link in bij het spel; zonder BGG-pagina (eigen spel): zet in de notitie "geen BGG".</span></p>` : "";
+    })()}
     <p style="margin-top:12px"><button class="btn" id="doBgg" ${n ? "" : "disabled"}>${n} spel${n === 1 ? "" : "len"} bijwerken</button> <span class="muted" id="bggMsg"></span></p>
   </div>`;
 }
