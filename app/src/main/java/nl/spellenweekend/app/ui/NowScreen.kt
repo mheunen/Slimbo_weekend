@@ -30,6 +30,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.material3.Surface
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -54,6 +56,11 @@ fun NowScreen(
     onOpenTab: (MainTab) -> Unit,
 ) {
     val myself = look.members[me]
+    val guests by vm.guests.collectAsStateWithLifecycle()
+    // Gasten die nog niet met de app (of web-app) hebben meegedaan
+    val memberIds = members.map { it.id }.toSet()
+    val notJoined = guests.filter { it.claimedBy.isBlank() || it.claimedBy !in memberIds }
+        .map { it.name }.sortedBy { it.lowercase() }
     val now = System.currentTimeMillis()
 
     val running = activities.filter { it.isRunning(now) }.sortedBy { it.startAt }
@@ -118,6 +125,31 @@ fun NowScreen(
                                         )
                                     }
                                 }
+                            }
+                        }
+                    }
+                }
+                if (notJoined.isNotEmpty()) {
+                    Text(
+                        "Nog niet aangemeld (${notJoined.size})",
+                        style = MaterialTheme.typography.labelLarge,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                    FlowRow(
+                        horizontalArrangement = Arrangement.spacedBy(6.dp),
+                        verticalArrangement = Arrangement.spacedBy(6.dp),
+                    ) {
+                        notJoined.forEach { n ->
+                            Surface(
+                                shape = MaterialTheme.shapes.small,
+                                color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f),
+                            ) {
+                                Text(
+                                    n,
+                                    style = MaterialTheme.typography.labelLarge,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f),
+                                    modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp),
+                                )
                             }
                         }
                     }
