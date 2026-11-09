@@ -5,16 +5,19 @@ on:
     inputs:
       target:
         description: "Code van het weekend waar de deelnemers bij komen"
-        required: true
+        default: "J7A3V5"
       source:
         description: "Code van het weekend waar de spellen vandaan komen"
         default: "3GQ4B9"
       names:
         description: "Voornamen, komma-gescheiden"
-        required: true
+        default: ""
       apply:
         description: "1 = echt schrijven, leeg = alleen proef"
         default: ""
+      task:
+        description: "copy = deelnemers/spellen kopiëren, wishes = wensen zonder ♥ verwijderen"
+        default: "copy"
       prune:
         description: "1 = spellen van niet-deelnemers en wensen uit het doelweekend verwijderen"
         default: ""
@@ -38,4 +41,7 @@ jobs:
           NAMES: ${{ github.event.inputs.names }}
           APPLY: ${{ github.event.inputs.apply }}
           PRUNE: ${{ github.event.inputs.prune }}
-        run: python3 tools/copy_people.py
+          CODE: ${{ github.event.inputs.target }}
+          TASK: ${{ github.event.inputs.task }}
+        run: |
+          if [ "$TASK" = "wishes" ]; then python3 tools/prune_wishes.py; else python3 tools/copy_people.py; fi
