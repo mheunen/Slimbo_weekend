@@ -26,7 +26,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "web/sync/bgg.json"
 IDS = ROOT / "tools/bgg_ids.json"
-JOIN_CODE = os.environ.get("JOIN_CODE", "3GQ4B9")
+JOIN_CODE = os.environ.get("JOIN_CODE", "J7A3V5")  # Mini Slimbo 2027 (Medael was 3GQ4B9)
 TOKEN = os.environ.get("BGG_TOKEN", "").strip()
 GEEKDO = "https://api.geekdo.com/api"
 UA = "Mozilla/5.0 (Spellenweekend-app; github.com/mheunen/Slimbo_weekend)"
