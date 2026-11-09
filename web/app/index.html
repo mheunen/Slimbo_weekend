@@ -385,7 +385,15 @@ function nuView() {
   <h2>Straks</h2>${upcoming.length ? upcoming.map(activityCard).join("") : `<p class="muted center">Nog niets gepland.</p>`}
   <h2>Wie is er (${people.length})</h2>
   ${Object.entries(STATUS).map(([k, [l]]) => { const grp = people.filter((p) => (p.status || "BESCHIKBAAR") === k).sort((a, b) => (a.name || "").localeCompare(b.name || "", "nl"));
-    return grp.length ? `<div class="muted small" style="margin:8px 0 4px">${l} (${grp.length})</div><div>${grp.map((p) => `<span class="pill">${dot(k)} ${esc(p.name)}${p.statusNote ? ` <span class="muted small">· ${esc(p.statusNote)}</span>` : ""}</span>`).join("")}</div>` : ""; }).join("")}`;
+    return grp.length ? `<div class="muted small" style="margin:8px 0 4px">${l} (${grp.length})</div><div>${grp.map((p) => `<span class="pill">${dot(k)} ${esc(p.name)}${p.statusNote ? ` <span class="muted small">· ${esc(p.statusNote)}</span>` : ""}</span>`).join("")}</div>` : ""; }).join("")}
+  ${notJoinedView()}`;
+}
+
+// Gasten die nog niet met de app hebben meegedaan (grijs)
+function notJoinedView() {
+  const active = new Set(S.members.filter((m) => !m.hidden).map((m) => m.id));
+  const names = S.guests.filter((g) => !g.claimedBy || !active.has(g.claimedBy)).map((g) => g.name).sort((a, b) => a.localeCompare(b, "nl"));
+  return names.length ? `<div class="muted small" style="margin:8px 0 4px">Nog niet aangemeld (${names.length})</div><div>${names.map((n) => `<span class="pill" style="opacity:.55">${esc(n)}</span>`).join("")}</div>` : "";
 }
 
 function planningView() {
