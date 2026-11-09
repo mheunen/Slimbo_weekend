@@ -15,6 +15,9 @@ on:
       apply:
         description: "1 = echt schrijven, leeg = alleen proef"
         default: ""
+      prune:
+        description: "1 = spellen van niet-deelnemers en wensen uit het doelweekend verwijderen"
+        default: ""
 
 permissions:
   contents: read
@@ -34,4 +37,5 @@ jobs:
           SOURCE_CODE: ${{ github.event.inputs.source }}
           NAMES: ${{ github.event.inputs.names }}
           APPLY: ${{ github.event.inputs.apply }}
+          PRUNE: ${{ github.event.inputs.prune }}
         run: python3 tools/copy_people.py

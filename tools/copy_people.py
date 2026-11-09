@@ -64,6 +64,7 @@ def put(st, path, data):
 
 def main():
     apply = os.environ.get("APPLY", "") == "1"
+    prune = os.environ.get("PRUNE", "") == "1"
     names = [n.strip() for n in os.environ["NAMES"].split(",") if n.strip()]
     st = Store()
     target = find_event(st, os.environ["TARGET_CODE"])
@@ -115,9 +116,23 @@ def main():
                     gid = "g-" + slug(g.get("name")) + "-" + slug(n)
                     put(st, f"events/{target}/games/{gid}", data)
 
+        # Opruimen: spellen in het doelweekend van mensen die niet meegaan, en wensen
+        keep = {norm(n) for n in names}
+        drop = [g for g in tgames if g.get("wishlist") or norm(g.get("owner")) not in keep]
+        by_owner = {}
+        for g in drop:
+            by_owner.setdefault("Wens" if g.get("wishlist") or norm(g.get("owner")) == "wens" else (g.get("owner") or "(geen eigenaar)"), []).append(g.get("name", ""))
+        print(f"\nOp te ruimen in het doelweekend ({len(drop)} spellen):")
+        for o, lst in sorted(by_owner.items()):
+            print(f"  {o}: {len(lst)} — " + ", ".join(sorted(lst)))
+        if prune and apply:
+            for g in drop:
+                http(f"{st.base}/events/{target}/games/{g['id']}", None, st._h(), "DELETE")
+        removed = len(drop) if (prune and apply) else 0
+
         unmatched = sorted(o for k, o in owners.items() if k not in {norm(n) for n in names})
         print("\nEigenaars in het bronweekend die niet in de lijst staan:", ", ".join(unmatched) or "geen")
-        print(f"\n{'GESCHREVEN' if apply else 'PROEF (niets geschreven)'}: {new_guests} gasten, {copied} spellen")
+        print(f"\n{'GESCHREVEN' if apply else 'PROEF (niets geschreven)'}: {new_guests} gasten, {copied} spellen, {removed} verwijderd")
     finally:
         for ev in (target, source):
             try:
