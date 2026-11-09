@@ -11,6 +11,7 @@ on:
       - "app/src/main/assets/seed_*.json"
       - ".github/workflows/pages.yml"
       - ".github/workflows/bgg.yml"
+      - ".github/workflows/copy-people.yml"
   workflow_dispatch:
 
 permissions:

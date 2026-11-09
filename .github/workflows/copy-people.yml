@@ -1,0 +1,37 @@
+name: "Beheer: deelnemers kopiëren"
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: "Code van het weekend waar de deelnemers bij komen"
+        required: true
+      source:
+        description: "Code van het weekend waar de spellen vandaan komen"
+        default: "3GQ4B9"
+      names:
+        description: "Voornamen, komma-gescheiden"
+        required: true
+      apply:
+        description: "1 = echt schrijven, leeg = alleen proef"
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  copy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Deelnemers en spellen kopiëren
+        env:
+          GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
+          TARGET_CODE: ${{ github.event.inputs.target }}
+          SOURCE_CODE: ${{ github.event.inputs.source }}
+          NAMES: ${{ github.event.inputs.names }}
+          APPLY: ${{ github.event.inputs.apply }}
+        run: python3 tools/copy_people.py
