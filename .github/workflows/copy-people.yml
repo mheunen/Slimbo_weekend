@@ -16,8 +16,17 @@ on:
         description: "1 = echt schrijven, leeg = alleen proef"
         default: ""
       task:
-        description: "copy = deelnemers/spellen kopiëren, wishes = wensen zonder ♥ verwijderen"
+        description: "copy = deelnemers/spellen kopiëren, wishes = wensen zonder ♥ verwijderen, game = één spel toevoegen"
         default: "copy"
+      game:
+        description: "task=game: naam van het spel (names = wie er een ♥ bij krijgt)"
+        default: ""
+      owner:
+        description: "task=game: eigenaar (leeg of Wens = wenslijst)"
+        default: ""
+      bgg:
+        description: "task=game: BGG-nummer"
+        default: ""
       prune:
         description: "1 = spellen van niet-deelnemers en wensen uit het doelweekend verwijderen"
         default: ""
@@ -43,5 +52,12 @@ jobs:
           PRUNE: ${{ github.event.inputs.prune }}
           CODE: ${{ github.event.inputs.target }}
           TASK: ${{ github.event.inputs.task }}
+          GAME: ${{ github.event.inputs.game }}
+          OWNER: ${{ github.event.inputs.owner }}
+          BGG: ${{ github.event.inputs.bgg }}
         run: |
-          if [ "$TASK" = "wishes" ]; then python3 tools/prune_wishes.py; else python3 tools/copy_people.py; fi
+          case "$TASK" in
+            wishes) python3 tools/prune_wishes.py ;;
+            game) python3 tools/add_game.py ;;
+            *) python3 tools/copy_people.py ;;
+          esac
