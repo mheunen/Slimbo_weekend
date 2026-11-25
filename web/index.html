@@ -500,12 +500,12 @@ function renderLogin() {
     <button class="btn" id="lGo">Inloggen</button> <span class="muted" id="lMsg"></span>
     <p class="muted" style="margin-top:14px"><a href="https://www.slimbo.nl/" target="_blank" rel="noopener">🌐 www.slimbo.nl</a></p>
   </div>
-  <div class="login card" style="margin-top:14px">
+  ${INIT_FILES.length ? `<div class="login card" style="margin-top:14px">
     <h3>Nieuw weekend aanmaken</h3>
     <p class="muted">Eenmalige vulling van een nieuw weekend. Vul hierboven je naam in; je krijgt daarna de weekendcode voor de app.</p>
     ${INIT_FILES.map((f) => `<div class="row" style="margin:6px 0"><span class="grow">${esc(f.label)}</span><button class="btn tonal" data-init="${esc(f.id)}">Aanmaken</button></div>`).join("")}
     <span class="muted" id="iMsg"></span>
-  </div></main>`;
+  </div>` : ""}</main>`;
   $("#lGo").onclick = login;
   document.querySelectorAll("[data-init]").forEach((b) => b.onclick = () => createFromInit(b.dataset.init, b));
   document.querySelectorAll("[data-open]").forEach((b) => b.onclick = () => openKnown(b.dataset.open));
@@ -525,7 +525,8 @@ async function openKnown(id) {
 
 // ------------------------------------------------------------------ initiële vulling van een nieuw weekend (eenmalig)
 // Het bronbestand wordt alleen gebruikt om een NIEUW weekend te vullen; daarna is de database de enige bron.
-const INIT_FILES = [{ id: "kaldenbroek-2027", label: "Mini Slimbo 2027 · Huys Kaldenbroek (15–18 januari 2027)" }];
+// Startbestanden (web/init/*.json) voor een nieuw weekend; na het aanmaken weer weghalen (namen staan dan in Firebase)
+const INIT_FILES = [];
 const CODE_CHARS = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 const newCode = () => Array.from({ length: 6 }, () => CODE_CHARS[Math.floor(Math.random() * CODE_CHARS.length)]).join("");
 
@@ -580,13 +581,15 @@ async function login() {
 }
 
 // ------------------------------------------------------------------ eenmalige wijzigingen uit de Google-spreadsheet
-const SYNC_FILE = "sheet-2026-11-05";
+// Bestand in web/sync/ met openstaande spreadsheet-wijzigingen; na verwerken weghalen en hier leegmaken
+const SYNC_FILE = "";
 let SYNC = null;
-fetch(`sync/${SYNC_FILE}.json`, { cache: "no-store" }).then((r) => r.ok ? r.json() : null).then((j) => { SYNC = j; softRender(); }).catch(() => {});
+if (SYNC_FILE) fetch(`sync/${SYNC_FILE}.json`, { cache: "no-store" }).then((r) => r.ok ? r.json() : null).then((j) => { SYNC = j; softRender(); }).catch(() => {});
 const normName = (s) => String(s || "").normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\(.*?\)/g, "").replace(/[^a-z0-9]/g, "");
 const gameByName = (n) => S.games.find((g) => normName(g.name) === normName(n));
 
 function sheetView() {
+  if (!SYNC_FILE) return `<div class="card"><h3>Wijzigingen uit de Google-spreadsheet</h3><p class="muted">Er staan geen wijzigingen klaar. Vraag Claude om de spreadsheet opnieuw te vergelijken.</p></div>`;
   if (!SYNC) return `<div class="card"><p class="muted">Wijzigingen laden…</p></div>`;
   const done = S.event?.syncApplied?.[SYNC_FILE];
   const li = (arr) => `<ul class="muted" style="margin:4px 0 12px">${arr.map((x) => `<li>${x}</li>`).join("")}</ul>`;
